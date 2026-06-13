@@ -18,7 +18,7 @@ void fn_80006138(void* ptr);
 void fn_8000615C(u8 groupID);
 
 //Changes the group id for  lbl_804D8014 and lbl_804D8018 as well as setting sCurHeapGroupId (probably curGroup ID)
-void fn_800061B8(u8 param_1);
+u8 fn_800061B8(u8 param_1);
 
 u8 getCurHeapGroupId();
 void fn_80006204();

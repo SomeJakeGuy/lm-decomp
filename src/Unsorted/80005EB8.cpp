@@ -59,11 +59,11 @@ void fn_8000615C(u8 groupID) {
     }
 }
 
-void fn_800061B8(u8 param_1) {
+u8 fn_800061B8(u8 param_1) {
     sCurHeapGroupId = param_1;
 
     get_lbl_804D8014()->changeGroupID(param_1);
-    lbl_804D8018->changeGroupID(param_1);
+    return lbl_804D8018->changeGroupID(param_1);
 }
 
 u8 getCurHeapGroupId() {

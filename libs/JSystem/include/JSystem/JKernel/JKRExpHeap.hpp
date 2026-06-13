@@ -70,7 +70,7 @@ public:
 	void reset();
 
 	//Actually changes changeGroupId
-	s32 changeGroupID(u8 newGroupID);
+	u8 changeGroupID(u8 newGroupID);
 
 	// unused/inlined:
 	void removeUsedBlock(CMemBlock*);

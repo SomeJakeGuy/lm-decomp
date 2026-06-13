@@ -1,6 +1,4 @@
 #include "Koga/MissionMode.hpp"
-#include <JSystem/JKernel/JKRFileFinder.hpp>
-#include <JSystem/JKernel/JKRArchive.hpp>
 #include "Koga/MapCol.hpp"
 #include "Koga/EnTypesManager.hpp"
 #include "Koga/EnManager.hpp"
@@ -9,13 +7,16 @@
 #include "Koga/CharacterColManager.hpp"
 #include "Koga/SimpleModeler.hpp"
 #include "Koga/ToolData.hpp"
+
+#include "Unsorted/LMDvdFile.hpp"
+#include <JSystem/JKernel/JKRFileFinder.hpp>
+#include <JSystem/JKernel/JKRArchive.hpp>
 #include <stdio.h>
 
 dummy_float_data()
 
 //TODO: Remove these
 extern int sCurMapNo;
-extern JKRArchive* fn_80006930(const char*, s32);
 
 namespace Koga {
 
@@ -77,7 +78,7 @@ namespace Koga {
         char mapName[128];
 
         sprintf(mapName, "%s%d.szp", "/Map/map", sCurMapNo);
-        mMapArchive = fn_80006930(mapName, 0);
+        mMapArchive = (JKRArchive*)fn_80006930(mapName, nullptr);
 
         mEnMgr->load(mMapArchive);
         s32 jmpFileCount = mMapArchive->countFile("/jmp") - 2;

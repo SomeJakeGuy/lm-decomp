@@ -109,13 +109,14 @@ JKRExpHeap::JKRExpHeap(void* data, u32 size, JKRHeap* parent, bool errorFlag)
 
 JKRExpHeap::~JKRExpHeap() { dispose(); }
 
-s32 JKRExpHeap::changeGroupID(u8 newGroupID) {
+u8 JKRExpHeap::changeGroupID(u8 newGroupID) {
     lock();
     s32 ret = mCurrentGroupID;
     mCurrentGroupID = newGroupID;
     unlock();
     return ret;
 }
+
 void* JKRExpHeap::alloc(u32 size, int alignment)
 {
 	lock();
