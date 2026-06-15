@@ -250,6 +250,7 @@ cflags_metrowerks = [
     # "-gccinc",
     "-common off",
     "-inline deferred,auto",
+    "-Cpp_exceptions on",
 ]
 
 
@@ -616,6 +617,9 @@ config.libs = [
         Object(Matching, "PowerPC_EABI_Support/Runtime.PPCEABI.H/src/__init_cpp_exceptions.cpp"),
         Object(Matching, "PowerPC_EABI_Support/Runtime.PPCEABI.H/src/__va_arg.c"),
         Object(Matching, "PowerPC_EABI_Support/Runtime.PPCEABI.H/src/__mem.c"),
+        Object(NonMatching, "PowerPC_EABI_Support/Runtime.PPCEABI.H/src/NMWException.cpp"),
+        Object(NonMatching, "PowerPC_EABI_Support/Runtime.PPCEABI.H/src/MWRTTI.cpp"),
+        Object(NonMatching, "PowerPC_EABI_Support/Runtime.PPCEABI.H/src/Gecko_ExceptionPPC.cpp"),
     ]),
 
     Trk_Minnow_Dolphin([
