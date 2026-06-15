@@ -193,6 +193,13 @@ config.reconfig_deps = []
 # Can be overridden in libraries or objects
 config.scratch_preset_id = None
 
+
+config.progress_use_fancy = True
+config.progress_code_fancy_frac = 23
+config.progress_code_fancy_item = "portrait ghosts"
+config.progress_data_fancy_frac = 142390000
+config.progress_data_fancy_item = "gold"
+
 # Base flags, common to most GC/Wii games.
 # Generally leave untouched, with overrides added below.
 cflags_base = [
@@ -432,9 +439,12 @@ config.libs = [
 
 
     JAudio([
+        Object(Matching, "jaudio/aictrl.c"),
+        Object(Matching, "jaudio/sample.c"),
         Object(Matching, "jaudio/dspbuf.c"),
         Object(NonMatching, "jaudio/dspboot.c"),
         Object(Matching, "jaudio/dspproc.c"),
+        Object(Matching, "jaudio/ipldec.c"),
         Object(Matching, "jaudio/dsp_cardunlock.c"),
     ]),
 
