@@ -1,7 +1,12 @@
 #ifndef _DOLPHIN_EXI_H_
 #define _DOLPHIN_EXI_H_
 
+
+#include <macros.h>
+
 #include <dolphin/os/OSContext.h>
+
+BEGIN_SCOPE_EXTERN_C
 
 typedef void (*EXICallback)(s32 chan, OSContext *context);
 
@@ -78,5 +83,7 @@ BOOL EXIDetach(s32 channel);
 u32 EXIGetState(s32 channel);
 s32 EXIGetID(s32 channel, u32 device, u32* id);
 void EXIProbeReset(void);
+
+END_SCOPE_EXTERN_C
 
 #endif

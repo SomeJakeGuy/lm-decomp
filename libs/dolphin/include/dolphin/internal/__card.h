@@ -4,6 +4,8 @@
 #include <dolphin/card.h>
 #include <dolphin/exi.h>
 
+BEGIN_SCOPE_EXTERN_C
+
 // CARDStatEx.c
 long __CARDGetStatusEx(long chan, long fileNo, struct CARDDir * dirent);
 long __CARDSetStatusExAsync(long chan, long fileNo, struct CARDDir * dirent, void (* callback)(long, long));
@@ -76,5 +78,7 @@ void __CARDSetDiskID(DVDDiskID *id);
 s32 __CARDGetControlBlock(s32 chan, CARDControl **pcard);
 s32 __CARDPutControlBlock(CARDControl *card, s32 result);
 s32 __CARDSync(s32 chan);
+
+END_SCOPE_EXTERN_C
 
 #endif // _DOLPHIN_CARD_INTERNAL_H_

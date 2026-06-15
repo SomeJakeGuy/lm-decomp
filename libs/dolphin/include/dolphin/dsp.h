@@ -1,7 +1,10 @@
 #ifndef _DOLPHIN_DSP_H_
 #define _DOLPHIN_DSP_H_
 
+#include <macros.h>
 #include <dolphin/os.h>
+
+BEGIN_SCOPE_EXTERN_C
 
 typedef void (*DSPCallback)(void *task);
 
@@ -45,5 +48,7 @@ DSPTaskInfo *DSPCancelTask(DSPTaskInfo *task);
 DSPTaskInfo *DSPAssertTask(DSPTaskInfo *task);
 
 DSPTaskInfo *__DSPGetCurrentTask(void);
+
+END_SCOPE_EXTERN_C
 
 #endif

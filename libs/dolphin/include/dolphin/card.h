@@ -101,6 +101,15 @@ typedef struct CARDID {
     /* 0x1FE */ u16 checkSumInv;
 } CARDID;
 
+typedef struct CARDDecodeParameters CARDDecodeParameters;
+
+struct CARDDecodeParameters {
+	u8* inputAddr;   // _00
+	u32 inputLength; // _04
+	u32 aramAddr;    // _08
+	u8* outputAddr;  // _0C
+};
+
 #include <dolphin/card/CARDBios.h>
 #include <dolphin/card/CARDCheck.h>
 #include <dolphin/card/CARDCreate.h>

@@ -114,6 +114,27 @@ Sato/EnemyStrategyInit.cpp:
 	.text       start:0x800EEBF0 end:0x800F140C
 	.data       start:0x80365A28 end:0x80365D4C
 
+jaudio/dspbuf.c:
+	.text       start:0x8019D260 end:0x8019D5A0
+	.rodata     start:0x802174E8 end:0x80217500
+	.bss        start:0x80434D90 end:0x80434DA0
+	.sbss       start:0x804D9380 end:0x804D9390
+
+jaudio/dspboot.c:
+	.text       start:0x8019E740 end:0x8019EB00
+	.rodata     start:0x80217500 end:0x80217520
+	.data       start:0x8038F340 end:0x80390B20
+	.sdata2     start:0x804DD310 end:0x804DD318
+
+jaudio/dspproc.c:
+	.text       start:0x8019EB00 end:0x8019EDC0
+	.sdata      start:0x804D7910 end:0x804D7918
+	.sdata2     start:0x804DD318 end:0x804DD320
+
+jaudio/dsp_cardunlock.c:
+	.text       start:0x8019EE40 end:0x8019F660
+	.rodata     start:0x80217520 end:0x80217560
+
 JSystem/J2D/J2DGrafContext.cpp:
 	.text       start:0x801ADEE4 end:0x801AE564
 	.data       start:0x80391BD0 end:0x80391C08

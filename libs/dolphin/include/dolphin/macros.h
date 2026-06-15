@@ -18,7 +18,6 @@
 
 #define ASSERTMSGLINEV(line, cond, ...) \
     ((cond) || (OSPanic(__FILE__, line, __VA_ARGS__), 0))
-
 #else
 #define ASSERTLINE(line, cond) (void)0
 #define ASSERTMSGLINE(line, cond, msg) (void)0
@@ -26,7 +25,7 @@
 #define ASSERTMSG2LINE(line, cond, msg, arg1, arg2) (void)0
 #define ASSERTMSGLINEV(line, cond, ...) (void)0
 #endif
-    
+
 #define ASSERT(cond) ASSERTLINE(__LINE__, cond)
 #define ARRAY_SIZE(o)        (sizeof((o)) / sizeof(*(o)))   // Array size define
 
@@ -56,6 +55,16 @@
 
 // Somehow this overwhelms the automatic inlining score and stops unwanted function inlining
 #define FORCE_DONT_INLINE REPEAT((void)0;, 10)
+
+//TODO: Merge with other asserts
+#ifdef DEBUG // Currently necessary for dsp_cardunlock.c
+#define OSAssertMsgLine(line, cond, ...) ((void)((cond) || (OSErrorLine(line, __VA_ARGS__), 0)))
+#define OSAssertLine(line, cond) OSAssertMsgLine(line, cond, "Failed assertion " #cond)
+#else
+#define OSAssertMsgLine(line, cond, ...) ((void)(0))
+#define OSAssertLine(line, cond) ((void)(0))
+#endif
+
 /*end of rip */
 
 #endif // _H_MACROS_

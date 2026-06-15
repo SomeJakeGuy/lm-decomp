@@ -222,6 +222,7 @@ cflags_base = [
     "-i libs/dolphin/include",
     "-i libs/hvqm4/include",
     "-i libs/JSystem/include",
+    "-i libs/jaudio/include",
     f"-i build/{config.version}/include",
     f"-DBUILD_VERSION={version_num}",
     f"-DVERSION={version_num}",
@@ -284,6 +285,18 @@ cflags_metrowerks_trk = [
     f"-DBUILD_VERSION={version_num}",
     f"-DVERSION={version_num}",
     "-O4,p", "-pool off", "-str readonly", "-enum min", "-sdatathreshold 0",
+]
+
+cflags_jaudio = [
+    *cflags_base,
+    '-pragma "scheduling 7400"',
+    "-O4,s",
+    "-inline off",
+    "-fp_contract on",
+    "-str reuse, readonly",
+    "-lang c++",
+    "-use_lmw_stmw on",
+    "-func_align 32",
 ]
 
 cflags_game = [
@@ -381,6 +394,17 @@ def JSystem(objects: List[Object]) -> Dict[str, Any]:
     }
 
 
+def JAudio(objects: List[Object]) -> Dict[str, Any]:
+    return {
+        "lib": "JSystem Audio",
+        "mw_version": "GC/1.2.5",
+        "cflags": cflags_jaudio,
+        "progress_category": "jsystem",
+        "src_dir": "libs/jaudio/src/",
+        "objects": objects,
+}
+
+
 def Game(objects: List[Object]) -> Dict[str, Any]:
     return {
         "lib": "Game",
@@ -405,6 +429,14 @@ def MatchingFor(*versions):
 config.warn_missing_config = True
 config.warn_missing_source = False
 config.libs = [
+
+
+    JAudio([
+        Object(Matching, "jaudio/dspbuf.c"),
+        Object(NonMatching, "jaudio/dspboot.c"),
+        Object(Matching, "jaudio/dspproc.c"),
+        Object(Matching, "jaudio/dsp_cardunlock.c"),
+    ]),
 
     JSystem([
         # 2D
