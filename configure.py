@@ -649,6 +649,14 @@ config.libs = [
         Object(Matching, "amcstubs/AmcExi2Stubs.c")
     ]),
 
+    DolphinLib("OdemuExi2", [
+        Object(Matching, "OdemuExi2/DebuggerDriver.c")
+    ]),
+
+    DolphinLib("odenotstub", [
+        Object(Matching, "odenotstub/odenotstub.c")
+    ]),
+
     Game([
         # Sato
         Object(Matching, "Sato/EnemyStrategy.cpp"),
