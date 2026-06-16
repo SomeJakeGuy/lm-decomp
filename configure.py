@@ -443,11 +443,13 @@ config.libs = [
         Object(Matching, "jaudio/sample.c"),
         Object(NonMatching, "jaudio/dummyrom.c"),
         Object(NonMatching, "jaudio/audiothread.c"),
+        Object(Matching, "jaudio/streamctrl.c"),
         Object(Matching, "jaudio/dspbuf.c"),
         Object(NonMatching, "jaudio/dspboot.c"),
         Object(Matching, "jaudio/dspproc.c"),
         Object(Matching, "jaudio/ipldec.c"),
         Object(Matching, "jaudio/dsp_cardunlock.c"),
+        Object(NonMatching, "jaudio/driverinterface.c"),
     ]),
 
     JSystem([
