@@ -4,11 +4,18 @@
 #include "jaudio/audiocommon.h"
 #include "jaudio/memory.h"
 
+//Todo: is this somewhere else?
 ALHeap aram_hp;
-u8* JAC_ARAM_DMA_BUFFER_TOP;
-
 static u32 AUDIO_ARAM_TOP;
+
+/* All four of these are unused besides like one mention? */
+static u32 lbl_804D9344;
+static u32 lbl_804D9348;
+static u32 lbl_804D934C;
+static u32 lbl_804D9350;
+
 static u32 CARD_SECURITY_BUFFER;
+u8* JAC_ARAM_DMA_BUFFER_TOP;
 static u32 SELECTED_ARAM_SIZE;
 
 /**
@@ -33,7 +40,7 @@ void mesg_finishcall(u32)
  * @TODO: Documentation
  * @note UNUSED Size: 00005C
  */
-void ARAMStartDMAmesg(u32, u32, u32, u32, s32, OSMesgQueue_s*)
+void ARAMStartDMAmesg(u32, u32, u32, u32, s32, OSMessageQueue*)
 {
 	// UNUSED FUNCTION
 }
@@ -55,13 +62,10 @@ void Jac_SetAudioARAMSize(u32 size)
 	SELECTED_ARAM_SIZE = size;
 }
 
-/**
- * @TODO: Documentation
- * @note UNUSED Size: 000038
- */
-void ARAlloc2(u32)
+
+void* ARAlloc2(u32 param_1)
 {
-	// UNUSED FUNCTION
+	return Nas_HeapAlloc(&aram_hp, param_1);
 }
 
 /**
@@ -91,7 +95,9 @@ void Jac_InitARAM(u32 loadAudiorom)
 	}
 
 	AUDIO_ARAM_TOP = ARGetBaseAddress();
-	audiorom_size  = 0;
+
+	lbl_804D9344 =  lbl_804D9348 = audiorom_size  = 0;
+
 
 	CARD_SECURITY_BUFFER = 0x40;
 	audiorom_size += AUDIO_ARAM_TOP;

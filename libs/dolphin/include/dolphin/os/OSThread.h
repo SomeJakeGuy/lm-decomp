@@ -87,6 +87,8 @@ void OSCancelThread(OSThread* thread);
 void OSDetachThread(OSThread* thread);
 BOOL OSIsThreadTerminated(OSThread* thread);
 BOOL OSCreateThread(OSThread* thread, void * (* func)(void *), void * param, void * stack, u32 stackSize, s32 priority, u16 attr);
+void OSExitThread(void * val);
+s32 OSGetThreadPriority(OSThread* thread);
 
 #define IsSuspended(suspend) (suspend > 0)
 

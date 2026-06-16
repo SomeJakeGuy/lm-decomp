@@ -177,28 +177,16 @@ static void __DspReg()
  */
 static void* audioproc(void*)
 {
-	OSInitFastCast();
 	OSInitMessageQueue(&audioproc_mq, msgbuf, AUDIOPROC_MQ_BUF_COUNT);
 	audioproc_mq_init = TRUE;
-#if defined(VERSION_GPIP01)
-	ResetPlayerCallback();
-	Jac_Init();
-	Jac_InitSinTable();
-#else
 	Jac_Init();
 	Jac_InitSinTable();
 	ResetPlayerCallback();
-#endif
 	DspbufProcess(DSPBUF_EVENT_INIT);
 	CpubufProcess(DSPBUF_EVENT_INIT);
-#if defined(VERSION_GPIP01)
-	DspBoot(DspSync2);
-	DSP_InitBuffer();
-#else
 	DspBoot();
 	DSP_InitBuffer();
 	__DspReg();
-#endif
 	AISetDSPSampleRate(JAC_AI_SETTING);
 	AIRegisterDMACallback(&AudioSync);
 	AIStartDMA();

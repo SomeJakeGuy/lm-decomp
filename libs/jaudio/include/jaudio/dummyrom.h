@@ -12,6 +12,7 @@ extern ALHeap aram_hp;
 // Global functions (all C++, so no extern C wrap).
 void Jac_SetAudioARAMSize(u32 size);
 void* ARAllocFull(u32* outSize);
+void* ARAlloc2(u32 param_1);
 void Jac_InitARAM(u32 loadAudiorom);
 
 ////////////////////////////////////////////////////

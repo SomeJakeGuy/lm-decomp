@@ -120,6 +120,10 @@ Sato/EnemyStrategyInit.cpp:
 	.text       start:0x800EEBF0 end:0x800F140C
 	.data       start:0x80365A28 end:0x80365D4C
 
+JSystem/JAudio/JAInterface/JAIBasic.cpp:
+	.text       start:0x8018E680 end:0x80190E68
+	.ctors      start:0x8020BDA0 end:0x8020BDA4
+
 jaudio/aictrl.c:
 	.text       start:0x8019BE40 end:0x8019C620
 	.rodata     start:0x802174C0 end:0x802174D8
@@ -129,6 +133,15 @@ jaudio/aictrl.c:
 
 jaudio/sample.c:
 	.text       start:0x8019C620 end:0x8019C8C0
+
+jaudio/dummyrom.c:
+	.text       start:0x8019C8C0 end:0x8019CA40
+	.sbss       start:0x804D9340 end:0x804D9360
+
+jaudio/audiothread.c:
+	.text       start:0x8019CA40 end:0x8019CEC0
+	.rodata     start:0x802174D8 end:0x802174E8
+	.sbss       start:0x804D9360 end:0x804D9380
 
 jaudio/dspbuf.c:
 	.text       start:0x8019D260 end:0x8019D5A0
