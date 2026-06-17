@@ -183,6 +183,16 @@ jaudio/driverinterface.c:
 	.sbss       start:0x804D93F8 end:0x804D9408
 	.sdata2     start:0x804DD320 end:0x804DD340
 
+jaudio/dspdriver.c:
+	.text       start:0x801A0E40 end:0x801A16C0
+	.bss        start:0x804513E0 end:0x80451820
+
+jaudio/dspinterface.c:
+	.text       start:0x801A16C0 end:0x801A1D80
+	.data       start:0x80390BC0 end:0x80391020
+	.bss        start:0x80451820 end:0x804578A0
+	.sdata      start:0x804D7920 end:0x804D7930
+
 JSystem/J2D/J2DGrafContext.cpp:
 	.text       start:0x801ADEE4 end:0x801AE564
 	.data       start:0x80391BD0 end:0x80391C08
