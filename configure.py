@@ -233,6 +233,7 @@ cflags_base = [
     f"-i build/{config.version}/include",
     f"-DBUILD_VERSION={version_num}",
     f"-DVERSION={version_num}",
+    f"-DDTK_CONFIG_NONMATCHING={config.non_matching:d}",
 ]
 
 # Debug flags
@@ -446,6 +447,9 @@ config.libs = [
         Object(NonMatching, "jaudio/audiothread.c"),
         Object(Matching, "jaudio/streamctrl.c"),
         Object(Matching, "jaudio/dspbuf.c"),
+        Object(Matching, "jaudio/cpubuf.c"),
+        Object(NonMatching, "jaudio/playercall.c"),
+        Object(Matching, "jaudio/dvdthread.c"),
         Object(Matching, "jaudio/dspboot.c"),
         Object(Matching, "jaudio/dspproc.c"),
         Object(Matching, "jaudio/ipldec.c"),
@@ -457,7 +461,10 @@ config.libs = [
         Object(Matching, "jaudio/bankread.c"),
         Object(Matching, "jaudio/waveread.c"),
         Object(NonMatching, "jaudio/connect.c"),
+        Object(Matching, "jaudio/bankdrv.c"),
+        Object(NonMatching, "jaudio/random.c"),
         Object(NonMatching, "jaudio/aramcall.c"),
+        Object(Matching, "jaudio/ja_calc.c"),
     ]),
 
     JSystem([
