@@ -136,6 +136,7 @@ jaudio/sample.c:
 
 jaudio/dummyrom.c:
 	.text       start:0x8019C8C0 end:0x8019CA40
+	.bss        start:0x804CFCFC end:0x804CFD10 align:4 common
 	.sbss       start:0x804D9340 end:0x804D9360
 
 jaudio/audiothread.c:
@@ -192,6 +193,31 @@ jaudio/dspinterface.c:
 	.data       start:0x80390BC0 end:0x80391020
 	.bss        start:0x80451820 end:0x804578A0
 	.sdata      start:0x804D7920 end:0x804D7930
+
+jaudio/fxinterface.c:
+	.text       start:0x801A1D80 end:0x801A1EC0
+	.data       start:0x80391220 end:0x80391238
+
+jaudio/bankread.c:
+	.text       start:0x801A1EC0 end:0x801A22C0
+	.bss        start:0x804578A0 end:0x80457CA0
+
+jaudio/waveread.c:
+	.text       start:0x801A22C0 end:0x801A2780
+	.bss        start:0x80457CA0 end:0x804584A0
+	.bss        start:0x804CFD10 end:0x804CFD50 align:4 common
+
+jaudio/connect.c:
+	.text       start:0x801A2780 end:0x801A2E80
+	.bss        start:0x804584A0 end:0x804588A0
+
+jaudio/aramcall.c:
+	.text       start:0x801A3840 end:0x801A3B40
+	.data       start:0x80391248 end:0x80391288
+	.bss        start:0x804CFD50 end:0x804CFD7C align:4 common
+
+jaudio/hvqm_play.c:
+	.bss        start:0x804CFD7C end:0x804CFF5C align:4 common
 
 JSystem/J2D/J2DGrafContext.cpp:
 	.text       start:0x801ADEE4 end:0x801AE564

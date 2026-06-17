@@ -304,6 +304,7 @@ cflags_jaudio = [
     "-lang c++",
     "-use_lmw_stmw on",
     "-func_align 32",
+    "-common on",
 ]
 
 cflags_game = [
@@ -445,13 +446,18 @@ config.libs = [
         Object(NonMatching, "jaudio/audiothread.c"),
         Object(Matching, "jaudio/streamctrl.c"),
         Object(Matching, "jaudio/dspbuf.c"),
-        Object(NonMatching, "jaudio/dspboot.c"),
+        Object(Matching, "jaudio/dspboot.c"),
         Object(Matching, "jaudio/dspproc.c"),
         Object(Matching, "jaudio/ipldec.c"),
         Object(Matching, "jaudio/dsp_cardunlock.c"),
         Object(Matching, "jaudio/driverinterface.c"),
         Object(NonMatching, "jaudio/dspdriver.c"),
         Object(Matching, "jaudio/dspinterface.c"),
+        Object(Matching, "jaudio/fxinterface.c"),
+        Object(Matching, "jaudio/bankread.c"),
+        Object(Matching, "jaudio/waveread.c"),
+        Object(NonMatching, "jaudio/connect.c"),
+        Object(NonMatching, "jaudio/aramcall.c"),
     ]),
 
     JSystem([
