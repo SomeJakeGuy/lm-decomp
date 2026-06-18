@@ -256,9 +256,6 @@ static void LoadADPCM(StreamCtrl_* ctrl, int r28)
 		ctrl->isLoadInProgress = TRUE;
 
 		if (DVDReadAsyncPrio2(&ctrl->fileinfo, (void*)buff->mLength, size, oldSize, __LoadFin, 1) == FALSE) {
-#if defined(VERSION_G98P01_PIKIDEMO) || defined(VERSION_DPIJ01_PIKIDEMO)
-			Console_printf("Error:: DVDREAD Async is missed\n");
-#endif
 		}
 		break;
 	}

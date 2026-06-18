@@ -11,7 +11,7 @@ BEGIN_SCOPE_EXTERN_C
 //! There's something iffy going on with the value 0xC0.
 //! It appears in seqsetup with flags regarding opening tracks,
 //! It appears to do with command id(s) for some reason
-//! It's everywhere, but why? Why, J(esus)System?
+//! It's everywhere, but why? Why, JSystem?
 
 typedef struct seqp_ seqp_;
 typedef struct TrackPort_ TrackPort_;
@@ -192,7 +192,6 @@ struct OuterParam_ {
 struct RegisterParam_ {
 	u8 _00[0x06 - 0x00]; // _00, 00 - 02
 	u16 value;           // _06, 03
-	u8 _08[0x0C - 0x08]; // _08, 04 - 05
 	u16 bankNumber;      // _0C, 06
 	u16 pitchScale;      // _0E, 07
 	u16 arguments[5];    // _10, 08 - 12, Exact length confirmed: `Cmd_PanPowSet`.
@@ -216,6 +215,8 @@ union URegisterParam_ {
  * @brief This struct is analogous to `JASTrack` of later JAudio.
  *
  * @note Size: 0x434 (Confirmed by `Jaf_HandleToSeq`).
+
+ *  @todo Luigi's Mansion's seems to be 4 bytes smaller? (Verify Jaf_HandleToSeq in this version)
  */
 struct seqp_ {
 	u8* seqData;                       // _000
@@ -240,12 +241,10 @@ struct seqp_ {
 	u16 activeSoundIds[8];             // _0BC
 	u8 noteGateTime;                   // _0CC
 	u8 lastVelocity;                   // _0CD
-	u8 _CE[0x0d0 - 0x0ce];             // _0CE
 	u32 noteDuration;                  // _0D0
 	u8 noteFlags;                      // _0D4
 	u8 lastNote;                       // _0D5
 	u8 isGateMode;                     // _0D6, boolean-like
-	u8 _D7[0x0d8 - 0x0d7];             // _0D7
 	jcs_ parentController;             // _0D8
 	TimedParam_ timedParam;            // _14C
 	URegisterParam_ regParam;          // _26C
