@@ -285,9 +285,7 @@ struct seqp_ {
 	u8 isRegistered;                   // _3E2
 	u8 needsTempoSync;                 // _3E3, boolean-like
 	u8 isAllocated;                    // _3E4
-	u8 _3E5[0x3e8 - 0x3e5];            // _3E5
-	Oscbuf_ oscillatorParams[2];       // _3E8
-	u8 _418[0x434 - 0x418];            // _400
+	u8 _3E5[0x1C];            // _3E5
 };
 
 extern s16 CUTOFF_TO_IIR_TABLE[128][4];

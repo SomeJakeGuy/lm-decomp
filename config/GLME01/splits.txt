@@ -281,6 +281,8 @@ jaudio/noteon.c:
 
 jaudio/seqsetup.c:
 	.text       start:0x801A91E0 end:0x801A9E20
+	.bss        start:0x8045A048 end:0x8049E4A0
+	.sdata2     start:0x804DD3F8 end:0x804DD408
 
 jaudio/centcalc.c:
 	.text       start:0x801A9E20 end:0x801A9F00
