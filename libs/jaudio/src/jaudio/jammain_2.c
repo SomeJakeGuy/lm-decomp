@@ -792,7 +792,7 @@ u32 __ExchangeRegisterValue(seqp_* track, u8 reg)
  */
 void Jam_WritePortApp(void)
 {
-	// UNUSED FUNCTION
+
 }
 
 /**
@@ -801,7 +801,6 @@ void Jam_WritePortApp(void)
  */
 void Jam_ReadPortApp(void)
 {
-	// UNUSED FUNCTION
 }
 
 /**
@@ -810,7 +809,6 @@ void Jam_ReadPortApp(void)
  */
 void Jam_CheckExportApp(void)
 {
-	// UNUSED FUNCTION
 }
 
 /**
@@ -819,7 +817,6 @@ void Jam_CheckExportApp(void)
  */
 void Jam_CheckImportApp(void)
 {
-	// UNUSED FUNCTION
 }
 
 /**
@@ -828,7 +825,6 @@ void Jam_CheckImportApp(void)
  */
 void Jam_WritePortIndirect(void)
 {
-	// UNUSED FUNCTION
 }
 
 /**
@@ -837,7 +833,6 @@ void Jam_WritePortIndirect(void)
  */
 void Jam_ReadPortIndirect(void)
 {
-	// UNUSED FUNCTION
 }
 
 /**

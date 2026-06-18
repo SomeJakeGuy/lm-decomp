@@ -19,7 +19,6 @@
 #define FREE_SEQP_QUEUE_SIZE (256)
 
 static seqp_ seq[SEQ_SIZE];
-static OuterParam_ ROOT_OUTER[ROOT_OUTER_SIZE];
 static seqp_* rootseq[ROOTSEQ_SIZE];
 static seqp_* FREE_SEQP_QUEUE[FREE_SEQP_QUEUE_SIZE];
 
@@ -46,7 +45,7 @@ void Jaq_Reset(void)
 	SEQ_REMAIN = FREE_SEQP_QUEUE_SIZE;
 
 	for (i = 0; i < ROOTSEQ_SIZE; ++i) {
-		rootseq[i] = NULL;
+		rootseq[i] = nullptr;
 	}
 
 	Jam_InitRegistTrack();
@@ -95,7 +94,7 @@ static seqp_* GetNewTrack()
 	seqp_* track;
 
 	if (SEQ_REMAIN == 0) {
-		return NULL;
+		return nullptr;
 	}
 
 	track = FREE_SEQP_QUEUE[GET_P];
@@ -136,7 +135,7 @@ int DeAllocRoot(seqp_* track)
 
 	for (i = 0; i < ROOTSEQ_SIZE; ++i) {
 		if (rootseq[i] == track) {
-			rootseq[i] = NULL;
+			rootseq[i] = nullptr;
 			return i;
 		}
 	}
@@ -256,13 +255,13 @@ static void Init_Track(seqp_* track, u32 dataAddress, seqp_* parent)
 	}
 
 	for (i = 0; i < 16; ++i) {
-		track->childOuterParams[i] = NULL;
+		track->childOuterParams[i] = nullptr;
 		track->children[i]         = 0;
 	}
 
 	for (i = 0; i < 8; ++i) {
 		track->activeNotes[i]    = -1;
-		track->channels[i]       = NULL;
+		track->channels[i]       = nullptr;
 		track->activeSoundIds[i] = 0;
 	}
 	track->noteFlags     = 0;
@@ -335,13 +334,13 @@ static void __StopSeq(seqp_* track)
  */
 s32 Jaq_SetSeqData(seqp_* param_1, u8* param_2, u32 param_3, u32 param_4)
 {
-	return Jaq_SetSeqData_Limit(param_1, param_2, param_3, param_4, 0);
+	return Jaq_SetSeqData_Limit(param_1, param_2, param_3, param_4);
 }
 
 /**
  * @TODO: Documentation
  */
-s32 Jaq_SetSeqData_Limit(seqp_* track, u8* param_2, u32 param_3, u32 param_4, u8 param_5)
+s32 Jaq_SetSeqData_Limit(seqp_* track, u8* param_2, u32 param_3, u32 param_4)
 {
 	s32 root;
 	BOOL level;
@@ -354,8 +353,6 @@ s32 Jaq_SetSeqData_Limit(seqp_* track, u8* param_2, u32 param_3, u32 param_4, u8
 		if (!track) {
 			return -1;
 		}
-	} else {
-		track->isAllocated = 0;
 	}
 
 	root = AllocNewRoot(track);
@@ -377,22 +374,20 @@ s32 Jaq_SetSeqData_Limit(seqp_* track, u8* param_2, u32 param_3, u32 param_4, u8
 			return -1;
 		}
 		FAT_StoreBlock(param_2, track->fileHandle, 0, param_3);
-		puVar2 = NULL;
+		puVar2 = nullptr;
 		break;
 	}
 	case 2:
 	{
 		track->fileHandle = (u8)param_2;
-		puVar2            = NULL;
+		puVar2            = nullptr;
 		break;
 	}
 	}
 	track->trackId = root;
 	track->flags   = 3;
-	Init_Track(track, (u32)puVar2, NULL);
-	Jam_InitExtBuffer(&ROOT_OUTER[root]);
-	Jam_AssignExtBuffer(track, &ROOT_OUTER[root]);
-	Init_1shot(&track->parentController, param_5);
+	Init_Track(track, (u32)puVar2, nullptr);
+	Init_1shot(&track->parentController, 24);
 	track->tempoAccumulator = 0.0f;
 	track->tempoFactor      = 1.0f;
 	Jam_UpdateTrackAll(track);
@@ -538,13 +533,13 @@ void __AllNoteOff(seqp_* track)
 		for (i = 0; i < 8; ++i) {
 			NoteOFF_R(track, i, 10);
 			track->activeNotes[i] = -1;
-			track->channels[i]    = NULL;
+			track->channels[i]    = nullptr;
 		}
 	} else {
 		for (i = 0; i < 8; ++i) {
 			NoteOFF(track, i);
 			track->activeNotes[i] = -1;
-			track->channels[i]    = NULL;
+			track->channels[i]    = nullptr;
 		}
 	}
 }
@@ -570,20 +565,20 @@ u32 Jaq_CloseTrack(seqp_* track)
 	for (i = 0; i < 16; ++i) {
 		if (track->children[i]) {
 			Jaq_CloseTrack(track->children[i]);
-			track->children[i] = NULL;
+			track->children[i] = nullptr;
 		}
 	}
 
 	if (track->outerParams) {
 		// This smells like refcounting.
 		track->outerParams->refCount -= 1;
-		track->outerParams = NULL;
+		track->outerParams = nullptr;
 	}
 
 	for (i = 0; i < 16; ++i) {
 		if (track->childOuterParams[i]) {
 			track->childOuterParams[i]->isAssigned = FALSE;
-			track->childOuterParams[i]             = NULL;
+			track->childOuterParams[i]             = nullptr;
 		}
 	}
 	track->isMuted       = 0;

@@ -277,6 +277,15 @@ jaudio/jammain_2.c:
 
 jaudio/noteon.c:
 	.text       start:0x801A8CA0 end:0x801A91E0
+	.sdata2     start:0x804DD3F0 end:0x804DD3F8
+
+jaudio/seqsetup.c:
+	.text       start:0x801A91E0 end:0x801A9E20
+
+jaudio/centcalc.c:
+	.text       start:0x801A9E20 end:0x801A9F00
+	.data       start:0x80391948 end:0x80391A48
+	.sdata2     start:0x804DD408 end:0x804DD428
 
 jaudio/jamosc.c:
 	.text       start:0x801A9F00 end:0x801AA380
@@ -286,6 +295,15 @@ jaudio/oneshot.c:
 	.text       start:0x801AA380 end:0x801ABA80
 	.data       start:0x80391B30 end:0x80391B70
 	.sdata2     start:0x804DD430 end:0x804DD460
+
+jaudio/syncstream.c:
+	.text       start:0x801ABA80 end:0x801ACDE0
+	.bss        start:0x8049E4A0 end:0x804C87B8
+
+jaudio/interleave.c:
+	.text       start:0x801ACDE0 end:0x801ACFE0
+	.bss        start:0x804C87B8 end:0x804C87D8
+	.sdata      start:0x804D7948 end:0x804D7950
 
 jaudio/hvqm_play.c:
 	.text       start:0x801ACFE0 end:0x801ADEE4
