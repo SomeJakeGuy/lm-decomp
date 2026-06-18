@@ -192,6 +192,7 @@ struct OuterParam_ {
 struct RegisterParam_ {
 	u8 _00[0x06 - 0x00]; // _00, 00 - 02
 	u16 value;           // _06, 03
+	u8 _08[0x0C - 0x08]; // _08, 04 - 05
 	u16 bankNumber;      // _0C, 06
 	u16 pitchScale;      // _0E, 07
 	u16 arguments[5];    // _10, 08 - 12, Exact length confirmed: `Cmd_PanPowSet`.
@@ -214,10 +215,9 @@ union URegisterParam_ {
 /**
  * @brief This struct is analogous to `JASTrack` of later JAudio.
  *
- * @note Size: 0x434 (Confirmed by `Jaf_HandleToSeq`).
+ * @note Size: 0x430
 
- *  @todo Luigi's Mansion's seems to be 4 bytes smaller? (Verify Jaf_HandleToSeq in this version)
- */
+*/
 struct seqp_ {
 	u8* seqData;                       // _000
 	u32 programCounter;                // _004

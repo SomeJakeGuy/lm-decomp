@@ -273,6 +273,7 @@ jaudio/jammain_2.c:
 	.data       start:0x80391288 end:0x80391548
 	.bss        start:0x80459F28 end:0x8045A048
 	.sbss       start:0x804D9448 end:0x804D9458
+	.sdata2     start:0x804DD3A8 end:0x804DD3F0
 
 jaudio/noteon.c:
 	.text       start:0x801A8CA0 end:0x801A91E0

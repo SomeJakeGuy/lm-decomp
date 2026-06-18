@@ -268,7 +268,6 @@ static jc_* __Oneshot_GetLogicalChannel(jcs_* jcs, CtrlWave_* wave)
 			return 0;
 		}
 
-		if (jcs->voiceStealingMode == 1) {
 			chan2 = List_GetChannel(&jcs->releasingChannels);
 			if (chan2 == nullptr) {
 				chan2 = List_GetChannel(&jcs->activeChannels);
@@ -284,7 +283,6 @@ static jc_* __Oneshot_GetLogicalChannel(jcs_* jcs, CtrlWave_* wave)
 					ForceStopDSPchannel(chan2->dspChannel);
 				}
 			}
-		}
 	}
 	Channel_Init(chan);
 	if (wave) {
