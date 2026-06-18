@@ -441,6 +441,7 @@ config.libs = [
 
 
     JAudio([
+        Object(Matching, "jaudio/dummyprobe.c"),
         Object(Matching, "jaudio/aictrl.c"),
         Object(Matching, "jaudio/sample.c"),
         Object(NonMatching, "jaudio/dummyrom.c"),
@@ -483,6 +484,7 @@ config.libs = [
     JSystem([
 
         Object(NonMatching, "JSystem/JAudio/JAInterface/JAIBasic.cpp"),
+        Object(NonMatching, "JSystem/JAudio/JAInterface/JAIAnimation.cpp"),
 
         # 2D
         Object(Matching, "JSystem/J2D/J2DGrafContext.cpp"),

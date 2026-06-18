@@ -123,6 +123,15 @@ Sato/EnemyStrategyInit.cpp:
 JSystem/JAudio/JAInterface/JAIBasic.cpp:
 	.text       start:0x8018E680 end:0x80190E68
 	.ctors      start:0x8020BDA0 end:0x8020BDA4
+	.bss        start:0x803F0248 end:0x803F0260
+	.sbss       start:0x804D9270 end:0x804D9280
+	.sdata2     start:0x804DD1A0 end:0x804DD1B8
+
+JSystem/JAudio/JAInterface/JAIAnimation.cpp:
+	.text       start:0x8019B424 end:0x8019BE00
+
+jaudio/dummyprobe.c:
+	.text       start:0x8019BE00 end:0x8019BE40
 
 jaudio/aictrl.c:
 	.text       start:0x8019BE40 end:0x8019C620
