@@ -472,11 +472,11 @@ config.libs = [
         Object(NonMatching, "jaudio/jammain_2.c"),
         Object(NonMatching, "jaudio/noteon.c"),
         Object(NonMatching, "jaudio/seqsetup.c"),
-        Object(NonMatching, "jaudio/centcalc.c"),
+        Object(Matching, "jaudio/centcalc.c"),
         Object(NonMatching, "jaudio/jamosc.c"),
         Object(NonMatching, "jaudio/oneshot.c"),
         Object(NonMatching, "jaudio/syncstream.c"),
-        Object(NonMatching, "jaudio/interleave.c"),
+        Object(Matching, "jaudio/interleave.c"),
         Object(NonMatching, "jaudio/hvqm_play.c"),
     ]),
 

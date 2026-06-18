@@ -256,7 +256,7 @@ static jc_* __Oneshot_GetLogicalChannel(jcs_* jcs, CtrlWave_* wave)
 	jc_* chan = List_GetChannel(&jcs->freeChannels);
 	jc_* chan2;
 	jc_** REF_chan2 = &chan2;
-	STACK_PAD_VAR(6);
+	STACK_PAD_VAR(5);
 	if (chan == nullptr) {
 
 		if (FixAllocChannel(jcs, 1) == FALSE) {
@@ -724,7 +724,10 @@ static BOOL Jesus1Shot_Update(jc_* jc, JCSTATUS jstatus)
 				if ((flag & 0xff) == 0) {
 					test2 = 1;
 				}
-				jc->dspChannel->prio = test2;
+
+				if (jc->dspChannel->prio < (u8)test2) {
+					jc->dspChannel->prio = test2;
+				}
 			}
 		}
 		jc->noteId = -1;

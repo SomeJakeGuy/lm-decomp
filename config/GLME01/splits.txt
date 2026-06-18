@@ -292,10 +292,12 @@ jaudio/centcalc.c:
 jaudio/jamosc.c:
 	.text       start:0x801A9F00 end:0x801AA380
 	.data       start:0x80391A48 end:0x80391B30
+	.sdata2     start:0x804DD428 end:0x804DD430
 
 jaudio/oneshot.c:
 	.text       start:0x801AA380 end:0x801ABA80
 	.data       start:0x80391B30 end:0x80391B70
+	.sdata      start:0x804D7940 end:0x804D7948
 	.sdata2     start:0x804DD430 end:0x804DD460
 
 jaudio/syncstream.c:

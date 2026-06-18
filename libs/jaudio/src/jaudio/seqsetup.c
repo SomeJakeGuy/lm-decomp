@@ -135,6 +135,8 @@ seqp_* Jaq_HandleToSeq(u32 handle)
 static void Init_Track(seqp_* track, u32 dataAddress, seqp_* parent)
 {
 	int i;
+	//Probably some debug stuff
+	STACK_PAD_VAR(2);
 
 	if (!parent) {
 		track->seqData          = (u8*)dataAddress;
@@ -321,14 +323,14 @@ s32 Jaq_SetSeqData(seqp_* param_1, u8* param_2, u32 param_3, u32 param_4)
  */
 s32 Jaq_SetSeqData_Limit(seqp_* track, u8* param_2, u32 param_3, u32 param_4)
 {
+	u8* puVar2;
 	s32 root;
 	BOOL level;
-	u8* puVar2;
 
 	if (!track) {
 		level = OSDisableInterrupts();
 		track = GetNewTrack();
-		OSRestoreInterrupts(level);
+		BOOL result = OSRestoreInterrupts(level);
 		if (!track) {
 			return -1;
 		}
