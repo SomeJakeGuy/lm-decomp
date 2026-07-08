@@ -758,7 +758,7 @@ config.libs = [
         Object(NonMatching, "Koga/CharacterColManager.cpp"),
 
         # Unsorted
-        Object(Matching, "Unsorted/staticData.cpp"),  # TODO Verify this is a seperate file
+        Object(NonMatching, "Unsorted/bootScene.cpp"),
         Object(NonMatching, "Unsorted/LMDvdFile.cpp"),
         Object(NonMatching, "Unsorted/InGameFlagsUtil.cpp"),
         Object(NonMatching, "Unsorted/80006DF0.cpp"),

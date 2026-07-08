@@ -376,7 +376,7 @@ static void fn_80006C84(void* param_1, LMDvdFileInfo* pInfo) {
         return;
     }
 
-    size = header->fn_800071C0();
+    size = header->size();
 
     if (pInfo->_68 == 0) {
         fn_800061B8(pInfo->_80);
