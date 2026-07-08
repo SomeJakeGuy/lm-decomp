@@ -130,7 +130,7 @@ namespace BootScene {
         lbl_804D811C = 0.0f;
         lbl_804CFFB0.a = 32; // why?????
 
-        sStaticDataArchive = new JKRMemArchive(staticdata_usa_arc, 0, MBF_0);
+        sStaticDataArchive = new JKRMemArchive(STATIC_DATA, 0, MBF_0);
 
         LMDvdFileInfoBlock* nintendoSzpBlock = (LMDvdFileInfoBlock*)sStaticDataArchive->getResource("/nintendo.szp");
         u32 size = nintendoSzpBlock->size();
