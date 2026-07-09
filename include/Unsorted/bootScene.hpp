@@ -25,11 +25,11 @@ namespace BootScene {
     void destroy();
     u32 update();
     void draw();
+
+    extern Scene sScene;
 }
 
 u8* getStaticDataArr();
-
-extern Scene sBootScene;
 
 
 #endif

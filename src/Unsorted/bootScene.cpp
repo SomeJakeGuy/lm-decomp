@@ -24,17 +24,7 @@ static f32 dummy_float_data[] = {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.95f
 
 s32 lbl_802FB380[3872] = { };
 
-Scene sBootScene = {
-    "BOOT",
-    1,
-    BootScene::init,
-    BootScene::update,
-    BootScene::draw,
-    BootScene::destroy
-};
 
-// needs to be here for position
-const char* ninLogoFileName = "/ninlogo.pcm";
 
 // externs
 extern void fn_80066FAC(JKRMemArchive*);
@@ -55,6 +45,19 @@ extern s32 lbl_804D809C;
 GXColor lbl_804CFFB0 = { 255, 255, 255, 32 };
 
 namespace BootScene {
+
+    Scene sScene = {
+        "BOOT",
+        1,
+        init,
+        update,
+        draw,
+        destroy
+    };
+
+    // needs to be here for position
+    const char* ninLogoFileName = "/ninlogo.pcm";
+
     s32 lbl_804D8110;
     BootSceneState sCurBootSceneState;
     u16 lbl_804D8118;
