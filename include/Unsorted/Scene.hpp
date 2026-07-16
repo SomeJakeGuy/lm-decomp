@@ -10,7 +10,7 @@ typedef u32 (*SceneUpdateFunc)();
 typedef void (*SceneDrawFunc)();
 typedef void (*SceneDestroyFunc)();
 
-enum Scene_ID {
+enum SceneID {
     SCENE_BOOT,
     SCENE_TITLE,
     SCENE_MAIN_GAME,
@@ -32,7 +32,7 @@ struct Scene {
 };
 
 extern Scene* sCurScene;
-extern u32 sCurSceneIdx;
+extern SceneID sCurSceneId;
 extern Scene* sSceneTable[SCENE_MAX];
 
 #endif
