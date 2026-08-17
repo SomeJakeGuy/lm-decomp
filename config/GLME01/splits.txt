@@ -61,6 +61,9 @@ Unsorted/TitleScreenPane.cpp:
 	.text       start:0x8003A430 end:0x8003AF2C
 	.ctors      start:0x8020BAEC end:0x8020BAF0
 
+Unsorted/s3dmodel.cpp:
+	.text       start:0x80058368 end:0x80058850
+
 Unsorted/800627D8.cpp:
 	.text       start:0x800627D0 end:0x800627E8
 	.sbss       start:0x804D872C end:0x804D8730
@@ -70,6 +73,9 @@ Unsorted/8006385C.cpp:
 
 Unsorted/InGameFlagsUtil.cpp:
 	.text       start:0x80065FA4 end:0x80066D74
+
+Unsorted/MoveObj.cpp:
+	.text       start:0x800677D0 end:0x800685DC
 
 Unsorted/RailInfoUtil.cpp:
 	.text       start:0x80092568 end:0x8009359C
