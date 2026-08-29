@@ -140,7 +140,7 @@ Koga/EnAttackBase.cpp:
 	.sdata      start:0x804D3AF8 end:0x804D3B20
 
 Koga/EnTypesManager.cpp:
-	.text       start:0x800DA498 end:0x800DB084
+	.text       start:0x800DA498 end:0x800DB168
 
 Koga/EnManager.cpp:
 	.text       start:0x800E4514 end:0x800E9DC8

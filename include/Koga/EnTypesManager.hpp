@@ -11,7 +11,7 @@
 /* 
 TODO splits.txt creates a cyclic dependency if I include the .data and .sdata sections with EnAttackBase.
 May need to change / revise one of these but to not lose the section data:
-	.data       start:0x80360D78 end:0x80361070
+	.data       start:0x80360D78 end:0x80361080
 	.sdata      start:0x804D3938 end:0x804D3970
 */
 
