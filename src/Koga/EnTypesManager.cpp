@@ -47,9 +47,8 @@ namespace Koga {
     }
 
     void EnTypesManager::deleteManager() {
-        if (sManager != nullptr) {
-            sManager = nullptr;
-        }
+        delete sManager;
+        sManager = nullptr;
     }
 
     s32 EnTypesManager::getEnemyLife(int enemyIdx) {
