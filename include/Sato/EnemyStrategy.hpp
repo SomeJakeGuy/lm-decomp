@@ -13,15 +13,15 @@ typedef bool (EnemyStrategy::*EnemyStrategyStateFn)();
 // In their doBehavior and doBehaviorInit functions, they search for an entry
 // with a stateIndex that matches their mCurrentState.
 struct EnemyStrategyState {
-    /* 0x00 */ u16 stateIndex;
+    /* 0x00 */ u16 mStateIndex;
     /* 0x02 */ u16 padding;
-    /* 0x04 */ EnemyStrategyStateFn behaviorInitFunc; // Called in overrides of EnemyStrategy::doBehaviorInit
-    /* 0x10 */ EnemyStrategyStateFn behaviorFunc; // Called in overrides of EnemyStrategy::doBehavior
+    /* 0x04 */ EnemyStrategyStateFn mBehaviorInitFunc; // Called in overrides of EnemyStrategy::doBehaviorInit
+    /* 0x10 */ EnemyStrategyStateFn mBehaviorFunc; // Called in overrides of EnemyStrategy::doBehavior
 
     inline EnemyStrategyState(u16 _stateIndex,
         EnemyStrategyStateFn _behaviorInitFunc,
         EnemyStrategyStateFn _behaviorFunc
-    ) : stateIndex(_stateIndex), padding(0), behaviorInitFunc(_behaviorInitFunc), behaviorFunc(_behaviorFunc) { }
+    ) : mStateIndex(_stateIndex), padding(0), mBehaviorInitFunc(_behaviorInitFunc), mBehaviorFunc(_behaviorFunc) { }
 };
 
 class EnemyStrategy : public JORReflexible {
@@ -66,7 +66,7 @@ public:
     virtual void update();
 private:
     /* 0x14 */ EnemyStrategy* mTsuriStrategy;
-    /* 0x18 */ u16 unk18;
+    /* 0x18 */ u16 _18;
 };
 
 #endif
