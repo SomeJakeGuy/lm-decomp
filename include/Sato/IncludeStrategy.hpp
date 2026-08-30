@@ -18,9 +18,7 @@ class IncludeStrategy
     
 public:
     IncludeStrategy();
-    
-    virtual ~IncludeStrategy();
-    virtual void vt_8() = 0;
+    /* 0x04 */ virtual ~IncludeStrategy();
 
     void setStrategy(int);
     void destroyStrategy();
