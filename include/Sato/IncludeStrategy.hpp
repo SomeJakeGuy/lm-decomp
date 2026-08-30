@@ -20,7 +20,7 @@ public:
     IncludeStrategy();
     
     virtual ~IncludeStrategy();
-    virtual void unknownVirtualFunc() = 0;
+    virtual void vt_8() = 0;
 
     void setStrategy(int);
     void destroyStrategy();
