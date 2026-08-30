@@ -3,6 +3,8 @@
 #include "Koga/ParamInst.hpp"
 #include "types.h"
 
+
+// https://decomp.me/scratch/6Feh6
 EnemyParam::EnemyParam() : 
     mLife(&mParams, 0, "mLife", mLife.calcKeyCode("mLife")),
     mHitDamange(&mParams, 0, "mHitDamange", mHitDamange.calcKeyCode("mHitDamange")),
@@ -35,15 +37,17 @@ EnemyParam::EnemyParam() :
     }
 
 namespace Koga {
+    EnTypesManager::EnTypesManager() {
+        mEnParams = nullptr;
+        mEnParams = new EnemyParam[0x17d];
+    }
+
     EnTypesManager::~EnTypesManager() {
         delete [] mEnParams;
     }
 
     void EnTypesManager::newManager() {
-        EnTypesManager* temp = new EnTypesManager();
-        temp->mEnParams = new EnemyParam[0x17d];
-
-        sManager = temp;
+        sManager = new EnTypesManager();
     }
 
     void EnTypesManager::deleteManager() {
@@ -133,10 +137,12 @@ namespace Koga {
         return getManager()->mEnParams[enemyIdx].mDisappearFrame.get();
     }
 
+    // https://decomp.me/scratch/rwCN5
     JUtility::TColor EnTypesManager::getEnemyBrightColor(int enemyIdx) {
         return getManager()->mEnParams[enemyIdx].mBrightColor.get();
     }
     
+    // https://decomp.me/scratch/b6HLd
     JUtility::TColor EnTypesManager::getEnemyAmbColor(int enemyIdx) {
         return getManager()->mEnParams[enemyIdx].mAmbColor.get();
     }
@@ -153,7 +159,7 @@ namespace Koga {
         return getManager()->mEnParams[enemyIdx].mElement.get();
     }
     
-    u16 EnTypesManager::getEnemyCheckBox(int enemyIdx) {
-        return getManager()->mEnParams[enemyIdx].mCheckBox.get();
+    bool EnTypesManager::getEnemyCheckBox(int enemyIdx) {
+        return getManager()->mEnParams[enemyIdx].mCheckBox.get() & 1;
     }
 }

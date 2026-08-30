@@ -1,6 +1,7 @@
 #ifndef EN_TYPES_MANAGER_H_
 #define EN_TYPES_MANAGER_H_
 
+#include <dolphin/types.h>
 #include <types.h>
 #include <JSystem/JORReflexible.hpp>
 
@@ -56,7 +57,7 @@ class EnemyParam {
 namespace Koga {
     class EnTypesManager : public JORReflexible {
     public:
-        EnTypesManager();
+        inline EnTypesManager();
         /* 0x08 */ virtual ~EnTypesManager();
 
         static void newManager();
@@ -91,9 +92,9 @@ namespace Koga {
         static s32 getEnemyAttackPattern1(int);
         static s32 getEnemyTsuriType(int);
         static s32 getEnemyElement(int);
-        static u16 getEnemyCheckBox(int);
+        static bool getEnemyCheckBox(int);
     public:
-        /* 0x04 */  EnemyParam* mEnParams;
+        /* 0x04 */ EnemyParam* mEnParams;
 
         static EnTypesManager* sManager;
     };
