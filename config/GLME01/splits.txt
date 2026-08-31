@@ -128,10 +128,20 @@ Koga/CharacterColManager.cpp:
 	.data       start:0x8035A120 end:0x8035A198
 	.sdata      start:0x804D2D48 end:0x804D2D58
 
+Sato/IncludeStrategy.cpp:
+	.text       start:0x800BEBF4 end:0x800BED48
+	.data       start:0x8035A380 end:0x8035A3C8
+	.sdata      start:0x804D2DD0 end:0x804D2DD8
+
 Sato/EnemyStrategy.cpp:
 	.text       start:0x800C2224 end:0x800C24A4
 	.data       start:0x8035A4E0 end:0x8035A598
 	.sdata      start:0x804D2E60 end:0x804D2E78
+
+Koga/EnemyGenManager.cpp:
+	.text       start:0x800C24A4 end:0x800C32B8
+	.data       start:0x8035A5B0 end:0x8035A730
+	.sdata      start:0x804D2E7C end:0x804D2F58
 
 Koga/EnAttackBase.cpp:
 	.text       start:0x800CF63C end:0x800CF6A8

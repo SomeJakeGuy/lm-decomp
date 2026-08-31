@@ -740,6 +740,7 @@ config.libs = [
         # Sato
         Object(Matching, "Sato/EnemyStrategy.cpp"),
         Object(NonMatching, "Sato/EnemyStrategyInit.cpp"),
+        Object(NonMatching, "Sato/IncludeStrategy.cpp"),
 
         # Koga
         Object(Matching, "Koga/GameModeUtil.cpp"),
@@ -757,6 +758,8 @@ config.libs = [
         Object(NonMatching, "Koga/SimpleModeler.cpp"),
         Object(NonMatching, "Koga/CharacterColManager.cpp"),
         Object(NonMatching, "Koga/EnManager.cpp"),
+        Object(NonMatching, "Koga/EnTypesManager.cpp"),
+        Object(NonMatching, "Koga/EnemyGenManager.cpp"),
 
         # Unsorted
         Object(NonMatching, "Unsorted/bootScene.cpp"),
