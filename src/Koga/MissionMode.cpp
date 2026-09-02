@@ -104,7 +104,7 @@ namespace Koga {
         mJmpMsgSender->addReceiver(mEnMgr);
     }
 
-    void MissionMode::vt_10() {
+    void MissionMode::loadEnemyInfo() {
         loadCollisionInfo("/col.mp", "/jmp/PolygonInfo");
         EnTypesManager::getManager()->loadCTPParams();
         mJmpMsgSender->addReceiver(mEnGenMgr);
