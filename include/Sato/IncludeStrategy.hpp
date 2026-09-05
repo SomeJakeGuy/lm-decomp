@@ -24,6 +24,7 @@ public:
     void destroyStrategy();
 
     void* getBuffer() { return mStrategyMemory; }
+    EnemyStrategy* getStrategy() const { return mpStrategy; }
 };
 
 

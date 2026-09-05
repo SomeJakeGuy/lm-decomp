@@ -4,16 +4,23 @@
 #include <types.h>
 #include <JSystem/JORReflexible.hpp>
 
+#include "Koga/Array.hpp"
 #include "Koga/Message.hpp"
 #include "Koga/ToolData.hpp"
 #include "Sato/IncludeStrategy.hpp"
-#include "dolphin/types.h"
 
+namespace Koga {
+    class EnManager;
+}
 
-class unkEnemyGen1 {
+namespace JGeometry {
+    template<> class TVec3<f32>;
+}
+
+class unkEnemyGen1 : public Koga::Array<void*, 0xF> {
 public:
-    unkEnemyGen1(); // fn_800C31F0
-    ~unkEnemyGen1(); // fn_800C31FC
+    unkEnemyGen1() {}
+    ~unkEnemyGen1() {}
 };
 
 class EnemyGenerator : public JORReflexible, public IncludeStrategy {
@@ -23,21 +30,18 @@ public:
 
     void fn_800C2500();
     void fn_800C2560();
-    void fn_800C25F0(); // Need to validate arg / return type.
+    void fn_800C25F0(int, int); // Need to validate arg / return type.
     void fn_800C2784(); // Need to validate arg / return type.
     Koga::ToolData* fn_800C2798(); // Need to validate arg / return type.
     u32 fn_800C2830(char*);
 
-    /* 0x808 */ Koga::ToolData* _808;
-    /* 0x80C */ u32 _80C;
-    /* 0x810 */ u32 _810;
-    /* 0x814 */ u32 _814;
-    /* 0x818 */ Koga::ToolData mToolData;
-    /* 0x820 */ unkEnemyGen1 _820; //Maybe 0x3C large?
-    /* 0x824 */ u32 _824[0xE];
-    /* 0x85C */ u32 _85C;
+    /* 0x808 */ ToolDataRef _808; // Maybe some generator path? 
+    /* 0x810 */ Koga::EnManager* _810;
+    /* 0x814 */ s32 _814; // Generator type? See vt_C
+    /* 0x818 */ Koga::ToolData _818;
+    /* 0x820 */ unkEnemyGen1 _820;
     /* 0x860 */ u32 _860;
-    /* 0x864 */ u32 _864[0x3];
+    /* 0x864 */ JGeometry::TVec3f mPos;
     /* 0x870 */ u16 _870;
 };
 
@@ -46,7 +50,7 @@ namespace Koga {
     public:
         EnemyGenManager();
         /* 0x08 */ virtual ~EnemyGenManager();
-        /* 0x0C */ virtual BOOL vt_C(ToolDataRef*); // fn_800C2A30
+        /* 0x0C */ virtual BOOL vt_0C(ToolDataRef*);
         /* 0x10 */ virtual BOOL vt_10(ToolDataRef*);
         /* 0x14 */ virtual BOOL vt_14(ToolDataRef*, char*);
 
