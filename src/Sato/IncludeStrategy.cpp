@@ -12,9 +12,10 @@ IncludeStrategy::~IncludeStrategy() {
 }
 
 void IncludeStrategy::setStrategy(int entityIdx) {
+    void* buffer = mStrategyMemory;
     destroyStrategy();
     EnemyStrategyInitFn* initFunc = *EnemyStrategy::getInitFunction(entityIdx);
-    mpStrategy = reinterpret_cast<EnemyStrategy*>(initFunc(mStrategyMemory, sizeof(mStrategyMemory)));
+    mpStrategy = reinterpret_cast<EnemyStrategy*>(initFunc(buffer, sizeof(mStrategyMemory)));
 }
 
 void IncludeStrategy::destroyStrategy() {
