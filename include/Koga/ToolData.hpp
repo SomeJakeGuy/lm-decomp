@@ -71,11 +71,11 @@ namespace Koga {
 
         BOOL attach(const JMapData*);
         void reset();
-        BOOL getValue(int, const char*, u32*) const;
-        BOOL getValue(int, const char*, s32*) const;
-        BOOL getValue(int, const char*, u8*) const;
-        BOOL getValue(int, const char*, f32*) const;
-        BOOL getValue(int, const char*, const char**) const;
+        bool getValue(int, const char*, u32*) const;
+        bool getValue(int, const char*, s32*) const;
+        bool getValue(int, const char*, u8*) const;
+        bool getValue(int, const char*, f32*) const;
+        bool getValue(int, const char*, const char**) const;
         s32 searchItemInfo(const char*) const;
         s32 findEntryByValue(int, const u32, int);
         s32 findEntryByValue(int, const char*, int);

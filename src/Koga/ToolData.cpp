@@ -21,7 +21,7 @@ namespace Koga {
         mData = nullptr;
     }
 
-    BOOL ToolData::getValue(int entryIndex, const char* key, u32* valueOut) const {
+    bool ToolData::getValue(int entryIndex, const char* key, u32* valueOut) const {
         s32 itemIndex = searchItemInfo(key);
         if (itemIndex < 0) {
             return FALSE;
@@ -31,7 +31,7 @@ namespace Koga {
         return TRUE;
     }
 
-    BOOL ToolData::getValue(int entryIndex, const char* key, s32* valueOut) const {
+    bool ToolData::getValue(int entryIndex, const char* key, s32* valueOut) const {
         s32 itemIndex = searchItemInfo(key);
         if (itemIndex < 0) {
             return FALSE;
@@ -41,7 +41,7 @@ namespace Koga {
         return TRUE;
     }
 
-    BOOL ToolData::getValue(int entryIndex, const char* key, u8* valueOut) const {
+    bool ToolData::getValue(int entryIndex, const char* key, u8* valueOut) const {
         s32 itemIndex = searchItemInfo(key);
         if (itemIndex < 0) {
             return FALSE;
@@ -51,7 +51,7 @@ namespace Koga {
         return TRUE;
     }
 
-    BOOL ToolData::getValue(int entryIndex, const char* key, const char** valueOut) const {
+    bool ToolData::getValue(int entryIndex, const char* key, const char** valueOut) const {
         s32 itemIndex = searchItemInfo(key);
         if (itemIndex < 0) {
             return FALSE;
@@ -61,7 +61,7 @@ namespace Koga {
         return TRUE;
     }
 
-    BOOL ToolData::getValue(int entryIndex, const char* key, f32* valueOut) const {
+    bool ToolData::getValue(int entryIndex, const char* key, f32* valueOut) const {
         s32 itemIndex = searchItemInfo(key);
         if (itemIndex < 0) {
             return FALSE;
