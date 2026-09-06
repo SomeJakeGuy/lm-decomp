@@ -133,6 +133,15 @@ Sato/IncludeStrategy.cpp:
 	.data       start:0x8035A380 end:0x8035A3C8
 	.sdata      start:0x804D2DD0 end:0x804D2DD8
 
+Sato/EnThought.cpp:
+	.text       start:0x800BEF6C end:0x800C1E00
+
+Sato/EnZako.cpp:
+	.text       start:0x800C1E00 end:0x800C2180
+
+Sato/EnObjThought.cpp:
+	.text       start:0x800C2180 end:0x800C2224
+
 Sato/EnemyStrategy.cpp:
 	.text       start:0x800C2224 end:0x800C24A4
 	.data       start:0x8035A4E0 end:0x8035A598
