@@ -21,6 +21,9 @@ class unkEnemyGen1 : public Koga::Array<void*, 0xF> {
 public:
     unkEnemyGen1() {}
     ~unkEnemyGen1() {}
+
+    void fn_800C323C(); //probably add member?
+    unkEnemyGen1 fn_800C3258(void*); //probably delete member;
 };
 
 class EnemyGenerator : public JORReflexible, public IncludeStrategy {
@@ -30,17 +33,18 @@ public:
 
     void fn_800C2500();
     void fn_800C2560();
-    void fn_800C25F0(int, int); // Need to validate arg / return type.
+    void* fn_800C25F0(s32, s32); // Need to validate arg / return type.
     void fn_800C2784(); // Need to validate arg / return type.
     Koga::ToolData* fn_800C2798(); // Need to validate arg / return type.
-    u32 fn_800C2830(char*);
+    u32 fn_800C2830(const char*);
+    void fn_800C287C(void*); // Need to validate arg / return type.
 
     /* 0x808 */ ToolDataRef _808; // Maybe some generator path? 
     /* 0x810 */ Koga::EnManager* _810;
     /* 0x814 */ s32 _814; // Generator type? See vt_C
     /* 0x818 */ Koga::ToolData _818;
     /* 0x820 */ unkEnemyGen1 _820;
-    /* 0x860 */ u32 _860;
+    /* 0x860 */ s32 _860;
     /* 0x864 */ JGeometry::TVec3f mPos;
     /* 0x870 */ u16 _870;
 };
@@ -55,6 +59,9 @@ namespace Koga {
         /* 0x14 */ virtual BOOL vt_14(ToolDataRef*, char*);
 
         void fn_800C2F44();
+        void fn_800C2FE8(void*); // Need to validate arg / return type.
+        void* fn_800C31DC(); // Something with IncludeStrategy?
+        void fn_800C31E4(void*, void*); // Maybe something with ToolDataRef copy?
 
         inline void setUnk8(bool val) { _8 = val; }
     public:
