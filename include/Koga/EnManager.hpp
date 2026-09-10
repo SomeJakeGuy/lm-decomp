@@ -85,7 +85,7 @@ public:
     unkEnManager2* remove(unkEnManager2*);
 };
 
-// Fabricated name. Probably just Character.hpp/cpp?
+// Based on EnemyGenerator::fn_800C25F0 this is most likely EnThought and would require shifting around.
 // Not sure if this is a true class, but just made sense based on the data being moved around/accessed
 class unkEnCharacter {
 public:
