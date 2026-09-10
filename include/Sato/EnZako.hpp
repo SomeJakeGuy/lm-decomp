@@ -1,7 +1,7 @@
 #ifndef EN_ZAKO_HPP
 #define EN_ZAKO_HPP
 
-#include "EnThought.hpp"
+#include "Sato/EnThought.hpp"
 
 class EnZako : public EnThought {
     EnZako();
