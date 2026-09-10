@@ -70,11 +70,12 @@ void* EnemyGenerator::fn_800C25F0(s32 param_1, s32 param_2) {
 Koga::ToolData* EnemyGenerator::fn_800C2798() {
     if (!_818.getJMapData()) {
         Koga::ToolData* tData = _808.getToolData();
-        const char* pathName = nullptr;
+        s32 idx = _808.getEntryIndex();
+        const char* pathName;
 
-        if (_808.isValid() && tData->getValue(_808.getEntryIndex(), "path_name", &pathName) && pathName != nullptr) {
+        if (_808.isValid() && tData->getValue(idx, "path_name", &pathName) && pathName != nullptr) {
             Koga::ToolData::JMapData* jData = reinterpret_cast<Koga::ToolData::JMapData*>(Koga::GameModeUtil::getPathResource(pathName));
-            _818.attach(jData);
+            _818.attach(jData);   
         }
     }
 
