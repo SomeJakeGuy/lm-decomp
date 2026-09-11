@@ -130,6 +130,10 @@ public:
 class ToolDataRef {
     public:
         inline ToolDataRef() {}
+        inline ToolDataRef(const ToolDataRef& src) {
+            mToolData = src.mToolData;
+            mEntryIndex = src.mEntryIndex;
+        }
 
         inline Koga::ToolData* getToolData() { return mToolData; }
         inline void setToolData(Koga::ToolData* pData) { mToolData = pData; }
