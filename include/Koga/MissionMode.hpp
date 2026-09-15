@@ -7,6 +7,7 @@
 class CharacterColManager;
 class JmpMessageSender;
 class JKRArchive;
+class MessageReceiver;
 
 namespace Koga {
     class EnTypesManager;
@@ -23,21 +24,18 @@ namespace Koga {
         };
 
         MissionMode();
-        ~MissionMode();
-
-        /* 0x08 */ virtual void vt_8(s16);
-
-        /* 0x0C */ virtual void init();
-        /* 0x10 */ virtual void loadEnemyInfo();
-        /* 0x14 */ virtual void vt_14();
-        /* 0x18 */ virtual void vt_18();
+        /* 0x04 */ virtual ~MissionMode();
+        /* 0x08 */ virtual void init();
+        /* 0x0C */ virtual void loadEnemyInfo();
+        /* 0x10 */ virtual void vt_10();
+        /* 0x14 */ virtual void draw();
 
         static MissionMode* create();
         static inline MissionMode* getMissionMode() { return sMissionMode; }
 
         void loadCollisionInfo(const char* pFile, const char* pPath);
         void toggleBlackoutTables(Mission mission);
-        void addJmpReceiver(void* pReceiver);
+        void addJmpReceiver(MessageReceiver* pReceiver);
         void* getMapArchiveResource(const char* name, u32 type);
 
         ToolData* getJmpResource(const char* pName);

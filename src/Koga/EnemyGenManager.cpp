@@ -5,6 +5,7 @@
 #include "Koga/GameModeUtil.hpp"
 #include "Koga/MissionMode.hpp"
 #include "JSystem/JGeometry/JGVec3.hpp"
+#include "Koga/ToolData.hpp"
 
 
 EnemyGenerator::EnemyGenerator() {
@@ -16,7 +17,7 @@ void EnemyGenerator::fn_800C2500() {
    _808.setEntryIndex(0);
    _810 = 0;
    _818.reset(); 
-   _820.mArraySize = 0;
+   _820.resetSize();
    _870 = 0;
    destroyStrategy();
    fn_800C2560();
@@ -29,13 +30,12 @@ void EnemyGenerator::fn_800C2560() {
 EnemyGenerator::~EnemyGenerator() {}
 
 void* EnemyGenerator::fn_800C25F0(s32 param_1, s32 param_2) {
-    const char* maxEnemyKey = "max_enemy";
-    s32 temp = fn_800C2830(maxEnemyKey);
+    s32 temp = fn_800C2830("max_enemy");
     if (temp <= _860) {
         return nullptr;
     }
 
-    s32 temp2 = _820.mArraySize;
+    s32 temp2 = _820.getSize();
     if (fn_800C2830("max_enemy_once") <= temp2) {
         return nullptr;
     }
@@ -51,7 +51,7 @@ void* EnemyGenerator::fn_800C25F0(s32 param_1, s32 param_2) {
         }
     }
 
-    if (_820.mArraySize >= 0xF) {
+    if (_820.getSize() >= 0xF) {
         return nullptr;
     }
 
@@ -64,18 +64,24 @@ void* EnemyGenerator::fn_800C25F0(s32 param_1, s32 param_2) {
     }
 
     unkEnCharacter* enChar = _810->fn_800E5A80(param_1);
-    // some dynamic cast stuff
+    //EnZako* eZako = dynamic_cast<EnZako*>(enChar);
+}
+
+ToolDataRef EnemyGenerator::fn_800C2784() {
+    ToolDataRef ref = _808;
+    return ref;
 }
 
 Koga::ToolData* EnemyGenerator::fn_800C2798() {
     if (!_818.getJMapData()) {
-        Koga::ToolData* tData = _808.getToolData();
-        s32 idx = _808.getEntryIndex();
-        const char* pathName;
+        ToolDataRef ref = _808;
+        Koga::ToolData* pData = ref.getToolData();
+        s32 idx = ref.getEntryIndex();
+        const char* pathName = nullptr;
+        bool isValid = pData != nullptr && idx >= 0;
 
-        if (_808.isValid() && tData->getValue(idx, "path_name", &pathName) && pathName != nullptr) {
-            Koga::ToolData::JMapData* jData = reinterpret_cast<Koga::ToolData::JMapData*>(Koga::GameModeUtil::getPathResource(pathName));
-            _818.attach(jData);   
+        if (isValid && pData->getValue(idx, "path_name", &pathName) && pathName != nullptr) {
+            _818.attach(reinterpret_cast<Koga::ToolData::JMapData*>(Koga::GameModeUtil::getPathResource(pathName)));   
         }
     }
 
@@ -84,7 +90,8 @@ Koga::ToolData* EnemyGenerator::fn_800C2798() {
 
 u32 EnemyGenerator::fn_800C2830(const char* pKeyName) {
     u32 out = 0;
-    ToolDataRef ref = _808;
+    ToolDataRef ref; 
+    ref = _808;
     ref.getToolData()->getValue(ref.getEntryIndex(), pKeyName, &out);
     return out;
 }
@@ -100,16 +107,16 @@ namespace Koga {
         delete [] mEnemyGens;
     }
 
-    BOOL EnemyGenManager::vt_0C(ToolDataRef* pRef) {
-        ToolDataRef localRef = *pRef;
-        const char* isGenerator;
+    BOOL EnemyGenManager::vt_08(ToolDataRef* pRef) {
+        const char* entryName;
         const char* genType;
+        ToolDataRef localRef = *pRef;
         
-        if (!localRef.getToolData()->getValue(localRef.getEntryIndex(), "name", &isGenerator)) {
+        if (!localRef.getToolData()->getValue(localRef.getEntryIndex(), "name", &entryName)) {
             return false;
         }
 
-        if (strcmp(isGenerator, "generator") != 0) {
+        if (strcmp(entryName, "generator") != 0) {
             return false;
         }
 
@@ -147,7 +154,7 @@ namespace Koga {
     }
 
 
-    BOOL EnemyGenManager::vt_10(ToolDataRef* pRef) {
+    BOOL EnemyGenManager::vt_0C(ToolDataRef* pRef) {
         ToolDataRef localRef = *pRef;
         const char* isGenerator;
 
@@ -170,21 +177,77 @@ namespace Koga {
             return false;
         }
 
-        void** p = curr->_820.getArray();
-        while (p != curr->_820.getMaxMember()) {
-            // some call out to fn_800C0EBC?
-            p++;
+        for (void** pIter = curr->_820.getArray(); pIter != curr->_820.getMaxMember(); pIter++) {
+            //some call out to fn_800C0EBC?
+            ToolDataRef temp = fn_800C31E4(curr->_808.getToolData(), curr->_808.getEntryIndex());
+
         }
 
         curr->_808.setToolData(nullptr);
         curr->_808.setEntryIndex(0);
         curr->_810 = nullptr;
         curr->_818.reset();
-        curr->_820.mArraySize = 0;
+        curr->_820.resetSize();
         curr->_870 = 0;
         curr->destroyStrategy();
         curr->_860 = 0;
 
         return true;
     }
+
+    BOOL EnemyGenManager::vt_10(ToolDataRef* pRef, char* message) {
+        ToolDataRef localRef = *pRef;
+        const char* isGenerator;
+        
+        if (!localRef.getToolData()->getValue(localRef.getEntryIndex(), "name", &isGenerator)) {
+            return false;
+        }
+        
+        if (strcmp(isGenerator, "generator") != 0) {
+            return false;
+        }
+
+        EnemyGenerator* curr = mEnemyGens;
+        EnemyGenerator* last = curr + 0x14;
+        
+        for(; curr != last; curr++) {
+            ToolDataRef tRef = fn_800C31E4(curr->_808.getToolData(), curr->_808.getEntryIndex());
+
+            if (tRef.getEntryIndex() == localRef.getEntryIndex() &&
+                        tRef.getToolData() != nullptr &&
+                        localRef.getToolData() != nullptr &&
+                        tRef.getToolData()->getJMapData() != localRef.getToolData()->getJMapData()) {
+                    break;
+                }
+        }
+        
+        if (curr == last) {
+            return false;
+        }
+
+        if (strcmp(message, "start") == 0) {
+            curr->getStrategy()->setNextState(0x104);
+        } else if (strcmp(message, "stop") == 0) {
+            curr->getStrategy()->setNextState(0x103);
+        } else {
+            return false;
+        }
+
+        return true;
+    }
+
+    ToolDataRef EnemyGenManager::fn_800C31E4(Koga::ToolData* pData, s32 entryIdx) {
+        ToolDataRef ref;
+        ref.setToolData(pData);
+        ref.setEntryIndex(entryIdx);
+        return ref;
+    }
+}
+
+void unkEnemyGen1::add(void** pNew) {
+    addMember(pNew);
+}
+
+void* unkEnemyGen1::remove(void** pIter) {
+    return eraseMember(pIter);
 }

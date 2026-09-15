@@ -17,7 +17,7 @@ namespace Koga {
     // https://decomp.me/scratch/fWEep
     EnManager::EnManager() : mInfoTable(nullptr) {
         _E44 = 0;
-        _804.mArraySize = 0;
+        _804.resetSize();
         mInfoTable = new ToolData();
     }
 
@@ -258,10 +258,10 @@ namespace Koga {
 
     // https://decomp.me/scratch/3EURE
     void EnManager::fn_800E5E78(const char* pCreateName) {
-        unkEnManager2* it = _804.mArr;
+        unkEnManager2* it = _804.getArray();
         unkEnManager1* end = &_4[0x80];
 
-        while (it != &_804.mArr[_804.mArraySize]) {
+        while (it != _804.getMaxMember()) {
             if (strcmp(it->getCreateName(), pCreateName) != 0) {
                 it++;
                 continue;
@@ -356,9 +356,8 @@ unkEnManager3::unkEnManager3() {}
 
 unkEnManager3::~unkEnManager3() {}
 
-// https://decomp.me/scratch/vwGnl
 void unkEnManager3::add(unkEnManager2* param_1) {
-    add(param_1);
+    addMember(param_1);
 }
 
 unkEnManager2* unkEnManager3::remove(unkEnManager2* pStartElm) {

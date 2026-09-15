@@ -5,6 +5,7 @@
 #include "Koga/EnemyGenManager.hpp"
 #include "Koga/JmpMessage.hpp"
 #include "Koga/CharacterColManager.hpp"
+#include "Koga/Message.hpp"
 #include "Koga/SimpleModeler.hpp"
 #include "Koga/ToolData.hpp"
 
@@ -43,7 +44,7 @@ namespace Koga {
         init();
     }
 
-    inline Koga::MissionMode::~MissionMode() {
+    Koga::MissionMode::~MissionMode() {
         mMapArchive->unmount();
         SimpleModeler::getCurSimpleModeler()->deleteSimpleModeler();
         delete mEnGenMgr;
@@ -54,11 +55,6 @@ namespace Koga {
         EnTypesManager::deleteManager();
         MapCol::deleteMapCol();
         sMissionMode = 0;
-    }
-
-    //https://decomp.me/scratch/2xA8s
-    void Koga::MissionMode::vt_8(s16) {
-        delete this;
     }
 
     MissionMode* Koga::MissionMode::create() {
@@ -142,17 +138,16 @@ namespace Koga {
             mJmpMsgSender->add(getJmpResource("TeidenKeyInfo"));
             break;
         }
-        mJmpMsgSender->vt_10();
+        mJmpMsgSender->vt_0C();
     }
 
-    void MissionMode::addJmpReceiver(void* pReceiver) {
+    void MissionMode::addJmpReceiver(MessageReceiver* pReceiver) {
         mJmpMsgSender->addReceiver(pReceiver);
     }
 
     void* MissionMode::getMapArchiveResource(const char* name, u32 type) {
         return mMapArchive->getResource(type, name);
     }
-
 
     //https://decomp.me/scratch/FshSz
     ToolData* MissionMode::getJmpResource(const char* pName) {
@@ -168,14 +163,14 @@ namespace Koga {
         return mapData;
     }
 
-    void MissionMode::vt_14() {
+    void MissionMode::vt_10() {
         mEnMgr->fn_800E5AE8();
         mJmpMsgSender->vt_0C();
         mEnGenMgr->fn_800C2F44();
         MapCol::getCurMapCol()->fn_800BC898();
     }
 
-    void MissionMode::vt_18() {
+    void MissionMode::draw() {
         SimpleModeler::getCurSimpleModeler()->draw();
     }
 }

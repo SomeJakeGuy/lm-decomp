@@ -22,8 +22,8 @@ public:
     unkEnemyGen1() {}
     ~unkEnemyGen1() {}
 
-    void fn_800C323C(); //probably add member?
-    unkEnemyGen1 fn_800C3258(void*); //probably delete member;
+    void add(void**); //probably add member?
+    void* remove(void**); //probably delete member;
 };
 
 class EnemyGenerator : public JORReflexible, public IncludeStrategy {
@@ -34,10 +34,11 @@ public:
     void fn_800C2500();
     void fn_800C2560();
     void* fn_800C25F0(s32, s32); // Need to validate arg / return type.
-    void fn_800C2784(); // Need to validate arg / return type.
-    Koga::ToolData* fn_800C2798(); // Need to validate arg / return type.
+    ToolDataRef fn_800C2784();
+    Koga::ToolData* fn_800C2798();
     u32 fn_800C2830(const char*);
-    void fn_800C287C(void*); // Need to validate arg / return type.
+     // Need to validate arg / return type.
+    void fn_800C287C(void*); // dynamic casts to EnZako and Koga::Observer<GeneratorEvent, void>
 
     /* 0x808 */ ToolDataRef _808; // Maybe some generator path? 
     /* 0x810 */ Koga::EnManager* _810;
@@ -53,15 +54,15 @@ namespace Koga {
     class EnemyGenManager : public JORReflexible, public MessageReceiver {
     public:
         EnemyGenManager();
-        /* 0x08 */ virtual ~EnemyGenManager();
-        /* 0x0C */ virtual BOOL vt_0C(ToolDataRef*);
-        /* 0x10 */ virtual BOOL vt_10(ToolDataRef*);
-        /* 0x14 */ virtual BOOL vt_14(ToolDataRef*, char*);
+        /* 0x04 */ virtual ~EnemyGenManager();
+        /* 0x08 */ virtual BOOL vt_08(ToolDataRef*); // Checks to see if input is a generator, maybe something to do with adding/loading?
+        /* 0x0C */ virtual BOOL vt_0C(ToolDataRef*); // Maybe something to do with removing / deleting
+        /* 0x10 */ virtual BOOL vt_10(ToolDataRef*, char* message);
 
         void fn_800C2F44();
         void fn_800C2FE8(void*); // Need to validate arg / return type.
         void* fn_800C31DC(); // Something with IncludeStrategy?
-        void fn_800C31E4(void*, void*); // Maybe something with ToolDataRef copy?
+        static ToolDataRef fn_800C31E4(Koga::ToolData*, s32);
 
         inline void setUnk8(bool val) { _8 = val; }
     public:

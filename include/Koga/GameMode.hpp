@@ -22,16 +22,11 @@ namespace Koga {
     class GameMode : private GameModeBase {
     public:
         GameMode();
-        ~GameMode();
-
-        // This looks like a destroy() function or something?
-        // It does destructor-like things when overridden in Koga::MissionMode.
-        /* 0x08 */ virtual void vt_8(s16) = 0;
-
-        /* 0x0C */ virtual void init();
-        /* 0x10 */ virtual void loadEnemyInfo();
-        /* 0x14 */ virtual void vt_14();
-        /* 0x18 */ virtual void vt_18();
+        /* 0x04 */ virtual ~GameMode();
+        /* 0x08 */ virtual void init();
+        /* 0x0C */ virtual void loadEnemyInfo();
+        /* 0x10 */ virtual void vt_10();
+        /* 0x14 */ virtual void draw();
     };
 }
 

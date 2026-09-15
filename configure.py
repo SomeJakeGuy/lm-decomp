@@ -747,7 +747,7 @@ config.libs = [
         Object(NonMatching, "Koga/800B9F7C.cpp"),
         Object(NonMatching, "Koga/UnkUtil.cpp"),
         Object(NonMatching, "Koga/Param.cpp"),
-        Object(Matching, "Koga/GameMode.cpp"),
+        Object(NonMatching, "Koga/GameMode.cpp"),
         Object(NonMatching, "Koga/MissionMode.cpp"),
         Object(NonMatching, "Koga/MapCol.cpp"),
         Object(Matching, "Koga/ToolData.cpp"),

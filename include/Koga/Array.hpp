@@ -10,20 +10,26 @@ namespace Koga {
     template <typename T, s32 S>
     class Array {
     public:
-        Array() { FORCE_DONT_INLINE mArraySize = 0; }
-        ~Array() {  FORCE_DONT_INLINE }
+        Array() { 
+            FORCE_DONT_INLINE 
+            mArraySize = 0; 
+        }
+        ~Array() { FORCE_DONT_INLINE }
 
-        void add(T* member) {
-            FORCE_DONT_INLINE;
+        s32 getSize() const { return mArraySize; }
+        void resetSize() { mArraySize = 0; }
+
+        T getArrayMember(s32 idx) const { return mArr[idx]; }
+        T* getArray() { return mArr; }
+        T* getMaxMember() { return mArr + mArraySize; }
+        
+        void addMember(T* member) {
+            FORCE_DONT_INLINE
             mArr[mArraySize++] = *member;
         }
 
-        s32 getArraySize() const { return mArraySize; }
-        T* getArrayMember(s32 idx) const { return &mArr[idx]; }
-        T* getArray() { return mArr; }
-        T* getMaxMember() const { return &mArr[mArraySize]; }
-        
         T* eraseMember(T* pIter) {
+            FORCE_DONT_INLINE
             if (getMaxMember() - pIter - 1 > 0) {
                 for (T* curr = pIter; (curr + 1) != getMaxMember(); curr++) {
                     *curr = *(curr + 1);
@@ -34,6 +40,7 @@ namespace Koga {
             return pIter;
         }
 
+    private:
         /* 0x00 */ T mArr[S];
         /* (0x4 * S) + 4 */ s32 mArraySize;
     };

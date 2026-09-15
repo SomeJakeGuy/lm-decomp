@@ -30,8 +30,8 @@ class JmpToolList : public Koga::Array<Koga::ToolData*, 10> {
 public:
     JmpToolList() { }
     ~JmpToolList() { }
-    void add(Koga::ToolData** member) { Koga::Array<Koga::ToolData*, 10>::add(member); }
-    Koga::ToolData** removeJmp(Koga::ToolData**);
+    void add(Koga::ToolData** pMember) { addMember(pMember); }
+    Koga::ToolData** remove(Koga::ToolData** pIter) { return eraseMember(pIter); }
 };
 
 class JmpMessageSender : public MessageSender, public JORReflexible {
@@ -39,9 +39,9 @@ public:
 
     JmpMessageSender();
 
-    /* 0x08 */ virtual ~JmpMessageSender();
+    /* 0x04 */ virtual ~JmpMessageSender();
+    /* 0x08 */ virtual void vt_08();
     /* 0x0C */ virtual void vt_0C();
-    /* 0x10 */ virtual void vt_10();
 
     BOOL add(Koga::ToolData* pData);
     BOOL remove(Koga::ToolData* pData);
