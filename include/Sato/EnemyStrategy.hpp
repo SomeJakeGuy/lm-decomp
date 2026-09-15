@@ -47,9 +47,11 @@ public:
     void operator delete(void* ptr) {
         noOpDelete(ptr);
     }
-protected:
+    
     /* 0x04 */ void* mpZako;
     /* 0x08 */ void* mpUserData;
+    
+protected:
     /* 0x0C */ u16 mNextState; // 0xFFFF = end strategy
     /* 0x0E */ u16 mCurrentState;
     /* 0x10 */ u32 mTimer;
