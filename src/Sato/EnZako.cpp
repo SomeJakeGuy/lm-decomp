@@ -1,7 +1,7 @@
 #include "Sato/EnZako.hpp"
 
 EnZako::~EnZako() {
-
+    
 }
 
 

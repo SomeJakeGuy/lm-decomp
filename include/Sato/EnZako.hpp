@@ -4,8 +4,10 @@
 #include "Sato/EnThought.hpp"
 #include "macros.h"
 
-dummy_float_data()
-static float lbl_8035A390[8] = { 1.0f, 0.95f, 0.9f, 0.85f, 1.0f, 0.9f, 0.75f, 0.3f };
+dummy_float_data();
+enemies_float_data();
+
+
 char path_name[] = "path_name";
 
 class EnZako : public EnThought {

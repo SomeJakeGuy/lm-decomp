@@ -3,16 +3,34 @@
 
 #include "Sato/IncludeStrategy.hpp"
 #include <JSystem/JORReflexible.hpp>
+#include "Koga/ValueControl.hpp"
+#include "macros.h"
 
 namespace Koga {
     class EnManager;
 }
 
+class MoveObjAlphaControl : public Koga::ValueControl<int> {
+public:
+    MoveObjAlphaControl();
+
+    /* 0x04 */ s32 _04;
+    /* 0x08 */ s32 _08;
+    /* 0x0c */ f32 _0c;
+    /* 0x10 */ void* _10;
+    /* 0x14 */ void* _14;
+    /* 0x18 */ void* _18; /* seems to be an object */
+};
+
+/**
+ * 0x0 - IncludeStrategy
+ * 0x808 - JORReflexible
+ */
 class EnThought : public IncludeStrategy, public JORReflexible  {
 public:
-    EnThought();
+    EnThought() { };
     virtual ~EnThought();
-    virtual void vt_0C(); // Did not check args/return type
+    virtual void vt_0C() = 0; // Did not check args/return type
     virtual void vt_10(); // Did not check args/return type
 
     /* 0x808 */ void* _808; //Unknown

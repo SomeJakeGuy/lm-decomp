@@ -1,7 +1,10 @@
 // Based on the previous decompilation effort: https://github.com/CoNesTra/zmansion/blob/main/src/Unsorted/IncludeStrategy.cpp
-
-#include "Sato/IncludeStrategy.hpp"
+#include "Sato/EnThought.hpp"
 #include "Sato/EnemyStrategy.hpp"
+#include "macros.h"
+
+
+dummy_float_data();
 
 IncludeStrategy::IncludeStrategy() : mpStrategy(nullptr) {
     destroyStrategy();
@@ -27,4 +30,9 @@ void IncludeStrategy::destroyStrategy() {
         strategy->~EnemyStrategy();
         mpStrategy = nullptr;
     }
+}
+
+
+EnThought::~EnThought() {
+    
 }

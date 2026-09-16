@@ -15,8 +15,8 @@ class IncludeStrategy
 {
     
 public:
-    /* 0x004 - 0x800 */ u8 mStrategyMemory[0x800];
-    /* 0x804 */ EnemyStrategy* mpStrategy;
+    /* 0x000 - 0x7FF */ u8 mStrategyMemory[0x800];
+    /* 0x800 */ EnemyStrategy* mpStrategy;
 
     
     IncludeStrategy();
