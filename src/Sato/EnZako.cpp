@@ -1,6 +1,4 @@
 #include "Sato/EnZako.hpp"
-#include "Koga/ToolData.hpp"
-#include "types.h"
 
 EnZako::~EnZako() {
 
