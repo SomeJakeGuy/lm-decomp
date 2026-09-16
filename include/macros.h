@@ -8,6 +8,9 @@
 #define dummy_float_data() \
     static f32 dummy_float_data[6] = {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f};
 
+#define enemies_float_data() \
+	static f32 enemies_float_data[8] = { 1.0f, 0.95f, 0.9f, 0.85f, 1.0f, 0.9f, 0.75f, 0.3f };
+
 #define ARRAY_COUNT(arr) (int)(sizeof(arr) / sizeof(arr[0]))
 
 #define READU32_BE(ptr, offset)                                                \
