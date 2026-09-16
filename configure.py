@@ -742,6 +742,8 @@ config.libs = [
         Object(NonMatching, "Sato/EnemyTypicalStrategy.cpp"),
         Object(NonMatching, "Sato/EnemyStrategyInit.cpp"),
         Object(NonMatching, "Sato/IncludeStrategy.cpp"),
+        Object(NonMatching, "Sato/EnThought.cpp"),
+        Object(NonMatching, "Sato/EnZako.cpp"),
 
         # Koga
         Object(Matching, "Koga/GameModeUtil.cpp"),

@@ -13,10 +13,12 @@
 
 class IncludeStrategy
 {
-    /* 0x004 - 0x800 */ u8 mStrategyMemory[0x800];
-    /* 0x804 */ EnemyStrategy* mpStrategy;
     
 public:
+    /* 0x004 - 0x800 */ u8 mStrategyMemory[0x800];
+    /* 0x804 */ EnemyStrategy* mpStrategy;
+
+    
     IncludeStrategy();
     /* 0x04 */ virtual ~IncludeStrategy();
 

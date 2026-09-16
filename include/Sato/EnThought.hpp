@@ -8,7 +8,8 @@ namespace Koga {
     class EnManager;
 }
 
-class EnThought : public JORReflexible, public IncludeStrategy {
+class EnThought : public IncludeStrategy, public JORReflexible  {
+public:
     EnThought();
     virtual ~EnThought();
     virtual void vt_0C(); // Did not check args/return type
