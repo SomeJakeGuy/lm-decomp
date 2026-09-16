@@ -5,5 +5,7 @@ EnZako::~EnZako() {
 }
 
 void EnZako::vt_10() {
+    mpStrategy->mpZako = 0;
+
     return; 
 }
