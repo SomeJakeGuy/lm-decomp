@@ -80,6 +80,7 @@ Unsorted/MoveObj.cpp:
 	.sdata      start:0x804D0868 end:0x804D0880
 
 Unsorted/Character.cpp:
+	.text       start:0x80069628 end:0x8006A34C
 	.data       start:0x8033B178 end:0x8033B218
 
 Unsorted/RailInfoUtil.cpp:

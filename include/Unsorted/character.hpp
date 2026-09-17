@@ -4,6 +4,7 @@
 #include "Unsorted/MoveObj.hpp"
 #include <JSystem/JGeometry/JGVec3.hpp>
 
+// The split is not right. (lower bound and upper bound are just vrom vtable for now)
 class Character : public MoveObj {
 public:
     Character();
