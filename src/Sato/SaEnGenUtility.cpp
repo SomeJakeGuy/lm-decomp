@@ -1,7 +1,9 @@
 #include "Sato/SaEnGenUtility.hpp"
 
 
-
+/**
+ * Construct this vtable in 0x60 (the only diff match), same in dt
+ */
 SaEnZakoUtility::SaEnZakoUtility() {
     _04 = 0;
     _08 = 0;
