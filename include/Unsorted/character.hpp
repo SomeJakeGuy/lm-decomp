@@ -9,12 +9,12 @@ public:
     Character();
 
     /* 0x08 */ virtual ~Character();
+    /* 0x0c */ virtual void vt_0c();
     /* 0x10 */ virtual void vt_10();
     /* 0x14 */ virtual void vt_14();
-    /* 0x18 */ virtual void vt_18();
-    /* 0x1C */ virtual s32 vt_1C();
-    /* 0x20 */ virtual void vt_20(JGeometry::TVec3f*);
-    /* 0x24 */ virtual void vt_24(void*); // Unsure of arg type.
+    /* 0x18 */ virtual s32 vt_18();
+    /* 0x1C */ virtual void vt_1C(JGeometry::TVec3f*);
+    /* 0x20 */ virtual void vt_20(void*); // Unsure of arg type.
 
 public:
     /* 0x78C */ s32 _78C;

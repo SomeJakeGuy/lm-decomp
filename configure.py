@@ -774,6 +774,7 @@ config.libs = [
         Object(NonMatching, "Unsorted/LMDvdFileBlock.cpp"),
         Object(NonMatching, "Unsorted/80005EB8.cpp"),
         Object(NonMatching, "Unsorted/MoveObj.cpp"),
+        Object(NonMatching, "Unsorted/Character.cpp"),
         Object(NonMatching, "Unsorted/RailInfoUtil.cpp"),
         Object(NonMatching, "Unsorted/800627D8.cpp"),
         Object(NonMatching, "Unsorted/LMDisplayUtil.cpp"),
