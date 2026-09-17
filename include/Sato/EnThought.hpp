@@ -15,6 +15,7 @@ namespace Koga {
 class MoveObjAlphaControl : public Koga::ValueControl<int> {
 public:
     MoveObjAlphaControl();
+    virtual void vt_08();
 
     /* 0x04 */ s32 _04;
     /* 0x08 */ s32 _08;
@@ -30,9 +31,9 @@ struct EnThought0x14 {
     /* 0x04 */ void* unk_4; /* a number */
     /* 0x08 */ f32 unk_8[3]; // Possibly the TVec3F said below 
 
-    void vt_28_ptmf(); // fn_800BEF3C
-    void vt_3c_ptmf(); // fn_800BEEDC
-    void vt_40_ptmf(); // fn_800BEF0C
+    virtual void vt_28_ptmf(); // fn_800BEF3C
+    virtual void vt_3c_ptmf(); // fn_800BEEDC
+    virtual void vt_40_ptmf(); // fn_800BEF0C
 };
 
 /**
@@ -44,7 +45,7 @@ public:
     EnThought();
     virtual ~EnThought();
     virtual void vt_0C() = 0; // Did not check args/return type
-    virtual void vt_10(); // Did not check args/return type
+    virtual void vt_10() { }; // Did not check args/return type
 
 private:
     void reset(); //  fn_800BF0CC lmao golden function

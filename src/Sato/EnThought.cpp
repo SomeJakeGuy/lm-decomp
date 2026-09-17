@@ -9,8 +9,8 @@
 
 dummy_float_data();
 
-static s32 lbl_804D2D6C = 0x000000ff;
-static s32 lbl_804D2D70 = 0x00000000;
+static s32 lbl_804D2D6C = 0xff;
+static s32 lbl_804D2D70 = 0x0;
 static float lbl_804DB698 = 0.f;
 static float lbl_804DB69C = 1.f;
 
@@ -41,13 +41,14 @@ void IncludeStrategy::destroyStrategy() {
     }
 }
 
-EnThought::EnThought() { 
 
+void MoveObjAlphaControl::vt_08() {
+    void* obj = _18;
 }
 
-EnThought::~EnThought() {
-    
-}
+
+
+EnThought::EnThought() { }
 
 void EnThought::reset() {
     float var1;
@@ -102,7 +103,6 @@ void EnThought::reset() {
 
     if (strategy != nullptr) {
         destroyStrategy();
-        mpStrategy = 0;
     }
 
     void* var_this = _808;
@@ -121,6 +121,11 @@ void EnThought::reset() {
     }
 
     return;
+}
+
+
+EnThought::~EnThought() {
+    
 }
 
 
