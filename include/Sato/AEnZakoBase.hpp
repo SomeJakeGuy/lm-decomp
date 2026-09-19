@@ -32,6 +32,12 @@ public:
     virtual void fn_800F6080();
     virtual void fn_800F60B8();
     virtual void fn_800F5CB8();
+
+    bool state_0_Init();
+    bool state_0_Behavior();
+    
+    bool state_1_Init();
+    bool state_1_Behavior();
 };
 
 #endif

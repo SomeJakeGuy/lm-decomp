@@ -5,12 +5,6 @@
 #include "Koga/Observer.hpp"
 #include "Sato/EnemyStrategy.hpp"
 
-static float lbl_804D5FE8 = 0.73;
-static float lbl_804D5FEC = 2500;
-static char lbl_804D5FF0[] = "pnt0_x";
-static char lbl_804D5FF8[] = "pnt0_y";
-static char lbl_804D6000[] = "pnt0_z";
-
 // The first void is GeneratorEvent
 class SaEnGenUtility: public EnemyStrategy, public Koga::Observer<void, void> {
 public:

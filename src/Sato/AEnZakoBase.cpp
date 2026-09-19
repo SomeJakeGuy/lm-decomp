@@ -1,4 +1,21 @@
 #include "Sato/AEnZakoBase.hpp"
+#include "macros.h"
+
+dummy_float_data();
+enemies_float_data();
+
+static EnemyStrategyState enemiesStates[2] = {
+    EnemyStrategyState(0, 
+        (EnemyStrategyStateFn)&AEnZakoBase::state_0_Init, 
+        (EnemyStrategyStateFn)&AEnZakoBase::state_0_Behavior
+    ),
+
+    EnemyStrategyState(1, 
+        (EnemyStrategyStateFn)&AEnZakoBase::state_1_Init, 
+        (EnemyStrategyStateFn)&AEnZakoBase::state_1_Behavior
+    ),
+};
+
 
 // From EnemyStrategy
 void AEnZakoBase::init() {
@@ -16,6 +33,23 @@ void AEnZakoBase::doBehaviorInit() {
 bool AEnZakoBase::vt_14() {
     return true;
 }
+
+bool AEnZakoBase::state_0_Init() {
+    return true;
+}
+
+bool AEnZakoBase::state_0_Behavior() {
+    return true;
+}
+
+bool AEnZakoBase::state_1_Init() {
+    return true;
+}
+
+bool AEnZakoBase::state_1_Behavior() {
+    return true;
+}
+
 
 // From this class
 void AEnZakoBase::fn_800F5CB8() {}
