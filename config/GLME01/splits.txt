@@ -211,6 +211,12 @@ Sato/AEnZakoBase.cpp:
 	.data       start:0x80366358 end:0x80366590
 	.sdata      start:0x804D40E0 end:0x804D4110
 
+Sato/AEnKaguBase.cpp:
+	.text       start:0x800F61AC end:0x800F6884
+	.ctors      start:0x8020BC34 end:0x8020BC38
+	.data       start:0x80366590 end:0x803667E0
+	.sdata      start:0x804D4110 end:0x804D415C
+
 Sato/SaEnGenUtility.cpp:
 	.text       start:0x80142F88 end:0x801443E8
 	.data       start:0x8037A1D0 end:0x8037A2B0
