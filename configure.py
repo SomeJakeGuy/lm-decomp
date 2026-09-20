@@ -746,6 +746,7 @@ config.libs = [
         Object(NonMatching, "Sato/EnZako.cpp"),
         Object(NonMatching, "Sato/AEnZakoBase.cpp"),
         Object(NonMatching, "Sato/AEnKaguBase.cpp"),
+        Object(NonMatching, "Sato/AEnBeamBase.cpp"),
         Object(NonMatching, "Sato/SaEnGenUtility.cpp"),
 
         # Koga
