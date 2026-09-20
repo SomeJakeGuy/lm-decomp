@@ -1,7 +1,7 @@
 #ifndef A_EN_BEAM_BASE_HPP
 #define A_EN_BEAM_BASE_HPP
 
-#include "Sato/AEnZakoBase.hpp"
+#include "Ajioka/AEnZakoBase.hpp"
 #include "Sato/EnemyStrategy.hpp"
 
 class AEnBeamBase: public AEnZakoBase {

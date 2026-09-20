@@ -205,26 +205,33 @@ Sato/EnemyStrategyInit.cpp:
 Sato/80366260.cpp:
 	.data       start:0x80366260 end:0x80366358
 
-Sato/AEnZakoBase.cpp:
+Ajioka/AEnZakoBase.cpp:
 	.text       start:0x800F5880 end:0x800F61AC
 	.ctors      start:0x8020BC30 end:0x8020BC34
 	.data       start:0x80366358 end:0x80366590
 	.sdata      start:0x804D40E0 end:0x804D4110
 	.sdata2     start:0x804DBC40 end:0x804DBC48
 
-Sato/AEnKaguBase.cpp:
+Ajioka/AEnKaguBase.cpp:
 	.text       start:0x800F61AC end:0x800F6884
 	.ctors      start:0x8020BC34 end:0x8020BC38
 	.data       start:0x80366590 end:0x803667E0
 	.sdata      start:0x804D4110 end:0x804D415C
 	.sdata2     start:0x804DBC48 end:0x804DBC50
 
-Sato/AEnBeamBase.cpp:
+Ajioka/AEnBeamBase.cpp:
 	.text       start:0x800F6884 end:0x800F71B0
 	.ctors      start:0x8020BC38 end:0x8020BC3C
 	.data       start:0x803667E0 end:0x80366A60
 	.sdata      start:0x804D4160 end:0x804D41A0
 	.sdata2     start:0x804DBC50 end:0x804DBC58
+
+Ajioka/AEnKiBase.cpp:
+	.text       start:0x800F71B0 end:0x800F7A8C
+	.ctors      start:0x8020BC3C end:0x8020BC44
+	.data       start:0x80366A60 end:0x80366C28
+	.sdata      start:0x804D41A0 end:0x804D41C0
+	.sdata2     start:0x804DBC58 end:0x804DBC68
 
 Sato/SaEnGenUtility.cpp:
 	.text       start:0x80142F88 end:0x801443E8
