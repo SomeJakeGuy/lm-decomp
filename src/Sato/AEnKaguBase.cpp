@@ -47,6 +47,11 @@ AEnKaguBase::AEnKaguBase() {
     m_20 = 0;
 }
 
+
+void AEnKaguBase::doBehavior() {
+
+}
+
 void AEnKaguBase::doBehaviorInit() {
 
 }

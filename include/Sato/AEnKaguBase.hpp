@@ -10,7 +10,7 @@ public:
     virtual ~AEnKaguBase() { }
 
     // EnemyStrategy
-    virtual void doBehavior() { };
+    virtual void doBehavior();
     virtual void doBehaviorInit();
 
     // Koga::CharacterEventObserver
