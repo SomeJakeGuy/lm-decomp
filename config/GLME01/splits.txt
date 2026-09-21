@@ -149,8 +149,8 @@ Sato/EnemyStrategy.cpp:
 
 Koga/EnemyGenManager.cpp:
 	.text       start:0x800C24A4 end:0x800C32B8
-	.data       start:0x8035A5B0 end:0x8035A730
-	.sdata      start:0x804D2E7C end:0x804D2F58
+	.data       start:0x8035A598 end:0x8035A730
+	.sdata      start:0x804D2E78 end:0x804D2F58
 
 Koga/EnAttackBase.cpp:
 	.text       start:0x800CF63C end:0x800CF854

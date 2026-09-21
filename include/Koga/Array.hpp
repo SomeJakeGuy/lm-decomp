@@ -19,10 +19,21 @@ namespace Koga {
         s32 getSize() const { return mArraySize; }
         void resetSize() { mArraySize = 0; }
 
-        T getArrayMember(s32 idx) const { return mArr[idx]; }
+        T& operator[](int idx) { return mArr[idx]; }
+        const T& operator[](int idx) const { return mArr[idx]; }
+
+        T* getArrayMember(s32 idx) const { return &mArr[idx]; }
         T* getArray() { return mArr; }
-        T* getMaxMember() { return mArr + mArraySize; }
         
+        T* getFirstMember() { return &mArr[0]; }
+        T* getLastMember() { return &mArr[mArraySize]; }
+        T* getMaxIter() { return &mArr[mArraySize - 1]; }
+        
+        void init(s32 num) {
+            mArr = new T[num];
+            mArraySize = num;
+        }
+
         void addMember(T* member) {
             FORCE_DONT_INLINE
             mArr[mArraySize++] = *member;
@@ -30,13 +41,13 @@ namespace Koga {
 
         T* eraseMember(T* pIter) {
             FORCE_DONT_INLINE
-            if (getMaxMember() - pIter - 1 > 0) {
-                for (T* curr = pIter; (curr + 1) != getMaxMember(); curr++) {
+            if (getLastMember() - pIter - 1 > 0) {
+                for (T* curr = pIter; (curr + 1) != getLastMember(); curr++) {
                     *curr = *(curr + 1);
                 } 
             }
             
-            mArraySize -= 1;
+            mArraySize--;
             return pIter;
         }
 

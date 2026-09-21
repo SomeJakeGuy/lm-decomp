@@ -6,17 +6,20 @@
 #include "Koga/MissionMode.hpp"
 #include "JSystem/JGeometry/JGVec3.hpp"
 #include "Koga/ToolData.hpp"
+#include "Sato/EnemyStrategy.hpp"
+#include "macros.h"
 
+dummy_float_data()
 
 EnemyGenerator::EnemyGenerator() {
     fn_800C2500();
 }
 
 void EnemyGenerator::fn_800C2500() {
-   _808.setToolData(nullptr);
-   _808.setEntryIndex(0);
+   _808 = nullptr;
+   _80C = 0;
    _810 = 0;
-   _818.reset(); 
+   mGenPath.reset(); 
    _820.resetSize();
    _870 = 0;
    destroyStrategy();
@@ -29,6 +32,7 @@ void EnemyGenerator::fn_800C2560() {
 
 EnemyGenerator::~EnemyGenerator() {}
 
+// https://decomp.me/scratch/GhkkW
 void* EnemyGenerator::fn_800C25F0(s32 param_1, s32 param_2) {
     s32 temp = fn_800C2830("max_enemy");
     if (temp <= _860) {
@@ -68,30 +72,33 @@ void* EnemyGenerator::fn_800C25F0(s32 param_1, s32 param_2) {
 }
 
 ToolDataRef EnemyGenerator::fn_800C2784() {
-    ToolDataRef ref = _808;
+    ToolDataRef ref;
+    ref.init(_808, _80C);
     return ref;
 }
 
 Koga::ToolData* EnemyGenerator::fn_800C2798() {
-    if (!_818.getJMapData()) {
-        ToolDataRef ref = _808;
-        Koga::ToolData* pData = ref.getToolData();
-        s32 idx = ref.getEntryIndex();
+    if (!mGenPath.getJMapData()) {
+        ToolDataRef ref;
+        ref.setToolData(_808);
+        ref.setEntryIndex(_80C);
         const char* pathName = nullptr;
-        bool isValid = pData != nullptr && idx >= 0;
+        bool isValid = ref.getToolData() != nullptr && ref.getEntryIndex() >= 0;
 
-        if (isValid && pData->getValue(idx, "path_name", &pathName) && pathName != nullptr) {
-            _818.attach(reinterpret_cast<Koga::ToolData::JMapData*>(Koga::GameModeUtil::getPathResource(pathName)));   
+        if (isValid && ref.getToolData()->getValue(ref.getEntryIndex(), "path_name", &pathName) && pathName != nullptr) {
+            mGenPath.attach(reinterpret_cast<Koga::ToolData::JMapData*>(Koga::GameModeUtil::getPathResource(pathName)));   
         }
     }
 
-    return &_818;
+    return &mGenPath;
 }
 
+// https://decomp.me/scratch/QFptY
 u32 EnemyGenerator::fn_800C2830(const char* pKeyName) {
     u32 out = 0;
-    ToolDataRef ref; 
-    ref = _808;
+    ToolDataRef ref;
+    ref.setToolData(_808);
+    ref.setEntryIndex(_80C);
     ref.getToolData()->getValue(ref.getEntryIndex(), pKeyName, &out);
     return out;
 }
@@ -100,13 +107,14 @@ namespace Koga {
 
     EnemyGenManager::EnemyGenManager()  {
         _8 = true;
-        mEnemyGens = new EnemyGenerator[0x14];
+        mEnemyGens = new EnemyGenerator[MAX_ENEMY_GENS];
     }
 
     EnemyGenManager::~EnemyGenManager() {
         delete [] mEnemyGens;
     }
 
+    // https://decomp.me/scratch/w96BL
     BOOL EnemyGenManager::vt_08(ToolDataRef* pRef) {
         const char* entryName;
         const char* genType;
@@ -120,45 +128,45 @@ namespace Koga {
             return false;
         }
 
-        EnemyGenerator* curr = mEnemyGens;
-        EnemyGenerator* last = curr + 14;
+        EnemyGenerator* freeGen = findFreeEnemyGen();
 
-        while(curr != last && curr->getStrategy() != nullptr) {
-            curr++;
-        }
-
-        if (curr != last) {
-            genType = 0;
+        if (freeGen != end()) {
+            // I think there is some other Loop here but can't get it right for the minute. Leaving this at like ~70% until these other functions are done.
+            // for (ToolDataRef** pIter = curr->_820.getFirstMember(); pIter != curr->_820.getMaxMember(); curr++) {}
+            genType = "";
             localRef.getToolData()->getValue(localRef.getEntryIndex(), "type", &genType);
             //int uVar1 = fn_800DAB18(genType);
             //void* pcVar3 = fn_800DAC54();
-            curr->_808 = localRef;
-            curr->_814 = 0; //uVar1
-            curr->_810 = MissionMode::sMissionMode->getEnManager();
+            freeGen->_808 = localRef.getToolData();
+            freeGen->_80C = localRef.getEntryIndex();
+            freeGen->_814 = 0; //uVar1
+            freeGen->_810 = MissionMode::sMissionMode->getEnManager();
             // some call on pcVar3 / localRef?
 
-            curr->destroyStrategy();
-            curr->setStrategy(0); // maybe uses pcVar3 here
-            // fn_800C1BAC(curr)
+            freeGen->destroyStrategy();
+            freeGen->setStrategy(0); // maybe uses pcVar3 here
+            // fn_800C1BAC(curr) call?
 
-            Koga::ToolData* tData = curr->_808.getToolData();
-            s32 currIdx = curr->_808.getEntryIndex();
-            tData->getValue(currIdx, "pos_x", &curr->mPos.x);
-            tData->getValue(currIdx, "pos_y", &curr->mPos.y);
-            tData->getValue(currIdx, "pos_z", &curr->mPos.z);
+            Koga::ToolData* tData = freeGen->_808;
+            s32 currIdx = freeGen->_80C;
+            tData->getValue(currIdx, "pos_x", &freeGen->mPos.x);
+            tData->getValue(currIdx, "pos_y", &freeGen->mPos.y);
+            tData->getValue(currIdx, "pos_z", &freeGen->mPos.z);
 
-            curr->getStrategy()->init();
+            freeGen->getStrategy()->init();   
         }
-
+        
         return true;
     }
 
-
+    // https://decomp.me/scratch/2kU0Q
     BOOL EnemyGenManager::vt_0C(ToolDataRef* pRef) {
-        ToolDataRef localRef = *pRef;
+        // This does some pass by value maybe or copy constructor? dunno, something like that
+        Koga::ToolData* pData = pRef->getToolData();
+        s32 entryIdx = pRef->getEntryIndex();
         const char* isGenerator;
 
-        if (!localRef.getToolData()->getValue(localRef.getEntryIndex(), "name", &isGenerator)) {
+        if (!pData->getValue(entryIdx, "name", &isGenerator)) {
             return false;
         }
         
@@ -166,40 +174,27 @@ namespace Koga {
             return false;
         }
 
-        EnemyGenerator* curr = mEnemyGens;
-        EnemyGenerator* last = curr + 0x14;
-
-        while(curr != last && curr->getStrategy() != nullptr) {
-            curr++;
-        }
-
-        if (curr == last) {
+        EnemyGenerator* enGen = searchEnemyGen(pData, entryIdx);
+        if (enGen == end()) {
             return false;
         }
 
-        for (void** pIter = curr->_820.getArray(); pIter != curr->_820.getMaxMember(); pIter++) {
+        for (void** pIter = enGen->_820.getArray(); pIter != enGen->_820.getLastMember(); enGen++) {
             //some call out to fn_800C0EBC?
-            ToolDataRef temp = fn_800C31E4(curr->_808.getToolData(), curr->_808.getEntryIndex());
-
         }
 
-        curr->_808.setToolData(nullptr);
-        curr->_808.setEntryIndex(0);
-        curr->_810 = nullptr;
-        curr->_818.reset();
-        curr->_820.resetSize();
-        curr->_870 = 0;
-        curr->destroyStrategy();
-        curr->_860 = 0;
-
+        enGen->fn_800C2500();
         return true;
     }
 
+    // https://decomp.me/scratch/Js1a9
     BOOL EnemyGenManager::vt_10(ToolDataRef* pRef, char* message) {
-        ToolDataRef localRef = *pRef;
+        // This does some pass by value maybe or copy constructor? dunno, something like that
+        Koga::ToolData* pData = pRef->getToolData();
+        s32 entryIdx = pRef->getEntryIndex();
         const char* isGenerator;
         
-        if (!localRef.getToolData()->getValue(localRef.getEntryIndex(), "name", &isGenerator)) {
+        if (!pData->getValue(entryIdx, "name", &isGenerator)) {
             return false;
         }
         
@@ -207,28 +202,15 @@ namespace Koga {
             return false;
         }
 
-        EnemyGenerator* curr = mEnemyGens;
-        EnemyGenerator* last = curr + 0x14;
-        
-        for(; curr != last; curr++) {
-            ToolDataRef tRef = fn_800C31E4(curr->_808.getToolData(), curr->_808.getEntryIndex());
-
-            if (tRef.getEntryIndex() == localRef.getEntryIndex() &&
-                        tRef.getToolData() != nullptr &&
-                        localRef.getToolData() != nullptr &&
-                        tRef.getToolData()->getJMapData() != localRef.getToolData()->getJMapData()) {
-                    break;
-                }
-        }
-        
-        if (curr == last) {
+        EnemyGenerator* enGen = searchEnemyGen(pData, entryIdx);
+        if (enGen == end()) {
             return false;
         }
 
         if (strcmp(message, "start") == 0) {
-            curr->getStrategy()->setNextState(0x104);
+            enGen->getStrategy()->setNextState(0x104);
         } else if (strcmp(message, "stop") == 0) {
-            curr->getStrategy()->setNextState(0x103);
+            enGen->getStrategy()->setNextState(0x103);
         } else {
             return false;
         }
@@ -236,18 +218,27 @@ namespace Koga {
         return true;
     }
 
-    ToolDataRef EnemyGenManager::fn_800C31E4(Koga::ToolData* pData, s32 entryIdx) {
-        ToolDataRef ref;
-        ref.setToolData(pData);
-        ref.setEntryIndex(entryIdx);
-        return ref;
+    void EnemyGenManager::fn_800C2F44() {
+        if (_8 == 0) {
+            return;
+        }
+        
+        for (EnemyGenerator* curr = begin(); curr != end(); curr++) {
+            if (curr->getStrategy() != nullptr) {
+                curr->updateStrategy();
+            }
+        }
     }
+}
+
+EnemyStrategy* EnemyGenerator::getGenStrategy() {
+    return getStrategy();
 }
 
 void unkEnemyGen1::add(void** pNew) {
     addMember(pNew);
 }
 
-void* unkEnemyGen1::remove(void** pIter) {
-    return eraseMember(pIter);
+void** unkEnemyGen1::remove(void** pOld) {
+    return eraseMember(pOld);
 }

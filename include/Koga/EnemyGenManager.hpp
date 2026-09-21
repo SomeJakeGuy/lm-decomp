@@ -5,6 +5,7 @@
 #include <JSystem/JORReflexible.hpp>
 
 #include "Koga/Array.hpp"
+#include "Koga/EnManager.hpp"
 #include "Koga/Message.hpp"
 #include "Koga/ToolData.hpp"
 #include "Sato/IncludeStrategy.hpp"
@@ -17,13 +18,17 @@ namespace JGeometry {
     template<> class TVec3<f32>;
 }
 
+class EnemyStrategy;
+
+// Based on various dynamic casting that is done all over the place, this is probably EnZako.
+// However since its not decomp'd, I am leaving it as void* for now until someone can confirm.
 class unkEnemyGen1 : public Koga::Array<void*, 0xF> {
 public:
     unkEnemyGen1() {}
     ~unkEnemyGen1() {}
 
-    void add(void**); //probably add member?
-    void* remove(void**); //probably delete member;
+    void add(void**);
+    void** remove(void**);
 };
 
 class EnemyGenerator : public JORReflexible, public IncludeStrategy {
@@ -39,16 +44,34 @@ public:
     u32 fn_800C2830(const char*);
      // Need to validate arg / return type.
     void fn_800C287C(void*); // dynamic casts to EnZako and Koga::Observer<GeneratorEvent, void>
+    EnemyStrategy* getGenStrategy();
 
-    /* 0x808 */ ToolDataRef _808; // Maybe some generator path? 
+    inline void updateStrategy() {
+        if (getStrategy() != nullptr) { 
+            if (fn_800E7174(&mPos, -1) == false) {
+                _860 = 0;
+            }
+
+            getStrategy()->update();
+        }
+    }
+    inline bool isSameGenerator(const ToolDataRef& key) {
+        ToolDataRef ref = fn_800C2784();
+        return ref.isSameEntry(key);
+    }
+
+    /* 0x808 */ Koga::ToolData* _808;
+    /* 0x80C */ s32 _80C;
     /* 0x810 */ Koga::EnManager* _810;
     /* 0x814 */ s32 _814; // Generator type? See vt_C
-    /* 0x818 */ Koga::ToolData _818;
+    /* 0x818 */ Koga::ToolData mGenPath;
     /* 0x820 */ unkEnemyGen1 _820;
     /* 0x860 */ s32 _860;
     /* 0x864 */ JGeometry::TVec3f mPos;
     /* 0x870 */ u16 _870;
 };
+
+#define MAX_ENEMY_GENS 0x14
 
 namespace Koga {
     class EnemyGenManager : public JORReflexible, public MessageReceiver {
@@ -61,11 +84,39 @@ namespace Koga {
 
         void fn_800C2F44();
         void fn_800C2FE8(void*); // Need to validate arg / return type.
-        void* fn_800C31DC(); // Something with IncludeStrategy?
-        static ToolDataRef fn_800C31E4(Koga::ToolData*, s32);
 
         inline void setUnk8(bool val) { _8 = val; }
-    public:
+        inline EnemyGenerator* begin() { return &mEnemyGens[0]; }
+        inline EnemyGenerator* last() { return &mEnemyGens[MAX_ENEMY_GENS - 1]; }
+        inline EnemyGenerator* end() { return &mEnemyGens[MAX_ENEMY_GENS]; }
+
+        inline EnemyGenerator* searchEnemyGen(Koga::ToolData* pData, s32 entryIdx) {
+            ToolDataRef ref;
+            ref.setToolData(pData);
+            ref.setEntryIndex(entryIdx);
+
+            EnemyGenerator* curr = begin();
+            EnemyGenerator* last = end();
+
+            while (curr != last && !curr->isSameGenerator(ref)) {
+                curr++;
+            }
+
+            return curr;
+        }
+
+        inline EnemyGenerator* findFreeEnemyGen() {
+            EnemyGenerator* curr = begin();
+            EnemyGenerator* last = end();
+
+            while (curr != last && curr->getGenStrategy() != nullptr) {
+                curr++;
+            }
+
+            return curr;
+        }
+
+    private:
         /* 0x4 */  EnemyGenerator* mEnemyGens;
         /* 0x8 */ bool _8;
     };

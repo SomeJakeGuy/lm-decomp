@@ -1,6 +1,7 @@
 #ifndef TOOL_DATA_H_
 #define TOOL_DATA_H_
 
+#include "dolphin/macros.h"
 #include <types.h>
 #include <JSystem/JORReflexible.hpp>
 #include <JSystem/JGeometry/JGVec3.hpp>
@@ -134,13 +135,25 @@ class ToolDataRef {
             mToolData = src.mToolData;
             mEntryIndex = src.mEntryIndex;
         }
+        ToolDataRef(const ToolDataRef*);
+        
+        void init(Koga::ToolData* pData, s32 entryIdx) {
+            FORCE_DONT_INLINE
+            mToolData = pData;
+            mEntryIndex = entryIdx;    
+        }
 
         inline Koga::ToolData* getToolData() { return mToolData; }
         inline void setToolData(Koga::ToolData* pData) { mToolData = pData; }
         inline s32 getEntryIndex() { return mEntryIndex; }
         inline void setEntryIndex(s32 entryIndex) { mEntryIndex = entryIndex; }
         
-        bool inline isValid() const { return (mToolData != nullptr && mEntryIndex >= 0); }
+        inline bool isValid() const { return (mToolData != nullptr && mEntryIndex >= 0); }
+        inline bool isSameEntry(const ToolDataRef& rOther) const {
+            return mEntryIndex == rOther.mEntryIndex &&
+                mToolData != nullptr && rOther.mToolData != nullptr && 
+                mToolData->getJMapData() == rOther.mToolData->getJMapData();
+        }
 
         // currently un-used but could be useful based on some of the functions in this struct/class
         // They could also have one for like checking if character name is nothing (its used a few times)
@@ -152,9 +165,6 @@ class ToolDataRef {
 
             return charName;
         }
-
-        void init(Koga::ToolData*, s32);
-        ToolDataRef(const ToolDataRef*);
 
         static ToolDataRef findInfoTableName(const char*);
         const char* getName();
