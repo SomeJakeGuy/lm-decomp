@@ -55,7 +55,7 @@ bool AEnZakoBase::state_1_Behavior() {
 
 
 // From this class
-void AEnZakoBase::fn_800F5CB8() {}
+void AEnZakoBase::AEnZakoBase_fn_800F5CB8() {}
 
 void AEnZakoBase::vt_08() {
     return;
