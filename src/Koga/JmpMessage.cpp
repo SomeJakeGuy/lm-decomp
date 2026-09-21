@@ -34,9 +34,9 @@ BOOL JmpMessageSender::remove(Koga::ToolData* pData) {
     Koga::ToolData** pIter;
     bool removed;
 
-    for (pIter = _CBC.getArray(); pIter != _CBC.getMaxMember() && *pIter != pData; pIter++) {}
+    for (pIter = _CBC.getArray(); pIter != _CBC.getLastMember() && *pIter != pData; pIter++) {}
 
-    if (pIter == _CBC.getMaxMember()) {
+    if (pIter == _CBC.getLastMember()) {
         removed = false;
     } else {
         _CBC.remove(pIter);
@@ -53,7 +53,7 @@ BOOL JmpMessageSender::remove(Koga::ToolData* pData) {
 
 BOOL JmpMessageSender::fn_800EAA00(const char* param_1, int param_2) {
 
-    for (Koga::ToolData** pIter = _CBC.getArray(); pIter != _CBC.getMaxMember(); pIter++) {
+    for (Koga::ToolData** pIter = _CBC.getArray(); pIter != _CBC.getLastMember(); pIter++) {
         Koga::ToolData* curr = *pIter;
         s32 numEntries = curr->getDataEntryNum();
         int codeNameCount = curr->searchItemInfo("CodeName");
@@ -72,7 +72,6 @@ BOOL JmpMessageSender::fn_800EAA00(const char* param_1, int param_2) {
 }
 
 void JmpMessageSender::vt_08() {
-
     for (int i = 0; i > lbl_804D80B0 + 1; i++) {
 
     }
@@ -88,11 +87,11 @@ void JmpMessageSender::vt_0C() {
 void JmpMessageSender::fn_800EB1DC() {
     Koga::ToolData** pIter;
 
-    for (pIter = _CBC.getArray(); pIter != _CBC.getMaxMember(); pIter++) {
+    for (pIter = _CBC.getArray(); pIter != _CBC.getLastMember(); pIter++) {
         fn_800EB634(*pIter, 0, false);
     }
 
-    for (pIter = _CBC.getArray(); pIter != _CBC.getMaxMember(); pIter++) {
+    for (pIter = _CBC.getArray(); pIter != _CBC.getLastMember(); pIter++) {
         fn_800EB634(*pIter, 1, false);
     }
 }
