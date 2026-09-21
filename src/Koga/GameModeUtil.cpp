@@ -18,7 +18,7 @@ namespace Koga {
         }
 
         void fn_800B9D70() {
-            GameModeBase::sCurrentGameMode->vt_10();
+            GameModeBase::sCurrentGameMode->vt_14();
         }
 
         void curGameModeDraw() {
@@ -44,7 +44,7 @@ namespace Koga {
         void fn_800B9E5C() {
             MissionMode* missionMode = MissionMode::getMissionMode();
 
-            missionMode->getJmpMsgSender()->vt_0C();
+            missionMode->getJmpMsgSender()->vt_10();
         }
 
         void toggleBlackoutTables(MissionMode::Mission mission) {

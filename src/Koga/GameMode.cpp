@@ -9,7 +9,7 @@ namespace Koga {
 
     void GameMode::init() { }
     void GameMode::loadEnemyInfo() { }
-    void GameMode::vt_10() { }
+    void GameMode::vt_14() { }
     void GameMode::draw() { }
 
     GameModeBase::GameModeBase() {

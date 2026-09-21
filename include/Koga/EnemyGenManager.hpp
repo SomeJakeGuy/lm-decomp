@@ -77,10 +77,10 @@ namespace Koga {
     class EnemyGenManager : public JORReflexible, public MessageReceiver {
     public:
         EnemyGenManager();
-        /* 0x04 */ virtual ~EnemyGenManager();
-        /* 0x08 */ virtual BOOL vt_08(ToolDataRef*); // Checks to see if input is a generator, maybe something to do with adding/loading?
-        /* 0x0C */ virtual BOOL vt_0C(ToolDataRef*); // Maybe something to do with removing / deleting
-        /* 0x10 */ virtual BOOL vt_10(ToolDataRef*, char* message);
+        /* 0x08 */ virtual ~EnemyGenManager();
+        /* 0x0C */ virtual BOOL vt_0C(ToolDataRef*); // Checks to see if input is a generator, maybe something to do with adding/loading?
+        /* 0x10 */ virtual BOOL vt_10(ToolDataRef*); // Maybe something to do with removing / deleting
+        /* 0x14 */ virtual BOOL vt_14(ToolDataRef*, char* message);
 
         void fn_800C2F44();
         void fn_800C2FE8(void*); // Need to validate arg / return type.

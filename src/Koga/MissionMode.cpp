@@ -163,7 +163,7 @@ namespace Koga {
         return mapData;
     }
 
-    void MissionMode::vt_10() {
+    void MissionMode::vt_14() {
         mEnMgr->fn_800E5AE8();
         mJmpMsgSender->vt_0C();
         mEnGenMgr->fn_800C2F44();

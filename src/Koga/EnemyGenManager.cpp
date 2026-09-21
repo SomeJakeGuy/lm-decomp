@@ -115,7 +115,7 @@ namespace Koga {
     }
 
     // https://decomp.me/scratch/w96BL
-    BOOL EnemyGenManager::vt_08(ToolDataRef* pRef) {
+    BOOL EnemyGenManager::vt_0C(ToolDataRef* pRef) {
         const char* entryName;
         const char* genType;
         ToolDataRef localRef = *pRef;
@@ -160,7 +160,7 @@ namespace Koga {
     }
 
     // https://decomp.me/scratch/2kU0Q
-    BOOL EnemyGenManager::vt_0C(ToolDataRef* pRef) {
+    BOOL EnemyGenManager::vt_10(ToolDataRef* pRef) {
         // This does some pass by value maybe or copy constructor? dunno, something like that
         Koga::ToolData* pData = pRef->getToolData();
         s32 entryIdx = pRef->getEntryIndex();
@@ -188,7 +188,7 @@ namespace Koga {
     }
 
     // https://decomp.me/scratch/Js1a9
-    BOOL EnemyGenManager::vt_10(ToolDataRef* pRef, char* message) {
+    BOOL EnemyGenManager::vt_14(ToolDataRef* pRef, char* message) {
         // This does some pass by value maybe or copy constructor? dunno, something like that
         Koga::ToolData* pData = pRef->getToolData();
         s32 entryIdx = pRef->getEntryIndex();

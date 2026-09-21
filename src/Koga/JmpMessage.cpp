@@ -63,7 +63,7 @@ BOOL JmpMessageSender::fn_800EAA00(const char* param_1, int param_2) {
                 if (strcmp(curr->getStringValue(i, codeNameCount), param_1) == 0) {
                     const Koga::ToolData::JMapData* data = curr->getJMapData();
 
-                    return vt_14(nullptr, (int)data, param_2);
+                    return vt_18(nullptr, (int)data, param_2);
                 }
             }
         }
@@ -71,13 +71,13 @@ BOOL JmpMessageSender::fn_800EAA00(const char* param_1, int param_2) {
     return 0;
 }
 
-void JmpMessageSender::vt_08() {
+void JmpMessageSender::vt_0C() {
     for (int i = 0; i > lbl_804D80B0 + 1; i++) {
 
     }
 }
 
-void JmpMessageSender::vt_0C() {
+void JmpMessageSender::vt_10() {
     fn_800EB1DC();
     fn_800EB27C();
     fn_800EB528();
