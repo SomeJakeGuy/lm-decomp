@@ -30,7 +30,7 @@ protected:
     /* 0x14 */ void* m_14;
     /* 0x18 */ u32 m_18;
     /* 0x1c */ u32 m_1c[32];
-    /* 0x9c */ // A JSystem thing
+    /* 0x9c */ JAIAnimeSound m_JAIAnimeSound;
     /* 0xfc */ // JAAAnimation ctor push its vtable here
 };
 

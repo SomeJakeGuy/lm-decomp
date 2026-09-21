@@ -33,7 +33,7 @@ public:
 protected:
     /* 0x18 */ u32 m_18;
     /* 0x1c */ u32 m_1c[32];
-    /* 0x9c */ // Same as AEnKiBase
+    /* 0x9c */ JAIAnimeSound m_JAIAnimeSound;
     /* 0xfc */ // JAIAnimation, same as AEnKiBase
 };
 
