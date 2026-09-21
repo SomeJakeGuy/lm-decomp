@@ -138,7 +138,7 @@ namespace Koga {
             mJmpMsgSender->add(getJmpResource("TeidenKeyInfo"));
             break;
         }
-        mJmpMsgSender->vt_0C();
+        mJmpMsgSender->vt_10();
     }
 
     void MissionMode::addJmpReceiver(MessageReceiver* pReceiver) {
