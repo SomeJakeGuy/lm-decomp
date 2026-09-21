@@ -6,7 +6,7 @@
 
 class EnReplace : public EnemyStrategy {
 public:
-    EnReplace();
+    EnReplace() { };
     /* 0x08 */ virtual ~EnReplace();
     /* 0x14 */ virtual bool vt_14();
     /* 0x1C */ virtual void doBehavior();

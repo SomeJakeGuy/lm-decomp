@@ -6,16 +6,15 @@
 #include "macros.h"
 #include "types.h"
 
-
-dummy_float_data();
-
+static s32 lbl_804D2D5C = 0xff;
 static s32 lbl_804D2D6C = 0xff;
 static s32 lbl_804D2D70 = 0x0;
 static float lbl_804DB698 = 0.f;
 static float lbl_804DB69C = 1.f;
+static s32 lbl_804D2D58 = 0x0;
 
 
-IncludeStrategy::IncludeStrategy() : mpStrategy(nullptr) {
+IncludeStrategy::IncludeStrategy() {
     destroyStrategy();
 }
 
@@ -31,7 +30,7 @@ void IncludeStrategy::setStrategy(int entityIdx) {
 }
 
 void IncludeStrategy::destroyStrategy() {
-    EnemyStrategy* strategy = mpStrategy;
+    EnemyStrategy* strategy = getStrategy();
 
     if (strategy != nullptr) {
         // This object was initialized via placement new, so we
@@ -46,9 +45,19 @@ void MoveObjAlphaControl::vt_08() {
     void* obj = _18;
 }
 
+MoveObjAlphaControl::MoveObjAlphaControl() {
+    _04 = lbl_804D2D58;
+    _08 = lbl_804D2D5C;
+    _0c = lbl_804DB69C;
+    _10 = lbl_804DB69C;
+    _14 = lbl_804DB69C;
+    _18 = nullptr;
+}
 
 
-EnThought::EnThought() { }
+EnThought::EnThought() : _808(nullptr), _80C(nullptr) {
+    reset();
+}
 
 void EnThought::reset() {
     float var1;
@@ -72,19 +81,18 @@ void EnThought::reset() {
     _894 = 0;
     _898 = 0;
     array_828.resetSize();
-    _8ac = lbl_804D2D6C;
-    _8a8 = lbl_804D2D70;
+    mAlphaControl._08 = lbl_804D2D6C;
+    mAlphaControl._04 = lbl_804D2D70;;
     var1 = lbl_804DB69C;
-    _8b4 = lbl_804DB69C;
-    _8b8 = var1;
-    _8bc = _808;
+    mAlphaControl._10 = lbl_804DB69C;
+    mAlphaControl._14 = var1;
+    mAlphaControl._18 = _808;
     _8c8 = -1;
     _8cc = 0;
     _8d0 = 0;
     _8d4 = 0;
     _8e4 = lbl_804DB698;
     _8e8 = 0;
-    _8ea = 0;
     _900 = 0;
     _904 = 0;
     _905 = 0;
@@ -98,7 +106,7 @@ void EnThought::reset() {
     _920 = 0;
     _924 = 0;
     
-    strategy = mpStrategy;
+    strategy = getStrategy();
     var3 = nullptr;
 
     if (strategy != nullptr) {

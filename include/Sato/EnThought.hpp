@@ -3,6 +3,7 @@
 
 #include "Koga/Array.hpp"
 #include "Koga/ToolData.hpp"
+#include "Sato/EnReplace.hpp"
 #include "Sato/IncludeStrategy.hpp"
 #include <JSystem/JORReflexible.hpp>
 #include "Koga/ValueControl.hpp"
@@ -20,13 +21,13 @@ public:
     /* 0x04 */ s32 _04;
     /* 0x08 */ s32 _08;
     /* 0x0c */ f32 _0c;
-    /* 0x10 */ void* _10;
-    /* 0x14 */ void* _14;
+    /* 0x10 */ f32 _10;
+    /* 0x14 */ f32 _14;
     /* 0x18 */ void* _18; /* seems to be an object */
 };
 
 
-struct EnThought0x14 {
+class EnThought0x14 {
     /* 0x00 */ void* unk_0; /* an object */
     /* 0x04 */ void* unk_4; /* a number */
     /* 0x08 */ f32 unk_8[3]; // Possibly the TVec3F said below 
@@ -68,13 +69,7 @@ private:
     /* 0x898 */ void* _898;
     /* 0x89c */ void* _89c;
     /* 0x8a0 */ void* _8a0;
-    /* 0x8a4 */ void* _8a4; // reset don't touch it
-    /* 0x8a8 */ s32 _8a8;
-    /* 0x8ac */ s32 _8ac;
-    /* 0x8b0 */ void* _8b0; // reset don't touch it
-    /* 0x8b4 */ float _8b4;
-    /* 0x8b8 */ float _8b8;
-    /* 0x8bc */ void* _8bc; // copies 808 in reset/init function
+    /* 0x8a4 */ MoveObjAlphaControl mAlphaControl;
     /* 0x8c0 */ ToolDataRef mToolRef;
     /* 0x8c8 */ s32 _8c8;
     /* 0x8cc */ void* _8cc;
@@ -82,7 +77,7 @@ private:
     /* 0x8d4 */ void* _8d4;
     /* 0x8e4 */ float _8e4;
     /* 0x8e8 */ void* _8e8;
-    /* 0x8ea */ void* _8ea;
+    /* 0x8ec */ EnReplace m8ec;
     /* 0x900 */ void* _900;
     /* 0x904 */ void* _904;
     /* 0x905 */ void* _905;
