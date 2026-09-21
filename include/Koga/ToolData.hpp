@@ -182,7 +182,7 @@ class ToolDataRef {
         static ToolDataRef fn_800E84CC(s32); // handles itemappearing after defeating
         static ToolDataRef fn_800E8658(s32, s32, s32); // handles itemfishing, which spawns as luigi continues to suck.
 
-    private:
+    public:
         /* 0x0 */ Koga::ToolData* mToolData;
         /* 0x4 */ s32 mEntryIndex;
 };

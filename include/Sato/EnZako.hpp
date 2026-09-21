@@ -2,12 +2,19 @@
 #define EN_ZAKO_HPP
 
 #include "Sato/EnThought.hpp"
+#include "macros.h"
+
+dummy_float_data();
+enemies_float_data();
+
+
+char path_name[] = "path_name";
 
 class EnZako : public EnThought {
-    EnZako();
-    virtual ~EnZako();
-    virtual void vt_0C(); // Did not check args/return type
-    virtual void vt_10(); // Did not check args/return type
+public:
+    /* 0x08 */ virtual ~EnZako();
+    /* 0x0C */ virtual void vt_0C();
+    /* 0x10 */ virtual void vt_10();
 };
 
 #endif

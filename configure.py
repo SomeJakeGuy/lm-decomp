@@ -739,8 +739,20 @@ config.libs = [
     Game([
         # Sato
         Object(Matching, "Sato/EnemyStrategy.cpp"),
+        Object(NonMatching, "Sato/EnemyTypicalStrategy.cpp"),
         Object(NonMatching, "Sato/EnemyStrategyInit.cpp"),
-        Object(NonMatching, "Sato/IncludeStrategy.cpp"),
+        Object(NonMatching, "Sato/EnThought.cpp"),
+        Object(NonMatching, "Sato/EnReplace.cpp"),
+        Object(NonMatching, "Sato/EnZako.cpp"),
+        Object(NonMatching, "Sato/SaEnGenUtility.cpp"),
+
+        # Ajioka
+        Object(NonMatching, "Ajioka/AEnZakoBase.cpp"),
+        Object(NonMatching, "Ajioka/AEnKaguBase.cpp"),
+        Object(NonMatching, "Ajioka/AEnBeamBase.cpp"),
+        Object(NonMatching, "Ajioka/AEnKiBase.cpp"),
+        Object(NonMatching, "Ajioka/AEnKiSentak.cpp"),
+        Object(NonMatching, "Ajioka/AEnKiEtc.cpp"),
 
         # Koga
         Object(Matching, "Koga/GameModeUtil.cpp"),
@@ -771,6 +783,7 @@ config.libs = [
         Object(NonMatching, "Unsorted/LMDvdFileBlock.cpp"),
         Object(NonMatching, "Unsorted/80005EB8.cpp"),
         Object(NonMatching, "Unsorted/MoveObj.cpp"),
+        Object(NonMatching, "Unsorted/Character.cpp"),
         Object(NonMatching, "Unsorted/RailInfoUtil.cpp"),
         Object(NonMatching, "Unsorted/800627D8.cpp"),
         Object(NonMatching, "Unsorted/LMDisplayUtil.cpp"),
