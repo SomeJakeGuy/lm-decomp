@@ -234,6 +234,13 @@ Ajioka/AEnKiBase.cpp:
 	.sdata      start:0x804D41A0 end:0x804D41C0
 	.sdata2     start:0x804DBC58 end:0x804DBC68
 
+Ajioka/AEnKiSentak.cpp:
+	.text       start:0x800F7A8C end:0x800F8100
+	.ctors      start:0x8020BC40 end:0x8020BC44
+	.data       start:0x80366C28 end:0x80366E70
+	.sdata      start:0x804D41C0 end:0x804D41F0
+	.sdata2     start:0x804DBC68 end:0x804DBC70
+
 Sato/SaEnGenUtility.cpp:
 	.text       start:0x80142F88 end:0x801443E8
 	.data       start:0x8037A1D0 end:0x8037A2B0
