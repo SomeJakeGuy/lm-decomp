@@ -5,6 +5,8 @@
 #include "Sato/EnemyStrategy.hpp"
 #include "Sato/SaEnGenUtility.hpp"
 
+// int a[] = {0, 0, 0, 0, 0, 0, 0, 0x10000, 0, 0, 0, 0, 0, 0};
+
 class AEnZakoBase: public SaEnZakoUtility, public EnemyStrategy, public Koga::CharacterEventObserver {
 public:    
     AEnZakoBase();

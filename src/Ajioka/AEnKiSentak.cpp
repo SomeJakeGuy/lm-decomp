@@ -9,27 +9,31 @@ enemies_float_data()
 static char lbl_804D41C0[] = "ENDING";
 
 static EnemyStrategyState enemiesStates[4] = {
-    EnemyStrategyState(0, 
+    {
+        0, 
         (EnemyStrategyStateFn)&AEnKiSentak::state_0_Init, 
         (EnemyStrategyStateFn)&AEnKiSentak::state_0_Behavior
-    ),
+    },
 
-    EnemyStrategyState(1, 
+    {
+        1, 
         (EnemyStrategyStateFn)&AEnKiSentak::state_1_Init, 
         (EnemyStrategyStateFn)&AEnKiSentak::state_1_Behavior
-    ),
+    },
 
     
-    EnemyStrategyState(2, 
+    {
+        2, 
         (EnemyStrategyStateFn)&AEnKiSentak::state_2_Init, 
         (EnemyStrategyStateFn)&AEnKiSentak::state_2_Behavior
-    ),
+    },
 
     
-    EnemyStrategyState(3, 
+    {
+        3, 
         (EnemyStrategyStateFn)&AEnKiSentak::state_3_Init, 
         (EnemyStrategyStateFn)&AEnKiSentak::state_3_Behavior
-    ),
+    },
 };
 
 int lbl_80366D30[] = {1, 2, 3};

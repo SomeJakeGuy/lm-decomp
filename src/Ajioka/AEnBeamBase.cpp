@@ -8,15 +8,17 @@ dummy_float_data();
 enemies_float_data();
 
 static EnemyStrategyState enemiesStates[2] = {
-    EnemyStrategyState(0, 
+    {
+        0, 
         (EnemyStrategyStateFn)&AEnBeamBase::state_0_Init, 
         (EnemyStrategyStateFn)&AEnBeamBase::state_0_Behavior
-    ),
+    },
 
-    EnemyStrategyState(1, 
+    {
+        1, 
         (EnemyStrategyStateFn)&AEnBeamBase::state_1_Init, 
         (EnemyStrategyStateFn)&AEnBeamBase::state_1_Behavior
-    ),
+    },
 };
 
 AEnBeamBase::~AEnBeamBase() {

@@ -13,36 +13,14 @@ public:
     /* 0x20 */ virtual void doBehaviorInit();
 
 
-    bool state_0000_Init();
-    bool state_0000_Behavior();
+    bool state_0_Init();
+    bool state_0_Behavior();
     
-    bool state_0010_Init();
-    bool state_0010_Behavior();
+    bool state_1_Init();
+    bool state_1_Behavior();
     
-    bool state_0100_Init();
-    bool state_0100_Behavior();
+    bool state_256_Init();
+    bool state_256_Behavior();
 };
-
-static EnemyStrategyState enemyStrategyStates[] = {
-    EnemyStrategyState(
-        0x0000, 
-        (EnemyStrategyStateFn)&EnReplace::state_0000_Init, 
-        (EnemyStrategyStateFn)&EnReplace::state_0000_Behavior
-    ),
-
-    EnemyStrategyState(
-        0x0010, 
-        (EnemyStrategyStateFn)&EnReplace::state_0010_Init, 
-        (EnemyStrategyStateFn)&EnReplace::state_0010_Behavior
-    ),
-
-    EnemyStrategyState(
-        0x0200, 
-        (EnemyStrategyStateFn)&EnReplace::state_0100_Init, 
-        (EnemyStrategyStateFn)&EnReplace::state_0100_Behavior
-    ),
-};
-
-
 
 #endif

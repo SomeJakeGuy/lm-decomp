@@ -8,32 +8,37 @@ enemies_float_data()
 static char lbl_804D41A0[] = "ENDING";
 
 static EnemyStrategyState enemiesStates[5] = {
-    EnemyStrategyState(0, 
+    {
+        0, 
         (EnemyStrategyStateFn)&AEnKiBase::state_0_Init, 
         (EnemyStrategyStateFn)&AEnKiBase::state_0_Behavior
-    ),
+    },
 
-    EnemyStrategyState(1, 
+    {
+        1, 
         (EnemyStrategyStateFn)&AEnKiBase::state_1_Init, 
         (EnemyStrategyStateFn)&AEnKiBase::state_1_Behavior
-    ),
+    },
 
     
-    EnemyStrategyState(2, 
+    {
+        2, 
         (EnemyStrategyStateFn)&AEnKiBase::state_2_Init, 
         (EnemyStrategyStateFn)&AEnKiBase::state_2_Behavior
-    ),
+    },
 
     
-    EnemyStrategyState(3, 
+    {
+        3, 
         (EnemyStrategyStateFn)&AEnKiBase::state_3_Init, 
         (EnemyStrategyStateFn)&AEnKiBase::state_3_Behavior
-    ),
+    },
     
-    EnemyStrategyState(4, 
+    {
+        4, 
         (EnemyStrategyStateFn)&AEnKiBase::state_4_Init, 
         (EnemyStrategyStateFn)&AEnKiBase::state_4_Behavior
-    ),
+    },
 };
 
 

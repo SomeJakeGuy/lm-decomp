@@ -1,19 +1,22 @@
 #include "Ajioka/AEnZakoBase.hpp"
+#include "Sato/EnemyStrategy.hpp"
 #include "macros.h"
 
 dummy_float_data();
 enemies_float_data();
 
 static EnemyStrategyState enemiesStates[2] = {
-    EnemyStrategyState(0, 
+    { 
+        0, 
         (EnemyStrategyStateFn)&AEnZakoBase::state_0_Init, 
         (EnemyStrategyStateFn)&AEnZakoBase::state_0_Behavior
-    ),
+    },
 
-    EnemyStrategyState(1, 
+    { 
+        1, 
         (EnemyStrategyStateFn)&AEnZakoBase::state_1_Init, 
         (EnemyStrategyStateFn)&AEnZakoBase::state_1_Behavior
-    ),
+    },
 };
 
 

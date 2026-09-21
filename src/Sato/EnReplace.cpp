@@ -5,6 +5,28 @@
 dummy_float_data();
 enemies_float_data();
 
+
+
+static EnemyStrategyState enemyStrategyStates[3] = {
+    {
+        0,
+        (EnemyStrategyStateFn)&EnReplace::state_0_Init, 
+        (EnemyStrategyStateFn)&EnReplace::state_0_Behavior
+    },
+
+    {
+        1, 
+        (EnemyStrategyStateFn)&EnReplace::state_1_Init, 
+        (EnemyStrategyStateFn)&EnReplace::state_1_Behavior
+    },
+
+    {
+        256, 
+        (EnemyStrategyStateFn)&EnReplace::state_256_Init, 
+        (EnemyStrategyStateFn)&EnReplace::state_256_Behavior
+    },
+};
+
 void EnReplace::doBehavior() {
     EnemyStrategyState* end = enemyStrategyStates + ARRAY_COUNT(enemyStrategyStates);
     EnemyStrategyState* current = enemyStrategyStates;
@@ -41,9 +63,9 @@ bool EnReplace::vt_14() {
     return false;
 }
 
-bool EnReplace::state_0000_Init() { return true; }
-bool EnReplace::state_0000_Behavior() { return true; }
-bool EnReplace::state_0010_Init() { return true; }
-bool EnReplace::state_0010_Behavior() { return true; }
-bool EnReplace::state_0100_Init() { return true; }
-bool EnReplace::state_0100_Behavior() { return true; }
+bool EnReplace::state_0_Init() { return true; }
+bool EnReplace::state_0_Behavior() { return true; }
+bool EnReplace::state_1_Init() { return true; }
+bool EnReplace::state_1_Behavior() { return true; }
+bool EnReplace::state_256_Init() { return true; }
+bool EnReplace::state_256_Behavior() { return true; }
