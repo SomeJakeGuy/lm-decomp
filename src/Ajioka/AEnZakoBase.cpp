@@ -55,7 +55,7 @@ bool AEnZakoBase::state_1_Behavior() {
 
 
 // From this class
-void AEnZakoBase::fn_800F5CB8() {}
+void AEnZakoBase::AEnZakoBase_fn_800F5CB8() {}
 
 void AEnZakoBase::vt_08() {
     return;
@@ -80,4 +80,29 @@ bool AEnZakoBase::onSprayedWithFire(Koga::CharacterEvent* msg){
 
 bool AEnZakoBase::onSprayedWithIce(Koga::CharacterEvent* msg){
     return true;
+}
+
+// From this class
+void AEnZakoBase::AEnZakoBase_fn_800F5F4C() {
+
+}
+
+void AEnZakoBase::AEnZakoBase_fn_800F5FA8() {
+
+}
+
+void AEnZakoBase::AEnZakoBase_fn_800F6010() {
+
+}
+
+void AEnZakoBase::AEnZakoBase_fn_800F6048() {
+
+}
+
+void AEnZakoBase::AEnZakoBase_fn_800F6080() {
+
+}
+
+void AEnZakoBase::AEnZakoBase_fn_800F60B8() {
+
 }

@@ -27,13 +27,13 @@ public:
     virtual bool onPlayerLeftRoom(Koga::CharacterEvent* msg);
 
     // From this class, args/return types not provided
-    virtual void fn_800F5F4C();
-    virtual void fn_800F5FA8();
-    virtual void fn_800F6010();
-    virtual void fn_800F6048();
-    virtual void fn_800F6080();
-    virtual void fn_800F60B8();
-    virtual void fn_800F5CB8();
+    virtual void AEnZakoBase_fn_800F5F4C();
+    virtual void AEnZakoBase_fn_800F5FA8();
+    virtual void AEnZakoBase_fn_800F6010();
+    virtual void AEnZakoBase_fn_800F6048();
+    virtual void AEnZakoBase_fn_800F6080();
+    virtual void AEnZakoBase_fn_800F60B8();
+    virtual void AEnZakoBase_fn_800F5CB8();
 
     bool state_0_Init();
     bool state_0_Behavior();

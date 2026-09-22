@@ -78,6 +78,8 @@ bool AEnBeamBase::state_1_Behavior() {
 }
 
 
+
+
 void AEnBeamBase::AEnBeamBase_fn_800F6DEC() {
 
 }
@@ -86,7 +88,16 @@ void AEnBeamBase::AEnBeamBase_fn_800F6DF8() {
 
 }
 
+
+void AEnBeamBase::AEnZakoBase_fn_800F5F4C() {
+
+}
+
 void AEnBeamBase::AEnBeamBase_fn_800F6EE8() {
+
+}
+
+void AEnBeamBase::AEnZakoBase_fn_800F6010() {
 
 }
 

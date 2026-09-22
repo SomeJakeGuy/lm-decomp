@@ -18,7 +18,8 @@ public:
     // Nothing is override
 
     // AEnZakoBase
-    // Nothing is override
+    virtual void AEnZakoBase_fn_800F5F4C();
+    virtual void AEnZakoBase_fn_800F6010();
 
     // From this class. Args/return type not provided
     virtual void AEnBeamBase_fn_800F6DEC();
