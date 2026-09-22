@@ -1,5 +1,6 @@
 // Based on the previous decompilation effort: https://github.com/CoNesTra/zmansion/blob/main/src/Unsorted/IncludeStrategy.cpp
 #include "Sato/EnThought.hpp"
+#include "JSystem/JGeometry/JGVec3.hpp"
 #include "Koga/ToolData.hpp"
 #include "Sato/EnemyStrategy.hpp"
 #include "Unsorted/MoveObj.hpp"
@@ -48,9 +49,9 @@ void MoveObjAlphaControl::vt_08() {
 MoveObjAlphaControl::MoveObjAlphaControl() {
     _04 = lbl_804D2D58;
     _08 = lbl_804D2D5C;
-    _0c = lbl_804DB69C;
-    _10 = lbl_804DB69C;
-    _14 = lbl_804DB69C;
+    _0C.x = 0.0f;
+    _0C.y = 0.0f;
+    _0C.z = 0.0f;
     _18 = nullptr;
 }
 
@@ -83,9 +84,11 @@ void EnThought::reset() {
     array_828.resetSize();
     mAlphaControl._08 = lbl_804D2D6C;
     mAlphaControl._04 = lbl_804D2D70;;
-    var1 = lbl_804DB69C;
-    mAlphaControl._10 = lbl_804DB69C;
-    mAlphaControl._14 = var1;
+    //var1 = lbl_804DB69C;
+    mAlphaControl._0C.y = lbl_804DB69C;
+    mAlphaControl._0C.z = lbl_804DB69C;
+    //mAlphaControl._10 = lbl_804DB69C;
+    //mAlphaControl._14 = var1;
     mAlphaControl._18 = _808;
     _8c8 = -1;
     _8cc = 0;

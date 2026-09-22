@@ -3,6 +3,7 @@
 
 #include <types.h>
 #include <JSystem/JORReflexible.hpp>
+#include <JSystem/JGeometry/JGVec3.hpp>
 
 #include "Koga/Array.hpp"
 #include "Koga/EnManager.hpp"
@@ -12,10 +13,6 @@
 
 namespace Koga {
     class EnManager;
-}
-
-namespace JGeometry {
-    template<> class TVec3<f32>;
 }
 
 class EnemyStrategy;

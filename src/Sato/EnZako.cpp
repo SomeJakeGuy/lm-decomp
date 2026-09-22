@@ -1,15 +1,19 @@
 #include "Sato/EnZako.hpp"
 
+EnZako::EnZako() {
+    
+}
+
 EnZako::~EnZako() {
     
 }
 
 
 void EnZako::vt_0C() {
-    mpStrategy->update();
+    getStrategy()->update();
 }
 
 
 void EnZako::vt_10() {
-    mpStrategy->mpZako = 0;
+    getStrategy()->mpZako = 0;
 }

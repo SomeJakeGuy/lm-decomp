@@ -177,6 +177,8 @@ Sato/EnReplace.cpp:
 
 Koga/EnTypesManager.cpp:
 	.text       start:0x800DA498 end:0x800DB168
+	.data       start:0x80360D78 end:0x80361080
+	.sdata      start:0x804D3938 end:0x804D3970
 
 Koga/EnManager.cpp:
 	.text       start:0x800E4514 end:0x800E9DC8

@@ -1,11 +1,13 @@
 #ifndef EN_THOUGHT_HPP
 #define EN_THOUGHT_HPP
 
+#include <JSystem/JORReflexible.hpp>
+#include <JSystem/JGeometry/JGVec3.hpp>
+
 #include "Koga/Array.hpp"
 #include "Koga/ToolData.hpp"
 #include "Sato/EnReplace.hpp"
 #include "Sato/IncludeStrategy.hpp"
-#include <JSystem/JORReflexible.hpp>
 #include "Koga/ValueControl.hpp"
 #include "macros.h"
 
@@ -20,9 +22,7 @@ public:
 
     /* 0x04 */ s32 _04;
     /* 0x08 */ s32 _08;
-    /* 0x0c */ f32 _0c;
-    /* 0x10 */ f32 _10;
-    /* 0x14 */ f32 _14;
+    /* 0x0C - 0x14 */ JGeometry::TVec3<f32> _0C; // mPosition
     /* 0x18 */ void* _18; /* seems to be an object */
 };
 
