@@ -32,9 +32,10 @@ class EnThought0x14 {
     /* 0x04 */ void* unk_4; /* a number */
     /* 0x08 */ f32 unk_8[3]; // Possibly the TVec3F said below 
 
-    virtual void vt_28_ptmf(); // fn_800BEF3C
-    virtual void vt_3c_ptmf(); // fn_800BEEDC
-    virtual void vt_40_ptmf(); // fn_800BEF0C
+    // These are called via Array::callAll fn_800C17EC most likely, and functors rather than virtuals.
+    void vt_28_ptmf(); // fn_800BEF3C
+    void vt_3c_ptmf(); // fn_800BEEDC
+    void vt_40_ptmf(); // fn_800BEF0C
 };
 
 /**
@@ -53,6 +54,10 @@ public:
     ToolDataRef getToolDataRef() const;
 
     inline MoveObjAlphaControl getAlphaControl() { return mAlphaControl; }
+    inline void set93C(float fVal) { _93C = fVal; }
+    inline void set940(float fVal) { _940 = fVal; }
+    inline void set944(float fVal) { _944 = fVal; }
+    inline void set948(float fVal) { _948 = fVal; }
 
 private:
     // Object that holds at least 0xE8 data. In the reset, it's calling fn_80067C30 which is in MoveObj split. Probably an entity
@@ -75,14 +80,14 @@ private:
     /* 0x8c8 */ s32 _8c8;
     /* 0x8cc */ void* _8cc;
     /* 0x8d0 */ void* _8d0;
-    /* 0x8d4 */ void* _8d4;
+    /* 0x8d4 */ void* _8d4[0x4]; //Unsure about size or anything here, just matching the gap.
     /* 0x8e4 */ float _8e4;
     /* 0x8e8 */ void* _8e8;
     /* 0x8ec */ EnReplace m8ec;
     /* 0x900 */ void* _900;
-    /* 0x904 */ void* _904;
-    /* 0x905 */ void* _905;
-    /* 0x906 */ void* _906;
+    /* 0x904 */ u8 _904;
+    /* 0x905 */ u8 _905;
+    /* 0x906 */ u16 _906;
     /* 0x908 */ void* _908;
     /* 0x90c */ void* _90c;
     /* 0x910 */ void* _910;
@@ -96,9 +101,10 @@ private:
     /* 0x930 */ void* _930;
     /* 0x934 */ void* _934;
     /* 0x938 */ void* _938;
-
-
-
+    /* 0x93C */ float _93C;
+    /* 0x940 */ float _940;
+    /* 0x944 */ float _944;
+    /* 0x948 */ float _948;
 };
 
 #endif

@@ -15,12 +15,19 @@ EnZako::~EnZako() {
 void EnZako::vt_0C() {
     _958 = _954;
     getStrategy()->update();
+    fn_800C1FFC();
 }
 
 
 void EnZako::vt_10() {
-    getStrategy()->mpZako = 0;
+    getStrategy()->mpZako = this;
     _954 = nullptr;
+    set93C(0.0);
+    set940(0.0);
+    set944(0.0);
+    set948(0.0);
+    _94C = 0;
+    _950 = nullptr;
 }
 
 
@@ -45,6 +52,7 @@ bool EnZako::fn_800C1F5C() {
 
     return true;
 }
+
 
 Koga::ToolData* EnZako::fn_800C1FF4() {
     return &_95C;

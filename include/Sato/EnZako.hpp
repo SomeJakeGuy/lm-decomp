@@ -22,7 +22,8 @@ public:
     void* fn_800C211C(); // Not sure about return type/args, could be bool too?
 
     // Not sure if these do belong here or in Enthought, but _95C belongs here for sure.
-    /* 0x94C */ void* _94C;
+    /* 0x94C */ u16 _94C;
+    /* 0x94E */ u8 padding[0x2];
     /* 0x950 */ void* _950;
     /* 0x954 */ void* _954;
     /* 0x958 */ void* _958;
