@@ -48,10 +48,11 @@ public:
     virtual void vt_0C() = 0; // Did not check args/return type
     virtual void vt_10() { }; // Did not check args/return type
 
-private:
     void reset(); //  fn_800BF0CC lmao golden function
     void setToolDataRef(ToolDataRef ref);
-    ToolDataRef getToolDataRef();
+    ToolDataRef getToolDataRef() const;
+
+    inline MoveObjAlphaControl getAlphaControl() { return mAlphaControl; }
 
 private:
     // Object that holds at least 0xE8 data. In the reset, it's calling fn_80067C30 which is in MoveObj split. Probably an entity
