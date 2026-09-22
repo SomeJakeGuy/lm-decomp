@@ -1,11 +1,8 @@
 // Based on the previous decompilation effort: https://github.com/CoNesTra/zmansion/blob/main/src/Unsorted/IncludeStrategy.cpp
 #include "Sato/EnThought.hpp"
-#include "JSystem/JGeometry/JGVec3.hpp"
-#include "Koga/ToolData.hpp"
 #include "Sato/EnemyStrategy.hpp"
 #include "Unsorted/MoveObj.hpp"
 #include "macros.h"
-#include "types.h"
 
 static s32 lbl_804D2D5C = 0xff;
 static s32 lbl_804D2D6C = 0xff;
