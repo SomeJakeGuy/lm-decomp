@@ -39,9 +39,9 @@ public:
 
     JmpMessageSender();
 
-    /* 0x04 */ virtual ~JmpMessageSender();
-    /* 0x08 */ virtual void vt_08();
+    /* 0x08 */ virtual ~JmpMessageSender();
     /* 0x0C */ virtual void vt_0C();
+    /* 0x10 */ virtual void vt_10();
 
     BOOL add(Koga::ToolData* pData);
     BOOL remove(Koga::ToolData* pData);

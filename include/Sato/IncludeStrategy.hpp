@@ -27,7 +27,7 @@ public:
     // /* 0x800 */ EnemyStrategy mpStrategy;
 
     IncludeStrategy();
-    /* 0x04 */ virtual ~IncludeStrategy();
+    /* 0x804 */ virtual ~IncludeStrategy();
 
     void setStrategy(int);
     void destroyStrategy();

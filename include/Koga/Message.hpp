@@ -22,11 +22,11 @@ class MessageSender {
 public:
     MessageSender();
 
-    /* 0x04 */ virtual ~MessageSender();
-    /* 0x08 */ virtual void vt_08() = 0;
+    /* 0x08 */ virtual ~MessageSender();
     /* 0x0C */ virtual void vt_0C() = 0;
-    /* 0x10 */ virtual s32 vt_10(MessageCallback1 fn, int arg0);
-    /* 0x14 */ virtual s32 vt_14(MessageCallback2 fn, int arg0, int arg1);
+    /* 0x10 */ virtual void vt_10() = 0;
+    /* 0x14 */ virtual s32 vt_14(MessageCallback1 fn, int arg0);
+    /* 0x18 */ virtual s32 vt_18(MessageCallback2 fn, int arg0, int arg1);
 
     bool addReceiver(MessageReceiver*);
 
@@ -37,20 +37,20 @@ public:
 class IMessageReceiver {
 public:
     //Seems to be inlined where its used and doesn't show up in the final binary
-    /* 0x04 */ inline virtual ~IMessageReceiver() { }
-    /* 0x08 */ virtual BOOL vt_08(ToolDataRef*) = 0;
+    /* 0x08 */ inline virtual ~IMessageReceiver() { }
     /* 0x0C */ virtual BOOL vt_0C(ToolDataRef*) = 0;
-    /* 0x10 */ virtual BOOL vt_10(ToolDataRef*, char*) = 0;
+    /* 0x10 */ virtual BOOL vt_10(ToolDataRef*) = 0;
+    /* 0x14 */ virtual BOOL vt_14(ToolDataRef*, char*) = 0;
 };
 
 class MessageReceiver : public IMessageReceiver {
 public:
     MessageReceiver();
 
-    /* 0x04 */ virtual ~MessageReceiver();
-    /* 0x08 */ virtual BOOL vt_08(ToolDataRef*);
+    /* 0x08 */ virtual ~MessageReceiver();
     /* 0x0C */ virtual BOOL vt_0C(ToolDataRef*);
-    /* 0x10 */ virtual BOOL vt_10(ToolDataRef*, char*);
+    /* 0x10 */ virtual BOOL vt_10(ToolDataRef*);
+    /* 0x14 */ virtual BOOL vt_14(ToolDataRef*, char*);
 };
 
 #endif

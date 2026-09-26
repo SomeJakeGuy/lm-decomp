@@ -34,9 +34,9 @@ BOOL JmpMessageSender::remove(Koga::ToolData* pData) {
     Koga::ToolData** pIter;
     bool removed;
 
-    for (pIter = _CBC.getArray(); pIter != _CBC.getMaxMember() && *pIter != pData; pIter++) {}
+    for (pIter = _CBC.getArray(); pIter != _CBC.getLastMember() && *pIter != pData; pIter++) {}
 
-    if (pIter == _CBC.getMaxMember()) {
+    if (pIter == _CBC.getLastMember()) {
         removed = false;
     } else {
         _CBC.remove(pIter);
@@ -53,7 +53,7 @@ BOOL JmpMessageSender::remove(Koga::ToolData* pData) {
 
 BOOL JmpMessageSender::fn_800EAA00(const char* param_1, int param_2) {
 
-    for (Koga::ToolData** pIter = _CBC.getArray(); pIter != _CBC.getMaxMember(); pIter++) {
+    for (Koga::ToolData** pIter = _CBC.getArray(); pIter != _CBC.getLastMember(); pIter++) {
         Koga::ToolData* curr = *pIter;
         s32 numEntries = curr->getDataEntryNum();
         int codeNameCount = curr->searchItemInfo("CodeName");
@@ -63,7 +63,7 @@ BOOL JmpMessageSender::fn_800EAA00(const char* param_1, int param_2) {
                 if (strcmp(curr->getStringValue(i, codeNameCount), param_1) == 0) {
                     const Koga::ToolData::JMapData* data = curr->getJMapData();
 
-                    return vt_14(nullptr, (int)data, param_2);
+                    return vt_18(nullptr, (int)data, param_2);
                 }
             }
         }
@@ -71,14 +71,13 @@ BOOL JmpMessageSender::fn_800EAA00(const char* param_1, int param_2) {
     return 0;
 }
 
-void JmpMessageSender::vt_08() {
-
+void JmpMessageSender::vt_0C() {
     for (int i = 0; i > lbl_804D80B0 + 1; i++) {
 
     }
 }
 
-void JmpMessageSender::vt_0C() {
+void JmpMessageSender::vt_10() {
     fn_800EB1DC();
     fn_800EB27C();
     fn_800EB528();
@@ -88,11 +87,11 @@ void JmpMessageSender::vt_0C() {
 void JmpMessageSender::fn_800EB1DC() {
     Koga::ToolData** pIter;
 
-    for (pIter = _CBC.getArray(); pIter != _CBC.getMaxMember(); pIter++) {
+    for (pIter = _CBC.getArray(); pIter != _CBC.getLastMember(); pIter++) {
         fn_800EB634(*pIter, 0, false);
     }
 
-    for (pIter = _CBC.getArray(); pIter != _CBC.getMaxMember(); pIter++) {
+    for (pIter = _CBC.getArray(); pIter != _CBC.getLastMember(); pIter++) {
         fn_800EB634(*pIter, 1, false);
     }
 }

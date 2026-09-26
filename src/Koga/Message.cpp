@@ -7,11 +7,11 @@ MessageReceiver::MessageReceiver() {}
 
 MessageReceiver::~MessageReceiver() {}
 
-BOOL MessageReceiver::vt_08(ToolDataRef* param_1) { return 0; }
-
 BOOL MessageReceiver::vt_0C(ToolDataRef* param_1) { return 0; }
 
-BOOL MessageReceiver::vt_10(ToolDataRef* param_1, char* param_2) { return 0; }
+BOOL MessageReceiver::vt_10(ToolDataRef* param_1) { return 0; }
+
+BOOL MessageReceiver::vt_14(ToolDataRef* param_1, char* param_2) { return 0; }
 
 MessageSender::MessageSender() { }
 
@@ -26,7 +26,7 @@ bool MessageSender::addReceiver(MessageReceiver* receiver) {
     return false;
 }
 
-s32 MessageSender::vt_10(MessageCallback1 fn, int arg0) {
+s32 MessageSender::vt_14(MessageCallback1 fn, int arg0) {
     s32 receiverCount = _4.getSize();
     MessageReceiver** instance = _4.getArray();
 
@@ -39,7 +39,7 @@ s32 MessageSender::vt_10(MessageCallback1 fn, int arg0) {
     return false;
 }
 
-s32 MessageSender::vt_14(MessageCallback2 fn, int arg0, int arg1) {
+s32 MessageSender::vt_18(MessageCallback2 fn, int arg0, int arg1) {
     s32 receiverCount = _4.getSize();
     MessageReceiver** recv = _4.getArray();
 

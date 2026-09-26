@@ -258,10 +258,10 @@ namespace Koga {
 
     // https://decomp.me/scratch/3EURE
     void EnManager::fn_800E5E78(const char* pCreateName) {
-        unkEnManager2* it = _804.getArray();
+        unkEnManager2* it = _804.getFirstMember();
         unkEnManager1* end = &_4[0x80];
 
-        while (it != _804.getMaxMember()) {
+        while (it != _804.getLastMember()) {
             if (strcmp(it->getCreateName(), pCreateName) != 0) {
                 it++;
                 continue;
