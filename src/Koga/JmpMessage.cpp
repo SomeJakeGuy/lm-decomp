@@ -20,7 +20,7 @@ JmpMessageSender::JmpMessageSender() {
 JmpMessageSender::~JmpMessageSender() { }
 
 BOOL JmpMessageSender::add(Koga::ToolData* pData) {
-    if (_CBC.getArraySize() >= 10) {
+    if (_CBC.getSize() >= 10) {
         return FALSE;
     }
 
@@ -31,17 +31,16 @@ BOOL JmpMessageSender::add(Koga::ToolData* pData) {
 }
 
 BOOL JmpMessageSender::remove(Koga::ToolData* pData) {
-    Koga::ToolData** newData;
-    Koga::ToolData** maxData = &_CBC.mArr[_CBC.mArraySize];
+    Koga::ToolData** pIter;
+    bool removed;
 
-    for (newData = _CBC.mArr; newData != maxData && *newData != pData; newData++) {}
+    for (pIter = _CBC.getArray(); pIter != _CBC.getLastMember() && *pIter != pData; pIter++) {}
 
-    bool removed = false;
-    if (newData == maxData) {
-        removed = true;
-    } else {
-        _CBC.removeJmp(newData);
+    if (pIter == _CBC.getLastMember()) {
         removed = false;
+    } else {
+        _CBC.remove(pIter);
+        removed = true;
     }
 
     if (!removed) {
@@ -53,16 +52,16 @@ BOOL JmpMessageSender::remove(Koga::ToolData* pData) {
 }
 
 BOOL JmpMessageSender::fn_800EAA00(const char* param_1, int param_2) {
-    Koga::ToolData* newData;
-    for (newData = *_CBC.mArr; newData != _CBC.mArr[_CBC.mArraySize]; newData++) {
-        s32 numEntries = newData->getDataEntryNum();
 
-        int codeNameCount = newData->searchItemInfo("CodeName");
+    for (Koga::ToolData** pIter = _CBC.getArray(); pIter != _CBC.getLastMember(); pIter++) {
+        Koga::ToolData* curr = *pIter;
+        s32 numEntries = curr->getDataEntryNum();
+        int codeNameCount = curr->searchItemInfo("CodeName");
 
         if (codeNameCount >= 0) {
             for (int i = 0; i < numEntries; i++) {
-                if (strcmp(newData->getStringValue(i, codeNameCount), param_1) == 0) {
-                    const Koga::ToolData::JMapData* data = newData->getJMapData();
+                if (strcmp(curr->getStringValue(i, codeNameCount), param_1) == 0) {
+                    const Koga::ToolData::JMapData* data = curr->getJMapData();
 
                     return vt_18(nullptr, (int)data, param_2);
                 }
@@ -73,7 +72,6 @@ BOOL JmpMessageSender::fn_800EAA00(const char* param_1, int param_2) {
 }
 
 void JmpMessageSender::vt_0C() {
-
     for (int i = 0; i > lbl_804D80B0 + 1; i++) {
 
     }
@@ -87,14 +85,14 @@ void JmpMessageSender::vt_10() {
 
 // https://decomp.me/scratch/ERI2l
 void JmpMessageSender::fn_800EB1DC() {
-    Koga::ToolData** newData;
+    Koga::ToolData** pIter;
 
-    for (newData = _CBC.mArr; newData != &_CBC.mArr[_CBC.mArraySize]; newData++) {
-        fn_800EB634(*newData, 0, false);
+    for (pIter = _CBC.getArray(); pIter != _CBC.getLastMember(); pIter++) {
+        fn_800EB634(*pIter, 0, false);
     }
 
-    for (newData = _CBC.mArr; newData != &_CBC.mArr[_CBC.mArraySize]; newData++) {
-        fn_800EB634(*newData, 1, false);
+    for (pIter = _CBC.getArray(); pIter != _CBC.getLastMember(); pIter++) {
+        fn_800EB634(*pIter, 1, false);
     }
 }
 
@@ -189,20 +187,6 @@ void JmpMessageSender::fn_800EB634(Koga::ToolData* pData, s32 param_2, bool para
         }
         //s32
     }
-}
-
-Koga::ToolData** JmpToolList::removeJmp(Koga::ToolData** pData) {
-    if (&mArr[mArraySize] - pData - 1 > 0) {
-        Koga::ToolData** curr = pData;
-        
-        while (curr + 1 != &mArr[mArraySize]) {
-            *curr = *(curr + 1);
-            curr++;
-        }
-    }
-
-    mArraySize--;
-    return pData;
 }
 
 unkJmpMessageSender1Arr::unkJmpMessageSender1Arr() : _C80(0) { }

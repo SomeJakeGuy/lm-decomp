@@ -1,6 +1,7 @@
 #ifndef TOOL_DATA_H_
 #define TOOL_DATA_H_
 
+#include "dolphin/macros.h"
 #include <types.h>
 #include <JSystem/JORReflexible.hpp>
 #include <JSystem/JGeometry/JGVec3.hpp>
@@ -71,11 +72,11 @@ namespace Koga {
 
         BOOL attach(const JMapData*);
         void reset();
-        BOOL getValue(int, const char*, u32*) const;
-        BOOL getValue(int, const char*, s32*) const;
-        BOOL getValue(int, const char*, u8*) const;
-        BOOL getValue(int, const char*, f32*) const;
-        BOOL getValue(int, const char*, const char**) const;
+        bool getValue(int, const char*, u32*) const;
+        bool getValue(int, const char*, s32*) const;
+        bool getValue(int, const char*, u8*) const;
+        bool getValue(int, const char*, f32*) const;
+        bool getValue(int, const char*, const char**) const;
         s32 searchItemInfo(const char*) const;
         s32 findEntryByValue(int, const u32, int);
         s32 findEntryByValue(int, const char*, int);
@@ -130,13 +131,29 @@ public:
 class ToolDataRef {
     public:
         inline ToolDataRef() {}
+        inline ToolDataRef(const ToolDataRef& src) {
+            mToolData = src.mToolData;
+            mEntryIndex = src.mEntryIndex;
+        }
+        ToolDataRef(const ToolDataRef*);
+        
+        void init(Koga::ToolData* pData, s32 entryIdx) {
+            FORCE_DONT_INLINE
+            mToolData = pData;
+            mEntryIndex = entryIdx;    
+        }
 
         inline Koga::ToolData* getToolData() { return mToolData; }
         inline void setToolData(Koga::ToolData* pData) { mToolData = pData; }
         inline s32 getEntryIndex() { return mEntryIndex; }
         inline void setEntryIndex(s32 entryIndex) { mEntryIndex = entryIndex; }
         
-        bool inline isValid() const { return (mToolData != nullptr && mEntryIndex >= 0); }
+        inline bool isValid() const { return (mToolData != nullptr && mEntryIndex >= 0); }
+        inline bool isSameEntry(const ToolDataRef& rOther) const {
+            return mEntryIndex == rOther.mEntryIndex &&
+                mToolData != nullptr && rOther.mToolData != nullptr && 
+                mToolData->getJMapData() == rOther.mToolData->getJMapData();
+        }
 
         // currently un-used but could be useful based on some of the functions in this struct/class
         // They could also have one for like checking if character name is nothing (its used a few times)
@@ -148,9 +165,6 @@ class ToolDataRef {
 
             return charName;
         }
-
-        void init(Koga::ToolData*, s32);
-        ToolDataRef(const ToolDataRef*);
 
         static ToolDataRef findInfoTableName(const char*);
         const char* getName();
@@ -168,7 +182,7 @@ class ToolDataRef {
         static ToolDataRef fn_800E84CC(s32); // handles itemappearing after defeating
         static ToolDataRef fn_800E8658(s32, s32, s32); // handles itemfishing, which spawns as luigi continues to suck.
 
-    private:
+    public:
         /* 0x0 */ Koga::ToolData* mToolData;
         /* 0x4 */ s32 mEntryIndex;
 };

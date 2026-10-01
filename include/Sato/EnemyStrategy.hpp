@@ -5,6 +5,7 @@
 #include <JSystem/JORReflexible.hpp>
 
 class EnemyStrategy;
+class EnZako; 
 
 typedef void* (EnemyStrategyInitFn)(void* buffer, u32 bufferSize);
 typedef bool (EnemyStrategy::*EnemyStrategyStateFn)();
@@ -13,15 +14,9 @@ typedef bool (EnemyStrategy::*EnemyStrategyStateFn)();
 // In their doBehavior and doBehaviorInit functions, they search for an entry
 // with a stateIndex that matches their mCurrentState.
 struct EnemyStrategyState {
-    /* 0x00 */ u16 stateIndex;
-    /* 0x02 */ u16 padding;
-    /* 0x04 */ EnemyStrategyStateFn behaviorInitFunc; // Called in overrides of EnemyStrategy::doBehaviorInit
-    /* 0x10 */ EnemyStrategyStateFn behaviorFunc; // Called in overrides of EnemyStrategy::doBehavior
-
-    inline EnemyStrategyState(u16 _stateIndex,
-        EnemyStrategyStateFn _behaviorInitFunc,
-        EnemyStrategyStateFn _behaviorFunc
-    ) : stateIndex(_stateIndex), padding(0), behaviorInitFunc(_behaviorInitFunc), behaviorFunc(_behaviorFunc) { }
+    /* 0x00 */ u16 mStateIndex;
+    /* 0x04 */ EnemyStrategyStateFn mBehaviorInitFunc; // Called in overrides of EnemyStrategy::doBehaviorInit
+    /* 0x10 */ EnemyStrategyStateFn mBehaviorFunc; // Called in overrides of EnemyStrategy::doBehavior
 };
 
 class EnemyStrategy : public JORReflexible {
@@ -35,6 +30,8 @@ public:
     /* 0x1C */ virtual void doBehavior();
     /* 0x20 */ virtual void doBehaviorInit();
 
+    inline EnZako* getZako() const { return mpZako; }
+
     inline u16 getNextState() const { return mNextState; }
     inline u16 getCurrentState() const { return mCurrentState; }
 
@@ -47,9 +44,11 @@ public:
     void operator delete(void* ptr) {
         noOpDelete(ptr);
     }
-protected:
-    /* 0x04 */ void* mpZako;
+    
+    /* 0x04 */ EnZako* mpZako;
     /* 0x08 */ void* mpUserData;
+    
+protected:
     /* 0x0C */ u16 mNextState; // 0xFFFF = end strategy
     /* 0x0E */ u16 mCurrentState;
     /* 0x10 */ u32 mTimer;
@@ -66,7 +65,7 @@ public:
     virtual void update();
 private:
     /* 0x14 */ EnemyStrategy* mTsuriStrategy;
-    /* 0x18 */ u16 unk18;
+    /* 0x18 */ u16 _18;
 };
 
 #endif

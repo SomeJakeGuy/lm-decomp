@@ -30,8 +30,8 @@ class JmpToolList : public Koga::Array<Koga::ToolData*, 10> {
 public:
     JmpToolList() { }
     ~JmpToolList() { }
-    void add(Koga::ToolData** member) { Koga::Array<Koga::ToolData*, 10>::add(member); }
-    Koga::ToolData** removeJmp(Koga::ToolData**);
+    void add(Koga::ToolData** pMember) { addMember(pMember); }
+    Koga::ToolData** remove(Koga::ToolData** pIter) { return eraseMember(pIter); }
 };
 
 class JmpMessageSender : public MessageSender, public JORReflexible {

@@ -15,6 +15,7 @@ public:
 	TParams(const char* prm)
 	    : mPrmPath(prm)
 	    , mHead(nullptr)
+		, _8(false)
 	{
 	}
 

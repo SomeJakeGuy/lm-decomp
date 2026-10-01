@@ -51,7 +51,7 @@ void EnemyStrategy::noOpDelete(void* ptr) {
 
 EnemyStrategyDecorator::EnemyStrategyDecorator() {
     mTsuriStrategy = nullptr;
-    unk18 = 0x100;
+    _18 = 0x100;
 }
 
 bool EnemyStrategyDecorator::setTsuriStrategy(EnemyStrategy* strategy) {
@@ -76,6 +76,6 @@ void EnemyStrategyDecorator::update() {
     if ((value >= 0x103) || (value < 0x100)) {
         return;
     }
-    unk18 = value;
+    _18 = value;
     mTsuriStrategy = nullptr;
 }

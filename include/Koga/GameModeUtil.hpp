@@ -4,6 +4,7 @@
 #include "Koga/MissionMode.hpp"
 
 class JKRArchive;
+class MessageReceiver;
 
 namespace Koga {
     class ToolData;
@@ -21,7 +22,7 @@ namespace Koga {
         void fn_800B9EBC();
         void fn_800B9ED0();
         void* getPathResource(const char* pName);
-        void addJmpReceiver(void* pReceiver);
+        void addJmpReceiver(MessageReceiver* pReceiver);
         JKRArchive* getMapArchive();
         ToolData* getJmpResource(const char* pName);
     };

@@ -14,7 +14,6 @@ class unkEnCharacter;
 class JKRArchive;
 
 namespace Koga {
-    class ToolData;
     class EnManager;
     class EnTypesManager;
     class CharacterEvent;
@@ -86,7 +85,7 @@ public:
     unkEnManager2* remove(unkEnManager2*);
 };
 
-// Fabricated name. Probably just Character.hpp/cpp?
+// Based on EnemyGenerator::fn_800C25F0 this is most likely EnThought and would require shifting around.
 // Not sure if this is a true class, but just made sense based on the data being moved around/accessed
 class unkEnCharacter {
 public:
@@ -206,7 +205,7 @@ void fn_800E6AB8(JGeometry::TVec3f*, Koga::ToolData*, f32);
 // All of these are miscelaneous functions I havent touched/reviewed. Feel free to move, re-organize, etc.
 bool fn_800E7054();
 s32 fn_800E70BC();
-bool fn_800E7174(JGeometry::TVec3f*);
+bool fn_800E7174(JGeometry::TVec3f*, s32);
 bool fn_800E71D4(JGeometry::TVec3f*, s32);
 bool fn_800E7280(s32);
 void* fn_800E7510(void*, void*);

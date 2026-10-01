@@ -739,14 +739,37 @@ config.libs = [
     Game([
         # Sato
         Object(Matching, "Sato/EnemyStrategy.cpp"),
+        Object(NonMatching, "Sato/EnemyTypicalStrategy.cpp"),
         Object(NonMatching, "Sato/EnemyStrategyInit.cpp"),
+        Object(NonMatching, "Sato/EnThought.cpp"),
+        Object(NonMatching, "Sato/EnObjThought.cpp"),
+        Object(NonMatching, "Sato/EnReplace.cpp"),
+        Object(NonMatching, "Sato/EnZako.cpp"),
+        Object(NonMatching, "Sato/SaEnGenUtility.cpp"),
+
+        # Ajioka
+        Object(NonMatching, "Ajioka/AEnZakoBase.cpp"),
+        Object(NonMatching, "Ajioka/AEnKaguBase.cpp"),
+        Object(NonMatching, "Ajioka/AEnBeamBase.cpp"),
+        Object(NonMatching, "Ajioka/AEnKiBase.cpp"),
+        Object(NonMatching, "Ajioka/AEnKiSentak.cpp"),
+        Object(NonMatching, "Ajioka/AEnKiEtc.cpp"),
+        Object(NonMatching, "Ajioka/AEnBeam1.cpp"),
+        Object(NonMatching, "Ajioka/AEnBeam2.cpp"),
+        Object(NonMatching, "Ajioka/AEnNoMove1.cpp"),
+        Object(NonMatching, "Ajioka/AEnNoMove2.cpp"),
+        Object(NonMatching, "Ajioka/AEnSimple1.cpp"),
+        Object(NonMatching, "Ajioka/AEnSimple2.cpp"),
+        Object(NonMatching, "Ajioka/AEnAtUpper.cpp"),
+        Object(NonMatching, "Ajioka/AEnAtThrow.cpp"),
+        Object(NonMatching, "Ajioka/AEnAtSkull.cpp"),
 
         # Koga
         Object(Matching, "Koga/GameModeUtil.cpp"),
         Object(NonMatching, "Koga/800B9F7C.cpp"),
         Object(NonMatching, "Koga/UnkUtil.cpp"),
         Object(NonMatching, "Koga/Param.cpp"),
-        Object(Matching, "Koga/GameMode.cpp"),
+        Object(NonMatching, "Koga/GameMode.cpp"),
         Object(NonMatching, "Koga/MissionMode.cpp"),
         Object(NonMatching, "Koga/MapCol.cpp"),
         Object(Matching, "Koga/ToolData.cpp"),
@@ -757,6 +780,11 @@ config.libs = [
         Object(NonMatching, "Koga/SimpleModeler.cpp"),
         Object(NonMatching, "Koga/CharacterColManager.cpp"),
         Object(NonMatching, "Koga/EnManager.cpp"),
+        Object(NonMatching, "Koga/800E634C.cpp"),
+        Object(NonMatching, "Koga/800E82D8.cpp"),
+        Object(NonMatching, "Koga/800E9568.cpp"),
+        Object(NonMatching, "Koga/EnTypesManager.cpp"),
+        Object(NonMatching, "Koga/EnemyGenManager.cpp"),
 
         # Unsorted
         Object(NonMatching, "Unsorted/bootScene.cpp"),
@@ -768,6 +796,7 @@ config.libs = [
         Object(NonMatching, "Unsorted/LMDvdFileBlock.cpp"),
         Object(NonMatching, "Unsorted/80005EB8.cpp"),
         Object(NonMatching, "Unsorted/MoveObj.cpp"),
+        Object(NonMatching, "Unsorted/Character.cpp"),
         Object(NonMatching, "Unsorted/RailInfoUtil.cpp"),
         Object(NonMatching, "Unsorted/800627D8.cpp"),
         Object(NonMatching, "Unsorted/LMDisplayUtil.cpp"),

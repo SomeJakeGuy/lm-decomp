@@ -15,7 +15,7 @@ class MessageRecieverArray : public Koga::Array<MessageReceiver*, 12> {
 public:
     MessageRecieverArray() { }
     ~MessageRecieverArray() { }
-    void add(MessageReceiver** member) { Koga::Array<MessageReceiver*, 12>::add(member); }
+    void add(MessageReceiver** member) { addMember(member); }
 };
 
 class MessageSender {
@@ -28,7 +28,7 @@ public:
     /* 0x14 */ virtual s32 vt_14(MessageCallback1 fn, int arg0);
     /* 0x18 */ virtual s32 vt_18(MessageCallback2 fn, int arg0, int arg1);
 
-    bool addReceiver(void*);
+    bool addReceiver(MessageReceiver*);
 
 public:
     /* 0x4 */ MessageRecieverArray _4;
