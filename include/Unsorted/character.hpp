@@ -19,6 +19,8 @@ public:
 
 public:
     /* 0x78C */ s32 _78C;
+
+    static u16 fn_8006A3BC(s32, u16);
 };
 
 // All of these are referenced in EnManager. No arg types or return types are guaranteed.

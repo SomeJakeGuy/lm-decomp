@@ -23,7 +23,7 @@ void fn_800E6AB8(JGeometry::TVec3f*, Koga::ToolData*, f32);
 void fn_800E6C5C();
 void fn_800E6D24();
 void fn_800E6DE4();
-void fn_800E6ED0();
+u8 fn_800E6ED0();
 void fn_800E6FCC();
 
 // All of these are miscelaneous functions I havent touched/reviewed. Feel free to move, re-organize, etc.
