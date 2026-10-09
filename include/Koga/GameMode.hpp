@@ -22,7 +22,7 @@ namespace Koga {
     class GameMode : private GameModeBase {
     public:
         GameMode();
-        /* 0x08 */ virtual ~GameMode();
+        /* 0x08 */ virtual ~GameMode() = 0;
         /* 0x0C */ virtual void init();
         /* 0x10 */ virtual void loadEnemyInfo();
         /* 0x14 */ virtual void vt_14();

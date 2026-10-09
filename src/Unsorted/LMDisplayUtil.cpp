@@ -53,10 +53,7 @@ GXRenderModeObj sProgRenderModeObj = {
     },
     { 0,0, 26,12,26, 0,0  }
 };
-// clang-format on
-Vec lbl_8021DA40 = {0.0f, 0.0f, 0.0f};
 
-// clang-format off
 Mtx sDefaultMtx = {
     {1.0f, 0.0f, 0.0f, 0.0f},
     {0.0f, 1.0f, 0.0f, 0.0f},
