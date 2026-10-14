@@ -80,8 +80,12 @@ Unsorted/MoveObj.cpp:
 	.sdata      start:0x804D0868 end:0x804D0880
 
 Unsorted/Character.cpp:
-	.text       start:0x80069628 end:0x8006A34C
+	.text       start:0x80069628 end:0x8006A354
 	.data       start:0x8033B178 end:0x8033B218
+
+Unsorted/ActorData.cpp:
+	.text       start:0x8006A354 end:0x8006A56C
+	.data       start:0x8033B218 end:0x8034B2B0
 
 Unsorted/RailInfoUtil.cpp:
 	.text       start:0x80092568 end:0x8009359C

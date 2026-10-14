@@ -806,6 +806,7 @@ config.libs = [
         Object(NonMatching, "Unsorted/800627D8.cpp"),
         Object(NonMatching, "Unsorted/LMDisplayUtil.cpp"),
         Object(NonMatching, "Unsorted/s3dmodel.cpp"),
+        Object(NonMatching, "Unsorted/ActorData.cpp"),
     ]),
 ]
 
