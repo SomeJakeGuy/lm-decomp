@@ -740,6 +740,7 @@ config.libs = [
         # Sato
         Object(Matching, "Sato/EnemyStrategy.cpp"),
         Object(NonMatching, "Sato/EnemyTypicalStrategy.cpp"),
+        Object(NonMatching, "Sato/EnGhostA.cpp"),
         Object(NonMatching, "Sato/EnemyStrategyInit.cpp"),
         Object(NonMatching, "Sato/EnThought.cpp"),
         Object(Matching, "Sato/EnObjThought.cpp"),
@@ -768,6 +769,10 @@ config.libs = [
         Object(NonMatching, "Ajioka/AEnHustler.cpp"),
         Object(NonMatching, "Ajioka/AEnFamily.cpp"),
         Object(NonMatching, "Ajioka/AEnBarbell.cpp"),
+        Object(NonMatching, "Ajioka/AEnDog.cpp"),
+        Object(NonMatching, "Ajioka/AEnSkull.cpp"),
+        Object(NonMatching, "Ajioka/AEnESkull.cpp"),
+        Object(Matching, "Ajioka/AEnEBone.cpp"),
 
         # Koga
         Object(Matching, "Koga/GameModeUtil.cpp"),
@@ -789,6 +794,7 @@ config.libs = [
         Object(NonMatching, "Koga/800E82D8.cpp"),
         Object(NonMatching, "Koga/800E9568.cpp"),
         Object(NonMatching, "Koga/EnTypesManager.cpp"),
+        Object(NonMatching, "Koga/EnChase.cpp"),
         Object(NonMatching, "Koga/EnemyGenManager.cpp"),
 
         # Unsorted
