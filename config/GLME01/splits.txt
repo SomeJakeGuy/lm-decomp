@@ -35,13 +35,99 @@ Unsorted/LMDvdFileBlock.cpp:
 	.text       start:0x800071C0 end:0x80007398
 
 Unsorted/LMDisplayUtil.cpp:
-	.text       start:0x80007398 end:0x80008418
+	.text       start:0x80007398 end:0x800080DC
+	.data       start:0x802181B8 end:0x80218210
+	.bss        start:0x803A3600 end:0x803A3668
+	.sdata      start:0x804CFF70 end:0x804CFF78
+	.sbss       start:0x804D8030 end:0x804D8070
+	.sdata2     start:0x804D9880 end:0x804D98A0
+
+Unsorted/800080DC.cpp:
+	.text       start:0x800080DC end:0x80008418
 	.ctors      start:0x8020BAC4 end:0x8020BAC8
-	.data       start:0x802181D0 end:0x8021DA80
-	.bss        start:0x803A3600 end:0x803A3810
-	.sdata      start:0x804CFF70 end:0x804CFF84
-	.sbss       start:0x804D8030 end:0x804D8078
-	.sdata2     start:0x804D9880 end:0x804D98A8
+	.bss        start:0x803A3668 end:0x803A3820
+	.sbss       start:0x804D8070 end:0x804D8078
+	.sdata2     start:0x804D98A0 end:0x804D98A8
+
+Unsorted/80008418.cpp:
+	.text       start:0x80008418 end:0x80009584
+	.ctors      start:0x8020BAC8 end:0x8020BACC
+	.sdata2     start:0x804D98A8 end:0x804D9928
+
+Unsorted/80009584.cpp:
+	.text       start:0x80009584 end:0x8000962C
+	.sdata2     start:0x804D9928 end:0x804D9940
+
+Unsorted/MathUtils.cpp:
+	.text       start:0x8000962C end:0x80009B80
+	.data       start:0x80218210 end:0x8021DA40
+	.sdata      start:0x804CFF78 end:0x804CFF80
+	.sdata2     start:0x804D9940 end:0x804D9968
+
+Unsorted/80009B80.cpp:
+	.text       start:0x80009B80 end:0x8000A0D0
+	.data       start:0x8021DA40 end:0x8021DA80
+	.sdata      start:0x804CFF80 end:0x804CFF90
+	.sdata2     start:0x804D9968 end:0x804D9978
+
+Unsorted/8000A0D0.cpp:
+	.text       start:0x8000A0D0 end:0x8000AC48
+	.sdata2     start:0x804D9978 end:0x804D9998
+
+Unsorted/8000AC48.cpp:
+	.text       start:0x8000AC48 end:0x8000AED8
+	.bss        start:0x803A3A80 end:0x803A3A98
+	.sdata      start:0x804CFF90 end:0x804CFF98
+	.sdata2     start:0x804D9998 end:0x804D99A8
+
+Unsorted/8000AED8.cpp:
+	.text       start:0x8000AED8 end:0x8000B328
+	.ctors      start:0x8020BACC end:0x8020BAD0
+	.data       start:0x8021DA80 end:0x8021DB20
+	.bss        start:0x803A3A98 end:0x803A3AE0
+	.sdata2     start:0x804D99A8 end:0x804D99C8
+
+Unsorted/8000B328.cpp:
+	.text       start:0x8000B328 end:0x8000B978
+	.ctors      start:0x8020BAD0 end:0x8020BAD4
+	.data       start:0x8021DB20 end:0x8021DB40
+	.bss        start:0x803A3AE0 end:0x803A3B10
+	.sdata      start:0x804CFF98 end:0x804CFFA0
+
+Unsorted/SelectScene.cpp:
+	.text       start:0x8000B978 end:0x8000BA4C
+	.data       start:0x8021DB40 end:0x8021DB68
+
+Unsorted/GameScene.cpp:
+	.text       start:0x8000BA4C end:0x8000C36C
+	.data       start:0x8021DB68 end:0x8021DBD8
+	.sdata      start:0x804CFFA0 end:0x804CFFA8
+
+Unsorted/8000C36C.cpp:
+	.text       start:0x8000C36C end:0x8000C90C
+	.ctors      start:0x8020BAD4 end:0x8020BAD8
+	.bss        start:0x803A3B10 end:0x803A3B40
+	.sdata2     start:0x804D99C8 end:0x804D99D8
+
+Unsorted/8000C90C.cpp:
+	.text       start:0x8000C90C end:0x8000CE58
+	.sdata2     start:0x804D99D8 end:0x804D99E8
+
+Unsorted/OpeningScene.cpp:
+	.text       start:0x8000CE58 end:0x8000CFC8
+	.data       start:0x8021DBD8 end:0x8021DC00
+	.sdata      start:0x804CFFA8 end:0x804CFFB0
+
+Unsorted/StuffRollScene.cpp:
+	.text       start:0x8000CFC8 end:0x8000D0AC
+	.data       start:0x8021DC00 end:0x8021DC28
+
+Unsorted/EndingScene.cpp:
+	.text       start:0x8000D0AC end:0x8000E46C
+	.data       start:0x8021DC28 end:0x8021DFC0
+	.bss        start:0x803A3B40 end:0x803A3C08
+	.sbss       start:0x804D8100 end:0x804D8110
+	.sdata2     start:0x804D99E8 end:0x804D9A08
 
 Unsorted/aramStaticData.cpp:
 	.bss        start:0x803D34C8 end:0x803D3540
