@@ -10,10 +10,10 @@ class ActorData {
         /* 0x0 */ int _0;
         /* 0x4 */ u16 _4;
         /* 0x6 */ u16 _6; // Un-used?
-        /* 0x8 */ u16 _8;
+        /* 0x8 */ u16 mFlags; // TODO make a bitflag struct/enum maybe?
         /* 0xC */ u32 _C; // Could be void* based on functions that call getActorData, but would need to confirm
         /* 0x10 */ u32 _10; // Could be void* based on functions that call getActorData, but would need to confirm
-        /* 0x14 */ u16 _14;
+        /* 0x14 */ s16 _14;
         /* 0x18 */ const char* mActorName;
  
         // This might make more sense in a Util class, unsure at this time without digging more.
