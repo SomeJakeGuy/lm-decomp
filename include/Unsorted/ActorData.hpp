@@ -7,7 +7,7 @@
 
 class ActorData {
     public:
-        /* 0x0 */ int _0;
+        /* 0x0 */ u32 mGroupID;
         /* 0x4 */ u16 _4;
         /* 0x6 */ u16 _6; // Un-used?
         /* 0x8 */ u16 mFlags; // TODO make a bitflag struct/enum maybe?
@@ -17,15 +17,15 @@ class ActorData {
         /* 0x18 */ const char* mActorName;
  
         // This might make more sense in a Util class, unsure at this time without digging more.
-        static u32 fn_8006A354(s32);
+        static u32 getGroupID(s32);
         static u16 fn_8006A36C(s32);
         static u32 getEnemyBrightColor(s32);
         static const char* getActorName(s32);
-        static u16 fn_8006A3BC(s32, s32);
+        static u16 checkFlags(s32, s32);
         static ActorData* getActorData(s32);
+    
+    private:
+        static ActorData sActorData[];
 };
-
-ActorData* lbl_8038E118; //Some Pointer to some ActorData, possibly pointers to what slot the Actor is loaded into?
-ActorData* lbl_8038DD00; //Some array pointer to some actor part or something similar?
 
 #endif

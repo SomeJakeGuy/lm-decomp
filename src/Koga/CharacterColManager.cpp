@@ -18,23 +18,23 @@ void CharacterColElement::init(int actorIndex) {
     u32 someOffset;
 
     _1C._9C = 0;
-    mGlobalActorField0 = ActorData::fn_8006A354(actorIndex);
-    ActorData* actData = &lbl_8038E118[actorIndex];
-    if (actData != nullptr) {
-        someOffset = ActorData::fn_8006A354(actorIndex);
-        actData = &lbl_8038DD00[someOffset];
-    }
+    // mGlobalActorField0 = ActorData::fn_8006A354(actorIndex);
+    // ActorData* actData = &lbl_8038E118[actorIndex];
+    // if (actData != nullptr) {
+    //     someOffset = ActorData::fn_8006A354(actorIndex);
+    //     actData = &lbl_8038DD00[someOffset];
+    // }
 
-    someOffset = 0;
-    _18 = 0;
-    for (int index = 0; index < actData->_0; index++) {
-        _1C.init(reinterpret_cast<const unkCharactColStruct*>(actData->_4 + someOffset));
-        someOffset += 20;
-    }
+    // someOffset = 0;
+    // _18 = 0;
+    // for (int index = 0; index < actData->_0; index++) {
+    //     _1C.init(reinterpret_cast<const unkCharactColStruct*>(actData->_4 + someOffset));
+    //     someOffset += 20;
+    // }
 
     _4 = &_1C;
     _0 = _1C._9C;
-    _8 = actData->mFlags;
+    // _8 = actData->mFlags;
     _C = &_1C._A4;
     _10 = &_1C._B8;
 

@@ -1,7 +1,7 @@
 #include "Unsorted/ActorData.hpp"
 #include "Koga/EnTypesManager.hpp"
 
-ActorData cData[381] = {
+ActorData ActorData::sActorData[381] = {
     {0, 0, 0, 2, 0, -1, -1, "luige"},
     {0, 0, 0, 0xA, 0x800, -1, -1, "waluige"},
     {0x14, 3, 0, 2, 0x800, -1, -1, "dluige01"},
@@ -55,12 +55,12 @@ ActorData cData[381] = {
     {0x32, 2, 0, 0xF, 0, 0, 3, "boy2"},
 };
 
-u32 ActorData::fn_8006A354(s32 idx) {
-    return cData[idx]._0;
+u32 ActorData::getGroupID(s32 idx) {
+    return ActorData::sActorData[idx].mGroupID;
 }
 
 u16 ActorData::fn_8006A36C(s32 idx) {
-    return cData[idx]._4;
+    return ActorData::sActorData[idx]._4;
 }
 
 u32 ActorData::getEnemyBrightColor(s32 idx) {
@@ -68,14 +68,14 @@ u32 ActorData::getEnemyBrightColor(s32 idx) {
 }
 
 const char* ActorData::getActorName(s32 idx) {
-    return cData[idx].mActorName;
+    return ActorData::sActorData[idx].mActorName;
 }
 
-u16 ActorData::fn_8006A3BC(s32 idx, s32 param_2) {
-    ActorData* pData = &cData[idx];
+u16 ActorData::checkFlags(s32 idx, s32 param_2) {
+    ActorData* pData = &ActorData::sActorData[idx];
     return pData->mFlags & param_2;
 }
 
 ActorData* ActorData::getActorData(s32 idx) {
-    return &cData[idx];
+    return &ActorData::sActorData[idx];
 }
