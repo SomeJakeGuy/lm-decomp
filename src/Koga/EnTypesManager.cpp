@@ -4,7 +4,7 @@
 #include "Koga/EnManager.hpp"
 #include "Koga/ParamInst.hpp"
 #include "Koga/UnkUtil.hpp"
-#include "Unsorted/ActorDataList.hpp"
+#include "Unsorted/ActorData.hpp"
 #include "Unsorted/AssortedEnManager.hpp"
 #include "macros.h"
 

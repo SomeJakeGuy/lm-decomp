@@ -4,7 +4,7 @@
 #include "Koga/GameModeUtil.hpp"
 #include "Koga/ToolData.hpp"
 #include "Sato/EnThought.hpp"
-#include "Unsorted/ActorDataList.hpp"
+#include "Unsorted/ActorData.hpp"
 #include "dolphin/macros.h"
 #include "types.h"
 #include "Koga/800E82D8.hpp"
