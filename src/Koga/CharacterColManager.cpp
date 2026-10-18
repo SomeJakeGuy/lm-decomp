@@ -10,8 +10,8 @@ CharacterColElement::CharacterColElement() : mGlobalActorField0(0), _18(0) {
     _8 = 1;
     _C = &_1C._A4;
     _10 = &_1C._B8;
-    _1C._A4 = lbl_8020C7B8._14;
-    _1C._B8 = lbl_8020C7B8._28;
+    //_1C._A4 = lbl_8020C7B8._14;
+    //_1C._B8 = lbl_8020C7B8._28;
 }
 
 void CharacterColElement::init(int actorIndex) {
@@ -34,7 +34,7 @@ void CharacterColElement::init(int actorIndex) {
 
     _4 = &_1C;
     _0 = _1C._9C;
-    _8 = actData->_8;
+    _8 = actData->mFlags;
     _C = &_1C._A4;
     _10 = &_1C._B8;
 
@@ -67,12 +67,12 @@ CharacterColManager::~CharacterColManager() {
 
 
 unkCharacterElementClass::unkCharacterElementClass() {
-    _A4._0 = nullptr;
+    //_A4._0 = nullptr;
 }
 
 unkCharacterElementClass::~unkCharacterElementClass() {}
 
 void unkCharacterElementClass::init(const unkCharactColStruct* param_1) {
-    _A4._0 += 1;
-    _0[_A4._0] = _A4;
+    // _A4._0 += 1;
+    // _0[_A4._0] = _A4;
 }
