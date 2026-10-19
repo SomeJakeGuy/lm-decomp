@@ -6,7 +6,7 @@
 
 
 struct unkCharactColStruct {
-    /* 0x0 */ int _0; // Most Likely an it as the default value is FFFFFFFF anyways
+    /* 0x0 */ s32 _0; // Most Likely an it as the default value is FFFFFFFF anyways
     /* 0x4 */ u32 _4; //Unknown type;
     /* 0x8 */ u32 _8; //Unknown type;
     /* 0xC */ u32 _C; //Unknown type;
