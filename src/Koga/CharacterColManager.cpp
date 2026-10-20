@@ -20,12 +20,12 @@ CharacterColElement::CharacterColElement() : mGroupID(0), _18(1) {
     _D4 = sUnkCharactColStruct._28;
 }
 
-void CharacterColElement::init(s32 actorIndex) {
+void CharacterColElement::init(s32 param_1) {
     _1C.resetSize();
-    mGroupID = ActorData::getGroupID(actorIndex);
+    mGroupID = ActorData::getGroupID(param_1);
 
-    unkCharactColStruct5* unk = unkCharactColStruct5::lbl_8038E118[actorIndex] != nullptr ? 
-        unkCharactColStruct5::lbl_8038E118[actorIndex] : unkCharactColStruct5::lbl_8038DD00[ActorData::getGroupID(actorIndex)];
+    unkCharactColStruct5* unk = unkCharactColStruct5::lbl_8038E118[param_1] != nullptr ? 
+        unkCharactColStruct5::lbl_8038E118[param_1] : unkCharactColStruct5::lbl_8038DD00[ActorData::getGroupID(param_1)];
 
     _18 = 0;
     for (int i = 0; i < unk->_0; i++) {
