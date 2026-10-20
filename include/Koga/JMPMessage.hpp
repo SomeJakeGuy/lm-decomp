@@ -17,9 +17,6 @@ public:
     /* 0x4 */ u8 _4[0xC];
 };
 
-typedef MR::AssignableArray<unkJmpMessageSender1, 200> unkJmpMessageSender1Arr;
-typedef MR::ArrayHolder<Koga::ToolData*, 10> JmpToolList;
-
 class JmpMessageSender : public MessageSender, public JORReflexible {
 public:
 
@@ -47,8 +44,8 @@ public:
     void fn_800EB564(u8*);
 
 public:
-    /* 0x038 */ unkJmpMessageSender1Arr _38;
-    /* 0xCBC */ JmpToolList _CBC;
+    /* 0x038 */ MR::AssignableArray<unkJmpMessageSender1, 200> _38;
+    /* 0xCBC */ MR::ArrayHolder<Koga::ToolData*, 10> _CBC;
     /* 0xCE8 */ u8 _CE8;
     /* 0xCE8 */ u8 _CE9[262];
 };

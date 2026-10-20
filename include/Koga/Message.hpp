@@ -11,8 +11,6 @@ class MessageReceiver;
 typedef bool (MessageReceiver::*MessageCallback1)(int arg0);
 typedef bool (MessageReceiver::*MessageCallback2)(int arg0, int arg1);
 
-typedef MR::ArrayHolder<MessageReceiver*, 12> MessageRecieverArray;
-
 class MessageSender {
 public:
     MessageSender();
@@ -26,7 +24,7 @@ public:
     bool addReceiver(MessageReceiver*);
 
 public:
-    /* 0x4 */ MessageRecieverArray _4;
+    /* 0x4 */ MR::ArrayHolder<MessageReceiver*, 12> _4;
 };
 
 class IMessageReceiver {

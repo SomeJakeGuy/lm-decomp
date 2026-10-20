@@ -47,10 +47,6 @@ public:
     s32 _8; //mTypeIndex?
 };
 
-// Explicitly not ArrayHolder
-typedef MR::AssignableArray<unkEnManager2, 0x80> unkEnManager3;
-typedef MR::FixedArray<unkEnManager1, 0x80> unkEnManager1Arr ;
-
 namespace Koga {
 
     class EnManager : public JORReflexible, public MessageReceiver {
@@ -101,8 +97,8 @@ namespace Koga {
         inline s32 getMaxAppearSlotIndex() { return sAppearPointSlotIndex + 1; }
 
     public:
-        /* 0x004 */ unkEnManager1Arr _4;
-        /* 0x804 */ unkEnManager3 _804;
+        /* 0x004 */ MR::FixedArray<unkEnManager1, 0x80> _4;
+        /* 0x804 */ MR::AssignableArray<unkEnManager2, 0x80> _804; // Explicitly not ArrayHolder
         /* 0xE08 */ AppearPointSlot _E08[2];
         /* 0xE40 */ Koga::ToolData* mInfoTable;
         /* 0xE44 */ u8 _E44;
