@@ -1,9 +1,10 @@
 #ifndef CHARACTER_COLLISION_MANAGER_HPP
 #define CHARACTER_COLLISION_MANAGER_HPP
 
-#include "MR/Array.hpp"
 #include <types.h>
 #include <JSystem/JORReflexible.hpp>
+
+#include "MR/Array.hpp"
 
 struct unkCharactColStruct1 {
     /* 0x00 */ s32 _0;
@@ -43,41 +44,7 @@ class unkCharactColStruct1Arr : public MR::AssignableArray<unkCharactColStruct1,
         void add(unkCharactColStruct1*);
 };
 
-// TODO Maybe a better name here
-class CharacterColElement {
-    public:
-        CharacterColElement();
-        void init(s32);
-        ~CharacterColElement();
-
-    /* Size: 0xEC */
-    private:
-        /* 0x00 */ s32 _0; // Probably not private? Count of _1C
-        /* 0x04 */ unkCharactColStruct1Arr* _4; // Probably not private? Reference of _1C
-        /* 0x08 */ u32 _8;
-        /* 0x0C */ void* _C;
-        /* 0x10 */ void* _10;
-        /* 0x14 */ u32 mGroupID;
-        /* 0x18 */ u8 _18;
-        /* 0x19-0x1B */ u8 padding[3];
-        /* 0x1C */ unkCharactColStruct1Arr _1C;
-        /* 0xC0 */ unkCharactColStruct3 _C0;
-        /* 0xD4 */ unkCharactColStruct4 _D4;
-};
-
 #define MAX_CHARACTER_COL 381
-
-class CharacterColManager : public JORReflexible {
-public:
-    CharacterColManager();
-    /* 0x08 */ virtual ~CharacterColManager();
-    inline CharacterColElement* begin() { return &_4[0]; }
-    inline CharacterColElement* last() { return &_4[MAX_CHARACTER_COL - 1]; }
-    inline CharacterColElement* end() { return &_4[MAX_CHARACTER_COL]; }
-
-public:
-    /* 0x04 */ CharacterColElement* _4;
-};
 
 struct unkCharactColStruct5 {
     /* 0x00 */ s32 _0;
@@ -87,7 +54,37 @@ struct unkCharactColStruct5 {
     /* 0x10 */ unkCharactColStruct4* _10;
 
     static unkCharactColStruct5* lbl_8038E118[MAX_CHARACTER_COL+1];
-    static unkCharactColStruct5* lbl_8038DD00[];
+    static unkCharactColStruct5* lbl_8038DD00[]; // Indexed by Group IDs from ActorData
+};
+
+// TODO Maybe a better name here
+class CharacterColElement {
+    public:
+        CharacterColElement();
+        void init(s32);
+        ~CharacterColElement();
+
+    /* Size: 0xEC */
+    private:
+        /* 0x00 */ unkCharactColStruct5 _0;
+        /* 0x14 */ u32 mGroupID;
+        /* 0x18 */ u8 _18;
+        /* 0x1C */ unkCharactColStruct1Arr _1C;
+        /* 0xC0 */ unkCharactColStruct3 _C0;
+        /* 0xD4 */ unkCharactColStruct4 _D4;
+};
+
+class CharacterColManager : public JORReflexible {
+public:
+    CharacterColManager();
+    /* 0x08 */ virtual ~CharacterColManager();
+    inline CharacterColElement* begin() { return &_4[0]; }
+    inline CharacterColElement* last() { return &_4[MAX_CHARACTER_COL - 1]; }
+    inline CharacterColElement* end() { return &_4[MAX_CHARACTER_COL]; }
+    inline s32 getIndex(CharacterColElement* pElm) { return pElm - begin(); }
+
+public:
+    /* 0x04 */ CharacterColElement* _4;
 };
 
 #endif

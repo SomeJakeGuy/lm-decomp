@@ -1,6 +1,5 @@
 #include "Koga/CharacterColManager.hpp"
 #include "Unsorted/ActorData.hpp"
-#include "types.h"
 
 static const unkCharactColStruct2 sUnkCharactColStruct = {
     {-1, 50.0, 0.0, 50.0, 0.0},
@@ -11,11 +10,11 @@ static const unkCharactColStruct2 sUnkCharactColStruct = {
 // Fake Match for now, will need to not const_cast, probably
 CharacterColElement::CharacterColElement() : mGroupID(0), _18(1) {
     _1C.add(const_cast<unkCharactColStruct1*>(&sUnkCharactColStruct._0));
-    _4 = &_1C;
-    _0 = _1C.getSize();
-    _8 = 1;
-    _C = &_C0;
-    _10 = &_D4;
+    _0._4 = _1C.getArray();
+    _0._0 = _1C.getSize();
+    _0._8 = 1;
+    _0._C = &_C0;
+    _0._10 = &_D4;
     _C0 = sUnkCharactColStruct._14;
     _D4 = sUnkCharactColStruct._28;
 }
@@ -33,11 +32,11 @@ void CharacterColElement::init(s32 param_1) {
         _1C.add(unk2);
     }
 
-    _4 = &_1C;
-    _0 = _1C.getSize();
-    _8 = unk->_8;
-    _C = &_C0;
-    _10 = &_D4;
+    _0._4 = _1C.getArray();
+    _0._0 = _1C.getSize();
+    _0._8 = unk->_8;
+    _0._C = &_C0;
+    _0._10 = &_D4;
 
     if (unk->_C != nullptr) {
         _C0 = *unk->_C;
@@ -53,7 +52,7 @@ CharacterColManager::CharacterColManager() {
     _4 = new CharacterColElement[381];
 
     for (CharacterColElement* currElm = begin(); currElm != end(); currElm++) {
-        currElm->init(MAX_CHARACTER_COL); // Some sort of index management here, idk its gross
+        currElm->init(currElm - begin()); // Some sort of index management here, idk its gross
     }
 }
 
