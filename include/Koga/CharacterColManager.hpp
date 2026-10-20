@@ -1,63 +1,93 @@
 #ifndef CHARACTER_COLLISION_MANAGER_HPP
 #define CHARACTER_COLLISION_MANAGER_HPP
 
+#include "MR/Array.hpp"
 #include <types.h>
 #include <JSystem/JORReflexible.hpp>
 
-
-struct unkCharactColStruct {
-    /* 0x0 */ s32 _0; // Most Likely an it as the default value is FFFFFFFF anyways
-    /* 0x4 */ u32 _4; //Unknown type;
-    /* 0x8 */ u32 _8; //Unknown type;
-    /* 0xC */ u32 _C; //Unknown type;
-    /* 0x10 */ u32 _10; //Unknown type;
-    /* 0x14 - 0x28 */ u8 _14[0x28 - 0x14];
-    /* 0x28 - 0x3F */ u8 _28[0x3F - 0x28];
+struct unkCharactColStruct1 {
+    /* 0x00 */ s32 _0;
+    /* 0x04 */ f32 _4;
+    /* 0x08 */ f32 _8; //Unknown type;
+    /* 0x0C */ f32 _C;
+    /* 0x10 */ f32 _10; //Unknown type;
 };
 
-class unkCharacterElementClass {
-public:
-    unkCharacterElementClass();
-    ~unkCharacterElementClass();
-    void init(const unkCharactColStruct*);
+struct unkCharactColStruct3 {
+    /* 0x00 */ f32 _0;
+    /* 0x04 */ f32 _4;
+    /* 0x08 */ f32 _8; //Unknown type;
+    /* 0x0C */ f32 _C;
+    /* 0x10 */ f32 _10; //Unknown type;
+};
 
-    /* 0x0 - 0x78 */ u8 _0[0x78];
-    /* 0x78 - 0x80 */ u8 _78[8];
-    /* 0x80 */ void* _80;
-    /* 0x84 - 0x9C */ u8 _84[0x18];
-    /* 0x9C */ void* _9C;
-    /* 0xA0 */ u32 _A0;
-    /* 0xA4 */ u8 _A4[0xB8 - 0xA4];
-    /* 0xB8 */ u8 _B8[0xCC - 0xB8];
+struct unkCharactColStruct4 {
+    /* 0x00 */ f32 _0;
+    /* 0x04 */ f32 _4;
+    /* 0x08 */ f32 _8;
+    /* 0x0C */ f32 _C; //Unknown type;
+    /* 0x10 */ f32 _10; //Unknown type;
+    /* 0x14 */ f32 _14; //Unknown type;
+};
+
+struct unkCharactColStruct2 {
+    /* 0x00 */ unkCharactColStruct1 _0;
+    /* 0x14 */ unkCharactColStruct3 _14;
+    /* 0x28 */ unkCharactColStruct4 _28;
+};
+
+class unkCharactColStruct1Arr : public MR::AssignableArray<unkCharactColStruct1, 8> {
+    public:
+        unkCharactColStruct1Arr();
+        ~unkCharactColStruct1Arr();
+        void add(unkCharactColStruct1*);
 };
 
 // TODO Maybe a better name here
 class CharacterColElement {
     public:
         CharacterColElement();
-        void init(int);
+        void init(s32);
         ~CharacterColElement();
 
+    /* Size: 0xEC */
     private:
-        /* 0x0 */ void* _0; //Another class/struct of some sort.
-        /* 0x4 */ unkCharacterElementClass* _4;
-        /* 0x8 */ u32 _8;
-        /* 0xC */ void* _C;
+        /* 0x00 */ s32 _0; // Probably not private? Count of _1C
+        /* 0x04 */ unkCharactColStruct1Arr* _4; // Probably not private? Reference of _1C
+        /* 0x08 */ u32 _8;
+        /* 0x0C */ void* _C;
         /* 0x10 */ void* _10;
-        /* 0x14 */ u32 mGlobalActorField0; //There is some global Actor data/struct that this gets field 0x0 for
+        /* 0x14 */ u32 mGroupID;
         /* 0x18 */ u8 _18;
         /* 0x19-0x1B */ u8 padding[3];
-        /* 0x1C */ unkCharacterElementClass _1C;
+        /* 0x1C */ unkCharactColStruct1Arr _1C;
+        /* 0xC0 */ unkCharactColStruct3 _C0;
+        /* 0xD4 */ unkCharactColStruct4 _D4;
 };
+
+#define MAX_CHARACTER_COL 381
 
 class CharacterColManager : public JORReflexible {
 public:
     CharacterColManager();
     /* 0x08 */ virtual ~CharacterColManager();
-
+    inline CharacterColElement* begin() { return &_4[0]; }
+    inline CharacterColElement* last() { return &_4[MAX_CHARACTER_COL - 1]; }
+    inline CharacterColElement* end() { return &_4[MAX_CHARACTER_COL]; }
 
 public:
-    /* 0x04 */ CharacterColElement* mCharColElements;
+    /* 0x04 */ CharacterColElement* _4;
+};
+
+struct unkCharactColStruct5 {
+    /* 0x00 */ s32 _0;
+    /* 0x04 */ unkCharactColStruct1* _4;
+    /* 0x08 */ u32 _8;
+    /* 0x0C */ unkCharactColStruct3* _C;
+    /* 0x10 */ unkCharactColStruct4* _10;
+
+    static unkCharactColStruct5* lbl_8038E118[MAX_CHARACTER_COL+1];
+    static unkCharactColStruct5* lbl_8038DD00[];
 };
 
 #endif
