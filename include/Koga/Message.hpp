@@ -1,9 +1,9 @@
-#ifndef MESSAGE_H_
-#define MESSAGE_H_
+#ifndef MESSAGE_HPP
+#define MESSAGE_HPP
+
+#include <types.h>
 
 #include "MR/Array.hpp"
-#include "dolphin/types.h"
-#include <types.h>
 
 class ToolDataRef;
 
@@ -11,12 +11,7 @@ class MessageReceiver;
 typedef bool (MessageReceiver::*MessageCallback1)(int arg0);
 typedef bool (MessageReceiver::*MessageCallback2)(int arg0, int arg1);
 
-class MessageRecieverArray : public MR::AssignableArray<MessageReceiver*, 12> {
-public:
-    MessageRecieverArray() { }
-    ~MessageRecieverArray() { }
-    void add(MessageReceiver** member) { addMember(member); }
-};
+typedef MR::ArrayHolder<MessageReceiver*, 12> MessageRecieverArray;
 
 class MessageSender {
 public:

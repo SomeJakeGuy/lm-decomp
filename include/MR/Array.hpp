@@ -2,8 +2,6 @@
 #define MR_ARRAY_HPP
 
 // Based on some eerily similar findings from SMG: https://github.com/SMGCommunity/Petari/blob/master/include/Game/Util/Array.hpp
-
-#include "dolphin/macros.h"
 #include <types.h>
 
 namespace MR {
@@ -63,6 +61,13 @@ namespace MR {
         mArraySize--;
         return pIter;
     }
+
+    template<typename T, s32 S>
+    class ArrayHolder : public AssignableArray<T, S> {
+        public:
+            ArrayHolder() {};
+            ~ArrayHolder() {};
+    };
     
     template<typename T, s32 N>
     class FixedArray {
@@ -77,8 +82,6 @@ namespace MR {
         private:
             /* 0x00 */ T mArr[N];
     };
-
-    
 };
 
 #endif

@@ -3,6 +3,7 @@
 
 #include <JSystem/JORReflexible.hpp>
 #include "Koga/Message.hpp"
+#include "MR/Array.hpp"
 
 namespace Koga {
     class ToolData;
@@ -16,23 +17,8 @@ public:
     /* 0x4 */ u8 _4[0xC];
 };
 
-class unkJmpMessageSender1Arr {
-public:
-    unkJmpMessageSender1Arr();
-    ~unkJmpMessageSender1Arr();
-
-
-    /* 0x000 */ unkJmpMessageSender1 _0[200];
-    /* 0xC80 */ s32 _C80;
-};
-
-class JmpToolList : public MR::AssignableArray<Koga::ToolData*, 10> {
-public:
-    JmpToolList() { }
-    ~JmpToolList() { }
-    void add(Koga::ToolData** pMember) { addMember(pMember); }
-    Koga::ToolData** remove(Koga::ToolData** pIter) { return eraseMember(pIter); }
-};
+typedef MR::AssignableArray<unkJmpMessageSender1, 200> unkJmpMessageSender1Arr;
+typedef MR::ArrayHolder<Koga::ToolData*, 10> JmpToolList;
 
 class JmpMessageSender : public MessageSender, public JORReflexible {
 public:
@@ -49,6 +35,10 @@ public:
     void fn_800EB634(Koga::ToolData*, s32, bool);
     BOOL fn_800EAA00(const char*, s32);
     void fn_800EAB1C();
+
+    // Something with checking events, specifically pos, appear/disappear flags, and event set no;
+    static void fn_800EAC0C(Koga::ToolData*, void*); // Unsure of return / if static or arg 2
+    static void fn_800EAF00(u8*); // Looks to reset a bunch of bool flags? Unsure of return / if static
 
     void fn_800EB1DC();
     void fn_800EB27C();

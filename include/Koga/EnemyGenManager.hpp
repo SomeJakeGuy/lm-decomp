@@ -19,14 +19,7 @@ namespace Koga {
 class EnemyStrategy;
 class EnZako;
 
-class unkEnemyGen1 : public MR::AssignableArray<EnZako*, 0xF> {
-public:
-    unkEnemyGen1() {}
-    ~unkEnemyGen1() {}
-
-    void add(EnZako**);
-    EnZako** remove(EnZako**);
-};
+typedef MR::ArrayHolder<EnZako*, 0xF> unkEnemyGen1;
 
 class EnemyGenerator : public JORReflexible, public IncludeStrategy {
 public:

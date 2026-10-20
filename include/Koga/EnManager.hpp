@@ -47,14 +47,9 @@ public:
     s32 _8; //mTypeIndex?
 };
 
-class unkEnManager3 : public MR::AssignableArray<unkEnManager2, 0x80> {
-public:
-    unkEnManager3();
-    ~unkEnManager3();
-
-    void add(unkEnManager2*);
-    unkEnManager2* remove(unkEnManager2*);
-};
+// Explicitly not ArrayHolder
+typedef MR::AssignableArray<unkEnManager2, 0x80> unkEnManager3;
+typedef MR::FixedArray<unkEnManager1, 0x80> unkEnManager1Arr ;
 
 namespace Koga {
 
@@ -106,7 +101,7 @@ namespace Koga {
         inline s32 getMaxAppearSlotIndex() { return sAppearPointSlotIndex + 1; }
 
     public:
-        /* 0x004 */ MR::FixedArray<unkEnManager1, 0x80> _4;
+        /* 0x004 */ unkEnManager1Arr _4;
         /* 0x804 */ unkEnManager3 _804;
         /* 0xE08 */ AppearPointSlot _E08[2];
         /* 0xE40 */ Koga::ToolData* mInfoTable;
