@@ -6,6 +6,8 @@
 
 #include "MR/Array.hpp"
 
+// TODO Maybe this TU is bigger, unsure
+
 struct unkCharactColStruct1 {
     /* 0x00 */ s32 _0;
     /* 0x04 */ f32 _4;
@@ -37,13 +39,6 @@ struct unkCharactColStruct2 {
     /* 0x28 */ unkCharactColStruct4 _28;
 };
 
-class unkCharactColStruct1Arr : public MR::AssignableArray<unkCharactColStruct1, 8> {
-    public:
-        unkCharactColStruct1Arr();
-        ~unkCharactColStruct1Arr();
-        void add(unkCharactColStruct1*);
-};
-
 #define MAX_CHARACTER_COL 381
 
 struct unkCharactColStruct5 {
@@ -53,6 +48,7 @@ struct unkCharactColStruct5 {
     /* 0x0C */ unkCharactColStruct3* _C;
     /* 0x10 */ unkCharactColStruct4* _10;
 
+    // TODO These definitely don't belong here, but for now can stay.
     static unkCharactColStruct5* lbl_8038E118[MAX_CHARACTER_COL+1];
     static unkCharactColStruct5* lbl_8038DD00[]; // Indexed by Group IDs from ActorData
 };
@@ -69,7 +65,7 @@ class CharacterColElement {
         /* 0x00 */ unkCharactColStruct5 _0;
         /* 0x14 */ u32 mGroupID;
         /* 0x18 */ u8 _18;
-        /* 0x1C */ unkCharactColStruct1Arr _1C;
+        /* 0x1C */ MR::AssignableArray<unkCharactColStruct1, 8> _1C;
         /* 0xC0 */ unkCharactColStruct3 _C0;
         /* 0xD4 */ unkCharactColStruct4 _D4;
 };
@@ -81,7 +77,6 @@ public:
     inline CharacterColElement* begin() { return &_4[0]; }
     inline CharacterColElement* last() { return &_4[MAX_CHARACTER_COL - 1]; }
     inline CharacterColElement* end() { return &_4[MAX_CHARACTER_COL]; }
-    inline s32 getIndex(CharacterColElement* pElm) { return pElm - begin(); }
 
 public:
     /* 0x04 */ CharacterColElement* _4;

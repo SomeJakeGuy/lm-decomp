@@ -9,7 +9,7 @@ static const unkCharactColStruct2 sUnkCharactColStruct = {
 
 // Fake Match for now, will need to not const_cast, probably
 CharacterColElement::CharacterColElement() : mGroupID(0), _18(1) {
-    _1C.add(const_cast<unkCharactColStruct1*>(&sUnkCharactColStruct._0));
+    _1C.addMember(const_cast<unkCharactColStruct1*>(&sUnkCharactColStruct._0));
     _0._4 = _1C.getArray();
     _0._0 = _1C.getSize();
     _0._8 = 1;
@@ -29,7 +29,7 @@ void CharacterColElement::init(s32 param_1) {
     _18 = 0;
     for (int i = 0; i < unk->_0; i++) {
         unkCharactColStruct1* unk2 = &unk->_4[i];
-        _1C.add(unk2);
+        _1C.addMember(unk2);
     }
 
     _0._4 = _1C.getArray();
@@ -61,10 +61,3 @@ CharacterColElement::~CharacterColElement() {}
 CharacterColManager::~CharacterColManager() {
     delete [] _4;
 }
-
-
-unkCharactColStruct1Arr::unkCharactColStruct1Arr() {}
-
-unkCharactColStruct1Arr::~unkCharactColStruct1Arr() {}
-
-void unkCharactColStruct1Arr::add(unkCharactColStruct1* param_1) { addMember(param_1);}
