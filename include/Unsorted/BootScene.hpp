@@ -3,32 +3,40 @@
 
 #include <version.h>
 
+#include "Unsorted/Scene.hpp"
+
 class JKRMemArchive;
 class J2DPicture;
+class LMDvdFileInfo;
 
-namespace BootScene {
-    enum BootSceneState {
-        STATE_0,
-        STATE_1,
-        STATE_2,
-    };
-    
-    extern s32 lbl_804D8110;
-    extern BootSceneState sCurBootSceneState;
-    extern u16 lbl_804D8118;
-    extern f32 lbl_804D811C;
-    extern J2DPicture* sNintendoLogoPicture;
-    extern JKRMemArchive* sStaticDataArchive;
+enum BootSceneState {
+    STATE_0,
+    STATE_1,
+    STATE_2,
+};
 
-    void init();
-    void destroy();
-    u32 update();
-    void draw();
+class BootScene {
+    public:
+        static void init();
+        static void destroy();
+        static u32 update();
+        static void draw();
 
-    //extern Scene sScene;
-}
+        static Scene sBootScene;
 
-u8* getStaticDataArr();
+    private:
+        static void loadStaticData();
+        static void loadStaticDataArchives() ;
+        static void dvdFileOpenCallback(void*, LMDvdFileInfo*);
+        u8* getStaticDataArr();
+        
 
+        static s32 lbl_804D8110;
+        static BootSceneState sCurBootSceneState;
+        static u16 lbl_804D8118;
+        static f32 lbl_804D811C;
+        static J2DPicture* sNintendoLogoPicture;
+        static JKRMemArchive* sStaticDataArchive;
+};
 
 #endif
