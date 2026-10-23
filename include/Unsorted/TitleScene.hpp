@@ -1,19 +1,17 @@
-#ifndef TITLE_SCENE_H
-#define TITLE_SCENE_H
+#ifndef TITLE_SCENE_HPP
+#define TITLE_SCENE_HPP
 
 #include "Unsorted/Scene.hpp"
 
-class JKRMemArchive;
-class J2DPicture;
+class TitleScene {
+    public:
+        static void init();
+        static u32 update();
+        static void draw();
+        static void destroy();
 
-namespace TitleScene {
-    void init();
-    void destroy();
-    u32 update();
-    void draw();
-
-    extern Scene sScene;
-}
+        static Scene sTitleScene;
+};
 
 
 #endif
