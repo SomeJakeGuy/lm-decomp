@@ -3,14 +3,13 @@
 
 #include "Unsorted/Scene.hpp"
 
-class TitleScene {
-    public:
-        static void init();
-        static u32 update();
-        static void draw();
-        static void destroy();
+namespace TitleScene {
+    void init();
+    u32 update();
+    void draw();
+    void destroy();
 
-        static Scene sTitleScene;
+    extern Scene sTitleScene;
 };
 
 

@@ -1,5 +1,5 @@
-#ifndef BOOT_SCENE_H
-#define BOOT_SCENE_H
+#ifndef BOOT_SCENE_HPP
+#define BOOT_SCENE_HPP
 
 #include <version.h>
 
@@ -15,28 +15,24 @@ enum BootSceneState {
     STATE_2,
 };
 
-class BootScene {
-    public:
-        static void init();
-        static void destroy();
-        static u32 update();
-        static void draw();
+namespace BootScene {
+    void init();
+    void destroy();
+    u32 update();
+    void draw();
 
-        static Scene sBootScene;
+    void loadStaticData();
+    void loadStaticDataArchives() ;
+    void dvdFileOpenCallback(void*, LMDvdFileInfo*);
+    u8* getStaticDataArr();
 
-    private:
-        static void loadStaticData();
-        static void loadStaticDataArchives() ;
-        static void dvdFileOpenCallback(void*, LMDvdFileInfo*);
-        u8* getStaticDataArr();
-        
-
-        static s32 lbl_804D8110;
-        static BootSceneState sCurBootSceneState;
-        static u16 lbl_804D8118;
-        static f32 lbl_804D811C;
-        static J2DPicture* sNintendoLogoPicture;
-        static JKRMemArchive* sStaticDataArchive;
+    extern Scene sBootScene;
+    extern s32 lbl_804D8110;
+    extern BootSceneState sCurBootSceneState;
+    extern u16 lbl_804D8118;
+    extern f32 lbl_804D811C;
+    extern J2DPicture* sNintendoLogoPicture;
+    extern JKRMemArchive* sStaticDataArchive;
 };
 
 #endif
