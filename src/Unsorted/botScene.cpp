@@ -45,7 +45,6 @@ extern s32 lbl_804D809C;
 GXColor lbl_804CFFB0 = { 255, 255, 255, 32 };
 
 namespace BootScene {
-
     Scene sScene = {
         "BOOT",
         1,

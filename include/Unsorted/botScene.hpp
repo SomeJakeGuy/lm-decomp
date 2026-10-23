@@ -1,7 +1,6 @@
 #ifndef BOOT_SCENE_H
 #define BOOT_SCENE_H
 
-#include "Unsorted/Scene.hpp"
 #include <version.h>
 
 class JKRMemArchive;
@@ -26,7 +25,7 @@ namespace BootScene {
     u32 update();
     void draw();
 
-    extern Scene sScene;
+    //extern Scene sScene;
 }
 
 u8* getStaticDataArr();
