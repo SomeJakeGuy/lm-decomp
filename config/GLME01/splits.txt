@@ -87,15 +87,16 @@ Unsorted/8000AED8.cpp:
 	.bss        start:0x803A3A98 end:0x803A3AE0
 	.sdata2     start:0x804D99A8 end:0x804D99C8
 
-Unsorted/8000B328.cpp:
-	.text       start:0x8000B328 end:0x8000B978
+Unsorted/SceneManager.cpp:
+	.text       start:0x8000B328 end:0x8000B8D8
 	.ctors      start:0x8020BAD0 end:0x8020BAD4
 	.data       start:0x8021DB20 end:0x8021DB40
 	.bss        start:0x803A3AE0 end:0x803A3B10
 	.sdata      start:0x804CFF98 end:0x804CFFA0
+	.sbss       start:0x804D8088 end:0x804D80C0
 
 Unsorted/SelectScene.cpp:
-	.text       start:0x8000B978 end:0x8000BA4C
+	.text       start:0x8000B8D8 end:0x8000BA4C
 	.data       start:0x8021DB40 end:0x8021DB68
 
 Unsorted/GameScene.cpp:
