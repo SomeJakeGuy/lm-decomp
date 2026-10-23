@@ -2,7 +2,7 @@
 #define SCENE_MANAGER_HPP
 
 #include <types.h>
-#include "Unsorted/Scene.hpp"
+#include "Unsorted/Scenes/Scene.hpp"
 
 class SceneManager {
     public:

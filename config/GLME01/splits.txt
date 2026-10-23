@@ -87,7 +87,7 @@ Unsorted/8000AED8.cpp:
 	.bss        start:0x803A3A98 end:0x803A3AE0
 	.sdata2     start:0x804D99A8 end:0x804D99C8
 
-Unsorted/SceneManager.cpp:
+Unsorted/Scenes/SceneManager.cpp:
 	.text       start:0x8000B328 end:0x8000B8D8
 	.ctors      start:0x8020BAD0 end:0x8020BAD4
 	.data       start:0x8021DB20 end:0x8021DB40
@@ -95,11 +95,11 @@ Unsorted/SceneManager.cpp:
 	.sdata      start:0x804CFF98 end:0x804CFFA0
 	.sbss       start:0x804D8088 end:0x804D80C0
 
-Unsorted/SelectScene.cpp:
+Unsorted/Scenes/SelectScene.cpp:
 	.text       start:0x8000B8D8 end:0x8000BA4C
 	.data       start:0x8021DB40 end:0x8021DB68
 
-Unsorted/GameScene.cpp:
+Unsorted/Scenes/GameScene.cpp:
 	.text       start:0x8000BA4C end:0x8000C36C
 	.data       start:0x8021DB68 end:0x8021DBD8
 	.sdata      start:0x804CFFA0 end:0x804CFFA8
@@ -114,16 +114,16 @@ Unsorted/8000C90C.cpp:
 	.text       start:0x8000C90C end:0x8000CE58
 	.sdata2     start:0x804D99D8 end:0x804D99E8
 
-Unsorted/OpeningScene.cpp:
+Unsorted/Scenes/OpeningScene.cpp:
 	.text       start:0x8000CE58 end:0x8000CFC8
 	.data       start:0x8021DBD8 end:0x8021DC00
 	.sdata      start:0x804CFFA8 end:0x804CFFB0
 
-Unsorted/StuffRollScene.cpp:
+Unsorted/Scenes/StuffRollScene.cpp:
 	.text       start:0x8000CFC8 end:0x8000D0AC
 	.data       start:0x8021DC00 end:0x8021DC28
 
-Unsorted/EndingScene.cpp:
+Unsorted/Scenes/EndingScene.cpp:
 	.text       start:0x8000D0AC end:0x8000E46C
 	.data       start:0x8021DC28 end:0x8021DFC0
 	.bss        start:0x803A3B40 end:0x803A3C08
@@ -133,19 +133,19 @@ Unsorted/EndingScene.cpp:
 Unsorted/aramStaticData.cpp:
 	.bss        start:0x803D34C8 end:0x803D3540
 
-Unsorted/BootScene.cpp:
+Unsorted/Scenes/BootScene.cpp:
 	.text       start:0x8000E46C end:0x8000EC98
 	.data       start:0x8021DFC0 end:0x802FF0A8
 	.sdata      start:0x804CFFB0 end:0x804CFFB8
 	.sbss       start:0x804D8110 end:0x804D8130
 	.sdata2     start:0x804D9A08 end:0x804D9A20
 
-Unsorted/TitleScene.cpp:
+Unsorted/Scenes/TitleScene.cpp:
 	.text       start:0x8000EC98 end:0x8000EF58
 	.data       start:0x802FF0A8 end:0x802FF0D0
 	.sbss       start:0x804D8130 end:0x804D8140
 
-Unsorted/TitleScreenPane.cpp:
+Unsorted/Scenes/TitleScreenPane.cpp:
 	.text       start:0x8003A430 end:0x8003AF2C
 	.ctors      start:0x8020BAEC end:0x8020BAF0
 

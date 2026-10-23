@@ -1,4 +1,4 @@
-#include "Unsorted/BootScene.hpp"
+#include "Unsorted/Scenes/BootScene.hpp"
 #include "JSystem/J2D/J2DOrthoGraph.hpp"
 #include "Unsorted/80007018.hpp"
 #include "Unsorted/LMDisplayUtil.hpp"

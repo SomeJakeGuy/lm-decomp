@@ -791,11 +791,12 @@ config.libs = [
         Object(NonMatching, "Koga/EnTypesManager.cpp"),
         Object(NonMatching, "Koga/EnemyGenManager.cpp"),
 
-        # Unsorted
-        Object(NonMatching, "Unsorted/SceneManager.cpp"),
-        Object(NonMatching, "Unsorted/bootScene.cpp"),
-        Object(NonMatching, "Unsorted/TitleScene.cpp"),
-        
+        # Unsorted/Scenes
+        Object(NonMatching, "Unsorted/Scenes/SceneManager.cpp"),
+        Object(NonMatching, "Unsorted/Scenes/BootScene.cpp"),
+        Object(NonMatching, "Unsorted/Scenes/TitleScene.cpp"),
+
+        # Unsorted Other
         Object(NonMatching, "Unsorted/LMDvdFile.cpp"),
         Object(NonMatching, "Unsorted/InGameFlagsUtil.cpp"),
         Object(NonMatching, "Unsorted/80006DF0.cpp"),

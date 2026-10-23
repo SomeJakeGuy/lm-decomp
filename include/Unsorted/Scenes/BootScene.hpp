@@ -3,7 +3,7 @@
 
 #include <version.h>
 
-#include "Unsorted/Scene.hpp"
+#include "Unsorted/Scenes/Scene.hpp"
 
 class JKRMemArchive;
 class J2DPicture;

@@ -13,7 +13,7 @@
 #include "Unsorted/AssortedEnManager.hpp"
 #include "Koga/800E634C.hpp"
 #include "Unsorted/Character.hpp"
-#include "Unsorted/SceneManager.hpp"
+#include "Unsorted/Scenes/SceneManager.hpp"
 
 
 namespace Koga {
