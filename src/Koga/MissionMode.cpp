@@ -16,9 +16,6 @@
 
 dummy_float_data()
 
-//TODO: Remove these
-extern int sCurMapNo;
-
 namespace Koga {
 
     MissionMode::MissionMode()

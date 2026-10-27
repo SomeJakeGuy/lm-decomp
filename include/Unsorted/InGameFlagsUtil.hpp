@@ -41,6 +41,7 @@ void fn_8006628C();
 void fn_80066494(u8, u8);
 void fn_800664AC(int);
 void fn_80066730(int*);
+void fn_80066B9C();
 void fn_80066C9C();
 
 #endif

@@ -15,6 +15,8 @@ struct SelectSceneHelper {
 
 namespace SelectScene {
     void fn_8000B8D8(void*);
+    void fn_8000B910();
+    void fn_8000B978();
 
     void init();
     SceneID update();
@@ -23,5 +25,7 @@ namespace SelectScene {
 
     extern Scene sSelectScene;
 }
+
+extern s32 lbl_804D80C0;
 
 #endif

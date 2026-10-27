@@ -1,6 +1,7 @@
 #ifndef SCENE_UNK_FUNCTIONS_HPP
 #define SCENE_UNK_FUNCTIONS_HPP
 
+#include "Unsorted/Scenes/Scene.hpp"
 #include <types.h>
 #include <dolphin/mtx.h>
 
@@ -46,5 +47,17 @@ extern s32 lbl_804D7FF0;
 
 // SelectScene calls these, unsure of types/args
 extern void* fn_800739A4(s32);
+extern void fn_800735FC();
+extern void fn_800379F4(void*);
+extern void fn_800626B0();
+extern void fn_8004CED4();
+extern SceneID fn_8004CF6C();
+extern void fn_8004CFBC();
+extern void fn_8004D014();
+
+// Definitely not SelectScene's data
+extern void* lbl_803CDEB0;
+extern s32 lbl_804CFFAC;
+extern s32 lbl_804D8060;
 
 #endif

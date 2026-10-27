@@ -1,6 +1,9 @@
 #include "Unsorted/Scenes/SelectScene.hpp"
+#include "Koga/MissionMode.hpp"
 #include "Unsorted/InGameFlagsUtil.hpp"
+#include "Unsorted/Scenes/Scene.hpp"
 #include "Unsorted/Scenes/SceneFunctionCalls.hpp"
+#include "Unsorted/LMDisplayUtil.hpp"
 
 
 Scene SelectScene::sSelectScene = {
@@ -47,5 +50,34 @@ namespace SelectScene {
 
         void* temp = fn_800739A4(0);
         //Something like: temp[0x16A] = temp[0x16A] | 2; 
+    }
+
+    void init() {
+        lbl_804D80C0 = 0;
+        fn_80066B9C();
+        fn_800739A4(0);
+        fn_800735FC();
+        fn_800379F4(&lbl_803CDEB0);
+        lbl_804CFFAC = 2;
+        fn_800626B0();
+        sCurMapNo = 2;
+        fn_8004CED4();
+    }
+
+    SceneID update() {
+        if (lbl_804D8060 != 0) {
+            return SCENE_SELECT;
+        }
+
+        return fn_8004CF6C();
+    }
+
+    void draw() {
+        fn_8004CFBC();
+        fn_80008004();
+    }
+
+    void destroy() {
+        fn_8004D014();
     }
 }
