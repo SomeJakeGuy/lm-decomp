@@ -156,7 +156,7 @@ void fn_800065A8() {
     LMDvdFile::sFileInfoArray[MAX_FILE_INFO_ARR - 1]._7C = LMDvdFile::getFileInfoArray();
 }
 
-void* LMDvdFileOpen(const char* pFileName, LMDvdFileInfoBlock* param_2) {
+LMDvdFileInfoBlock* LMDvdFileOpen(const char* pFileName, LMDvdFileInfoBlock* param_2) {
     LMDvdFile::sCurDvdFile.init();
     LMDvdFile::sCurDvdFile._8->_74 = nullptr;
     LMDvdFile::sCurDvdFile._8->_70 = 0;
@@ -173,8 +173,8 @@ void* LMDvdFileOpen(const char* pFileName, LMDvdFileInfoBlock* param_2) {
 }
 
 //https://decomp.me/scratch/YKS45
-void* LMDvdFileOpen(const char* pFileName, LMDvdFileInfoCallback cb, LMDvdFileInfoBlock* pBlock, void* param_4) {
-    void* ret;
+LMDvdFileInfoBlock* LMDvdFileOpen(const char* pFileName, LMDvdFileInfoCallback cb, LMDvdFileInfoBlock* pBlock, void* param_4) {
+    LMDvdFileInfoBlock* ret;
 
     // Seems like inlined init, though based on LMDvdFileOpen it could not be?
     LMDvdFileInfo* info = LMDvdFile::sCurDvdFile._8->_7C;
@@ -196,11 +196,10 @@ void* LMDvdFileOpen(const char* pFileName, LMDvdFileInfoCallback cb, LMDvdFileIn
     LMDvdFile::sCurDvdFile._8->_74 = cb;
     LMDvdFile::sCurDvdFile._8->_70 = param_4;
 
-    if (LMDvdFile::sCurDvdFile.open(pFileName, pBlock)) {
+    if (!LMDvdFile::sCurDvdFile.open(pFileName, pBlock)) {
         LMDvdFile::sCurDvdFile._0++;
         ret = LMDvdFile::sCurDvdFile._8->_64;
     }
-
     return ret;
 }
 
