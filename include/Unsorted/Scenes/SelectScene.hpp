@@ -10,8 +10,8 @@ struct SelectSceneHelper {
     
     /* 0x00 */ s32 _0;
     /* 0x04 */ OSMessageQueue mOSMsgQueue;
-    /* 0x24 */ OSMessage mMsgs[1];
-};
+    /* 0x24 */ OSMessage mMsgs;
+}; // size 0x28
 
 namespace SelectScene {
     void fn_8000B8D8(void*);
