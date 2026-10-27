@@ -5,7 +5,7 @@
 
 namespace TitleScene {
     void init();
-    u32 update();
+    SceneID update();
     void draw();
     void destroy();
 

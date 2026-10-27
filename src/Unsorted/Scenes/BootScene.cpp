@@ -1,14 +1,17 @@
+#include <version.h>
+#include <JSystem/JKernel/JKRExpHeap.hpp>
+#include <JSystem/JKernel/JKRMemArchive.hpp>
+#include <JSystem/J2D/J2DPicture.hpp>
+#include <JSystem/J2D/J2DOrthoGraph.hpp>
+
 #include "Unsorted/Scenes/BootScene.hpp"
-#include "JSystem/J2D/J2DOrthoGraph.hpp"
+#include "Unsorted/Scenes/SceneFunctionCalls.hpp"
 #include "Unsorted/80007018.hpp"
 #include "Unsorted/LMDisplayUtil.hpp"
 #include "Unsorted/staticDataAramData.h"
 #include "Unsorted/80005EB8.hpp"
 #include "Unsorted/LMDvdFile.hpp"
 #include "Unsorted/80008418.hpp"
-#include <JSystem/JKernel/JKRExpHeap.hpp>
-#include "JSystem/JKernel/JKRMemArchive.hpp"
-#include "JSystem/J2D/J2DPicture.hpp"
 #include "macros.h"
 
 //.data
@@ -26,27 +29,22 @@ enemies_float_data()
 
 s32 lbl_802FB380[3872] = { };
 
-
-
-// externs
-extern void fn_80066FAC(JKRMemArchive*);
-extern void fn_80188594(void*, u32, u32);
-extern void fn_8004D4C8();
-extern void fn_80188714(void*);
-extern void fn_80188638();
-extern bool fn_80188740();
-extern void fn_80009490();
-extern void fn_8005FD80();
-extern void fn_8003EB44();
-extern void fn_80009B80();
-extern void fn_8000A40C(f32, f32, f32, f32, f32, f32, Mtx, s32, s32, u32);
 extern GXColor lbl_804CFF88;
 extern s32 lbl_804D8098;
 extern s32 lbl_804D809C;
 
 GXColor lbl_804CFFB0 = { 255, 255, 255, 32 };
 
-Scene BootScene::sBootScene = {"BOOT", 1, init, update, draw, destroy};
+namespace BootScene {
+    Scene sBootScene = {
+        "BOOT", 
+        1, 
+        init, 
+        update, 
+        draw, 
+        destroy
+    };
+}
 
 // needs to be here for position
 const char* ninLogoFileName = "/ninlogo.pcm";
@@ -58,17 +56,17 @@ f32 lbl_804D811C;
 J2DPicture* sNintendoLogoPicture;
 JKRMemArchive* sStaticDataArchive;
 
-static void dvdFileOpenCallback(void* param_1, LMDvdFileInfo* param_2) {
+void BootScene::dvdFileOpenCallback(void* param_1, LMDvdFileInfo* param_2) {
     void* block = JKRAllocFromHeap(nullptr, param_2->_64->size(), 32);
     param_2->_64->fn_800071D0((LMDvdFileInfoBlock*)block);
     fn_80006138(param_2->_64);
     fn_80066FAC(new JKRMemArchive(block, 0, MBF_0));
 }
 
-void loadStaticDataArchives() {
+void BootScene::loadStaticDataArchives() {
     fn_800061B8(16);
     fn_80006204();
-    void* game_usaData = LMDvdFileOpen("/Game/game_usa.szp", dvdFileOpenCallback, 0, 0);
+    void* game_usaData = LMDvdFileOpen("/Game/game_usa.szp", BootScene::dvdFileOpenCallback, 0, 0);
     lbl_804D8014->becomeCurrentHeap();
     fn_800061B8(3);
     u8* data = (u8*)sStaticDataArchive->getResource("/res_titl.szp");
@@ -102,12 +100,12 @@ void loadStaticDataArchives() {
     } while(bVar1 != 0);
 }
 
-void loadStaticData() {
+void BootScene::loadStaticData() {
     lbl_804D8014->changeGroupID(4);
     fn_80188594(JKRAllocFromHeap(lbl_804D8014, 0xC0000, 0x20), 0xC0000, 0xF00000);
     fn_8004D4C8();
     fn_80188714(sStaticDataArchive->getResource("/ninlogo.pcm"));
-    loadStaticDataArchives();
+    BootScene::loadStaticDataArchives();
     fn_80188638();
     do { } while(fn_80188740() == true);
 }
@@ -148,7 +146,7 @@ u32 update() {
     u32 ret;
     switch (sCurBootSceneState) {
     case STATE_0:
-        fn_80007040(loadStaticData);
+        fn_80007040(BootScene::loadStaticData);
         fn_80007F28();
         sCurBootSceneState = STATE_1;
         return 0;

@@ -1,8 +1,6 @@
 #ifndef BOOT_SCENE_HPP
 #define BOOT_SCENE_HPP
 
-#include <version.h>
-
 #include "Unsorted/Scenes/Scene.hpp"
 
 class JKRMemArchive;
@@ -18,7 +16,7 @@ enum BootSceneState {
 namespace BootScene {
     void init();
     void destroy();
-    u32 update();
+    SceneID update();
     void draw();
 
     void loadStaticData();
