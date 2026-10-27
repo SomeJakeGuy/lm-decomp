@@ -371,7 +371,7 @@ static void fn_80006C84(void* param_1, LMDvdFileInfo* pInfo) {
     s32 size;
     LMDvdFileInfoBlock* header = pInfo->_64;
 
-    if (pInfo->_64->_0 != 'Yay0') {
+    if (*static_cast<s32*>(pInfo->_68->_0) != 'Yay0') {
         lbl_804D8028 = TRUE;
         return;
     }
@@ -390,7 +390,7 @@ static void fn_80006C84(void* param_1, LMDvdFileInfo* pInfo) {
 
 //https://decomp.me/scratch/LsFJX
 static void fn_80006D28(void* param_1, LMDvdFileInfo* pInfo) {
-    if (pInfo->_68->_0 != 'RARC') {
+    if (*static_cast<s32*>(pInfo->_68->_0) != 'RARC') {
         lbl_804D8028 = TRUE;
     } else {
         if (pInfo->mArchive != nullptr) {
@@ -404,7 +404,7 @@ static void fn_80006D80(void* param_1, LMDvdFileInfo* pInfo) {
     fn_80006C84(param_1, pInfo);
 
     if (lbl_804D8028 == FALSE) {
-        if (pInfo->_68->_0 != 'RARC') {
+        if (*static_cast<s32*>(pInfo->_68->_0) != 'RARC') {
             lbl_804D8028 = TRUE;
         } else {
             if (pInfo->mArchive != nullptr) {
