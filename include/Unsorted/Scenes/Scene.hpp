@@ -5,11 +5,6 @@
 
 #define MAX_SCENE_NAME_SIZE 16
 
-typedef void (*SceneInitFunc)();
-typedef u32 (*SceneUpdateFunc)();
-typedef void (*SceneDrawFunc)();
-typedef void (*SceneDestroyFunc)();
-
 enum SceneID {
     SCENE_BOOT,
     SCENE_TITLE,
@@ -21,6 +16,11 @@ enum SceneID {
     SCENE_MOVIE,
     SCENE_MAX,
 };
+
+typedef void (*SceneInitFunc)();
+typedef SceneID (*SceneUpdateFunc)();
+typedef void (*SceneDrawFunc)();
+typedef void (*SceneDestroyFunc)();
 
 struct Scene {
     /* 0x00 */ char mName[MAX_SCENE_NAME_SIZE];
