@@ -795,6 +795,11 @@ config.libs = [
         Object(NonMatching, "Unsorted/Scenes/SceneManager.cpp"),
         Object(NonMatching, "Unsorted/Scenes/BootScene.cpp"),
         Object(NonMatching, "Unsorted/Scenes/TitleScene.cpp"),
+        Object(NonMatching, "Unsorted/Scenes/SelectScene.cpp"),
+        Object(NonMatching, "Unsorted/Scenes/MainGameScene.cpp"),
+        Object(NonMatching, "Unsorted/Scenes/OpeningScene.cpp"),
+        Object(NonMatching, "Unsorted/Scenes/StuffRollScene.cpp"),
+        Object(NonMatching, "Unsorted/Scenes/EndingScene.cpp"),
 
         # Unsorted Other
         Object(NonMatching, "Unsorted/LMDvdFile.cpp"),
