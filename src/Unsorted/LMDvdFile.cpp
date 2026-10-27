@@ -330,7 +330,7 @@ JKRMemArchive* LMDvdFileInfo::getArchive() {
     return mArchive;
 }
 
-BOOL LMDvdFile::checkCurUnk0() {
+u32 LMDvdFile::checkCurUnk0() {
     return sCurDvdFile._0 != 0;
 }
 

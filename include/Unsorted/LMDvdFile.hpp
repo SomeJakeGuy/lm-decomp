@@ -42,7 +42,7 @@ public:
     void checkDVDStatus();
 
     static LMDvdFileInfo* getFileInfoArray();
-    static BOOL checkCurUnk0();
+    static u32 checkCurUnk0();
     static s32 getCurUnk4();
     static void checkCurDVDStatus();
     static void closeFile(void *pMsg, LMDvdFileInfo* pInfo);
@@ -50,7 +50,7 @@ public:
     static LMDvdFileInfo sFileInfoArray[MAX_FILE_INFO_ARR];
     static LMDvdFile sCurDvdFile;
 public:
-    /* 0x00 */ s32 _0;
+    /* 0x00 */ u32 _0;
     /* 0x04 */ s32 _4;
     /* 0x08 */ LMDvdFileInfo* _8;
     /* 0x10 */ u8 _10[0x2C - 0x10];
