@@ -13,7 +13,7 @@ typedef void (*LMDvdFileInfoCallback)(void* param_1, LMDvdFileInfo* param_2);
 
 class LMDvdFileInfo : public DVDFileInfo {
 public:
-    s32 getUnk70();
+    void* getUnk70();
     LMDvdFileInfoBlock* getUnk64();
     u32 getLength();
     JKRMemArchive* getArchive();
@@ -26,7 +26,7 @@ public:
     /* 0x64 */ LMDvdFileInfoBlock* _64;
     /* 0x68 */ LMDvdFileInfoBlock* _68;
     /* 0x6C */ JKRMemArchive* mArchive;
-    /* 0x70 */ s32 _70;
+    /* 0x70 */ void* _70;
     /* 0x74 */ LMDvdFileInfoCallback _74;
     /* 0x78 */ LMDvdFileInfoCallback _78;
     /* 0x7C */ LMDvdFileInfo* _7C;
@@ -37,15 +37,15 @@ public:
 class LMDvdFile {
 public:
     void init();
-    bool open(const char* pFileName, LMDvdFileInfoBlock*);
-    void* open(const char* pFileName, LMDvdFileInfoCallback, LMDvdFileInfoBlock*, s32);
+    bool open(const char*, LMDvdFileInfoBlock*);
+    void* open(const char*, LMDvdFileInfoCallback, LMDvdFileInfoBlock*, void*);
     void checkDVDStatus();
 
     static LMDvdFileInfo* getFileInfoArray();
     static u32 checkCurUnk0();
     static s32 getCurUnk4();
     static void checkCurDVDStatus();
-    static void closeFile(void *pMsg, LMDvdFileInfo* pInfo);
+    static void closeFile(void*, LMDvdFileInfo*);
 
     static LMDvdFileInfo sFileInfoArray[MAX_FILE_INFO_ARR];
     static LMDvdFile sCurDvdFile;
@@ -56,11 +56,13 @@ public:
     /* 0x10 */ u8 _10[0x2C - 0x10];
 };
 
-void* LMDvdFileOpen(const char* pFIleName, LMDvdFileInfoBlock*);
-void* LMDvdFileOpen(const char *pFileName, LMDvdFileInfoCallback param_2, LMDvdFileInfoBlock* param_3, s32 param_4);
+void* LMDvdFileOpen(const char*, LMDvdFileInfoBlock*);
+void* LMDvdFileOpen(const char*, LMDvdFileInfoCallback, LMDvdFileInfoBlock*, void*);
 void* fn_80006930(const char*, LMDvdFileInfoBlock*);
-JKRMemArchive* LMOpenMemArchive(const char* pFileName, void*);
-void* fn_80006258(u32 size, int align);
+JKRMemArchive* LMOpenMemArchive(const char*, void*);
+void* fn_80006258(u32, s32);
+void* fn_800067D0(const char*, LMDvdFileInfoCallback, LMDvdFileInfoBlock*, void*);
+void* fn_80006A34(const char*, LMDvdFileInfoCallback, LMDvdFileInfoBlock*, void*);
 
 extern BOOL lbl_804D8028;
 

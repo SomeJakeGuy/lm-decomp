@@ -113,7 +113,7 @@ bool LMDvdFile::open(const char* pFileName, LMDvdFileInfoBlock* param_2) {
 }
 
 //https://decomp.me/scratch/ek40V
-void* LMDvdFile::open(const char* pFileName, LMDvdFileInfoCallback param_2, LMDvdFileInfoBlock* param_3, s32 param_4) {
+void* LMDvdFile::open(const char* pFileName, LMDvdFileInfoCallback param_2, LMDvdFileInfoBlock* param_3, void* param_4) {
     //TODO: Remove this
     FORCE_DONT_INLINE
     _8->_74 = param_2;
@@ -173,7 +173,7 @@ void* LMDvdFileOpen(const char* pFileName, LMDvdFileInfoBlock* param_2) {
 }
 
 //https://decomp.me/scratch/YKS45
-void* LMDvdFileOpen(const char* pFileName, LMDvdFileInfoCallback cb, LMDvdFileInfoBlock* pBlock, s32 param_4) {
+void* LMDvdFileOpen(const char* pFileName, LMDvdFileInfoCallback cb, LMDvdFileInfoBlock* pBlock, void* param_4) {
     void* ret;
 
     // Seems like inlined init, though based on LMDvdFileOpen it could not be?
@@ -208,7 +208,7 @@ static void fn_80006D28(void* param_1, LMDvdFileInfo* param_2);
 static void fn_80006D80(void* param_1, LMDvdFileInfo* param_2);
 
 //https://decomp.me/scratch/KlViD
-void* fn_800067D0(const char* pFileName, LMDvdFileInfoCallback param_2, LMDvdFileInfoBlock* param_3, s32 param_4) {
+void* fn_800067D0(const char* pFileName, LMDvdFileInfoCallback param_2, LMDvdFileInfoBlock* param_3, void* param_4) {
     LMDvdFile::sCurDvdFile._4 = -1;
     // Seems like inlined init, though based on LMDvdFileOpen it could not be?
     LMDvdFileInfo* info = LMDvdFile::sCurDvdFile._8->_7C;
@@ -276,7 +276,7 @@ JKRMemArchive* LMOpenMemArchive(const char* pFileName, void* param_2) {
 }
 
 
-void* fn_80006A34(const char* pFileName, LMDvdFileInfoCallback param_2, LMDvdFileInfoBlock* param_3, s32 param_4) {
+void* fn_80006A34(const char* pFileName, LMDvdFileInfoCallback param_2, LMDvdFileInfoBlock* param_3, void* param_4) {
     LMDvdFile::sCurDvdFile._4 = 1;
     // Seems like inlined init, though based on LMDvdFileOpen it could not be?
     LMDvdFileInfo* info = LMDvdFile::sCurDvdFile._8->_7C;
@@ -314,7 +314,7 @@ void* fn_80006A34(const char* pFileName, LMDvdFileInfoCallback param_2, LMDvdFil
     return ret;
 }
 
-s32 LMDvdFileInfo::getUnk70() {
+void* LMDvdFileInfo::getUnk70() {
     return _70;
 }
 
