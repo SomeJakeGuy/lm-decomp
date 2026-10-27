@@ -1,11 +1,11 @@
 #include "Unsorted/LMDvdFile.hpp"
+#include "Unsorted/Scenes/SceneManager.hpp"
 #include "Unsorted/80005EB8.hpp"
 #include "Unsorted/80006DF0.hpp"
 #include "Unsorted/GamePad.hpp"
 #include <JSystem/JKernel/JKRMemArchive.hpp>
 
 extern void fn_800473F8(s16);
-extern s32 lbl_804D80AC;
 
 LMDvdFileInfo LMDvdFile::sFileInfoArray[MAX_FILE_INFO_ARR];
 LMDvdFile LMDvdFile::sCurDvdFile;
