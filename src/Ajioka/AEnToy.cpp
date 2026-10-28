@@ -1,0 +1,45 @@
+#include "Ajioka/AEnToy.hpp"
+#include "macros.h"
+
+dummy_float_data()
+enemies_float_data()
+
+static EnemyStrategyState enemiesStates[1] = {
+    {
+        0, 
+        (EnemyStrategyStateFn)&AEnToy::state_0_Init, 
+        (EnemyStrategyStateFn)&AEnToy::state_0_Behavior
+    },
+};
+
+AEnToy::AEnToy() {}
+
+void AEnToy::doBehavior() {
+
+}
+
+void AEnToy::doBehaviorInit() {
+
+}
+
+bool AEnToy::state_0_Init() {
+    return true;
+}
+
+bool AEnToy::state_0_Behavior() {
+    return true;
+}
+
+
+void AEnToy::EnHeyMask_fn_800C62DC() {
+
+}
+
+
+
+
+
+
+
+
+AEnToy::~AEnToy() {}

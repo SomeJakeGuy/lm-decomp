@@ -1,0 +1,222 @@
+#include "Ajioka/AEnTwins.hpp"
+#include "macros.h"
+
+dummy_float_data()
+enemies_float_data()
+
+static EnemyStrategyState enemiesStates[11] = {
+    {
+        0, 
+        (EnemyStrategyStateFn)&AEnTwins::state_0_Init, 
+        (EnemyStrategyStateFn)&AEnTwins::state_0_Behavior
+    },
+
+    {
+        1, 
+        (EnemyStrategyStateFn)&AEnTwins::state_1_Init, 
+        (EnemyStrategyStateFn)&AEnTwins::state_1_Behavior
+    },
+
+    {
+        2, 
+        (EnemyStrategyStateFn)&AEnTwins::state_2_Init, 
+        (EnemyStrategyStateFn)&AEnTwins::state_2_Behavior
+    },
+
+    {
+        3, 
+        (EnemyStrategyStateFn)&AEnTwins::state_3_Init, 
+        (EnemyStrategyStateFn)&AEnTwins::state_3_Behavior
+    },
+
+    {
+        4, 
+        (EnemyStrategyStateFn)&AEnTwins::state_4_Init, 
+        (EnemyStrategyStateFn)&AEnTwins::state_4_Behavior
+    },
+
+    {
+        5, 
+        (EnemyStrategyStateFn)&AEnTwins::state_5_Init, 
+        (EnemyStrategyStateFn)&AEnTwins::state_5_Behavior
+    },
+
+    {
+        6, 
+        (EnemyStrategyStateFn)&AEnTwins::state_6_Init, 
+        (EnemyStrategyStateFn)&AEnTwins::state_6_Behavior
+    },
+
+    {
+        7, 
+        (EnemyStrategyStateFn)&AEnTwins::state_7_Init, 
+        (EnemyStrategyStateFn)&AEnTwins::state_7_Behavior
+    },
+
+    {
+        8, 
+        (EnemyStrategyStateFn)&AEnTwins::state_8_Init, 
+        (EnemyStrategyStateFn)&AEnTwins::state_8_Behavior
+    },
+
+    {
+        9, 
+        (EnemyStrategyStateFn)&AEnTwins::state_9_Init, 
+        (EnemyStrategyStateFn)&AEnTwins::state_9_Behavior
+    },
+
+    {
+        0xA, 
+        (EnemyStrategyStateFn)&AEnTwins::state_A_Init, 
+        (EnemyStrategyStateFn)&AEnTwins::state_A_Behavior
+    },
+};
+
+inline EnemyStrategyState* findState(u16 index) {
+    for (   
+        EnemyStrategyState* state = &enemiesStates[0]; 
+        state != &enemiesStates[ARRAY_COUNT(enemiesStates)];
+        state++) {
+
+        if (state->mStateIndex == index) {
+            return state;
+        }
+    }
+
+    return nullptr;
+}
+
+
+AEnTwins::AEnTwins() {}
+
+
+
+void AEnTwins::doBehavior() {
+    EnemyStrategyState* state = findState(mCurrentState);
+
+    if (state != nullptr) {
+        (this->*state->mBehaviorFunc)();
+    }
+}
+
+void AEnTwins::doBehaviorInit() {
+    EnemyStrategyState* state = findState(mCurrentState);
+
+    if (state != nullptr) {
+        (this->*state->mBehaviorInitFunc)();
+    }
+}
+
+bool AEnTwins::vt_14() {
+    return true;
+}
+
+
+
+bool AEnTwins::state_0_Init() {
+    return false;
+}
+
+bool AEnTwins::state_0_Behavior() {
+    return true;
+}
+
+bool AEnTwins::state_1_Init() {
+    return false;
+}
+
+bool AEnTwins::state_1_Behavior() {
+    return false;
+}
+
+bool AEnTwins::state_2_Init() {
+    return false;
+}
+
+bool AEnTwins::state_2_Behavior() {
+    return false;
+}
+
+bool AEnTwins::state_3_Init() {
+    return false;
+}
+
+bool AEnTwins::state_3_Behavior() {
+    return false;
+}
+
+bool AEnTwins::state_4_Init() {
+    return false;
+}
+
+bool AEnTwins::state_4_Behavior() {
+    return false;
+}
+
+bool AEnTwins::state_5_Init() {
+    return false;
+}
+
+bool AEnTwins::state_5_Behavior() {
+    return false;
+}
+
+bool AEnTwins::state_6_Init() {
+    return false;
+}
+
+bool AEnTwins::state_6_Behavior() {
+    return false;
+}
+
+bool AEnTwins::state_7_Init() {
+    return false;
+}
+
+bool AEnTwins::state_7_Behavior() {
+    return false;
+}
+
+bool AEnTwins::state_8_Init() {
+    return false;
+}
+
+bool AEnTwins::state_8_Behavior() {
+    return false;
+}
+
+bool AEnTwins::state_9_Init() {
+    return false;
+}
+
+bool AEnTwins::state_9_Behavior() {
+    return false;
+}
+
+bool AEnTwins::state_A_Init() {
+    return true;
+}
+
+bool AEnTwins::state_A_Behavior() {
+    return false;
+}
+
+
+
+bool AEnTwins::onCollideWithPlayer(Koga::CharacterEvent* msg) {
+    return false;
+}
+
+bool AEnTwins::onPlayerLeftRoom(Koga::CharacterEvent* msg) {
+    return false;
+}
+
+bool AEnTwins::onFishingBegin(Koga::CharacterEvent* msg) {
+    return false;
+}
+
+bool AEnTwins::onEnteredFlashlightBeam(Koga::CharacterEvent* msg) {
+    return true;
+}
+
+AEnTwins::~AEnTwins() {}
