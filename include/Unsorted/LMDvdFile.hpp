@@ -56,8 +56,8 @@ public:
     /* 0x10 */ u8 _10[0x2C - 0x10];
 };
 
-LMDvdFileInfoBlock* LMDvdFileOpen(const char*, LMDvdFileInfoBlock*);
-LMDvdFileInfoBlock* LMDvdFileOpen(const char*, LMDvdFileInfoCallback, LMDvdFileInfoBlock*, void*);
+void* LMDvdFileOpen(const char*, LMDvdFileInfoBlock*);
+void* LMDvdFileOpen(const char*, LMDvdFileInfoCallback, LMDvdFileInfoBlock*, void*);
 void* fn_80006930(const char*, LMDvdFileInfoBlock*);
 JKRMemArchive* LMOpenMemArchive(const char*, void*);
 void* fn_80006258(u32, s32);
