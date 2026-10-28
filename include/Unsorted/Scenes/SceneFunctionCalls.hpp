@@ -60,4 +60,10 @@ extern void* lbl_803CDEB0;
 extern s32 lbl_804CFFAC;
 extern s32 lbl_804D8060;
 
+// EndingScene calls these, unsure of types/args
+extern void fn_80057904(u32, u32, u32);
+extern void fn_80057A8C();
+extern void fn_80188760(u32, void*); // Something for JAudio play?
+extern void fn_8000D064(void* param_1, LMDvdFileInfo* param_2);
+
 #endif

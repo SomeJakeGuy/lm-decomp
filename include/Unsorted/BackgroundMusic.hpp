@@ -1,0 +1,10 @@
+#ifndef BGM_SOUND_HPP
+#define BGM_SOUND_HPP
+
+enum BGMList {
+    BGM_ENDING_BAD = 0x80000056,
+    BGM_ENDING_GOOD = 0x80000055,
+    BGM_ENDING_EXCELLENT = 0x80000054,
+};
+
+#endif
