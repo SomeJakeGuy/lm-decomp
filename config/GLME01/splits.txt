@@ -31,7 +31,7 @@ Unsorted/80007018.cpp:
 	.text       start:0x80007018 end:0x800071C0
 	.bss        start:0x8039F2A0 end:0x803A3600
 
-Unsorted/LMDvdFileBlock.cpp:
+System/Yay0.cpp:
 	.text       start:0x800071C0 end:0x80007398
 
 Unsorted/LMDisplayUtil.cpp:
