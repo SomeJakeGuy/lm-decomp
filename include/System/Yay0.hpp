@@ -15,9 +15,4 @@ namespace LMYay0 {
     void decompress(const u8*, u8*);
 }
 
-class Yay0 {
-    public:
-        
-};
-
 #endif
