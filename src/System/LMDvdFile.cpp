@@ -86,8 +86,8 @@ void LMDvdFile::init() {
     _8->mFileBuffer = nullptr;
     _8->mDecompBuffer = nullptr;
     _8->mArchive = nullptr;
-    _8->_78 = nullptr;
-    _8->_74 = nullptr;
+    _8->mPostLoadFunc = nullptr;
+    _8->mCallBack = nullptr;
     _8->mHeapGroupID = getCurHeapGroupId();
 
     OSReceiveMessage(&_8->_3C, nullptr, OS_MESSAGE_NOBLOCK);
@@ -106,7 +106,7 @@ bool LMDvdFile::open(const char* pFileName, u8* param_2) {
 
     DVDOpen((char*)pFileName, info);
 
-    _8->_60 =  info->length + 0x1F & 0xFFFFFFE0;
+    _8->mAlignedFileSize =  info->length + 0x1F & 0xFFFFFFE0;
     _8->mBufferBreakFlag = MBF_0;
     _8->mFileBuffer = param_2;
 
@@ -118,7 +118,7 @@ bool LMDvdFile::open(const char* pFileName, u8* param_2) {
 void* LMDvdFile::open(const char* pFileName, LMDvdFileInfoCallback param_2, u8* param_3, s32 param_4) {
     //TODO: Remove this
     FORCE_DONT_INLINE
-    _8->_74 = param_2;
+    _8->mCallBack = param_2;
     _8->_70 = param_4;
 
     LMDvdFileInfo* info = _8;
@@ -130,7 +130,7 @@ void* LMDvdFile::open(const char* pFileName, LMDvdFileInfoCallback param_2, u8* 
     }
 
     DVDOpen((char*)pFileName, info);
-    _8->_60 =  info->length + 0x1F & 0xFFFFFFE0;
+    _8->mAlignedFileSize =  info->length + 0x1F & 0xFFFFFFE0;
     _8->mBufferBreakFlag = MBF_0;
     _8->mFileBuffer = param_3;
 
@@ -160,7 +160,7 @@ void fn_800065A8() {
 
 void* LMDvdFileOpen(const char* pFileName, u8* param_2) {
     LMDvdFile::sCurDvdFile.init();
-    LMDvdFile::sCurDvdFile._8->_74 = nullptr;
+    LMDvdFile::sCurDvdFile._8->mCallBack = nullptr;
     LMDvdFile::sCurDvdFile._8->_70 = 0;
 
     if (LMDvdFile::sCurDvdFile.open(pFileName, param_2)) {
@@ -189,13 +189,13 @@ void* LMDvdFileOpen(const char* pFileName, LMDvdFileInfoCallback cb, u8* pBlock,
     LMDvdFile::sCurDvdFile._8->mFileBuffer = 0;
     LMDvdFile::sCurDvdFile._8->mDecompBuffer = nullptr;
     LMDvdFile::sCurDvdFile._8->mArchive = nullptr;
-    LMDvdFile::sCurDvdFile._8->_78 = nullptr;
-    LMDvdFile::sCurDvdFile._8->_74 = nullptr;
+    LMDvdFile::sCurDvdFile._8->mPostLoadFunc = nullptr;
+    LMDvdFile::sCurDvdFile._8->mCallBack = nullptr;
     LMDvdFile::sCurDvdFile._8->mHeapGroupID = getCurHeapGroupId();
 
     OSReceiveMessage(&LMDvdFile::sCurDvdFile._8->_3C, nullptr, OS_MESSAGE_NOBLOCK);
 
-    LMDvdFile::sCurDvdFile._8->_74 = cb;
+    LMDvdFile::sCurDvdFile._8->mCallBack = cb;
     LMDvdFile::sCurDvdFile._8->_70 = param_4;
 
     if (LMDvdFile::sCurDvdFile.open(pFileName, pBlock)) {
@@ -205,9 +205,6 @@ void* LMDvdFileOpen(const char* pFileName, LMDvdFileInfoCallback cb, u8* pBlock,
 
     return ret;
 }
-
-static void fn_80006D28(void* param_1, LMDvdFileInfo* param_2);
-static void fn_80006D80(void* param_1, LMDvdFileInfo* param_2);
 
 //https://decomp.me/scratch/KlViD
 void* fn_800067D0(const char* pFileName, LMDvdFileInfoCallback param_2, u8* param_3, s32 param_4) {
@@ -224,8 +221,8 @@ void* fn_800067D0(const char* pFileName, LMDvdFileInfoCallback param_2, u8* para
     LMDvdFile::sCurDvdFile._8->mFileBuffer = 0;
     LMDvdFile::sCurDvdFile._8->mDecompBuffer = nullptr;
     LMDvdFile::sCurDvdFile._8->mArchive = nullptr;
-    LMDvdFile::sCurDvdFile._8->_78 = nullptr;
-    LMDvdFile::sCurDvdFile._8->_74 = nullptr;
+    LMDvdFile::sCurDvdFile._8->mPostLoadFunc = nullptr;
+    LMDvdFile::sCurDvdFile._8->mCallBack = nullptr;
     LMDvdFile::sCurDvdFile._8->mHeapGroupID = getCurHeapGroupId();
 
     OSReceiveMessage(&LMDvdFile::sCurDvdFile._8->_3C, nullptr, 0);
@@ -238,8 +235,8 @@ void* fn_800067D0(const char* pFileName, LMDvdFileInfoCallback param_2, u8* para
     void* ret = fn_80006258(0x68, 4);
     fn_800061B8(oldGroupId);
     LMDvdFile::sCurDvdFile._8->mArchive = (JKRMemArchive*)ret;
-    LMDvdFile::sCurDvdFile._8->_78 = fn_80006D80;
-    LMDvdFile::sCurDvdFile._8->_74 = param_2;
+    LMDvdFile::sCurDvdFile._8->mPostLoadFunc = LMDvdFile::decompressAndMountArchive;
+    LMDvdFile::sCurDvdFile._8->mCallBack = param_2;
     LMDvdFile::sCurDvdFile._8->_70 = param_4;
 
     if (LMDvdFile::sCurDvdFile.open(pFileName, 0)) {
@@ -292,8 +289,8 @@ void* fn_80006A34(const char* pFileName, LMDvdFileInfoCallback param_2, u8* para
     LMDvdFile::sCurDvdFile._8->mFileBuffer = 0;
     LMDvdFile::sCurDvdFile._8->mDecompBuffer = nullptr;
     LMDvdFile::sCurDvdFile._8->mArchive = nullptr;
-    LMDvdFile::sCurDvdFile._8->_78 = nullptr;
-    LMDvdFile::sCurDvdFile._8->_74 = nullptr;
+    LMDvdFile::sCurDvdFile._8->mPostLoadFunc = nullptr;
+    LMDvdFile::sCurDvdFile._8->mCallBack = nullptr;
     LMDvdFile::sCurDvdFile._8->mHeapGroupID = getCurHeapGroupId();
 
     OSReceiveMessage(&LMDvdFile::sCurDvdFile._8->_3C, nullptr, OS_MESSAGE_NOBLOCK);
@@ -305,8 +302,8 @@ void* fn_80006A34(const char* pFileName, LMDvdFileInfoCallback param_2, u8* para
     fn_800061B8(oldGroupId);
 
     LMDvdFile::sCurDvdFile._8->mArchive = (JKRMemArchive*)ret;
-    LMDvdFile::sCurDvdFile._8->_78 = fn_80006D28;
-    LMDvdFile::sCurDvdFile._8->_74 = param_2;
+    LMDvdFile::sCurDvdFile._8->mPostLoadFunc = LMDvdFile::mountFileFromArchive;
+    LMDvdFile::sCurDvdFile._8->mCallBack = param_2;
     LMDvdFile::sCurDvdFile._8->_70 = param_4;
 
     if (LMDvdFile::sCurDvdFile.open(pFileName, param_3)) {
@@ -355,18 +352,18 @@ void LMDvdFile::closeFile(void *pMsg, LMDvdFileInfo* pInfo) {
         case 0:
             break;
         case 10:
-            pInfo->_78 = nullptr;
-            pInfo->_74 = nullptr;
+            pInfo->mPostLoadFunc = nullptr;
+            pInfo->mCallBack = nullptr;
             return;
         case -1:
-            pInfo->_78 = nullptr;
-            pInfo->_74 = nullptr;
+            pInfo->mPostLoadFunc = nullptr;
+            pInfo->mCallBack = nullptr;
             return;
     }
     OSSendMessage(&pInfo->_3C, msg, OS_MESSAGE_NOBLOCK);
 }
 
-void LMDvdFile::decompressFile(LMDvdFileInfo* pInfo) {
+void LMDvdFile::decompressFile(void* param_1, LMDvdFileInfo* pInfo) {
     //TODO: Remove this
     FORCE_DONT_INLINE
 
@@ -399,13 +396,13 @@ inline void mountBuffer(LMDvdFileInfo* pInfo, u8* pBuffer) {
 }
 
 //https://decomp.me/scratch/LsFJX
-void LMDvdFile::mountFileFromArchive(LMDvdFileInfo* pInfo) {
+void LMDvdFile::mountFileFromArchive(void* param_1, LMDvdFileInfo* pInfo) {
     mountBuffer(pInfo, pInfo->mFileBuffer);
 }
 
 //https://decomp.me/scratch/mjUUS
-void LMDvdFile::decompressAndMountArchive(LMDvdFileInfo* pInfo) {
-    decompressFile(pInfo);
+void LMDvdFile::decompressAndMountArchive(void* param_1, LMDvdFileInfo* pInfo) {
+    LMDvdFile::decompressFile(param_1, pInfo);
 
     if (lbl_804D8028 == FALSE) {
         mountBuffer(pInfo, pInfo->mDecompBuffer);

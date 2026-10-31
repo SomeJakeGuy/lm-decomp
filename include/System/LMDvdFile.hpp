@@ -21,13 +21,13 @@ public:
 public:
     /* 0x3C */ OSMessageQueue _3C;
     /* 0x5C */ s32 _5C;
-    /* 0x60 */ s32 _60;
+    /* 0x60 */ s32 mAlignedFileSize;
     /* 0x64 */ u8* mFileBuffer;
     /* 0x68 */ u8* mDecompBuffer;
     /* 0x6C */ JKRMemArchive* mArchive;
     /* 0x70 */ s32 _70;
-    /* 0x74 */ LMDvdFileInfoCallback _74;
-    /* 0x78 */ LMDvdFileInfoCallback _78;
+    /* 0x74 */ LMDvdFileInfoCallback mCallBack;
+    /* 0x78 */ LMDvdFileInfoCallback mPostLoadFunc;
     /* 0x7C */ LMDvdFileInfo* _7C;
     /* 0x80 */ u8 mHeapGroupID;
     /* 0x84 */ JKRMemBreakFlag mBufferBreakFlag;
@@ -45,9 +45,11 @@ public:
     static s32 getCurUnk4();
     static void checkCurDVDStatus();
     static void closeFile(void*, LMDvdFileInfo*);
-    void decompressFile(LMDvdFileInfo*);
-    void mountFileFromArchive(LMDvdFileInfo*);
-    void decompressAndMountArchive(LMDvdFileInfo*);
+
+    //TODO review these later to see if these can not be static?
+    static void decompressFile(void*, LMDvdFileInfo*);
+    static void mountFileFromArchive(void*, LMDvdFileInfo*);
+    static void decompressAndMountArchive(void*, LMDvdFileInfo*);
 
     static LMDvdFileInfo sFileInfoArray[MAX_FILE_INFO_ARR];
     static LMDvdFile sCurDvdFile;

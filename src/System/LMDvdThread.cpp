@@ -35,7 +35,7 @@ namespace LMDvdThreading {
             if (info->mFileBuffer == nullptr) {
                 u8 groupId = fn_800061B8(info->mHeapGroupID);
 
-                info->mFileBuffer = fn_80006258(info->_60, LMDvdFile::getCurUnk4() * 32);
+                info->mFileBuffer = fn_80006258(info->mAlignedFileSize, LMDvdFile::getCurUnk4() * 32);
 
                 //Have no idea what was meant to be for since the block of code for it is optimized out sooooooo
                 if (info->mFileBuffer == nullptr) { info = info; }
@@ -44,7 +44,7 @@ namespace LMDvdThreading {
                 info->mBufferBreakFlag = MBF_1;
             }
 
-            s32 readResult = DVDReadPrio(info, info->mFileBuffer, info->_60, 0, 2);
+            s32 readResult = DVDReadPrio(info, info->mFileBuffer, info->mAlignedFileSize, 0, 2);
             switch (readResult) {
                 case DVD_RESULT_FATAL_ERROR:
                 case -3:
@@ -53,13 +53,13 @@ namespace LMDvdThreading {
                 default:
                 LMDvdFile::closeFile(nullptr, info);
                 u8 groupId = fn_800061B8(info->mHeapGroupID);
-                if (info->_78 != nullptr) {
-                    info->_78(info->mFileBuffer, info);
+                if (info->mPostLoadFunc != nullptr) {
+                    info->mPostLoadFunc(info->mFileBuffer, info);
                 }
 
                 if (lbl_804D8028 == FALSE) {
-                    if (info->_74 != nullptr) {
-                        info->_74(nullptr, info);
+                    if (info->mCallBack != nullptr) {
+                        info->mCallBack(nullptr, info);
                     }
 
                     fn_800061B8(groupId);
