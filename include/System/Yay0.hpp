@@ -12,7 +12,7 @@ namespace LMYay0 {
     };
     
     s32 getArcSize(const u8*);
-    void decompress(const u8*, void*);
+    void decompress(const u8*, u8*);
 }
 
 class Yay0 {
