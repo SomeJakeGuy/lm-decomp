@@ -1,14 +1,17 @@
+
+#include <JSystem/JKernel/JKRExpHeap.hpp>
+#include <JSystem/JKernel/JKRMemArchive.hpp>
+#include <JSystem/J2D/J2DPicture.hpp>
+#include <JSystem/J2D/J2DOrthoGraph.hpp>
+
 #include "Unsorted/bootScene.hpp"
-#include "JSystem/J2D/J2DOrthoGraph.hpp"
 #include "Unsorted/80007018.hpp"
 #include "Unsorted/LMDisplayUtil.hpp"
 #include "Unsorted/staticDataAramData.h"
 #include "Unsorted/80005EB8.hpp"
-#include "Unsorted/LMDvdFile.hpp"
+#include "System/LMDvdFile.hpp"
 #include "Unsorted/80008418.hpp"
-#include <JSystem/JKernel/JKRExpHeap.hpp>
-#include "JSystem/JKernel/JKRMemArchive.hpp"
-#include "JSystem/J2D/J2DPicture.hpp"
+#include "System/Yay0.hpp"
 
 //.data
 static f32 dummy_float_data[] = {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.95f, 0.9f, 0.85f, 1.0f, 0.9f, 0.75f, 0.3f, 0.0f, 0.0f};
@@ -66,9 +69,9 @@ namespace BootScene {
     JKRMemArchive* sStaticDataArchive;
 
     static void dvdFileOpenCallback(void* param_1, LMDvdFileInfo* param_2) {
-        void* block = JKRAllocFromHeap(nullptr, param_2->_64->size(), 32);
-        param_2->_64->fn_800071D0((LMDvdFileInfoBlock*)block);
-        fn_80006138(param_2->_64);
+        u8* block = reinterpret_cast<u8*>(JKRAllocFromHeap(nullptr, LMYay0::getArcSize(param_2->mFileBuffer), 32));
+        LMYay0::decompress(param_2->mFileBuffer, block);
+        fn_80006138(param_2->mFileBuffer);
         fn_80066FAC(new JKRMemArchive(block, 0, MBF_0));
     }
 
@@ -135,12 +138,12 @@ namespace BootScene {
 
         sStaticDataArchive = new JKRMemArchive(STATIC_DATA, 0, MBF_0);
 
-        LMDvdFileInfoBlock* nintendoSzpBlock = (LMDvdFileInfoBlock*)sStaticDataArchive->getResource("/nintendo.szp");
-        u32 size = nintendoSzpBlock->size();
+        u8* nintendoSzpBlock = reinterpret_cast<u8*>(sStaticDataArchive->getResource("/nintendo.szp"));
+        u32 size = LMYay0::getArcSize(nintendoSzpBlock);
         fn_80006204();
         JUTTexture* data = (JUTTexture*)fn_80006080(size, 0x20);
         lbl_804D8014->becomeCurrentHeap();
-        nintendoSzpBlock->fn_800071D0((LMDvdFileInfoBlock*)data);
+        LMYay0::decompress(nintendoSzpBlock, (u8*)data);
         sNintendoLogoPicture = new J2DPicture(data);
     }
 

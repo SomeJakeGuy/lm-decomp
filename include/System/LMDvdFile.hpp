@@ -17,7 +17,6 @@ public:
     u8* getFileBuffer();
     u32 getLength();
     JKRMemArchive* getArchive();
-    void fn_80006E18();
 
 public:
     /* 0x3C */ OSMessageQueue _3C;
@@ -30,22 +29,25 @@ public:
     /* 0x74 */ LMDvdFileInfoCallback _74;
     /* 0x78 */ LMDvdFileInfoCallback _78;
     /* 0x7C */ LMDvdFileInfo* _7C;
-    /* 0x80 */ u8 _80;
+    /* 0x80 */ u8 mHeapGroupID;
     /* 0x84 */ JKRMemBreakFlag mBufferBreakFlag;
 };
 
 class LMDvdFile {
 public:
     void init();
-    bool open(const char* pFileName, u8*);
-    void* open(const char* pFileName, LMDvdFileInfoCallback, u8*, s32);
+    bool open(const char*, u8*);
+    void* open(const char*, LMDvdFileInfoCallback, u8*, s32);
     void checkDVDStatus();
 
     static LMDvdFileInfo* getFileInfoArray();
     static BOOL checkCurUnk0();
     static s32 getCurUnk4();
     static void checkCurDVDStatus();
-    static void closeFile(void *pMsg, LMDvdFileInfo* pInfo);
+    static void closeFile(void*, LMDvdFileInfo*);
+    void decompressFile(LMDvdFileInfo*);
+    void mountFileFromArchive(LMDvdFileInfo*);
+    void decompressAndMountArchive(LMDvdFileInfo*);
 
     static LMDvdFileInfo sFileInfoArray[MAX_FILE_INFO_ARR];
     static LMDvdFile sCurDvdFile;
@@ -56,11 +58,11 @@ public:
     /* 0x10 */ u8 _10[0x2C - 0x10];
 };
 
-void* LMDvdFileOpen(const char* pFIleName, u8*);
-void* LMDvdFileOpen(const char *pFileName, LMDvdFileInfoCallback param_2, u8* param_3, s32 param_4);
+void* LMDvdFileOpen(const char*, u8*);
+void* LMDvdFileOpen(const char*, LMDvdFileInfoCallback, u8*, s32);
 void* fn_80006930(const char*, u8*);
-JKRMemArchive* LMOpenMemArchive(const char* pFileName, void*);
-u8* fn_80006258(u32 size, int align);
+JKRMemArchive* LMOpenMemArchive(const char*, void*);
+u8* fn_80006258(u32, int);
 
 extern BOOL lbl_804D8028;
 

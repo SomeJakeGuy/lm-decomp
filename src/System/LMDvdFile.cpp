@@ -88,7 +88,7 @@ void LMDvdFile::init() {
     _8->mArchive = nullptr;
     _8->_78 = nullptr;
     _8->_74 = nullptr;
-    _8->_80 = getCurHeapGroupId();
+    _8->mHeapGroupID = getCurHeapGroupId();
 
     OSReceiveMessage(&_8->_3C, nullptr, OS_MESSAGE_NOBLOCK);
 }
@@ -110,7 +110,7 @@ bool LMDvdFile::open(const char* pFileName, u8* param_2) {
     _8->mBufferBreakFlag = MBF_0;
     _8->mFileBuffer = param_2;
 
-    _8->fn_80006E18();
+    LMDvdThreading::sendDvdRequest(_8);
     return true;
 }
 
@@ -134,14 +134,14 @@ void* LMDvdFile::open(const char* pFileName, LMDvdFileInfoCallback param_2, u8* 
     _8->mBufferBreakFlag = MBF_0;
     _8->mFileBuffer = param_3;
 
-    _8->fn_80006E18();
+    LMDvdThreading::sendDvdRequest(_8);
     _0++;
 
     return _8->mFileBuffer;
 }
 
 void fn_800065A8() {
-    initDvdThread();
+    LMDvdThreading::init();
 
     LMDvdFileInfo* curIndex = LMDvdFile::getFileInfoArray();
 
@@ -191,7 +191,7 @@ void* LMDvdFileOpen(const char* pFileName, LMDvdFileInfoCallback cb, u8* pBlock,
     LMDvdFile::sCurDvdFile._8->mArchive = nullptr;
     LMDvdFile::sCurDvdFile._8->_78 = nullptr;
     LMDvdFile::sCurDvdFile._8->_74 = nullptr;
-    LMDvdFile::sCurDvdFile._8->_80 = getCurHeapGroupId();
+    LMDvdFile::sCurDvdFile._8->mHeapGroupID = getCurHeapGroupId();
 
     OSReceiveMessage(&LMDvdFile::sCurDvdFile._8->_3C, nullptr, OS_MESSAGE_NOBLOCK);
 
@@ -226,7 +226,7 @@ void* fn_800067D0(const char* pFileName, LMDvdFileInfoCallback param_2, u8* para
     LMDvdFile::sCurDvdFile._8->mArchive = nullptr;
     LMDvdFile::sCurDvdFile._8->_78 = nullptr;
     LMDvdFile::sCurDvdFile._8->_74 = nullptr;
-    LMDvdFile::sCurDvdFile._8->_80 = getCurHeapGroupId();
+    LMDvdFile::sCurDvdFile._8->mHeapGroupID = getCurHeapGroupId();
 
     OSReceiveMessage(&LMDvdFile::sCurDvdFile._8->_3C, nullptr, 0);
 
@@ -234,7 +234,7 @@ void* fn_800067D0(const char* pFileName, LMDvdFileInfoCallback param_2, u8* para
         LMDvdFile::sCurDvdFile._8->mBufferBreakFlag = MBF_0;
     }
     LMDvdFile::sCurDvdFile._8->mDecompBuffer = param_3;
-    u8 oldGroupId = fn_800061B8(LMDvdFile::sCurDvdFile._8->_80);
+    u8 oldGroupId = fn_800061B8(LMDvdFile::sCurDvdFile._8->mHeapGroupID);
     void* ret = fn_80006258(0x68, 4);
     fn_800061B8(oldGroupId);
     LMDvdFile::sCurDvdFile._8->mArchive = (JKRMemArchive*)ret;
@@ -294,13 +294,13 @@ void* fn_80006A34(const char* pFileName, LMDvdFileInfoCallback param_2, u8* para
     LMDvdFile::sCurDvdFile._8->mArchive = nullptr;
     LMDvdFile::sCurDvdFile._8->_78 = nullptr;
     LMDvdFile::sCurDvdFile._8->_74 = nullptr;
-    LMDvdFile::sCurDvdFile._8->_80 = getCurHeapGroupId();
+    LMDvdFile::sCurDvdFile._8->mHeapGroupID = getCurHeapGroupId();
 
     OSReceiveMessage(&LMDvdFile::sCurDvdFile._8->_3C, nullptr, OS_MESSAGE_NOBLOCK);
 
     LMDvdFile::sCurDvdFile._8->mDecompBuffer = nullptr;
 
-    u8 oldGroupId = fn_800061B8(LMDvdFile::sCurDvdFile._8->_80);
+    u8 oldGroupId = fn_800061B8(LMDvdFile::sCurDvdFile._8->mHeapGroupID);
     void* ret = fn_80006258(0x68, 4);
     fn_800061B8(oldGroupId);
 
@@ -366,52 +366,48 @@ void LMDvdFile::closeFile(void *pMsg, LMDvdFileInfo* pInfo) {
     OSSendMessage(&pInfo->_3C, msg, OS_MESSAGE_NOBLOCK);
 }
 
-static void fn_80006C84(void* param_1, LMDvdFileInfo* pInfo) {
+void LMDvdFile::decompressFile(LMDvdFileInfo* pInfo) {
     //TODO: Remove this
     FORCE_DONT_INLINE
 
     s32 size;
-    LMYay0::Yay0Header* header = reinterpret_cast<LMYay0::Yay0Header*>(pInfo->mFileBuffer);
+    u8* src = pInfo->mFileBuffer;
 
-    if (header->mMagic != 'Yay0') {
+    if (reinterpret_cast<LMYay0::Yay0Header*>(src)->mMagic != 'Yay0') {
         lbl_804D8028 = TRUE;
         return;
     }
 
-    size = LMYay0::getArcSize(pInfo->mFileBuffer);
+    size = LMYay0::getArcSize(src);
 
     if (pInfo->mDecompBuffer == 0) {
-        fn_800061B8(pInfo->_80);
+        fn_800061B8(pInfo->mHeapGroupID);
         pInfo->mDecompBuffer = fn_80006258(size, 0x20);
     }
     u8* temp = pInfo->mDecompBuffer;
 
-    LMYay0::decompress(pInfo->mFileBuffer, temp);
-    JKRFreeToHeap(nullptr, header);
+    LMYay0::decompress(src, temp);
+    JKRFreeToHeap(nullptr, src);
 }
 
-//https://decomp.me/scratch/LsFJX
-static void fn_80006D28(void* param_1, LMDvdFileInfo* pInfo) {
-    if (reinterpret_cast<LMYay0::Yay0Header*>(pInfo->mFileBuffer)->mMagic != 'RARC') {
+inline void mountBuffer(LMDvdFileInfo* pInfo, u8* pBuffer) {
+    if (reinterpret_cast<JKRArchive::SArcHeader*>(pBuffer)->signature != 'RARC') {
         lbl_804D8028 = TRUE;
     } else {
-        if (pInfo->mArchive != nullptr) {
-            pInfo->mArchive = &JKRMemArchive(&pInfo->mDecompBuffer, 0, pInfo->mBufferBreakFlag);
-        }
+        new (pInfo->mArchive) JKRMemArchive(pBuffer, 0, pInfo->mBufferBreakFlag);
     }
 }
 
+//https://decomp.me/scratch/LsFJX
+void LMDvdFile::mountFileFromArchive(LMDvdFileInfo* pInfo) {
+    mountBuffer(pInfo, pInfo->mFileBuffer);
+}
+
 //https://decomp.me/scratch/mjUUS
-static void fn_80006D80(void* param_1, LMDvdFileInfo* pInfo) {
-    fn_80006C84(param_1, pInfo);
+void LMDvdFile::decompressAndMountArchive(LMDvdFileInfo* pInfo) {
+    decompressFile(pInfo);
 
     if (lbl_804D8028 == FALSE) {
-        if (reinterpret_cast<LMYay0::Yay0Header*>(pInfo->mFileBuffer)->mMagic != 'RARC') {
-            lbl_804D8028 = TRUE;
-        } else {
-            if (pInfo->mArchive != nullptr) {
-                pInfo->mArchive = &JKRMemArchive(&pInfo->mDecompBuffer, 0, pInfo->mBufferBreakFlag);
-            }
-        }
+        mountBuffer(pInfo, pInfo->mDecompBuffer);
     }
 }

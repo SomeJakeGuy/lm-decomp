@@ -17,7 +17,7 @@ Unsorted/80005EB8.cpp:
 	.sdata      start:0x804CFF68 end:0x804CFF70
 	.sbss       start:0x804D8010 end:0x804D8028
 
-Unsorted/LMDvdFile.cpp:
+System/LMDvdFile.cpp:
 	.text       start:0x80006258 end:0x80006DF0
 	.data       start:0x80218180 end:0x802181B4
 	.bss        start:0x8039AC38 end:0x8039CE60

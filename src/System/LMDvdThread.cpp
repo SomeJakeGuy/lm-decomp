@@ -5,80 +5,78 @@
 #include "Unsorted/80005EB8.hpp"
 #include "System/LMDvdFile.hpp"
 
-//TODO: Better name for this
 struct LMDvdThread : public OSThread {
     /* 0x310 */ OSMessageQueue _310;
     /* 0x330 */ void* _330[64];
-    /* 0x430 */ LMDvdFileInfo* _430;
+    /* 0x430 */ LMDvdFileInfo* mFileInfoArray;
 };
 
-void* sDvdThreadStack[2048];
-LMDvdThread sDvdThread1;
+static u8 sDvdThreadStack[0x2000];
+static LMDvdThread sDvdThread;
 
-static void initDvdThreadInternal(LMDvdThread* thread);
+namespace LMDvdThreading {
+    void init() {
+        initDvdThread(&sDvdThread);
+    }
 
-void initDvdThread() {
-    initDvdThreadInternal(&sDvdThread1);
-}
+    void sendDvdRequest(LMDvdFileInfo* pInfo) {
+        OSSendMessage(&sDvdThread._310, pInfo, OS_MESSAGE_BLOCK);
+    }
 
-//Needs to be a member of LMDVDFileInfo for matching
-void LMDvdFileInfo::fn_80006E18() {
-    OSSendMessage(&sDvdThread1._310, this, OS_MESSAGE_BLOCK);
-}
+    static void* createDvdThreadCallback(void* pPtr) {
+        OSInitFastCast();
 
-//https://decomp.me/scratch/iEJfp
-static void* createThreadCallback(void* pPtr) {
-    OSInitFastCast();
+        while (true) {
+            void* msg;
+            OSReceiveMessage(&sDvdThread._310, &msg, OS_MESSAGE_BLOCK);
 
-    while (true) {
-        void* msg;
-        OSReceiveMessage(&sDvdThread1._310, &msg, OS_MESSAGE_BLOCK);
+            LMDvdFileInfo* info = (LMDvdFileInfo*)msg;
 
-        LMDvdFileInfo* info = (LMDvdFileInfo*)msg;
+            if (info->mFileBuffer == nullptr) {
+                u8 groupId = fn_800061B8(info->mHeapGroupID);
 
-        if (info->mFileBuffer == nullptr) {
-            u8 groupId = fn_800061B8(info->_80);
+                info->mFileBuffer = fn_80006258(info->_60, LMDvdFile::getCurUnk4() * 32);
 
-            info->mFileBuffer = fn_80006258(info->_60, LMDvdFile::getCurUnk4() * 32);
-
-            //Have no idea what was meant to be for since the block of code for it is optimized out sooooooo
-            if (info->mFileBuffer == nullptr) { info = info; }
-
-            fn_800061B8(groupId);
-            info->mBufferBreakFlag = MBF_1;
-        }
-
-        s32 readResult = DVDReadPrio(info, info->mFileBuffer, info->_60, 0, 2);
-        switch (readResult) {
-            case DVD_RESULT_FATAL_ERROR:
-            case -3:
-                break;
-            case DVD_RESULT_IGNORED:
-            default:
-            LMDvdFile::closeFile(nullptr, info);
-            u8 groupId = fn_800061B8(info->_80);
-            if (info->_78 != nullptr) {
-                info->_78(info->mFileBuffer, info);
-            }
-
-            if (lbl_804D8028 == FALSE) {
-                if (info->_74 != nullptr) {
-                    info->_74(nullptr, info);
-                }
+                //Have no idea what was meant to be for since the block of code for it is optimized out sooooooo
+                if (info->mFileBuffer == nullptr) { info = info; }
 
                 fn_800061B8(groupId);
-
-                sDvdThread1._430 = sDvdThread1._430->_7C;
+                info->mBufferBreakFlag = MBF_1;
             }
-            break;
+
+            s32 readResult = DVDReadPrio(info, info->mFileBuffer, info->_60, 0, 2);
+            switch (readResult) {
+                case DVD_RESULT_FATAL_ERROR:
+                case -3:
+                    break;
+                case DVD_RESULT_IGNORED:
+                default:
+                LMDvdFile::closeFile(nullptr, info);
+                u8 groupId = fn_800061B8(info->mHeapGroupID);
+                if (info->_78 != nullptr) {
+                    info->_78(info->mFileBuffer, info);
+                }
+
+                if (lbl_804D8028 == FALSE) {
+                    if (info->_74 != nullptr) {
+                        info->_74(nullptr, info);
+                    }
+
+                    fn_800061B8(groupId);
+
+                    sDvdThread.mFileInfoArray = sDvdThread.mFileInfoArray->_7C;
+                }
+                break;
+            }
         }
     }
-}
 
-//https://decomp.me/scratch/heDFD
-static void initDvdThreadInternal(LMDvdThread* thread) {
-    OSInitMessageQueue(&thread->_310, thread->_330, ARRAY_COUNT(thread->_330));
-    thread->_430 = LMDvdFile::getFileInfoArray();
-    OSCreateThread(thread, createThreadCallback, nullptr, sDvdThreadStack, sizeof(sDvdThreadStack), 10, OS_THREAD_ATTR_DETACH);
-    OSResumeThread(thread);
+    // https://decomp.me/scratch/1I8kx
+    void initDvdThread(LMDvdThread* thread) {
+        OSInitMessageQueue(&thread->_310, thread->_330, ARRAY_COUNT(thread->_330));
+        thread->mFileInfoArray = LMDvdFile::getFileInfoArray();
+        u8* stackTop = &sDvdThreadStack[sizeof(sDvdThreadStack)];
+        OSCreateThread(thread, createDvdThreadCallback, nullptr, stackTop, sizeof(sDvdThreadStack), 10, OS_THREAD_ATTR_DETACH);
+        OSResumeThread(thread);
+    }
 }

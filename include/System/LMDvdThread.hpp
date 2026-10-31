@@ -4,8 +4,13 @@
 #include <types.h>
 
 class LMDvdFileInfo;
+struct LMDvdThread;
 
-void initDvdThread();
-void sendDvdRequest(LMDvdFileInfo*);
+namespace LMDvdThreading {    
+    void init();
+    void sendDvdRequest(LMDvdFileInfo*);
+    static void createDvdThreadCallback(LMDvdThread*);
+    static void initDvdThread(LMDvdThread*);
+}
 
 #endif
