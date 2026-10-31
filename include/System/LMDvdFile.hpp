@@ -1,7 +1,7 @@
-#ifndef _LM_DVD_FILE_H_
-#define _LM_DVD_FILE_H_
+#ifndef LM_DVD_FILE_HPP
+#define LM_DVD_FILE_HPP
 
-#include "Unsorted/LMDvdFileBlock.hpp"
+#include <JSystem/JKernel/JKRMemArchive.hpp>
 #include <dolphin.h>
 
 class JKRMemArchive;
@@ -14,7 +14,7 @@ typedef void (*LMDvdFileInfoCallback)(void* param_1, LMDvdFileInfo* param_2);
 class LMDvdFileInfo : public DVDFileInfo {
 public:
     s32 getUnk70();
-    LMDvdFileInfoBlock* getUnk64();
+    u8* getFileBuffer();
     u32 getLength();
     JKRMemArchive* getArchive();
     void fn_80006E18();
@@ -23,22 +23,22 @@ public:
     /* 0x3C */ OSMessageQueue _3C;
     /* 0x5C */ s32 _5C;
     /* 0x60 */ s32 _60;
-    /* 0x64 */ LMDvdFileInfoBlock* _64;
-    /* 0x68 */ LMDvdFileInfoBlock* _68;
+    /* 0x64 */ u8* mFileBuffer;
+    /* 0x68 */ u8* mDecompBuffer;
     /* 0x6C */ JKRMemArchive* mArchive;
     /* 0x70 */ s32 _70;
     /* 0x74 */ LMDvdFileInfoCallback _74;
     /* 0x78 */ LMDvdFileInfoCallback _78;
     /* 0x7C */ LMDvdFileInfo* _7C;
     /* 0x80 */ u8 _80;
-    /* 0x84 */ s32 _84;
+    /* 0x84 */ JKRMemBreakFlag mBufferBreakFlag;
 };
 
 class LMDvdFile {
 public:
     void init();
-    bool open(const char* pFileName, LMDvdFileInfoBlock*);
-    void* open(const char* pFileName, LMDvdFileInfoCallback, LMDvdFileInfoBlock*, s32);
+    bool open(const char* pFileName, u8*);
+    void* open(const char* pFileName, LMDvdFileInfoCallback, u8*, s32);
     void checkDVDStatus();
 
     static LMDvdFileInfo* getFileInfoArray();
@@ -56,11 +56,11 @@ public:
     /* 0x10 */ u8 _10[0x2C - 0x10];
 };
 
-void* LMDvdFileOpen(const char* pFIleName, LMDvdFileInfoBlock*);
-void* LMDvdFileOpen(const char *pFileName, LMDvdFileInfoCallback param_2, LMDvdFileInfoBlock* param_3, s32 param_4);
-void* fn_80006930(const char*, LMDvdFileInfoBlock*);
+void* LMDvdFileOpen(const char* pFIleName, u8*);
+void* LMDvdFileOpen(const char *pFileName, LMDvdFileInfoCallback param_2, u8* param_3, s32 param_4);
+void* fn_80006930(const char*, u8*);
 JKRMemArchive* LMOpenMemArchive(const char* pFileName, void*);
-void* fn_80006258(u32 size, int align);
+u8* fn_80006258(u32 size, int align);
 
 extern BOOL lbl_804D8028;
 
