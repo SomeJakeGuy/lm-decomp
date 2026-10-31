@@ -1,7 +1,9 @@
-#include "Unsorted/80006DF0.hpp"
-#include "Unsorted/80005EB8.hpp"
-#include "Unsorted/LMDvdFile.hpp"
+#include <JSystem/JKernel/JKRArchive.hpp>
 #include <dolphin/os/OSFastCast.h>
+
+#include "System/LMDvdThread.hpp"
+#include "Unsorted/80005EB8.hpp"
+#include "System/LMDvdFile.hpp"
 
 //TODO: Better name for this
 struct LMDvdThread : public OSThread {
@@ -30,32 +32,33 @@ static void* createThreadCallback(void* pPtr) {
 
     while (true) {
         void* msg;
-        OSReceiveMessage(&sDvdThread1._310, msg, OS_MESSAGE_BLOCK);
+        OSReceiveMessage(&sDvdThread1._310, &msg, OS_MESSAGE_BLOCK);
 
         LMDvdFileInfo* info = (LMDvdFileInfo*)msg;
 
-        if (info->_64 == nullptr) {
+        if (info->mFileBuffer == nullptr) {
             u8 groupId = fn_800061B8(info->_80);
 
-            info->_64 = (LMDvdFileInfoBlock*)fn_80006258(info->_60, LMDvdFile::getCurUnk4() * 32);
+            info->mFileBuffer = fn_80006258(info->_60, LMDvdFile::getCurUnk4() * 32);
 
             //Have no idea what was meant to be for since the block of code for it is optimized out sooooooo
-            if (info->_64 == nullptr) { info = info; }
+            if (info->mFileBuffer == nullptr) { info = info; }
 
             fn_800061B8(groupId);
-            info->_84 = 1;
+            info->mBufferBreakFlag = MBF_1;
         }
 
-        s32 readResult = DVDReadPrio(info, info->_64, info->_60, 0, 2);
+        s32 readResult = DVDReadPrio(info, info->mFileBuffer, info->_60, 0, 2);
         switch (readResult) {
-            case 1:
-            case DVD_RESULT_IGNORED:
+            case DVD_RESULT_FATAL_ERROR:
             case -3:
-            case -1:
+                break;
+            case DVD_RESULT_IGNORED:
+            default:
             LMDvdFile::closeFile(nullptr, info);
             u8 groupId = fn_800061B8(info->_80);
             if (info->_78 != nullptr) {
-                info->_78(info->_64, info);
+                info->_78(info->mFileBuffer, info);
             }
 
             if (lbl_804D8028 == FALSE) {

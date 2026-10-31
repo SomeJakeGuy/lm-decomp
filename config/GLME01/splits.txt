@@ -23,7 +23,7 @@ Unsorted/LMDvdFile.cpp:
 	.bss        start:0x8039AC38 end:0x8039CE60
 	.sbss       start:0x804D8028 end:0x804D8030
 
-Unsorted/80006DF0.cpp:
+System/LMDvdThread.cpp:
 	.text       start:0x80006DF0 end:0x80007018
 	.bss        start:0x8039CE60 end:0x8039F2A0
 
