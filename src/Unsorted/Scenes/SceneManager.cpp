@@ -6,10 +6,10 @@
 #include <dolphin/dvd.h>
 #include <JSystem/JUtility/JUTGamePad.hpp>
 
-#include "Unsorted/LMDvdFile.hpp"
+#include "System/LMDvdFile.hpp"
 #include "Unsorted/MathUtils.hpp"
 #include "Unsorted/LMDisplayUtil.hpp"
-#include "Unsorted/80007018.hpp"
+#include "System/LMBackgroundTask.hpp"
 #include "Unsorted/80005EB8.hpp"
 #include "Unsorted/800080DC.hpp"
 
@@ -155,11 +155,11 @@ namespace SceneManager {
             }
 
             fn_800081A8(&lbl_803A3810);
-            LMDvdFile::checkCurDVDStatus();
+            LMDvdFile::checkDVDStatus();
 
             switch (sSceneMgr.mState) {
                 case SM_STATE_0:
-                    if (fn_80007090() == 1) {
+                    if (LMBackgroundTask::pollDone() == 1) {
                         sSceneMgr.mState = SM_STATE_1;
                         fn_80009540(sCurrScene->_10);
                         fn_80007E60(sCurrScene->_10);
@@ -211,7 +211,7 @@ namespace SceneManager {
     }
 
     void fn_8000B7F4() {
-        fn_80007018();
+        LMBackgroundTask::init();
 
         do {
             lbl_804D8098 = 0;
@@ -220,7 +220,7 @@ namespace SceneManager {
             fn_800061B8(0xC);
             fn_8000AD48();
             fn_800061B8(0x1A);
-            fn_80007040(sCurrScene->mInitFn);
+            LMBackgroundTask::start(sCurrScene->mInitFn);
             fn_800083B4(0x1E);
             fn_8000B610();
             sCurrScene->mDestroyFn();

@@ -1,9 +1,11 @@
 #include "Unsorted/Scenes/EndingScene.hpp"
-#include "Unsorted/LMDvdFile.hpp"
 #include "Unsorted/Scenes/Scene.hpp"
 #include "Unsorted/Scenes/SceneFunctionCalls.hpp"
+
+#include "System/LMDvdFile.hpp"
 #include "Unsorted/BackgroundMusic.hpp"
 #include "macros.h"
+#include "types.h"
 
 dummy_float_data()
 enemies_float_data()
@@ -101,13 +103,13 @@ namespace EndingScene {
         sEndFrameImg.init();
 
         fn_800061B8(3);
-        sEndMsgImg._0 = LMDvdFileOpen("Ending/ENGLISH/end_msE.bti", 0); // End Dialogue img, "And so the matter of the ghosts..."
+        sEndMsgImg._0 = LMDvdFile::openFile("Ending/ENGLISH/end_msE.bti", nullptr); // End Dialogue img, "And so the matter of the ghosts..."
         sEndMsgImg.set08To14(0, 0x2D0, 0xB4, 0xB4);
 
-        sMansionFrontImg._0 = LMDvdFileOpen("Ending/house_00.bti", 0); // Normal Mansion img, could be the same from Title Screen?
+        sMansionFrontImg._0 = LMDvdFile::openFile("Ending/house_00.bti", nullptr); // Normal Mansion img, could be the same from Title Screen?
         sMansionFrontImg.set08To14(0x168, 0x2D0, 0xB4, 0xB4);
 
-        LMDvdFileOpen(sMansionBackgrounds[sPlayerRank], fn_8000D064, nullptr, &sEndMansionSizeImg._0); // Different House/Tent Sizes 
+        LMDvdFile::openFile(sMansionBackgrounds[sPlayerRank], fn_8000D064, nullptr, &sEndMansionSizeImg._0); // Different House/Tent Sizes 
         fn_800061B8(5);
 
         sEndMansionSizeImg.set08To14(0x2D0, 0x528, 0xB4, 0xB4);
@@ -121,29 +123,29 @@ namespace EndingScene {
         switch (sPlayerRank) {
             case RANK_H:
                 // The Mansion Disappeared without a trace...
-                LMDvdFileOpen("Ending/ENGLISH/mes_bE.bti", fn_8000D064, nullptr, &sEndRankMsgImg._0);
+                LMDvdFile::openFile("Ending/ENGLISH/mes_bE.bti", fn_8000D064, nullptr, &sEndRankMsgImg._0);
                 sBGMId = BGM_ENDING_BAD;
                 break;
             case RANK_G:
                 // Welcome to Luigi's NEW Mansion!
-                LMDvdFileOpen("Ending/ENGLISH/mes_gE.bti", fn_8000D064, nullptr, &sEndRankMsgImg._0);
+                LMDvdFile::openFile("Ending/ENGLISH/mes_gE.bti", fn_8000D064, nullptr, &sEndRankMsgImg._0);
                 sBGMId = BGM_ENDING_GOOD;
                 break;
             case RANK_A:
                 // Congratulations, Your Mansion is Complete!
-                LMDvdFileOpen("Ending/ENGLISH/mes_VE.bti", fn_8000D064, nullptr, &sEndRankMsgImg._0);
+                LMDvdFile::openFile("Ending/ENGLISH/mes_VE.bti", fn_8000D064, nullptr, &sEndRankMsgImg._0);
                 sBGMId = BGM_ENDING_EXCELLENT;
                 break;
             default:
                 // Welcome to Luigi's NEW Mansion!
-                LMDvdFileOpen("Ending/ENGLISH/mes_gE.bti", fn_8000D064, nullptr, &sEndRankMsgImg._0);
+                LMDvdFile::openFile("Ending/ENGLISH/mes_gE.bti", fn_8000D064, nullptr, &sEndRankMsgImg._0);
                 sBGMId = BGM_ENDING_GOOD;
                 break;
         }
 
-        LMDvdFileOpen(sRankNames[sPlayerRank], fn_8000D064, nullptr, &sEndRankImg._0); // Rank X img.
-        LMDvdFileOpen("Ending/ENGLISH/me_kanE.bti", fn_8000D064, nullptr, &sTheEndImg._0); // The End img.
-        LMDvdFileOpen(sMansionFramed[sPlayerRank], fn_8000D064, nullptr, &sEndFrameImg._0); // Same as Mansion Background but framed img.
+        LMDvdFile::openFile(sRankNames[sPlayerRank], fn_8000D064, nullptr, &sEndRankImg._0); // Rank X img.
+        LMDvdFile::openFile("Ending/ENGLISH/me_kanE.bti", fn_8000D064, nullptr, &sTheEndImg._0); // The End img.
+        LMDvdFile::openFile(sMansionFramed[sPlayerRank], fn_8000D064, nullptr, &sEndFrameImg._0); // Same as Mansion Background but framed img.
     }
 
     SceneID update() {

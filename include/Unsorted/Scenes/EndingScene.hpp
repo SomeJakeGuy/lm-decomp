@@ -2,7 +2,6 @@
 #define ENDING_SCENE_HPP
 
 #include "Unsorted/Scenes/Scene.hpp"
-#include "Unsorted/LMDvdFileBlock.hpp"
 #include "Unsorted/80005EB8.hpp"
 #include "types.h"
 
@@ -19,7 +18,7 @@ enum MansionRank {
 };
 
 struct EndingImage {
-    /* 0x00 */ LMDvdFileInfoBlock* _0; // Probably data stream / size?
+    /* 0x00 */ u8* _0; // Probably data stream / size?
     /* 0x04 */ u32 _4;
     /* 0x08 */ u32 _8;
     /* 0x0C */ u32 _C;
