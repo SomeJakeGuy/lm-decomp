@@ -155,7 +155,7 @@ namespace SceneManager {
             }
 
             fn_800081A8(&lbl_803A3810);
-            LMDvdFile::checkDVDStatus();
+            LMDvdFile::setDVDStatus();
 
             switch (sSceneMgr.mState) {
                 case SM_STATE_0:
