@@ -1,4 +1,4 @@
-#include "Unsorted/Scenes/MovieScene.hpp"
+#include "Scenes/MovieScene.hpp"
 
 namespace MovieScene {    
     Scene sMovieScene = {

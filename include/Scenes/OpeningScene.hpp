@@ -1,7 +1,7 @@
 #ifndef OPENING_SCENE_HPP
 #define OPENING_SCENE_HPP
 
-#include "Unsorted/Scenes/Scene.hpp"
+#include "Scenes/Scene.hpp"
 
 namespace OpeningScene {
     void init();

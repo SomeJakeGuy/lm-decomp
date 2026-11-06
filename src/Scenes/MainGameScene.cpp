@@ -1,4 +1,4 @@
-#include "Unsorted/Scenes/MainGameScene.hpp"
+#include "Scenes/MainGameScene.hpp"
 
 namespace MainGameScene {
     Scene sMainGameScene = {

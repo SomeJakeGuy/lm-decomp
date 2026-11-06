@@ -3,7 +3,7 @@
 
 #include <dolphin/os/OSMessage.h>
 
-#include "Unsorted/Scenes/Scene.hpp"
+#include "Scenes/Scene.hpp"
 
 struct SelectSceneHelper {
     SelectSceneHelper();

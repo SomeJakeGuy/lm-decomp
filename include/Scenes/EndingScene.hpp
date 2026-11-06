@@ -1,9 +1,8 @@
 #ifndef ENDING_SCENE_HPP
 #define ENDING_SCENE_HPP
 
-#include "Unsorted/Scenes/Scene.hpp"
+#include "Scenes/Scene.hpp"
 #include "Unsorted/80005EB8.hpp"
-#include "types.h"
 
 enum MansionRank {
     RANK_NONE,

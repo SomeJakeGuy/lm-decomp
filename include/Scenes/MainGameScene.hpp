@@ -1,7 +1,7 @@
 #ifndef MAIN_GAME_SCENE_HPP
 #define MAIN_GAME_SCENE_HPP
 
-#include "Unsorted/Scenes/Scene.hpp"
+#include "Scenes/Scene.hpp"
 
 namespace MainGameScene {
     void init();

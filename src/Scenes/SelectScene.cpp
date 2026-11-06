@@ -1,8 +1,8 @@
-#include "Unsorted/Scenes/SelectScene.hpp"
+#include "Scenes/SelectScene.hpp"
 #include "Koga/MissionMode.hpp"
 #include "Unsorted/InGameFlagsUtil.hpp"
-#include "Unsorted/Scenes/Scene.hpp"
-#include "Unsorted/Scenes/SceneFunctionCalls.hpp"
+#include "Scenes/Scene.hpp"
+#include "Scenes/SceneFunctionCalls.hpp"
 #include "Unsorted/LMDisplayUtil.hpp"
 
 
@@ -18,7 +18,7 @@ Scene SelectScene::sSelectScene = {
 namespace SelectScene {
     void fn_8000B8D8(SelectSceneHelper* param_1) {
         param_1->_0 = 0;
-        OSInitMessageQueue(&param_1->mOSMsgQueue, param_1->mMsgs, 1);
+        OSInitMessageQueue(&param_1->mOSMsgQueue, &param_1->mMsgs, 1);
     }
 
     // Called when new game+ is activated?

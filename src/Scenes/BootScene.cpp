@@ -4,8 +4,8 @@
 #include <JSystem/J2D/J2DPicture.hpp>
 #include <JSystem/J2D/J2DOrthoGraph.hpp>
 
-#include "Unsorted/Scenes/BootScene.hpp"
-#include "Unsorted/Scenes/SceneFunctionCalls.hpp"
+#include "Scenes/BootScene.hpp"
+#include "Scenes/SceneFunctionCalls.hpp"
 
 #include "System/BackgroundTask.hpp"
 #include "System/DiscFile.hpp"

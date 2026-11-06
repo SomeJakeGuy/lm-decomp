@@ -1,13 +1,12 @@
 #ifndef SCENE_UNK_FUNCTIONS_HPP
 #define SCENE_UNK_FUNCTIONS_HPP
 
-#include "Unsorted/Scenes/Scene.hpp"
-#include <types.h>
+#include "Scenes/Scene.hpp"
 #include <dolphin/mtx.h>
 
 class JKRMemArchive;
 class J2DPicture;
-class LMDvdFileInfo;
+class DiscFileInfo;
 
 // externs
 extern void fn_80066FAC(JKRMemArchive*);
@@ -64,6 +63,6 @@ extern s32 lbl_804D8060;
 extern void fn_80057904(u32, u32, u32);
 extern void fn_80057A8C();
 extern void fn_80188760(u32, void*); // Something for JAudio play?
-extern void fn_8000D064(void* param_1, LMDvdFileInfo* param_2);
+extern void fn_8000D064(void* param_1, DiscFileInfo* param_2);
 
 #endif

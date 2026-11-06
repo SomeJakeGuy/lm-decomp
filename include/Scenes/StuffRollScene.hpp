@@ -1,7 +1,7 @@
 #ifndef STUFF_ROLL_SCENE_HPP
 #define STUFF_ROLL_SCENE_HPP
 
-#include "Unsorted/Scenes/Scene.hpp"
+#include "Scenes/Scene.hpp"
 
 namespace StuffRollScene {
     void init();

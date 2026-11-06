@@ -792,14 +792,14 @@ config.libs = [
         Object(NonMatching, "Koga/EnemyGenManager.cpp"),
 
         # Unsorted/Scenes
-        Object(NonMatching, "Unsorted/Scenes/SceneManager.cpp"),
-        Object(NonMatching, "Unsorted/Scenes/BootScene.cpp"),
-        Object(NonMatching, "Unsorted/Scenes/TitleScene.cpp"),
-        Object(NonMatching, "Unsorted/Scenes/SelectScene.cpp"),
-        Object(NonMatching, "Unsorted/Scenes/MainGameScene.cpp"),
-        Object(NonMatching, "Unsorted/Scenes/OpeningScene.cpp"),
-        Object(NonMatching, "Unsorted/Scenes/StuffRollScene.cpp"),
-        Object(NonMatching, "Unsorted/Scenes/EndingScene.cpp"),
+        Object(NonMatching, "Scenes/SceneManager.cpp"),
+        Object(NonMatching, "Scenes/BootScene.cpp"),
+        Object(NonMatching, "Scenes/TitleScene.cpp"),
+        Object(NonMatching, "Scenes/SelectScene.cpp"),
+        Object(NonMatching, "Scenes/MainGameScene.cpp"),
+        Object(NonMatching, "Scenes/OpeningScene.cpp"),
+        Object(NonMatching, "Scenes/StuffRollScene.cpp"),
+        Object(NonMatching, "Scenes/EndingScene.cpp"),
 
         # System
         Object(NonMatching, "System/DiscFile.cpp"),
@@ -808,8 +808,6 @@ config.libs = [
         Object(NonMatching, "System/Yay0.cpp"),
 
         # Unsorted
-        Object(NonMatching, "Unsorted/bootScene.cpp"),
-        Object(NonMatching, "Unsorted/TitleScene.cpp"),
         Object(NonMatching, "Unsorted/InGameFlagsUtil.cpp"),
         Object(NonMatching, "Unsorted/80005EB8.cpp"),
         Object(NonMatching, "Unsorted/MoveObj.cpp"),

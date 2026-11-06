@@ -1,4 +1,4 @@
-#include "Unsorted/Scenes/OpeningScene.hpp"
+#include "Scenes/OpeningScene.hpp"
 
 namespace OpeningScene {
     Scene sOpeningScene = {

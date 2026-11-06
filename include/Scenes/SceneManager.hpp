@@ -3,7 +3,7 @@
 
 #include <dolphin/os/OSMessage.h>
 
-#include "Unsorted/Scenes/Scene.hpp"
+#include "Scenes/Scene.hpp"
 
 enum SceneManagerState {
     SM_STATE_0,

@@ -1,4 +1,4 @@
-#include "Unsorted/Scenes/StuffRollScene.hpp"
+#include "Scenes/StuffRollScene.hpp"
 
 namespace StuffRollScene {    
     Scene sStuffRollScene = {

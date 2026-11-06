@@ -6,25 +6,25 @@
 #include <dolphin/dvd.h>
 #include <JSystem/JUtility/JUTGamePad.hpp>
 
-#include "System/LMDvdFile.hpp"
+#include "System/DiscFile.hpp"
 #include "Unsorted/MathUtils.hpp"
 #include "Unsorted/LMDisplayUtil.hpp"
-#include "System/LMBackgroundTask.hpp"
+#include "System/BackgroundTask.hpp"
 #include "Unsorted/80005EB8.hpp"
 #include "Unsorted/800080DC.hpp"
 
 // Other Scene related stuff
-#include "Unsorted/Scenes/SceneManager.hpp"
-#include "Unsorted/Scenes/BootScene.hpp"
-#include "Unsorted/Scenes/EndingScene.hpp"
-#include "Unsorted/Scenes/MainGameScene.hpp"
-#include "Unsorted/Scenes/MovieScene.hpp"
-#include "Unsorted/Scenes/OpeningScene.hpp"
-#include "Unsorted/Scenes/Scene.hpp"
-#include "Unsorted/Scenes/SelectScene.hpp"
-#include "Unsorted/Scenes/StuffRollScene.hpp"
-#include "Unsorted/Scenes/TitleScene.hpp"
-#include "Unsorted/Scenes/SceneFunctionCalls.hpp"
+#include "Scenes/SceneManager.hpp"
+#include "Scenes/BootScene.hpp"
+#include "Scenes/EndingScene.hpp"
+#include "Scenes/MainGameScene.hpp"
+#include "Scenes/MovieScene.hpp"
+#include "Scenes/OpeningScene.hpp"
+#include "Scenes/Scene.hpp"
+#include "Scenes/SelectScene.hpp"
+#include "Scenes/StuffRollScene.hpp"
+#include "Scenes/TitleScene.hpp"
+#include "Scenes/SceneFunctionCalls.hpp"
 
 
 Scene* sSceneTable[SCENE_MAX] = {
@@ -117,7 +117,7 @@ namespace SceneManager {
         }
 
         OSMessage msg;
-        u8 temp3 = LMDvdFile::checkCurUnk0();
+        u8 temp3 = checkDiscFileCurUnk0();
         if (temp3 != 1 && sSceneMgr.mState == SM_STATE_2 && 
                 (fn_8018A8B4() != 2 || (fn_8018A860() && !DVDGetDriveStatus())) && 
                 OSReceiveMessage(&sSceneMgr.mOSMsgQueue, &msg, OS_MESSAGE_NOBLOCK)) {
@@ -155,11 +155,11 @@ namespace SceneManager {
             }
 
             fn_800081A8(&lbl_803A3810);
-            LMDvdFile::setDVDStatus();
+            setDVDStatus();
 
             switch (sSceneMgr.mState) {
                 case SM_STATE_0:
-                    if (LMBackgroundTask::pollDone() == 1) {
+                    if (pollBackgroundTaskComplete() == 1) {
                         sSceneMgr.mState = SM_STATE_1;
                         fn_80009540(sCurrScene->_10);
                         fn_80007E60(sCurrScene->_10);
@@ -211,7 +211,7 @@ namespace SceneManager {
     }
 
     void fn_8000B7F4() {
-        LMBackgroundTask::init();
+        initBackgroundTask();
 
         do {
             lbl_804D8098 = 0;
@@ -220,7 +220,7 @@ namespace SceneManager {
             fn_800061B8(0xC);
             fn_8000AD48();
             fn_800061B8(0x1A);
-            LMBackgroundTask::start(sCurrScene->mInitFn);
+            startBackgroundTask(sCurrScene->mInitFn);
             fn_800083B4(0x1E);
             fn_8000B610();
             sCurrScene->mDestroyFn();
