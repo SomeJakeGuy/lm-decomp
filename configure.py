@@ -802,9 +802,9 @@ config.libs = [
         Object(NonMatching, "Unsorted/Scenes/EndingScene.cpp"),
 
         # System
-        Object(NonMatching, "System/LMDvdFile.cpp"),
-        Object(NonMatching, "System/LMDvdThread.cpp"),
-        Object(NonMatching, "System/LMBackgroundTask.cpp"),
+        Object(NonMatching, "System/DiscFile.cpp"),
+        Object(Matching, "System/DiscThread.cpp"),
+        Object(Matching, "System/BackgroundTask.cpp"),
         Object(NonMatching, "System/Yay0.cpp"),
 
         # Unsorted

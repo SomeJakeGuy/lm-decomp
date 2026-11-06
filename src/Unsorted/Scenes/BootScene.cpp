@@ -7,9 +7,9 @@
 #include "Unsorted/Scenes/BootScene.hpp"
 #include "Unsorted/Scenes/SceneFunctionCalls.hpp"
 
-#include "System/LMBackgroundTask.hpp"
+#include "System/BackgroundTask.hpp"
+#include "System/DiscFile.hpp"
 #include "System/Yay0.hpp"
-#include "System/LMDvdFile.hpp"
 
 #include "Unsorted/LMDisplayUtil.hpp"
 #include "Unsorted/staticDataAramData.h"
@@ -60,9 +60,9 @@ J2DPicture* sNintendoLogoPicture;
 JKRMemArchive* sStaticDataArchive;
 
 namespace BootScene {
-    void dvdFileOpenCallback(void* param_1, LMDvdFileInfo* param_2) {
-        u8* block =  reinterpret_cast<u8*>(JKRAllocFromHeap(nullptr, LMYay0::getArcSize(param_2->mFileBuffer), 32));
-        LMYay0::decompress(param_2->mFileBuffer, block);
+    void dvdFileOpenCallback(void* param_1, DiscFileInfo* param_2) {
+        u8* block = reinterpret_cast<u8*>(JKRAllocFromHeap(nullptr, getYay0ArcSize(param_2->mFileBuffer), 32));
+        decompressYay0(param_2->mFileBuffer, block);
         fn_80006138(param_2->mFileBuffer);
         fn_80066FAC(new JKRMemArchive(block, 0, MBF_0));
     }
@@ -70,7 +70,7 @@ namespace BootScene {
     void loadStaticDataArchives() {
         fn_800061B8(16);
         fn_80006204();
-        void* game_usaData = LMDvdFile::openFile("/Game/game_usa.szp", BootScene::dvdFileOpenCallback, nullptr, nullptr);
+        void* game_usaData = openDiscFileAsync("/Game/game_usa.szp", BootScene::dvdFileOpenCallback, nullptr, nullptr);
         lbl_804D8014->becomeCurrentHeap();
         fn_800061B8(3);
         u8* data = (u8*)sStaticDataArchive->getResource("/res_titl.szp");
@@ -100,7 +100,7 @@ namespace BootScene {
 
         u8 bVar1 = true;
         do {
-            bVar1 = LMDvdFile::checkCurUnk0();
+            bVar1 = checkDiscFileCurUnk0();
         } while(bVar1 != 0);
     }
 
@@ -130,12 +130,12 @@ namespace BootScene {
 
         sStaticDataArchive = new JKRMemArchive(STATIC_DATA, 0, MBF_0);
 
-        u8* nintendoSzpBlock =  reinterpret_cast<u8*>(sStaticDataArchive->getResource("/nintendo.szp"));
-        u32 size = LMYay0::getArcSize(nintendoSzpBlock);
+        u8* nintendoSzpBlock = reinterpret_cast<u8*>(sStaticDataArchive->getResource("/nintendo.szp"));
+        u32 size = getYay0ArcSize(nintendoSzpBlock);
         fn_80006204();
         JUTTexture* data = (JUTTexture*)fn_80006080(size, 0x20);
         lbl_804D8014->becomeCurrentHeap();
-        LMYay0::decompress(nintendoSzpBlock, reinterpret_cast<u8*>(data));
+        decompressYay0(nintendoSzpBlock, (u8*)data);
         sNintendoLogoPicture = new J2DPicture(data);
     }
 
@@ -150,12 +150,12 @@ namespace BootScene {
         u32 ret;
         switch (sCurBootSceneState) {
         case STATE_0:
-            LMBackgroundTask::start(BootScene::loadStaticData);
+            startBackgroundTask(loadStaticData);
             fn_80007F28();
             sCurBootSceneState = STATE_1;
             return SCENE_BOOT;
         case STATE_1:
-            if (LMBackgroundTask::pollDone() == 0) {
+            if (pollBackgroundTaskComplete() == 0) {
                 return SCENE_BOOT;
             }
             lbl_804D8110 = 1;
