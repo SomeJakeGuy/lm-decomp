@@ -5,7 +5,7 @@
 
 class JKRMemArchive;
 class J2DPicture;
-class LMDvdFileInfo;
+class DiscFileInfo;
 
 enum BootSceneState {
     STATE_0,
@@ -21,7 +21,7 @@ namespace BootScene {
 
     void loadStaticData();
     void loadStaticDataArchives() ;
-    void dvdFileOpenCallback(void*, LMDvdFileInfo*);
+    void dvdFileOpenCallback(void*, DiscFileInfo*);
     u8* getStaticDataArr();
 
     extern Scene sBootScene;
