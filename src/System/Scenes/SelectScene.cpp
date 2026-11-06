@@ -1,8 +1,8 @@
-#include "Scenes/SelectScene.hpp"
+#include "System/Scenes/SelectScene.hpp"
 #include "Koga/MissionMode.hpp"
 #include "Unsorted/InGameFlagsUtil.hpp"
-#include "Scenes/Scene.hpp"
-#include "Scenes/SceneFunctionCalls.hpp"
+#include "System/Scenes/Scene.hpp"
+#include "System/Scenes/SceneFunctionCalls.hpp"
 #include "Unsorted/LMDisplayUtil.hpp"
 
 

@@ -1,6 +1,6 @@
-#include "Scenes/EndingScene.hpp"
-#include "Scenes/Scene.hpp"
-#include "Scenes/SceneFunctionCalls.hpp"
+#include "System/Scenes/EndingScene.hpp"
+#include "System/Scenes/Scene.hpp"
+#include "System/Scenes/SceneFunctionCalls.hpp"
 
 #include "System/DiscFile.hpp"
 #include "Unsorted/BackgroundMusic.hpp"

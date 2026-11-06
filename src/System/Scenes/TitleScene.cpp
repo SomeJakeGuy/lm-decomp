@@ -1,4 +1,4 @@
-#include "Scenes/TitleScene.hpp"
+#include "System/Scenes/TitleScene.hpp"
 
 namespace TitleScene {
     Scene sTitleScene = {

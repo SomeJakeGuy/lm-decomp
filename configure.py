@@ -791,22 +791,22 @@ config.libs = [
         Object(NonMatching, "Koga/EnTypesManager.cpp"),
         Object(NonMatching, "Koga/EnemyGenManager.cpp"),
 
-        # Unsorted/Scenes
-        Object(NonMatching, "Scenes/SceneManager.cpp"),
-        Object(NonMatching, "Scenes/BootScene.cpp"),
-        Object(NonMatching, "Scenes/TitleScene.cpp"),
-        Object(NonMatching, "Scenes/SelectScene.cpp"),
-        Object(NonMatching, "Scenes/MainGameScene.cpp"),
-        Object(NonMatching, "Scenes/OpeningScene.cpp"),
-        Object(NonMatching, "Scenes/StuffRollScene.cpp"),
-        Object(NonMatching, "Scenes/EndingScene.cpp"),
-        Object(NonMatching, "Scenes/MovieScene.cpp"),
-
         # System
         Object(NonMatching, "System/DiscFile.cpp"),
         Object(Matching, "System/DiscThread.cpp"),
         Object(Matching, "System/BackgroundTask.cpp"),
         Object(NonMatching, "System/Yay0.cpp"),
+
+        # System/Scenes
+        Object(NonMatching, "System/Scenes/SceneManager.cpp"),
+        Object(NonMatching, "System/Scenes/BootScene.cpp"),
+        Object(NonMatching, "System/Scenes/TitleScene.cpp"),
+        Object(NonMatching, "System/Scenes/SelectScene.cpp"),
+        Object(NonMatching, "System/Scenes/MainGameScene.cpp"),
+        Object(NonMatching, "System/Scenes/OpeningScene.cpp"),
+        Object(NonMatching, "System/Scenes/StuffRollScene.cpp"),
+        Object(NonMatching, "System/Scenes/EndingScene.cpp"),
+        Object(NonMatching, "System/Scenes/MovieScene.cpp"),
 
         # Unsorted
         Object(NonMatching, "Unsorted/InGameFlagsUtil.cpp"),

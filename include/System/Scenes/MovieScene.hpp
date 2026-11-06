@@ -1,7 +1,7 @@
 #ifndef MOVIE_SCENE_HPP
 #define MOVIE_SCENE_HPP
 
-#include "Scenes/Scene.hpp"
+#include "System/Scenes/Scene.hpp"
 
 namespace MovieScene {
     void init();

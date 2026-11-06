@@ -1,7 +1,7 @@
 #ifndef SCENE_UNK_FUNCTIONS_HPP
 #define SCENE_UNK_FUNCTIONS_HPP
 
-#include "Scenes/Scene.hpp"
+#include "System/Scenes/Scene.hpp"
 #include <dolphin/mtx.h>
 
 class JKRMemArchive;

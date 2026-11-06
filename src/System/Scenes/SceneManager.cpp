@@ -14,17 +14,17 @@
 #include "Unsorted/800080DC.hpp"
 
 // Other Scene related stuff
-#include "Scenes/SceneManager.hpp"
-#include "Scenes/BootScene.hpp"
-#include "Scenes/EndingScene.hpp"
-#include "Scenes/MainGameScene.hpp"
-#include "Scenes/MovieScene.hpp"
-#include "Scenes/OpeningScene.hpp"
-#include "Scenes/Scene.hpp"
-#include "Scenes/SelectScene.hpp"
-#include "Scenes/StuffRollScene.hpp"
-#include "Scenes/TitleScene.hpp"
-#include "Scenes/SceneFunctionCalls.hpp"
+#include "System/Scenes/SceneManager.hpp"
+#include "System/Scenes/BootScene.hpp"
+#include "System/Scenes/EndingScene.hpp"
+#include "System/Scenes/MainGameScene.hpp"
+#include "System/Scenes/MovieScene.hpp"
+#include "System/Scenes/OpeningScene.hpp"
+#include "System/Scenes/Scene.hpp"
+#include "System/Scenes/SelectScene.hpp"
+#include "System/Scenes/StuffRollScene.hpp"
+#include "System/Scenes/TitleScene.hpp"
+#include "System/Scenes/SceneFunctionCalls.hpp"
 
 
 Scene* sSceneTable[SCENE_MAX] = {

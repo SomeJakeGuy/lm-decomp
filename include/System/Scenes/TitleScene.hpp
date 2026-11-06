@@ -1,7 +1,7 @@
 #ifndef TITLE_SCENE_HPP
 #define TITLE_SCENE_HPP
 
-#include "Scenes/Scene.hpp"
+#include "System/Scenes/Scene.hpp"
 
 namespace TitleScene {
     void init();

@@ -1,7 +1,7 @@
 #ifndef BOOT_SCENE_HPP
 #define BOOT_SCENE_HPP
 
-#include "Scenes/Scene.hpp"
+#include "System/Scenes/Scene.hpp"
 
 class JKRMemArchive;
 class J2DPicture;
