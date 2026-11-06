@@ -800,6 +800,7 @@ config.libs = [
         Object(NonMatching, "Scenes/OpeningScene.cpp"),
         Object(NonMatching, "Scenes/StuffRollScene.cpp"),
         Object(NonMatching, "Scenes/EndingScene.cpp"),
+        Object(NonMatching, "Scenes/MovieScene.cpp"),
 
         # System
         Object(NonMatching, "System/DiscFile.cpp"),

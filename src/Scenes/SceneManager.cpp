@@ -136,7 +136,7 @@ namespace SceneManager {
                 fn_8018A8BC(0);
             }
 
-            sCurrSceneId = SCENE_BOOT; // TODO figure out this value
+            sCurrSceneId = SCENE_BOOT; // TODO is this (SceneID)msg?
             fn_80008394();
             lbl_804D80A8 = 1;
         }
@@ -189,17 +189,17 @@ namespace SceneManager {
                 fn_8018865C();
             }
 
-            if (lbl_803A3B08 != nullptr) {
+            if (lbl_803A3B08 != 0) {
                 fn_80188710();
             }
 
             LMChangeFrameBuffer();
             if (sSceneMgr.mState != SM_STATE_0) {
-                fn_800080DC(lbl_803A3810);
+                fn_800080DC(&lbl_803A3810);
             }
 
             if (lbl_804D80A8 != 0) {
-                lbl_804D80A8 = nullptr;
+                lbl_804D80A8 = 0;
                 break;
             }
 

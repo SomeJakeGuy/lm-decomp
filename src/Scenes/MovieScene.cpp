@@ -3,7 +3,7 @@
 namespace MovieScene {    
     Scene sMovieScene = {
         "MOVIE", 
-        1, 
+        2, 
         init, 
         update, 
         draw, 
