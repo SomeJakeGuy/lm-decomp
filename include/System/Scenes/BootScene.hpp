@@ -3,12 +3,6 @@
 
 #include "System/Scenes/Scene.hpp"
 
-enum BootSceneState {
-    BOOT_IDLE,
-    BOOT_LOADING,
-    BOOT_READY,
-};
-
 namespace BootScene {
     u8* getStaticDataArr();
 

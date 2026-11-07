@@ -18,6 +18,12 @@
 #include "Unsorted/80008418.hpp"
 #include "macros.h"
 
+enum BootSceneState {
+    BOOT_IDLE,
+    BOOT_LOADING,
+    BOOT_READY,
+};
+
 //.data
 dummy_float_data()
 enemies_float_data()
