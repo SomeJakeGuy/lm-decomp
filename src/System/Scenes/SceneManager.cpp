@@ -185,7 +185,7 @@ namespace SceneManager {
             }
 
             fn_8000812C(&lbl_803A3810);
-            if (BootScene::lbl_804D8110 != 0) {
+            if (BootScene::sBootReady != 0) {
                 fn_8018865C();
             }
 
