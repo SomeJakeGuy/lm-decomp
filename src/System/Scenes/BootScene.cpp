@@ -69,7 +69,7 @@ namespace BootScene {
     static f32 lbl_804D811C;
     static J2DPicture* nintendoLogoPicture;
     static JKRMemArchive* staticDataArchive;
-    static s32 bootDoneFrameCount;
+    static s32 sBootSceneFrameCount;
     static s8 bootInit;
 
     void dvdFileOpenCallback(void* param_1, DiscFileInfo* param_2) {
@@ -181,7 +181,7 @@ namespace BootScene {
     // problems but can't create a scratch because tu is too big lol
     void draw() {
         if (bootInit == 0) {
-            bootDoneFrameCount = 0;
+            sBootSceneFrameCount = 0;
             bootInit = 1;
         }
         fn_80009B80();
@@ -211,7 +211,7 @@ namespace BootScene {
             fn_80007E50(1);
         }
         if (sBootSceneState == BOOT_READY) {
-            bootDoneFrameCount++;
+            sBootSceneFrameCount++;
         }
     }
 

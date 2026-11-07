@@ -11,6 +11,7 @@ dummy_float_data()
 enemies_float_data()
 
 #define MAX_PLAYER_RANKS 7
+#define ENDING_SCENE_RESET_FRAME_COUNT 2700
 
 enum MansionRank {
     RANK_NONE,
@@ -137,7 +138,7 @@ namespace EndingScene {
 
     static u32 sPlayerRank;
     static u32 sBGMId;
-    static s32 lbl_804D8108;
+    static s32 endingSceneFrameCount;
 
     static EndingImage sEndMsgImg;
     static EndingImage sMansionFrontImg;
@@ -172,7 +173,7 @@ namespace EndingScene {
         fn_800061B8(2);
         fn_80057904(0x78, 0x1A4, 0xB4);
         fn_800061B8(6);
-        lbl_804D8108 = 0; 
+        endingSceneFrameCount = 0; 
 
         sEndMsgImg.init();
         sMansionFrontImg.init();
@@ -229,11 +230,11 @@ namespace EndingScene {
     }
 
     SceneID update() {
-        if (lbl_804D8108 < 0xA8C) {
-            lbl_804D8108++;
+        if (endingSceneFrameCount < ENDING_SCENE_RESET_FRAME_COUNT) {
+            endingSceneFrameCount++;
         }
 
-        if (lbl_804D8108 >= 0xA8C) {
+        if (endingSceneFrameCount >= ENDING_SCENE_RESET_FRAME_COUNT) {
             return SCENE_TITLE;
         }
 
