@@ -3,6 +3,7 @@
 
 #include "System/Scenes/Scene.hpp"
 #include <dolphin/mtx.h>
+#include <dolphin/gx/GXStruct.h>
 
 class JKRMemArchive;
 class J2DPicture;
@@ -40,6 +41,9 @@ extern void fn_8000ADCC();
 extern void fn_8018865C();
 extern void fn_80188710();
 extern void fn_80005E04();
+
+// BootScene and EndingScene read this, owned by Unsorted/80009B80 .sdata?
+extern GXColor lbl_804CFF88;
 
 // Definitely not from SceneManager's data
 extern s32 lbl_804D7FF0;

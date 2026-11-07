@@ -32,16 +32,15 @@ namespace SceneManager {
     extern SceneManagerHelper sSceneMgr;
 }
 
-extern s32 lbl_804D80B0; // Definitely not AppearPointSlot, will need to re-evaluate this.
 extern s32 lbl_804D8088;
-extern s64 lbl_804D8098;
+extern u64 lbl_804D8098;
 extern s64 lbl_804D8090;
 extern s32 lbl_804D80AC;
+extern s32 lbl_804D80B0; // Definitely not AppearPointSlot, will need to re-evaluate this.
+
 extern s32 lbl_804D80A8;
 extern s32 lbl_803A3AE4;
 extern s32 lbl_803A3B08;
 extern s32 lbl_804D80B4;
-
-// sinit(or maybe i think its an sinit?) of fn_8000B880() called here
 
 #endif

@@ -3,34 +3,17 @@
 
 #include "System/Scenes/Scene.hpp"
 
-class JKRMemArchive;
-class J2DPicture;
-class DiscFileInfo;
-
 enum BootSceneState {
-    STATE_0,
-    STATE_1,
-    STATE_2,
+    BOOT_IDLE,
+    BOOT_LOADING,
+    BOOT_READY,
 };
 
 namespace BootScene {
-    void init();
-    void destroy();
-    SceneID update();
-    void draw();
-
-    void loadStaticData();
-    void loadStaticDataArchives() ;
-    void dvdFileOpenCallback(void*, DiscFileInfo*);
     u8* getStaticDataArr();
 
     extern Scene sBootScene;
-    extern s32 lbl_804D8110;
-    extern BootSceneState sCurBootSceneState;
-    extern u16 lbl_804D8118;
-    extern f32 lbl_804D811C;
-    extern J2DPicture* sNintendoLogoPicture;
-    extern JKRMemArchive* sStaticDataArchive;
+    extern s32 sBootReady;
 };
 
 #endif
