@@ -1,8 +1,6 @@
 #ifndef SCENE_MANAGER_HPP
 #define SCENE_MANAGER_HPP
 
-#include <dolphin/os/OSMessage.h>
-
 #include "System/Scenes/Scene.hpp"
 
 namespace SceneManager {
