@@ -26,8 +26,22 @@
 #include "System/Scenes/TitleScene.hpp"
 #include "System/Scenes/SceneFunctionCalls.hpp"
 
+enum SceneManagerState {
+    SM_STATE_0,
+    SM_STATE_1,
+    SM_STATE_2
+};
 
-Scene* sSceneTable[SCENE_MAX] = {
+struct SceneManagerHelper {
+    SceneManagerHelper();
+    
+    /* 0x00 */ SceneManagerState mState;
+    /* 0x00 */ SceneID _4;
+    /* 0x08 */ OSMessageQueue mOSMsgQueue;
+    /* 0x28 */ OSMessage mMsgs;
+}; // size 0x2C
+
+static Scene* sSceneTable[SCENE_MAX] = {
     &BootScene::sBootScene,
     &TitleScene::sTitleScene,
     &MainGameScene::sMainGameScene,
@@ -44,17 +58,25 @@ SceneManagerHelper::SceneManagerHelper() {
     OSReceiveMessage(&mOSMsgQueue, nullptr, 0);
 }
 
-
 namespace SceneManager {
-    SceneManagerHelper sSceneMgr;
-    Scene* sCurrScene = &BootScene::sBootScene;
+    static void fn_8000B370(); // Unsure of return type/args
+    static void fn_8000B4A0(); // Unsure of return type/args
+    static void fn_8000B610(); // Unsure of return type/args
+    
+    static s32 lbl_804D80A8;
+    static s32 lbl_803A3AE4;
+    static s32 lbl_803A3B08;
+    static s32 lbl_804D80B4;
+
+    static SceneManagerHelper sSceneMgr;
+    static Scene* sCurrScene = &BootScene::sBootScene;
 
     u16 fn_8000B328() {
         return sCurrScene->_10;
     }
 
     void fn_8000B334(s32 param_1) {
-        lbl_804D8088 = SCENE_TITLE;
+        lbl_804D8088 = 1;
         OSSendMessage(&sSceneMgr.mOSMsgQueue, (OSMessage)param_1, OS_MESSAGE_NOBLOCK);
     }
 
