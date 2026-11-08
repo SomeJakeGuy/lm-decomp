@@ -5,17 +5,22 @@
 #include "System/Scenes/SceneFunctionCalls.hpp"
 #include "Unsorted/LMDisplayUtil.hpp"
 
-
-Scene SelectScene::sSelectScene = {
-    "SELECT", 
-    1, 
-    init, 
-    update, 
-    draw, 
-    destroy
-};
-
 namespace SelectScene {
+    static void fn_8000B978();
+    static void init();
+    static SceneID update();
+    static void draw();
+    static void destroy();
+
+    Scene sSelectScene = {
+        "SELECT", 
+        1, 
+        init, 
+        update, 
+        draw, 
+        destroy
+    };
+
     void fn_8000B8D8(SelectSceneHelper* param_1) {
         param_1->_0 = 0;
         OSInitMessageQueue(&param_1->mOSMsgQueue, &param_1->mMsgs, 1);

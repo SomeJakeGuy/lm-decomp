@@ -4,11 +4,6 @@
 #include "System/Scenes/Scene.hpp"
 
 namespace MovieScene {
-    void init();
-    SceneID update();
-    void draw();
-    void destroy();
-
     extern Scene sMovieScene;
 }
 

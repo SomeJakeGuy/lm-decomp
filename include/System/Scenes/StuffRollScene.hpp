@@ -4,11 +4,6 @@
 #include "System/Scenes/Scene.hpp"
 
 namespace StuffRollScene {
-    void init();
-    SceneID update();
-    void draw();
-    void destroy();
-
     extern Scene sStuffRollScene;
 }
 

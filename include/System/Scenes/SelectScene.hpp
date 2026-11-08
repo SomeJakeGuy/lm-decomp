@@ -14,14 +14,8 @@ struct SelectSceneHelper {
 }; // size 0x28
 
 namespace SelectScene {
-    void fn_8000B8D8(void*);
+    void fn_8000B8D8(SelectSceneHelper*);
     void fn_8000B910();
-    void fn_8000B978();
-
-    void init();
-    SceneID update();
-    void draw();
-    void destroy();
 
     extern Scene sSelectScene;
 }
