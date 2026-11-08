@@ -792,6 +792,7 @@ config.libs = [
         Object(NonMatching, "Koga/EnemyGenManager.cpp"),
 
         # System
+        Object(NonMatching, "System/Memory.cpp"),
         Object(NonMatching, "System/DiscFile.cpp"),
         Object(Matching, "System/DiscThread.cpp"),
         Object(Matching, "System/BackgroundTask.cpp"),
