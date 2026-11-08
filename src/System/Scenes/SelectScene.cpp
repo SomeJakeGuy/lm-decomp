@@ -1,8 +1,10 @@
-#include "System/Scenes/SelectScene.hpp"
-#include "Koga/MissionMode.hpp"
-#include "Unsorted/InGameFlagsUtil.hpp"
 #include "System/Scenes/Scene.hpp"
+#include "System/Scenes/SelectScene.hpp"
+#include "System/Scenes/MainGameScene.hpp"
+#include "System/Scenes/OpeningScene.hpp"
 #include "System/Scenes/SceneFunctionCalls.hpp"
+
+#include "Unsorted/InGameFlagsUtil.hpp"
 #include "Unsorted/LMDisplayUtil.hpp"
 
 namespace SelectScene {
@@ -63,7 +65,7 @@ namespace SelectScene {
         fn_800739A4(0);
         fn_800735FC();
         fn_800379F4(&lbl_803CDEB0);
-        lbl_804CFFAC = 2;
+        OpeningScene::sNextSceneID = SCENE_MAIN_GAME;
         fn_800626B0();
         sCurMapNo = 2;
         fn_8004CED4();

@@ -60,7 +60,6 @@ extern void fn_8004D014();
 
 // Definitely not SelectScene's data
 extern void* lbl_803CDEB0;
-extern s32 lbl_804CFFAC;
 extern s32 lbl_804D8060;
 
 // EndingScene calls these, unsure of types/args
@@ -68,5 +67,21 @@ extern void fn_80057904(u32, u32, u32);
 extern void fn_80057A8C();
 extern void fn_80188760(u32, void*); // Something for JAudio play?
 extern void fn_8000D064(void* param_1, DiscFileInfo* param_2);
+
+// OpeningScene calls theses, unsure of types/args
+extern void fn_8005DAC4();
+extern void fn_80188FB0(u32);
+extern bool fn_80189054();
+extern void fn_80115264();
+extern void fn_80114A38(s32);
+extern void fn_80114C00();
+extern void fn_801891B4(u32);
+extern s32 fn_80114C70();
+extern void fn_80114E18();
+extern void fn_80188D0C(u32);
+extern void fn_801151DC();
+
+// Definitely not OpeningScene's data
+extern s32 lbl_804D8D18;
 
 #endif

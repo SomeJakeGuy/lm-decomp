@@ -5,6 +5,7 @@
 
 namespace OpeningScene {
     extern Scene sOpeningScene;
+    extern SceneID sNextSceneID;
 }
 
 #endif
