@@ -27,7 +27,7 @@ struct unkStruct {
 
 unkStruct lbl_803D2D40;
 
-BOOL getFlagValue(u8 flagNum) {
+u8 getFlagValue(u8 flagNum) {
     return (lbl_803D2D40.flags[flagNum / 8] >> (flagNum % 8)) & 1;
 }
 

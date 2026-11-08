@@ -3,7 +3,7 @@
 
 #include <types.h>
 
-BOOL getFlagValue(u8);
+u8 getFlagValue(u8);
 void setFlagOn(u8);
 void setFlagOff(u8);
 u32 fn_8006605C();
