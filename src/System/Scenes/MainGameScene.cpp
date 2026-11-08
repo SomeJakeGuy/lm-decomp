@@ -20,4 +20,6 @@ namespace MainGameScene {
         draw,
         destroy
     };
+
+    s32 sCurMapNo;
 }
