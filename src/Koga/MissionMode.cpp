@@ -14,6 +14,7 @@
 #include "Koga/ToolData.hpp"
 
 #include "System/DiscFile.hpp"
+#include "System/Scenes/MainGameScene.hpp"
 
 dummy_float_data()
 

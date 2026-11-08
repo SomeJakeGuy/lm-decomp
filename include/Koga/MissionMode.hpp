@@ -59,6 +59,4 @@ namespace Koga {
     };
 }
 
-extern int sCurMapNo;
-
 #endif
