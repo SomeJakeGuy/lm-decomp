@@ -7,4 +7,6 @@ namespace MainGameScene {
     extern Scene sMainGameScene;
 }
 
+extern s32 sCurMapNo;
+
 #endif
