@@ -3,18 +3,19 @@
 #include <JSystem/JKernel/JKRMemArchive.hpp>
 #include <JSystem/J2D/J2DPicture.hpp>
 #include <JSystem/J2D/J2DOrthoGraph.hpp>
+#include <dolphin/gx.h>
 
 #include "System/Scenes/BootScene.hpp"
 #include "System/Scenes/SceneFunctionCalls.hpp"
 #include "System/Scenes/SceneManager.hpp"
 
+#include "System/Memory.hpp"
 #include "System/BackgroundTask.hpp"
 #include "System/DiscFile.hpp"
 #include "System/Yay0.hpp"
 
 #include "Unsorted/LMDisplayUtil.hpp"
 #include "Unsorted/staticDataAramData.h"
-#include "Unsorted/80005EB8.hpp"
 #include "Unsorted/80008418.hpp"
 #include "macros.h"
 
@@ -75,16 +76,16 @@ namespace BootScene {
     void dvdFileOpenCallback(void* param_1, DiscFileInfo* param_2) {
         u8* block = reinterpret_cast<u8*>(JKRAllocFromHeap(nullptr, getYay0ArcSize(param_2->mFileBuffer), 32));
         decompressYay0(param_2->mFileBuffer, block);
-        fn_80006138(param_2->mFileBuffer);
+        freeMem(param_2->mFileBuffer);
         fn_80066FAC(new JKRMemArchive(block, 0, MBF_0));
     }
 
     void loadStaticDataArchives() {
-        fn_800061B8(16);
-        fn_80006204();
+        setCurHeapGroupId(16);
+        becomeGameHeapCurrent();
         void* game_usaData = openDiscFileAsync("/Game/game_usa.szp", BootScene::dvdFileOpenCallback, nullptr, nullptr);
-        lbl_804D8014->becomeCurrentHeap();
-        fn_800061B8(3);
+        sSystemHeap->becomeCurrentHeap();
+        setCurHeapGroupId(3);
         u8* data = (u8*)staticDataArchive->getResource("/res_titl.szp");
 
         sResTitleAramData.setAddrAndSize(JKRMainRamToAram(data, (JKRAramBlock*)nullptr,
@@ -117,8 +118,8 @@ namespace BootScene {
     }
 
     void loadStaticData() {
-        lbl_804D8014->changeGroupID(4);
-        fn_80188594(JKRAllocFromHeap(lbl_804D8014, 0xC0000, 0x20), 0xC0000, 0xF00000);
+        sSystemHeap->changeGroupID(4);
+        fn_80188594(JKRAllocFromHeap(sSystemHeap, 0xC0000, 0x20), 0xC0000, 0xF00000);
         fn_8004D4C8();
         fn_80188714(staticDataArchive->getResource("/ninlogo.pcm"));
         BootScene::loadStaticDataArchives();
@@ -130,12 +131,12 @@ namespace BootScene {
     void init() {
         sBootSceneState = BOOT_IDLE;
         sBootReady = 0;
-        lbl_804D8014->becomeCurrentHeap();
+        sSystemHeap->becomeCurrentHeap();
         fn_80009490();
         fn_8005FD80();
-        fn_800061B8(8);
+        setCurHeapGroupId(8);
         fn_8003EB44();
-        fn_800061B8(26);
+        setCurHeapGroupId(26);
         lbl_804D8118 = 0;
         lbl_804D811C = 0.0f;
         sLogoMatColor.a = 32;
@@ -144,9 +145,9 @@ namespace BootScene {
 
         u8* nintendoSzpBlock = reinterpret_cast<u8*>(staticDataArchive->getResource("/nintendo.szp"));
         u32 size = getYay0ArcSize(nintendoSzpBlock);
-        fn_80006204();
-        JUTTexture* data = (JUTTexture*)fn_80006080(size, 0x20);
-        get_lbl_804D8014()->becomeCurrentHeap();
+        becomeGameHeapCurrent();
+        JUTTexture* data = reinterpret_cast<JUTTexture*>(allocMem(size, 0x20));
+        getSystemHeap()->becomeCurrentHeap();
         decompressYay0(nintendoSzpBlock, (u8*)data);
         nintendoLogoPicture = new J2DPicture(data);
     }
@@ -154,7 +155,7 @@ namespace BootScene {
     void destroy() {
         delete nintendoLogoPicture;
         staticDataArchive->unmount();
-        fn_80006204();
+        becomeGameHeapCurrent();
     }
 
     SceneID update() {

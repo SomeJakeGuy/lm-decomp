@@ -7,10 +7,11 @@
 #include <JSystem/JUtility/JUTGamePad.hpp>
 
 #include "System/DiscFile.hpp"
+#include "System/BackgroundTask.hpp"
+#include "System/Memory.hpp"
+
 #include "Unsorted/MathUtils.hpp"
 #include "Unsorted/LMDisplayUtil.hpp"
-#include "System/BackgroundTask.hpp"
-#include "Unsorted/80005EB8.hpp"
 #include "Unsorted/800080DC.hpp"
 
 // Other Scene related stuff
@@ -191,7 +192,7 @@ namespace SceneManager {
                     if (lbl_803A3810) {
                         fn_800083A4(2);
                         sSceneMgr.mState = SM_STATE_2;
-                        fn_800061B8(0x16);
+                        setCurHeapGroupId(0x16);
                     }
                     break;
             }
@@ -239,16 +240,16 @@ namespace SceneManager {
             lbl_804D8098 = 0;
 
             randomReset();
-            fn_800061B8(0xC);
+            setCurHeapGroupId(0xC);
             fn_8000AD48();
-            fn_800061B8(0x1A);
+            setCurHeapGroupId(0x1A);
             startBackgroundTask(sCurrScene->mInitFn);
             fn_800083B4(0x1E);
             fn_8000B610();
             sCurrScene->mDestroyFn();
             fn_8000ADA0();
             sCurrScene = sSceneTable[sCurrSceneId];
-            fn_8000615C(0x1A);
+            freeHeapGroups(0x1A);
         } while (true);
     }
 }

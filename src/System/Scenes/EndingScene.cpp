@@ -3,8 +3,9 @@
 #include "System/Scenes/SceneFunctionCalls.hpp"
 
 #include "System/DiscFile.hpp"
+#include "System/Memory.hpp"
+
 #include "Unsorted/BackgroundMusic.hpp"
-#include "Unsorted/80005EB8.hpp"
 #include "macros.h"
 
 dummy_float_data()
@@ -81,7 +82,7 @@ struct EndingImage {
     }
 
     inline void destroy() {
-        fn_80006138(_0);
+        freeMem(_0);
     }
 }; // size 0x1c
 
@@ -170,9 +171,9 @@ namespace EndingScene {
     }
 
     void init() {
-        fn_800061B8(2);
+        setCurHeapGroupId(2);
         fn_80057904(0x78, 0x1A4, 0xB4);
-        fn_800061B8(6);
+        setCurHeapGroupId(6);
         endingSceneFrameCount = 0; 
 
         sEndMsgImg.init();
@@ -183,7 +184,7 @@ namespace EndingScene {
         sTheEndImg.init();
         sEndFrameImg.init();
 
-        fn_800061B8(3);
+        setCurHeapGroupId(3);
         sEndMsgImg._0 = openDiscFile("Ending/ENGLISH/end_msE.bti", nullptr); // End Dialogue img, "And so the matter of the ghosts..."
         sEndMsgImg.set08To14(0, 0x2D0, 0xB4, 0xB4);
 
@@ -191,7 +192,7 @@ namespace EndingScene {
         sMansionFrontImg.set08To14(0x168, 0x2D0, 0xB4, 0xB4);
 
         openDiscFileAsync(sMansionBackgrounds[sPlayerRank], fn_8000D064, nullptr, &sEndMansionSizeImg._0); // Different House/Tent Sizes 
-        fn_800061B8(5);
+        setCurHeapGroupId(5);
 
         sEndMansionSizeImg.set08To14(0x2D0, 0x528, 0xB4, 0xB4);
         sEndRankMsgImg.set08To14(0x348, 0x4B0, 0x78, 0x78);
@@ -199,7 +200,7 @@ namespace EndingScene {
         sTheEndImg.set08To14(0x5DC, 0x6CC, 0x78, 0x78);
         sEndFrameImg.set08To14(0x528, 0x9D8, 0xB4, 0xB4);
 
-        fn_800061B8(2);
+        setCurHeapGroupId(2);
 
         switch (sPlayerRank) {
             case RANK_H:
