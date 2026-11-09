@@ -111,10 +111,7 @@ namespace BootScene {
         sResListAramData.setAddrAndSize(JKRMainRamToAram(data, (JKRAramBlock*)nullptr,
             staticDataArchive->getResSize(data), EXPAND_SWITCH_DEFAULT, 0, nullptr, -1));
 
-        u8 bVar1 = true;
-        do {
-            bVar1 = checkDiscFileCurUnk0();
-        } while(bVar1 != 0);
+        while (isDiscLoadPending()) {}
     }
 
     void loadStaticData() {

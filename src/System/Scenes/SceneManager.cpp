@@ -140,8 +140,7 @@ namespace SceneManager {
         }
 
         OSMessage msg;
-        u8 temp3 = checkDiscFileCurUnk0();
-        if (temp3 != 1 && sSceneMgr.mState == SM_STATE_2 && 
+        if (isDiscLoadPending() != true && sSceneMgr.mState == SM_STATE_2 && 
                 (fn_8018A8B4() != 2 || (fn_8018A860() && !DVDGetDriveStatus())) && 
                 OSReceiveMessage(&sSceneMgr.mOSMsgQueue, &msg, OS_MESSAGE_NOBLOCK)) {
             if (lbl_804D7FF0 == 3) {
@@ -159,7 +158,7 @@ namespace SceneManager {
                 fn_8018A8BC(0);
             }
 
-            sCurrSceneId = SCENE_BOOT; // TODO is this (SceneID)msg?
+            sCurrSceneId = static_cast<SceneID>(reinterpret_cast<u32>(msg));
             fn_80008394();
             lbl_804D80A8 = 1;
         }

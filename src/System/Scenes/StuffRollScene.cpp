@@ -1,4 +1,6 @@
 #include "System/Scenes/StuffRollScene.hpp"
+#include "System/Scenes/SceneFunctionCalls.hpp"
+#include "System/DiscFile.hpp"
 
 namespace StuffRollScene {
     static void init();
@@ -14,4 +16,24 @@ namespace StuffRollScene {
         draw, 
         destroy
     };
+
+    void init() {
+        fn_8000F728();
+    }
+
+    SceneID update() {
+        if (fn_8000F874() != 0) {
+            return SCENE_ENDING;
+        }
+
+        return SCENE_STUFF_ROLL;
+    }
+
+    void draw() {
+        fn_8000FB58();
+    }
+
+    void destroy() {
+        while (isDiscLoadPending()) {};
+    }
 }

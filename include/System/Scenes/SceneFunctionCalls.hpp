@@ -84,4 +84,9 @@ extern void fn_801151DC();
 // Definitely not OpeningScene's data
 extern s32 lbl_804D8D18;
 
+// StuffRollScene calls these, unsure of types/args
+extern void fn_8000F728();
+extern s32 fn_8000F874();
+extern void fn_8000FB58();
+
 #endif
