@@ -6,6 +6,7 @@
 #include "System/UnknownSystemCalls.hpp"
 #include "System/Memory.hpp"
 #include "Unsorted/GamePad.hpp"
+#include "dolphin/types.h"
 
 // Possibly Fabricated.
 struct DiscUnk {
@@ -344,8 +345,8 @@ JKRMemArchive* getDiscFileArchiveBuffer(DiscFileInfo* pInfo) {
     return pInfo->mArchive;
 }
 
-s32 checkDiscFileCurUnk0() {
-    return sDiscFileQueue.mNumPendingFiles != 0;
+bool isDiscLoadPending() {
+    return sDiscFileQueue.mNumPendingFiles;
 }
 
 s32 getDiscFileAllocDirection() {
