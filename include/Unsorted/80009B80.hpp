@@ -7,4 +7,6 @@ extern GXColor sReset;
 extern GXColor sWhite;
 extern GXColor sBlack;
 
+void fn_80009B80();
+
 #endif

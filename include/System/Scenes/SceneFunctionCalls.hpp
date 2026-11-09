@@ -19,7 +19,6 @@ extern bool fn_80188740();
 extern void fn_80009490();
 extern void fn_8005FD80();
 extern void fn_8003EB44();
-extern void fn_80009B80();
 extern void fn_8000A40C(f32, f32, f32, f32, f32, f32, Mtx, s32, s32, u32);
 
 // SceneManager calls these, unsure of types/args
