@@ -17,6 +17,7 @@
 #include "Unsorted/LMDisplayUtil.hpp"
 #include "Unsorted/staticDataAramData.h"
 #include "Unsorted/80008418.hpp"
+#include "Unsorted/80009B80.hpp"
 #include "macros.h"
 
 enum BootSceneState {
@@ -202,7 +203,7 @@ namespace BootScene {
         J2DOrthoGraph graph(0, 0, 640, 480);
         graph.setPort();
         GXColor color = (GXColor){ 220, 0, 0, 255};
-        nintendoLogoPicture->mBlack = lbl_804CFF88;
+        nintendoLogoPicture->mBlack = sBlack;
         nintendoLogoPicture->mWhite = color;
         nintendoLogoPicture->draw(0, 0, 640, 480, false, false, false);
         if (lbl_804D8098 >= 2) {

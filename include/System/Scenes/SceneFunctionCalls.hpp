@@ -42,9 +42,6 @@ extern void fn_8018865C();
 extern void fn_80188710();
 extern void fn_80005E04();
 
-// BootScene and EndingScene read this, owned by Unsorted/80009B80 .sdata?
-extern GXColor lbl_804CFF88;
-
 // Definitely not from SceneManager's data
 extern s32 lbl_804D7FF0;
 
@@ -64,9 +61,11 @@ extern s32 lbl_804D8060;
 
 // EndingScene calls these, unsure of types/args
 extern void fn_80057904(u32, u32, u32);
+extern void fn_80057A68();
 extern void fn_80057A8C();
+extern void fn_80057ACC(GXColor);
+extern void fn_80057AD8(GXTexObj*, s16, s16, s16, s16, u8);
 extern void fn_80188760(u32, void*); // Something for JAudio play?
-extern void fn_8000D064(void* param_1, DiscFileInfo* param_2);
 
 // OpeningScene calls theses, unsure of types/args
 extern void fn_8005DAC4();

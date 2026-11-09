@@ -124,11 +124,11 @@ System/Scenes/OpeningScene.cpp:
 	.sdata      start:0x804CFFA8 end:0x804CFFB0
 
 System/Scenes/StuffRollScene.cpp:
-	.text       start:0x8000CFC8 end:0x8000D0AC
+	.text       start:0x8000CFC8 end:0x8000D064
 	.data       start:0x8021DC00 end:0x8021DC28
 
 System/Scenes/EndingScene.cpp:
-	.text       start:0x8000D0AC end:0x8000E46C
+	.text       start:0x8000D064 end:0x8000E46C
 	.rodata     start:0x8020BE00 end:0x8020BE20
 	.data       start:0x8021DC28 end:0x8021DFC0
 	.bss        start:0x803A3B40 end:0x803A3C08
