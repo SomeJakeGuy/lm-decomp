@@ -66,7 +66,7 @@ extern void fn_80057ACC(GXColor);
 extern void fn_80057AD8(GXTexObj*, s16, s16, s16, s16, u8);
 extern void fn_80188760(u32, void*); // Something for JAudio play?
 
-// OpeningScene calls theses, unsure of types/args
+// OpeningScene calls these, unsure of types/args
 extern void fn_8005DAC4();
 extern void fn_80188FB0(u32);
 extern bool fn_80189054();
@@ -86,5 +86,21 @@ extern s32 lbl_804D8D18;
 extern void fn_8000F728();
 extern s32 fn_8000F874();
 extern void fn_8000FB58();
+
+// MovieScene calls these, unsure of types/args
+extern void fn_8006722C();
+extern void fn_8018C920(const char*, void*, u32); // Something to do with playing the pikmin movie
+extern s32 fn_800673E0();
+extern void fn_80067420();
+extern void fn_8006775C();
+
+// TitleScene calls these, unsure of types/args
+extern void fn_8003ADE0(s32);
+extern void fn_8018A2A0(s32);
+extern s32 fn_8003AE54();
+extern void fn_8000EC98();
+extern void fn_8003AE7C();
+extern void fn_8003AEA0();
+extern void fn_80005C00();
 
 #endif
