@@ -33,5 +33,6 @@ void LMUpdateProgressiveMode();
 
 extern Mtx sDefaultMtx;
 extern void* lbl_803A3810; // Probably some struct
+extern s32 lbl_804D8058; // Unsure of typing
 
 #endif
