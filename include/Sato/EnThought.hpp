@@ -22,12 +22,12 @@ class EnemyStrategy;
 class MoveObjAlphaControl : public Koga::ValueControl<int> {
 public:
     MoveObjAlphaControl();
-    virtual void vt_08();
+    virtual void update();
 
     /* 0x04 */ s32 _04;
     /* 0x08 */ s32 _08;
     /* 0x0C - 0x14 */ JGeometry::TVec3<f32> _0C; // mPosition
-    /* 0x18 */ void* _18; /* seems to be an object */
+    /* 0x18 */ MoveObj* mMoveObj;
 };
 
 

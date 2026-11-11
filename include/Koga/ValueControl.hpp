@@ -7,7 +7,7 @@ namespace Koga {
     template<typename T>
     class ValueControl {
         public:
-            /* 0x08 */ virtual void  vt_08() = 0;
+            /* 0x08 */ virtual void  update() = 0;
     };
 }
 
