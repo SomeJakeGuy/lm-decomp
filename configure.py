@@ -804,6 +804,8 @@ config.libs = [
         Object(NonMatching, "System/Scenes/TitleScene.cpp"),
         Object(NonMatching, "System/Scenes/SelectScene.cpp"),
         Object(NonMatching, "System/Scenes/MainGameScene.cpp"),
+        Object(NonMatching, "System/Scenes/MainGameSceneUtil1.cpp"),
+        Object(NonMatching, "System/Scenes/MainGameSceneUtil2.cpp"),
         Object(NonMatching, "System/Scenes/OpeningScene.cpp"),
         Object(NonMatching, "System/Scenes/StuffRollScene.cpp"),
         Object(NonMatching, "System/Scenes/EndingScene.cpp"),

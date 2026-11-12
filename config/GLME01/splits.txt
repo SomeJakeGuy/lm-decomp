@@ -106,14 +106,14 @@ System/Scenes/MainGameScene.cpp:
 	.sdata      start:0x804CFFA0 end:0x804CFFA8
 	.sbss       start:0x804D80C4 end:0x804D80D0
 
-Unsorted/8000C36C.cpp:
+System/Scenes/MainGameSceneUtil1.cpp:
 	.text       start:0x8000C36C end:0x8000C90C
 	.ctors      start:0x8020BAD4 end:0x8020BAD8
 	.bss        start:0x803A3B10 end:0x803A3B40
 	.sbss       start:0x804D80D0 end:0x804D80E0
 	.sdata2     start:0x804D99C8 end:0x804D99D8
 
-Unsorted/8000C90C.cpp:
+System/Scenes/MainGameSceneUtil2.cpp:
 	.text       start:0x8000C90C end:0x8000CE58
 	.sbss       start:0x804D80E0 end:0x804D8100
 	.sdata2     start:0x804D99D8 end:0x804D99E8
