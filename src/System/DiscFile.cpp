@@ -3,10 +3,10 @@
 #include "System/DiscFile.hpp"
 #include "System/Yay0.hpp"
 #include "System/DiscThread.hpp"
+#include "System/Scenes/SceneManager.hpp"
 #include "System/UnknownSystemCalls.hpp"
 #include "System/Memory.hpp"
 #include "Unsorted/GamePad.hpp"
-#include "dolphin/types.h"
 
 // Possibly Fabricated.
 struct DiscUnk {
@@ -51,39 +51,39 @@ void updateDiscDriveStatus(DiscFileQueue* pQueue) {
     switch (driveStatus) {
     case DVD_STATE_FATAL_ERROR:
         sGamePad->stopMotor();
-        lbl_804D80AC = 1;
+        SceneManager::lbl_804D80AC = 1;
         break;
     case DVD_STATE_END:
-        lbl_804D80AC = 0;
+        SceneManager::lbl_804D80AC = 0;
         break;
     case DVD_STATE_BUSY:
         if (DVDCheckDisk() != 0) {
-            lbl_804D80AC = 0;
+            SceneManager::lbl_804D80AC = 0;
         } else {
             driveStatus = DVD_STATE_COVER_CLOSED;
             sGamePad->stopMotor();
-            lbl_804D80AC = 1;
+            SceneManager::lbl_804D80AC = 1;
         }
         break;
     case DVD_STATE_COVER_CLOSED:
         sGamePad->stopMotor();
-        lbl_804D80AC = 1;
+        SceneManager::lbl_804D80AC = 1;
         break;
     case DVD_STATE_NO_DISK:
         sGamePad->stopMotor();
-        lbl_804D80AC = 1;
+        SceneManager::lbl_804D80AC = 1;
         break;
     case DVD_STATE_COVER_OPEN:
         sGamePad->stopMotor();
-        lbl_804D80AC = 1;
+        SceneManager::lbl_804D80AC = 1;
         break;
     case DVD_STATE_WRONG_DISK:
         sGamePad->stopMotor();
-        lbl_804D80AC = 1;
+        SceneManager::lbl_804D80AC = 1;
         break;
     case DVD_STATE_RETRY:
         sGamePad->stopMotor();
-        lbl_804D80AC = 1;
+        SceneManager::lbl_804D80AC = 1;
         break;
     }
     fn_800473F8(driveStatus);
