@@ -39,7 +39,7 @@ namespace TitleScene {
 
     void init() {
         lbl_804d8138 = 60;
-        lbl_804D80AC = 0;
+        SceneManager::lbl_804D80AC = 0;
 
         s32 gameHeapFree = getGameHeapFreeSize();
         void* newMem = allocMem(0, 0x4);

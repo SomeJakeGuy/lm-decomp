@@ -57,7 +57,7 @@ namespace OpeningScene {
                 break;
             case 4:
                 if (fn_80114C70()) {
-                    sCurMapNo = 2;
+                    MainGameScene::sCurMapNo = 2;
                     return sNextSceneID;
                 }
                 break;

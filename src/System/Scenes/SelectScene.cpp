@@ -67,7 +67,7 @@ namespace SelectScene {
         fn_800379F4(&lbl_803CDEB0);
         OpeningScene::sNextSceneID = SCENE_MAIN_GAME;
         fn_800626B0();
-        sCurMapNo = 2;
+        MainGameScene::sCurMapNo = 2;
         fn_8004CED4();
     }
 

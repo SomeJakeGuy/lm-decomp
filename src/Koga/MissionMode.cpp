@@ -72,7 +72,7 @@ namespace Koga {
     void MissionMode::init() {
         char mapName[128];
 
-        sprintf(mapName, "%s%d.szp", "/Map/map", sCurMapNo);
+        sprintf(mapName, "%s%d.szp", "/Map/map", MainGameScene::sCurMapNo);
         mMapArchive = reinterpret_cast<JKRArchive*>(openCompressedArchive(mapName, nullptr));
 
         mEnMgr->loadCharacterInfo(mMapArchive);

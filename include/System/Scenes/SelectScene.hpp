@@ -18,8 +18,7 @@ namespace SelectScene {
     void fn_8000B910();
 
     extern Scene sSelectScene;
+    extern s32 lbl_804D80C0;
 }
-
-extern s32 lbl_804D80C0;
 
 #endif
