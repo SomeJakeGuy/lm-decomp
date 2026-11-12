@@ -810,6 +810,7 @@ config.libs = [
         Object(NonMatching, "Unsorted/MathUtils.cpp", extra_cflags=["-fp_contract off"]),
         Object(NonMatching, "Unsorted/s3dmodel.cpp"),
         Object(NonMatching, "Unsorted/ActorData.cpp"),
+        Object(NonMatching, "Unsorted/SaveData.cpp"),
     ]),
 ]
 

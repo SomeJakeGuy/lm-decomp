@@ -468,6 +468,13 @@ Sato/SaEnGenUtility.cpp:
 	.data       start:0x8037A1D0 end:0x8037A2B0
 	.sdata      start:0x804D5FE8 end:0x804D6030
 
+Unsorted/SaveData.cpp:
+	.text       start:0x80185B94 end:0x80186B40
+	.ctors      start:0x8020BD98 end:0x8020BD9C
+	.data       start:0x80388784 end:0x80388810
+	.bss        start:0x803E7300 end:0x803EF360
+	.sdata      start:0x804D77E8 end:0x804D77F0
+
 JSystem/JAudio/JAInterface/JAIBasic.cpp:
 	.text       start:0x8018E680 end:0x80190E68
 	.ctors      start:0x8020BDA0 end:0x8020BDA4
