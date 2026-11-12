@@ -37,7 +37,7 @@ struct SceneManagerHelper {
     SceneManagerHelper();
     
     /* 0x00 */ SceneManagerState mState;
-    /* 0x00 */ SceneID _4;
+    /* 0x04 */ SceneID _4;
     /* 0x08 */ OSMessageQueue mOSMsgQueue;
     /* 0x28 */ OSMessage mMsgs;
 }; // size 0x2C
