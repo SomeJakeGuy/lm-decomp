@@ -797,6 +797,7 @@ config.libs = [
         Object(Matching, "System/DiscThread.cpp"),
         Object(Matching, "System/BackgroundTask.cpp"),
         Object(NonMatching, "System/Yay0.cpp"),
+        Object(Matching, "System/DataOnly.cpp"),
 
         # System/Scenes
         Object(NonMatching, "System/Scenes/SceneManager.cpp"),
