@@ -83,7 +83,7 @@ namespace TitleScene {
                 }
                 break;
             case 2:
-                if (sGamePad->getTrigger() & 0x1100) {
+                if (sGamePad->testTrigger(0x1100)) {
                     lbl_804d813C = 1;
                 }
 
