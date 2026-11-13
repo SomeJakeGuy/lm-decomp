@@ -135,5 +135,16 @@ extern void fn_800391D4();
 extern s32 fn_80039304();
 extern void fn_80039328();
 extern void fn_800393CC();
+extern void fn_800531B8();
+extern void fn_80053224();
+extern void fn_8005332C();
+extern void fn_80055114(s32);
+extern s32 fn_80055270();
+extern void fn_80055294();
+extern void fn_80055338();
+extern void fn_80187214();
+extern void fn_80187218();
+extern void fn_800518A0();
+extern s32 fn_800517D8();
 
 #endif
