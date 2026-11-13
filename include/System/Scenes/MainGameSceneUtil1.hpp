@@ -20,7 +20,6 @@ namespace MainGameScene {
     void fn_8000C49C();
     void fn_8000C598();
     void fn_8000C6A8();
-    void fn_8000C75C(); // some sinit it looks like
 }
 
 #endif

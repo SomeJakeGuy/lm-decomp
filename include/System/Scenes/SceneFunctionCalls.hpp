@@ -130,7 +130,6 @@ extern bool fn_80029C08();
 extern void fn_8018A678(s32);
 extern void fn_8002A1F4();
 extern void fn_801219C4();
-extern void fn_80188760(s32, s32);
 extern void fn_8005DAFC();
 extern void fn_8015FD80(void*, void*);
 

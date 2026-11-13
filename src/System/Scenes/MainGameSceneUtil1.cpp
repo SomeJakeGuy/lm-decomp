@@ -145,7 +145,7 @@ namespace MainGameScene {
             fn_8018A678(0);
             fn_8002A1F4();
             fn_801219C4();
-            fn_80188760(lbl_804D8008 & 0xFF, 0);
+            fn_80188760(lbl_804D8008 & 0xFF, nullptr);
             fn_8005DAFC();
             fn_80007E60(2);
 
