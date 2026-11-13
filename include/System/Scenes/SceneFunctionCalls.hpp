@@ -55,7 +55,7 @@ extern void fn_8004CFBC();
 extern void fn_8004D014();
 
 // Definitely not SelectScene's data
-extern void* lbl_803CDEB0;
+extern u8 lbl_803CDEB0[0xF]; //definitely some struct of X object, size is unknown
 extern s32 lbl_804D8060;
 
 // EndingScene calls these, unsure of types/args
@@ -102,5 +102,36 @@ extern void fn_8000EC98();
 extern void fn_8003AE7C();
 extern void fn_8003AEA0();
 extern void fn_80005C00();
+
+// MainGameUtils call these, unsure of types/args
+extern void* fn_800AD39C(s32); //Probably a player object, unsure
+extern s32 lbl_804D8438;
+extern void fn_8018A678(s32);
+extern void fn_8015FD68(void*);
+extern u8 lbl_803D990C[0xF]; //definitely some struct of X object, size is unknown
+extern void fn_8007220C();
+extern s32 lbl_804D843C;
+extern void fn_80029BA4(void*, s32);
+extern void fn_80121944();
+extern void fn_80046864();
+extern void fn_80160138(void*);
+extern s32 fn_801219FC();
+extern void fn_80029C38();
+extern void fn_80121AFC();
+extern void fn_80029FA0();
+extern void fn_8002A17C();
+extern void fn_801604FC(void*, Mtx*);
+extern void fn_80045D18();
+extern void fn_8005DF84();
+extern void fn_80046868();
+extern void fn_80072230(s32);
+extern void fn_8003E7B0(s32);
+extern bool fn_80029C08();
+extern void fn_8018A678(s32);
+extern void fn_8002A1F4();
+extern void fn_801219C4();
+extern void fn_80188760(s32, s32);
+extern void fn_8005DAFC();
+extern void fn_8015FD80(void*, void*);
 
 #endif

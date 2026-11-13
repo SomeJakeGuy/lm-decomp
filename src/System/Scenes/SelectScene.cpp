@@ -1,4 +1,3 @@
-#include "System/Scenes/Scene.hpp"
 #include "System/Scenes/SelectScene.hpp"
 #include "System/Scenes/MainGameScene.hpp"
 #include "System/Scenes/OpeningScene.hpp"
@@ -23,9 +22,9 @@ namespace SelectScene {
         destroy
     };
 
-    void fn_8000B8D8(SelectSceneHelper* param_1) {
+    void fn_8000B8D8(MainGameSceneHelper* param_1) {
         param_1->_0 = 0;
-        OSInitMessageQueue(&param_1->mOSMsgQueue, &param_1->mMsgs, 1);
+        OSInitMessageQueue(&param_1->mMsgQueue, &param_1->mMsgSend, 1);
     }
 
     // Called when new game+ is activated?

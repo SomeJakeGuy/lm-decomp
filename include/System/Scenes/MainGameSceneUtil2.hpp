@@ -9,7 +9,7 @@ namespace MainGameScene {
     void fn_8000C834();
     void fn_8000C860();
     void fn_8000C894();
-    void fn_8000C8D8();
+    bool fn_8000C8D8();
 }
 
 #endif
