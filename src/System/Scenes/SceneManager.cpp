@@ -34,7 +34,7 @@ enum SceneManagerState {
 };
 
 struct SceneManagerHelper {
-    SceneManagerHelper();
+    inline SceneManagerHelper();
     
     /* 0x00 */ SceneManagerState mState;
     /* 0x04 */ SceneID _4;
