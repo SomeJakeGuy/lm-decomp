@@ -43,7 +43,7 @@ namespace MainGameScene {
 
     // Requires that fn_800AD39C and its resulting struct/class be decompiled more.
     void fn_8000C3C0() {
-        FORCE_DONT_INLINE;
+        FORCE_DONT_INLINE; // Needed to avoid inlining in fn_8000C49C
         s32 recvMsg = OSReceiveMessage(&lbl_803A3B10.mMsgQueue, lbl_803A3B10.mMsgReceive, OS_MESSAGE_NOBLOCK);
         if (recvMsg != 0) {
             if (fn_8000C8D8()) {
