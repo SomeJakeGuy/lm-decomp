@@ -127,10 +127,13 @@ extern void fn_80046868();
 extern void fn_80072230(s32);
 extern void fn_8003E7B0(s32);
 extern bool fn_80029C08();
-extern void fn_8018A678(s32);
 extern void fn_8002A1F4();
 extern void fn_801219C4();
 extern void fn_8005DAFC();
 extern void fn_8015FD80(void*, void*);
+extern void fn_800391D4();
+extern s32 fn_80039304();
+extern void fn_80039328();
+extern void fn_800393CC();
 
 #endif

@@ -5,7 +5,7 @@
 
 namespace MainGameScene {
     // Unsure of return types/args
-    void fn_8000C784();
+    s32 fn_8000C784(void*, s32);
     void fn_8000C834();
     void fn_8000C860();
     void fn_8000C894();
