@@ -3,6 +3,6 @@
 
 #include "types.h"
 
-extern s32 lbl_804D8008; // Seems to be on its own + padding?
+extern s32 lbl_804D8008; // Read-only, converted to u8 by callers
 
 #endif
