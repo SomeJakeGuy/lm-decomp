@@ -633,6 +633,19 @@ Ajioka/8036F468.cpp:
 	.data       start:0x8036F468 end:0x803741F8
 	.sdata      start:0x804D5190 end:0x804D5750
 
+Sato/SaEnTelesaBase.cpp:
+	.text       start:0x80124BE4 end:0x801252F4
+	.data       start:0x803741F8 end:0x80374290
+	.sdata      start:0x804D5750 end:0x804D5770
+	.sdata2     start:0x804DC1D0 end:0x804DC200
+
+Sato/SaEnDust.cpp:
+	.text       start:0x801252F4 end:0x801259A0
+	.ctors      start:0x8020BCB4 end:0x8020BCB8
+	.data       start:0x80374290 end:0x80374508
+	.sdata      start:0x804D5770 end:0x804D57F0
+	.sdata2     start:0x804DC200 end:0x804DC210
+
 Sato/SaEnGenUtility.cpp:
 	.text       start:0x80142F88 end:0x801443E8
 	.data       start:0x8037A1D0 end:0x8037A2B0
