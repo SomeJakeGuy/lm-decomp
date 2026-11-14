@@ -25252,7 +25252,6 @@ lbl_804D80D0__13MainGameScene = .sbss:0x804D80D0; // type:object size:0x4 data:4
 lbl_804D80D4__13MainGameScene = .sbss:0x804D80D4; // type:object size:0x4 data:4byte
 lbl_804D80D8__13MainGameScene = .sbss:0x804D80D8; // type:object size:0x4 data:4byte
 lbl_804D80E0__13MainGameScene = .sbss:0x804D80E0; // type:object size:0x4 data:4byte
-lbl_804D80E4__13MainGameScene = .sbss:0x804D80E4; // type:object size:0x4 data:4byte
 lbl_804D80E8__13MainGameScene = .sbss:0x804D80E8; // type:object size:0x4 data:4byte
 lbl_804D80EC__13MainGameScene = .sbss:0x804D80EC; // type:object size:0x4 data:4byte
 lbl_804D80F0__13MainGameScene = .sbss:0x804D80F0; // type:object size:0x4 data:4byte
