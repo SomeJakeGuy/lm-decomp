@@ -9,7 +9,7 @@
 #include "Koga/GameModeUtil.hpp"
 #include "Koga/ToolData.hpp"
 #include "Koga/MissionMode.hpp"
-#include "Unsorted/800627D8.hpp"
+#include "Unsorted/800627D0.hpp"
 #include "Unsorted/AssortedEnManager.hpp"
 #include "Koga/800E634C.hpp"
 #include "Unsorted/Character.hpp"

@@ -1,4 +1,4 @@
-#include "Unsorted/800627D8.hpp"
+#include "Unsorted/800627D0.hpp"
 
 void setLuigiAppearPoint(u32 apperPoint) {
     sGlobalLuigiAppearPoint = apperPoint;
