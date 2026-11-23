@@ -4,6 +4,7 @@
 #include "System/Scenes/SceneFunctionCalls.hpp"
 #include "System/DisplayUtil.hpp"
 
+#include "Unsorted/GBHClock.hpp"
 #include "Unsorted/InGameFlagsUtil.hpp"
 
 namespace SelectScene {
@@ -65,7 +66,7 @@ namespace SelectScene {
         fn_800735FC();
         fn_800379F4(&lbl_803CDEB0);
         OpeningScene::sNextSceneID = SCENE_MAIN_GAME;
-        fn_800626B0();
+        resetInGameClock();
         MainGameScene::sCurMapNo = 2;
         fn_8004CED4();
     }

@@ -36,7 +36,6 @@ extern s32 lbl_804D7FF0;
 extern void* fn_800739A4(s32);
 extern void fn_800735FC();
 extern void fn_800379F4(void*);
-extern void fn_800626B0();
 extern void fn_8004CED4();
 extern SceneID fn_8004CF6C();
 extern void fn_8004CFBC();
