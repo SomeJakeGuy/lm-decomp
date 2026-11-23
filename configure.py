@@ -851,7 +851,7 @@ config.libs = [
         Object(NonMatching, "Unsorted/MoveObj.cpp"),
         Object(NonMatching, "Unsorted/Character.cpp"),
         Object(NonMatching, "Unsorted/RailInfoUtil.cpp"),
-        Object(NonMatching, "Unsorted/800626B0.cpp"),
+        Object(NonMatching, "Unsorted/GBHClock.cpp"),
         Object(NonMatching, "Unsorted/800627D0.cpp"),
         Object(NonMatching, "Unsorted/s3dmodel.cpp"),
         Object(NonMatching, "Unsorted/ActorData.cpp"),
