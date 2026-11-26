@@ -15,8 +15,7 @@
 #include "System/Scenes/SceneManager.hpp"
 #include "System/Scenes/SceneFunctionCalls.hpp"
 #include "System/Scenes/SelectScene.hpp"
-
-#include "Unsorted/GamePad.hpp"
+#include "System/80009584.hpp"
 #include "macros.h"
 
 MainGameSceneHelper::MainGameSceneHelper() {
@@ -49,7 +48,7 @@ namespace MainGameScene {
         if (recvMsg != 0) {
             if (fn_8000C8D8()) {
                 // calls fn_800AD39C(0) around here and gets the 0x55 byte
-                if (SceneManager::lbl_804D8098 <= 2) {
+                if (SceneManager::sTotalFrameCount >= 2) {
                     lbl_804D80C4 = 2;
                     lbl_804D8438 = 0;
                     setFrameRateDivisor(FRAME_INTERVAL_60FPS);

@@ -8,7 +8,7 @@
 #include "System/ButtonCombo.hpp"
 #include "System/DisplayUtil.hpp"
 #include "System/Scenes/SceneManager.hpp"
-#include "Unsorted/GamePad.hpp"
+#include "System/80009584.hpp"
 
 #include "macros.h"
 
@@ -47,7 +47,7 @@ void exceptionCallback(u16 error, OSContext* pContext, u32 dsisr, u32 dar) {
             break;
         }
 
-        SceneManager::lbl_804D8090++;
+        SceneManager::sTotalFrameCount++;
     }
 
     BOOL redraw = 1;

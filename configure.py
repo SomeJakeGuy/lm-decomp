@@ -484,6 +484,10 @@ config.libs = [
     JSystem([
 
         Object(NonMatching, "JSystem/JAudio/JAInterface/JAIBasic.cpp"),
+        Object(NonMatching, "JSystem/JAudio/JAInterface/JAIData.cpp"),
+        Object(NonMatching, "JSystem/JAudio/JAInterface/JAISystemInterface.cpp", extra_cflags=["-sym on"]),
+        Object(NonMatching, "JSystem/JAudio/JAInterface/JAIEntrySequence.cpp"),
+        Object(NonMatching, "JSystem/JAudio/JAInterface/JAISound.cpp"),
         Object(NonMatching, "JSystem/JAudio/JAInterface/JAIAnimation.cpp"),
 
         # 2D
@@ -748,6 +752,13 @@ config.libs = [
         Object(Matching, "Sato/EnObjThought.cpp"),
         Object(NonMatching, "Sato/EnReplace.cpp"),
         Object(NonMatching, "Sato/EnZako.cpp"),
+        Object(NonMatching, "Sato/SaEnTelesaBase.cpp"),
+        Object(NonMatching, "Sato/SaEnDust.cpp"),
+        Object(NonMatching, "Sato/SaEnCandle.cpp"),
+        Object(NonMatching, "Sato/SaEnKoopaTelesa.cpp"),
+        Object(NonMatching, "Sato/DustBase.cpp"),
+        Object(NonMatching, "Sato/SaEnDancer2.cpp"),
+        Object(NonMatching, "Sato/DustlevelMgr.cpp"),
         Object(NonMatching, "Sato/SaEnGenUtility.cpp"),
 
         # Ajioka
@@ -821,7 +832,7 @@ config.libs = [
         Object(NonMatching, "System/Yay0.cpp"),
         Object(Matching, "System/DataOnly.cpp"),
         Object(NonMatching, "System/DisplayUtil.cpp"),
-        Object(NonMatching, "System/800080DC.cpp"),
+        Object(NonMatching, "System/ScreenTransitionCtrl.cpp"),
         Object(NonMatching, "System/80008418.cpp"),
         Object(NonMatching, "System/80009584.cpp", extra_cflags=["-fp_contract off"]),
         Object(NonMatching, "System/MathUtils.cpp", extra_cflags=["-fp_contract off"]),
@@ -845,13 +856,16 @@ config.libs = [
         Object(NonMatching, "System/Scenes/StuffRollScene.cpp"),
         Object(NonMatching, "System/Scenes/EndingScene.cpp"),
         Object(NonMatching, "System/Scenes/MovieScene.cpp"),
+        Object(NonMatching, "System/Scenes/ScreenTransition.cpp"),
 
         # Unsorted
+        Object(NonMatching, "System/Scenes/J2DTexture_k.cpp"),
         Object(NonMatching, "Unsorted/InGameFlagsUtil.cpp"),
         Object(NonMatching, "Unsorted/MoveObj.cpp"),
         Object(NonMatching, "Unsorted/Character.cpp"),
         Object(NonMatching, "Unsorted/RailInfoUtil.cpp"),
         Object(NonMatching, "Unsorted/GBHClock.cpp"),
+        Object(NonMatching, "Unsorted/SimpleDraw.cpp"),
         Object(NonMatching, "Unsorted/800627D0.cpp"),
         Object(NonMatching, "Unsorted/s3dmodel.cpp"),
         Object(NonMatching, "Unsorted/ActorData.cpp"),

@@ -1,7 +1,7 @@
 #include <JSystem/JUtility/JUTGamePad.hpp>
 
 #include "System/Scenes/SceneManager.hpp"
-#include "Unsorted/GamePad.hpp"
+#include "System/80009584.hpp"
 #include "System/ButtonCombo.hpp"
 
 #include "macros.h"
@@ -24,11 +24,11 @@ ButtonCombo::ButtonCombo(u32* pSequence) {
 }
 
 s32 ButtonCombo::update() {
-    if (mLastTick == SceneManager::lbl_804D8090) {
+    if (mLastTick == SceneManager::sTotalFrameCount) {
         return mIsActive;
     }
 
-    mLastTick = SceneManager::lbl_804D8090;
+    mLastTick = SceneManager::sTotalFrameCount;
 
     u32 triggerVal = sGamePad->testTrigger(JUTGamePad::ANY_INPUT);
     if (triggerVal == 0) {

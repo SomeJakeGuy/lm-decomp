@@ -57,7 +57,7 @@ System/DisplayUtil.cpp:
 	.sbss       start:0x804D8030 end:0x804D8070
 	.sdata2     start:0x804D9880 end:0x804D98A0
 
-System/800080DC.cpp:
+System/ScreenTransitionCtrl.cpp:
 	.text       start:0x800080DC end:0x80008418
 	.ctors      start:0x8020BAC4 end:0x8020BAC8
 	.bss        start:0x803A3668 end:0x803A3820
@@ -72,12 +72,14 @@ System/80008418.cpp:
 
 System/80009584.cpp:
 	.text       start:0x80009540 end:0x8000962C
+	.sbss       start:0x804D8078 end:0x804D8080
 	.sdata2     start:0x804D9928 end:0x804D9940
 
 System/MathUtils.cpp:
 	.text       start:0x8000962C end:0x80009B80
 	.data       start:0x80218210 end:0x8021DA40
 	.sdata      start:0x804CFF78 end:0x804CFF80
+	.sbss       start:0x804D8080 end:0x804D8088
 	.sdata2     start:0x804D9940 end:0x804D9968
 
 System/ResetGX.cpp:
@@ -163,9 +165,6 @@ System/Scenes/EndingScene.cpp:
 	.sbss       start:0x804D8100 end:0x804D8110
 	.sdata2     start:0x804D99E8 end:0x804D9A08
 
-Unsorted/aramStaticData.cpp:
-	.bss        start:0x803D34C8 end:0x803D3540
-
 System/Scenes/BootScene.cpp:
 	.text       start:0x8000E46C end:0x8000EC98
 	.data       start:0x8021DFC0 end:0x802FF0A8
@@ -182,9 +181,22 @@ System/Scenes/MovieScene.cpp:
 	.text       start:0x8000EF58 end:0x8000F094
 	.data       start:0x802FF0D0 end:0x802FF108
 
+System/Scenes/ScreenTransition.cpp:
+	.text       start:0x80039464 end:0x8003A430
+	.ctors      start:0x8020BAE8 end:0x8020BAEC
+	.data       start:0x80304468 end:0x80304528
+	.bss        start:0x803CE0D0 end:0x803CE278
+	.sdata      start:0x804D0488 end:0x804D04A8
+
+Unsorted/aramStaticData.cpp:
+	.bss        start:0x803D34C8 end:0x803D3540
+
 System/Scenes/TitleScreenPane.cpp:
 	.text       start:0x8003A430 end:0x8003AF2C
 	.ctors      start:0x8020BAEC end:0x8020BAF0
+
+System/Scenes/J2DTexture_k.cpp:
+	.text       start:0x8003AF2C end:0x8003C820
 
 Unsorted/s3dmodel.cpp:
 	.text       start:0x80058368 end:0x80058850
@@ -221,6 +233,11 @@ Unsorted/ActorData.cpp:
 Unsorted/RailInfoUtil.cpp:
 	.text       start:0x80092568 end:0x8009359C
 
+Unsorted/SimpleDraw.cpp:
+	.text       start:0x80093C5C end:0x80094F94
+	.rodata     start:0x8020C420 end:0x8020C430
+	.sdata2     start:0x804DAEF0 end:0x804DAF08
+
 Koga/GameModeUtil.cpp:
 	.text       start:0x800B9D1C end:0x800B9F7C
 
@@ -249,9 +266,10 @@ Koga/MissionMode.cpp:
 	.sdata2     start:0x804DB628 end:0x804DB630
 
 Koga/SimpleModeler.cpp:
-	.text       start:0x800BB54C end:0x800BBA78
+	.text       start:0x800BB464 end:0x800BBA78
 	.data       start:0x80359F98 end:0x80359FD0
 	.sdata      start:0x804D2D10 end:0x804D2D18
+	.sdata2     start:0x804DB638 end:0x804DB640
 
 Koga/MapCol.cpp:
 	.text       start:0x800BBA78 end:0x800BC9FC
@@ -677,6 +695,58 @@ Ajioka/8036F468.cpp:
 	.data       start:0x8036F468 end:0x803741F8
 	.sdata      start:0x804D5190 end:0x804D5750
 
+Sato/SaEnTelesaBase.cpp:
+	.text       start:0x80124BE4 end:0x801252F4
+	.data       start:0x803741F8 end:0x80374290
+	.sdata      start:0x804D5750 end:0x804D5770
+	.sdata2     start:0x804DC1D0 end:0x804DC200
+
+Sato/SaEnDust.cpp:
+	.text       start:0x801252F4 end:0x801259A0
+	.ctors      start:0x8020BCB4 end:0x8020BCB8
+	.rodata     start:0x8020CB68 end:0x8020CB80
+	.data       start:0x80374290 end:0x80374508
+	.sdata      start:0x804D5770 end:0x804D57F0
+	.sdata2     start:0x804DC200 end:0x804DC210
+
+Sato/SaEnCandle.cpp:
+	.text       start:0x801259A0 end:0x80125DEC
+	.ctors      start:0x8020BCB8 end:0x8020BCBC
+	.data       start:0x80374508 end:0x80374750
+	.sdata      start:0x804D57F0 end:0x804D5840
+
+Sato/SaEnKoopaTelesa.cpp:
+	.text       start:0x80125DEC end:0x801278B4
+	.ctors      start:0x8020BCBC end:0x8020BCC0
+	.rodata     start:0x8020CB80 end:0x8020CBA8
+	.data       start:0x80374750 end:0x80374B40
+	.sdata      start:0x804D5840 end:0x804D5918
+	.sdata2     start:0x804DC210 end:0x804DC258
+
+Sato/DustBase.cpp:
+	.text       start:0x801278B4 end:0x8012DB68
+	.ctors      start:0x8020BCC0 end:0x8020BCC4
+	.rodata     start:0x8020CBA8 end:0x8020CCA0
+	.data       start:0x80374B40 end:0x803774F8
+	.sdata      start:0x804D5918 end:0x804D5960
+	.sdata2     start:0x804DC258 end:0x804DC2E0
+
+Sato/SaEnDancer2.cpp:
+	.text       start:0x8012DB68 end:0x8012E350
+	.ctors      start:0x8020BCC4 end:0x8020BCC8
+	.data       start:0x803774F8 end:0x803778C0
+	.sdata      start:0x804D5960 end:0x804D5A00
+	.sdata2     start:0x804DC2E0 end:0x804DC2E8
+
+Sato/DustlevelMgr.cpp:
+	.text       start:0x8012E350 end:0x80130C14
+	.ctors      start:0x8020BCC8 end:0x8020BCCC
+	.rodata     start:0x8020CCA0 end:0x8020CCC8
+	.data       start:0x803778C0 end:0x803781C8
+	.bss        start:0x803D8358 end:0x803D8870
+	.sdata      start:0x804D5A00 end:0x804D5A70
+	.sdata2     start:0x804DC2E8 end:0x804DC340
+
 Sato/SaEnGenUtility.cpp:
 	.text       start:0x80142F88 end:0x801443E8
 	.data       start:0x8037A1D0 end:0x8037A2B0
@@ -685,9 +755,25 @@ Sato/SaEnGenUtility.cpp:
 JSystem/JAudio/JAInterface/JAIBasic.cpp:
 	.text       start:0x8018E680 end:0x80190E68
 	.ctors      start:0x8020BDA0 end:0x8020BDA4
+	.data       start:0x8038F028 end:0x8038F1E0
 	.bss        start:0x803F0248 end:0x803F0260
 	.sbss       start:0x804D9270 end:0x804D9280
 	.sdata2     start:0x804DD1A0 end:0x804DD1B8
+
+JSystem/JAudio/JAInterface/JAIData.cpp:
+	.text       start:0x80195248 end:0x80196BB0
+	.sdata2     start:0x804DD228 end:0x804DD240
+
+JSystem/JAudio/JAInterface/JAISystemInterface.cpp:
+	.text       start:0x80196BB0 end:0x801974C0
+	.ctors      start:0x8020BDA4 end:0x8020BDA8
+
+JSystem/JAudio/JAInterface/JAIEntrySequence.cpp:
+	.text       start:0x8019754C end:0x80197810
+
+JSystem/JAudio/JAInterface/JAISound.cpp:
+	.text       start:0x80197C14 end:0x8019B424
+	.sdata2     start:0x804DD250 end:0x804DD2C0
 
 JSystem/JAudio/JAInterface/JAIAnimation.cpp:
 	.text       start:0x8019B424 end:0x8019BE00

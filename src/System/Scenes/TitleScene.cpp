@@ -10,9 +10,10 @@
 #include "System/Memory.hpp"
 #include "Unsorted/800627D0.hpp"
 #include "Unsorted/BackgroundMusic.hpp"
-#include "Unsorted/GamePad.hpp"
+#include "System/80009584.hpp"
 #include "System/DisplayUtil.hpp"
 #include "System/Reset.hpp"
+#include "Unsorted/BackgroundMusic.hpp"
 
 
 namespace TitleScene {
@@ -42,17 +43,12 @@ namespace TitleScene {
 
     void init() {
         lbl_804D8138 = 60;
-        SceneManager::lbl_804D80AC = 0;
+        lbl_804D813C = FALSE;
 
         s32 gameHeapFree = getGameHeapFreeSize();
-        void* newMem = allocMem(0, 0x4);
-
-        if (gameHeapFree > 0) {
-            do {
-                do {
-                    // Some sort of struct creation step
-                } while (true); // Not the correct condition but definitely some sort of loop
-            } while (true); // Not the correct condition but definitely some sort of loop
+        u8* newMem = static_cast<u8*>(allocMem(gameHeapFree, 0x4));
+        for (int i = 0; i < gameHeapFree; i++) {
+            newMem[i] = 0;
         }
 
         freeMem(newMem);
@@ -64,10 +60,13 @@ namespace TitleScene {
         }
 
         setCurHeapGroupId(2);
-        if (sProgressiveScanPromptState != 1) {
-            fn_8003ADE0(0);
-        } else {
-            fn_8003ADE0(1);
+        switch (sProgressiveScanPromptState) {
+            case 1:
+                fn_8003ADE0(0);
+                break;
+            default:
+                fn_8003ADE0(1);
+                break;            
         }
 
         setCurHeapGroupId(0x1A);
@@ -94,7 +93,7 @@ namespace TitleScene {
                     lbl_804D8130 = 3;
                     OpeningScene::sNextSceneID = SCENE_MAIN_GAME;
                     fn_8018A2A0(0x3802);
-                    SceneManager::fn_8000B334(3);
+                    SceneManager::requestSceneChange(SCENE_SELECT);
                     applyProgressiveChoice();
                     break;
                 }
@@ -113,7 +112,7 @@ namespace TitleScene {
         }
 
         OpeningScene::sNextSceneID = SCENE_TITLE;
-        SceneManager::fn_8000B334(4);
+        SceneManager::requestSceneChange(SCENE_OPENING);
         return SCENE_TITLE;
     }
 
