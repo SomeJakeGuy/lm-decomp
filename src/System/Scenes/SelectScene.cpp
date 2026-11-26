@@ -66,7 +66,7 @@ namespace SelectScene {
         fn_800735FC();
         fn_800379F4(&lbl_803CDEB0);
         OpeningScene::sNextSceneID = SCENE_MAIN_GAME;
-        resetInGameClock();
+        resetGBHClock();
         MainGameScene::sCurMapNo = MAP_MANSION;
         fn_8004CED4();
     }

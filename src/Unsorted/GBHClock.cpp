@@ -1,32 +1,32 @@
 #include "Unsorted/GBHClock.hpp"
 
-u64 sInGameClockTicks;
-s32 sInGameClockHours;
-s32 sInGameClockMinutes;
-s32 sInGameClockSeconds;
+u64 sGBHClockTicks;
+s32 sGBHClockHours;
+s32 sGBHClockMinutes;
+s32 sGBHClockSeconds;
 
-BOOL sInGameClockEnabled = TRUE;
+BOOL sGBHClockEnabled = TRUE;
 
-void resetInGameClock() {
-    sInGameClockTicks = 0;
-    sInGameClockHours = 0;
-    sInGameClockMinutes = 0;
-    sInGameClockSeconds = 0;
+void resetGBHClock() {
+    sGBHClockTicks = 0;
+    sGBHClockHours = 0;
+    sGBHClockMinutes = 0;
+    sGBHClockSeconds = 0;
 }
 
-void updateInGameClock() {
-    if (sInGameClockEnabled) {
-        sInGameClockTicks++;
+void updateGBHClock() {
+    if (sGBHClockEnabled) {
+        sGBHClockTicks++;
     }
     
-    u64 totalTicks = (sInGameClockTicks * 10) / 30;
-    sInGameClockSeconds = totalTicks % 60;
+    u64 totalTicks = (sGBHClockTicks * 10) / 30;
+    sGBHClockSeconds = totalTicks % 60;
     totalTicks /= 60;
 
-    sInGameClockMinutes = totalTicks % 60;
-    sInGameClockHours = totalTicks / 60;
+    sGBHClockMinutes = totalTicks % 60;
+    sGBHClockHours = totalTicks / 60;
 
-    if (sInGameClockHours == 6) {
-        sInGameClockTicks = 0;
+    if (sGBHClockHours == 6) {
+        sGBHClockTicks = 0;
     }
 }

@@ -3,13 +3,13 @@
 
 #include "types.h"
 
-void resetInGameClock();
-void updateInGameClock();
+void resetGBHClock();
+void updateGBHClock();
 
-extern BOOL sInGameClockEnabled;
-extern u64 sInGameClockTicks;
-extern s32 sInGameClockHours;
-extern s32 sInGameClockMinutes;
-extern s32 sInGameClockSeconds;
+extern BOOL sGBHClockEnabled;
+extern u64 sGBHClockTicks;
+extern s32 sGBHClockHours;
+extern s32 sGBHClockMinutes;
+extern s32 sGBHClockSeconds;
 
 #endif
