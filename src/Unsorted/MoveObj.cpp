@@ -20,22 +20,22 @@ MoveObj::~MoveObj() {
     delete mModel;
 }
 
-void MoveObj::fn_80067C30(const Vec* vec) {
-    _6C = *vec;
-    _68 = VECMag(&_6C);
-    _78 = _6C;
+void MoveObj::setVelocity(const JGeometry::TVec3f& rVelocity) {
+    mVelocity = rVelocity;
+    mSpeed = mVelocity.length();
+    mNormalizedVelocity = mVelocity;
 
-    if (_68 > 0.000001f) {
-        PSVECNormalize(&_78, &_78);
+    if (mSpeed > 0.000001f) {
+        mNormalizedVelocity.normalize();
     }
 }
 
-void MoveObj::fn_80067CB0(f32 var1, f32 var2, f32 var3) {
-    _44.set(var1, var2, var3);
-    _5C = _44;
+void MoveObj::fn_80067CB0(f32 x, f32 y, f32 z) {
+    mPosition.set(x, y, z);
+    _5C = mPosition;
     _50 = _5C;
 
-    _B4 = fn_80017ADC(_44, 0);
+    _B4 = fn_80017ADC(mPosition, 0);
 }
 
 u16 MoveObj::fn_80067D3C(u16 val) {
@@ -71,7 +71,7 @@ void MoveObj::fn_80068268(s32 val, JGeometry::TVec3<f32>& vec) {
 
     if (mModel != nullptr) {
         _40 |= 0x80000;
-        fn_8013DCD8(_10C, _100, _44, val);
+        fn_8013DCD8(_10C, _100, mPosition, val);
     }
 }
 

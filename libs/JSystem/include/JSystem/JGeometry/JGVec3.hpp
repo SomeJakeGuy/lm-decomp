@@ -119,16 +119,12 @@ public:
 
 	void sub(const TVec3& translate)
 	{
-		x -= translate.x;
-		y -= translate.y;
-		z -= translate.z;
+		PSVECSubtract(this, &translate, this);
 	}
 
 	void sub(const TVec3& fst, const TVec3& snd)
 	{
-		x = fst.x - snd.x;
-		y = fst.y - snd.y;
-		z = fst.z - snd.z;
+		PSVECSubtract(&fst, &snd, this);
 	}
 
 	void mul(const TVec3& b)
@@ -255,7 +251,7 @@ public:
 
 	f32 squared() const { return dot(*this); }
 
-	f32 length() const { return TUtil<f32>::sqrt(squared()); }
+	f32 length() const { return VECMag(*this); }
 
 	// @fabricated
 	f32 length2() const { return length(); }
@@ -264,7 +260,7 @@ public:
 
 	void setLength(f32 length) { setLength(*this, length); }
 
-	void normalize() { setLength(*this, TUtil<f32>::one()); }
+	void normalize() { PSVECNormalize(this, this); }
 
 	void normalize(const TVec3& other) { setLength(other, TUtil<f32>::one()); }
 
@@ -310,5 +306,10 @@ public:
 typedef TVec3<f32> TVec3f;
 
 } // namespace JGeometry
+
+// TODO: TVec3f and Vec is weird in this game, review this
+#define CONVERT_VEC_REF(vec) *(JGeometry::TVec3f*)&vec
+#define CONVERT_VEC_PTR(vec) (JGeometry::TVec3f*)vec
+
 
 #endif

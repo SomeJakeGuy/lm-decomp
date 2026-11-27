@@ -15,19 +15,19 @@ static const Koga::CharacterEvent::Message message = Koga::CharacterEvent::MESSA
 static EnemyStrategyState enemyStrategyStates[3] = {
     {
         0,
-        (EnemyStrategyStateFn)&EnReplace::state_0000_Init, 
+        (EnemyStrategyStateFn)&EnReplace::state_0000_Init,
         (EnemyStrategyStateFn)&EnReplace::state_0000_Behavior
     },
 
     {
-        1, 
-        (EnemyStrategyStateFn)&EnReplace::state_0010_Init, 
+        1,
+        (EnemyStrategyStateFn)&EnReplace::state_0010_Init,
         (EnemyStrategyStateFn)&EnReplace::state_0010_Behavior
     },
 
     {
-        256, 
-        (EnemyStrategyStateFn)&EnReplace::state_0100_Init, 
+        256,
+        (EnemyStrategyStateFn)&EnReplace::state_0100_Init,
         (EnemyStrategyStateFn)&EnReplace::state_0100_Behavior
     },
 };
@@ -44,7 +44,7 @@ inline EnemyStrategyState* findState(u16 index) {
 
 void EnReplace::doBehavior() {
     EnemyStrategyState* state = findState(mCurrentState);
-    
+
     if (state != nullptr) {
         (this->*state->mBehaviorFunc)();
     }
@@ -52,7 +52,7 @@ void EnReplace::doBehavior() {
 
 void EnReplace::doBehaviorInit() {
     EnemyStrategyState* state = findState(mCurrentState);
-    
+
     if (state != nullptr) {
         (this->*state->mBehaviorInitFunc)();
     }
@@ -64,23 +64,24 @@ bool EnReplace::vt_14() {
 
 bool EnReplace::state_0000_Init() {
     getZako()->getCharacter()->_40 |= 0xC400;
-    getZako()->getCharacter()->setE3andE7();
+    getZako()->getCharacter()->setInvisible();
 
     return true;
 }
 
-bool EnReplace::state_0000_Behavior() { 
-    getZako()->getCharacter()->fn_80067C30(&gZeroVec);
+bool EnReplace::state_0000_Behavior() {
+    getZako()->getCharacter()->setVelocity(CONVERT_VEC_REF(gZeroVec));
 
-    Character* character = getZako()->getCharacter();
+    EnZako* zako = getZako();
+
+    Character* character = zako->getCharacter();
 
     if (mTimer < unk1) {
         return true;
     }
 
-    if (fn_800E6ED0(getZako()) == 0) {
-        Koga::CharacterEvent event = Koga::CharacterEvent(message);
-        getZako()->fn_800C0F08(this, &event);
+    if (fn_800E6ED0(zako) == 0) {
+        zako->fn_800C0F08(Koga::CharacterEvent(message));
     }
 
     setNextState(1);
