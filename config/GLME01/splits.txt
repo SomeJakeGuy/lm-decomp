@@ -190,6 +190,13 @@ Unsorted/8002B4B8.cpp:
 	.sbss       start:0x804D8370 end:0x804D8380
 	.sdata2     start:0x804DA0E8 end:0x804DA100
 
+Unsorted/8002D4D0.cpp:
+	.text       start:0x8002D4D0 end:0x8002ECEC
+	.ctors      start:0x8020BAE0 end:0x8020BAE4
+	.data       start:0x80300818 end:0x80300AA8
+	.bss        start:0x803CD1D8 end:0x803CD508
+	.sdata      start:0x804D00F0 end:0x804D01A8
+
 System/Scenes/ScreenTransition.cpp:
 	.text       start:0x80039464 end:0x8003A430
 	.ctors      start:0x8020BAE8 end:0x8020BAEC
