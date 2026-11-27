@@ -867,6 +867,7 @@ config.libs = [
         Object(NonMatching, "Unsorted/GBHClock.cpp"),
         Object(NonMatching, "Unsorted/SimpleDraw.cpp"),
         Object(NonMatching, "Unsorted/8002B4B8.cpp"),
+        Object(NonMatching, "Unsorted/8002D4D0.cpp"),
         Object(NonMatching, "Unsorted/800627D0.cpp"),
         Object(NonMatching, "Unsorted/s3dmodel.cpp"),
         Object(NonMatching, "Unsorted/ActorData.cpp"),
